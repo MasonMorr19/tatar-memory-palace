@@ -1,0 +1,2015 @@
+{
+  "meta": {
+    "title": "Nested Hearth — Tatar Memory Palace Database",
+    "owner": "Salauat",
+    "version": "0.4.0",
+    "updated": "2026-06-30",
+    "purpose": "Single source of truth that binds VOCAB + MEDIA + PALACE so every drill (listening, speaking) is generated from one spine. Edit this file in VSCode/Claude Code; the app and tools read from it.",
+    "schema": {
+      "verbs": "inf, stem, vstem, pres, cls(C|V), back(bool), en, cond(1sg example), [loan], [note]",
+      "nouns": "s, en, back(bool), cat, [loan], [note]",
+      "expressions": "tt, translit, en, [literal], kind(idiom|state|greeting|line), [somatic(heart|head|none)], [valence], [note]",
+      "media": "id, type(lecture|book|poem|image|text|slide), title, [by], [date], [url], lang, note, [tatar]",
+      "stations": "id, locus, locus_en, zone, vocab[surface forms], expressions[tt], media[ids], listen{tt,en}, speak{tt,en}, note"
+    },
+    "harmony_note": "back=true takes -са/-га/-ка/-да/-ны (back vowels а о у ы); back=false takes -сә/-гә/-кә/-дә/-не (front ә ө ү е и). Loanwords carry an EXPLICIT flag because the last written vowel can lie (табип -> back)."
+  },
+  "vocab": {
+    "verbs": [
+      {
+        "inf": "сагыну",
+        "stem": "сагын",
+        "vstem": "сагын",
+        "pres": "сагына",
+        "cls": "C",
+        "back": true,
+        "en": "miss, long for",
+        "cond": "сагынсам",
+        "note": "Мин сине сагынам = I miss you (lit. I you miss). Conjugation: сагынам/сагынасың/сагына/сагынабыз/сагынасыз/сагыналар",
+        "fut": "сагыначакмын"
+      },
+      {
+        "inf": "соңару",
+        "stem": "соңар",
+        "vstem": "соңар",
+        "pres": "соңара",
+        "cls": "C",
+        "back": true,
+        "en": "be late",
+        "cond": "соңарсам",
+        "note": "автобуска соңару = to miss/be late for the bus",
+        "fut": "соңарачакмын"
+      },
+      {
+        "inf": "калдыру",
+        "stem": "калдыр",
+        "vstem": "калдыр",
+        "pres": "калдыра",
+        "cls": "C",
+        "back": true,
+        "en": "leave behind, miss (a thing)",
+        "cond": "калдырсам",
+        "fut": "калдырачакмын"
+      },
+      {
+        "inf": "үпкәләү",
+        "stem": "үпкәлә",
+        "vstem": "үпкәлә",
+        "pres": "үпкәли",
+        "cls": "V",
+        "back": false,
+        "en": "be offended, take umbrage",
+        "cond": "үпкәләсәм",
+        "fut": "үпкәләячәкмен"
+      },
+      {
+        "inf": "каушау",
+        "stem": "кауша",
+        "vstem": "кауша",
+        "pres": "каушый",
+        "cls": "V",
+        "back": true,
+        "en": "be flustered, lose one's footing",
+        "cond": "каушасам",
+        "fut": "каушаячакмын"
+      },
+      {
+        "inf": "тырышу",
+        "stem": "тырыш",
+        "vstem": "тырыш",
+        "pres": "тырыша",
+        "cls": "C",
+        "back": true,
+        "en": "try, make an effort",
+        "cond": "тырышсам",
+        "fut": "тырышачакмын"
+      },
+      {
+        "inf": "өйрәнү",
+        "stem": "өйрән",
+        "vstem": "өйрән",
+        "pres": "өйрәнә",
+        "cls": "C",
+        "back": false,
+        "en": "learn, study",
+        "cond": "өйрәнсәм",
+        "fut": "өйрәнәчәкмен"
+      },
+      {
+        "inf": "сорау",
+        "stem": "сора",
+        "vstem": "сора",
+        "pres": "сорый",
+        "cls": "V",
+        "back": true,
+        "en": "ask",
+        "cond": "сорасам",
+        "fut": "сораячакмын"
+      },
+      {
+        "inf": "чакыру",
+        "stem": "чакыр",
+        "vstem": "чакыр",
+        "pres": "чакыра",
+        "cls": "C",
+        "back": true,
+        "en": "invite, call",
+        "cond": "чакырсам",
+        "fut": "чакырачакмын"
+      },
+      {
+        "inf": "тыңлау",
+        "stem": "тыңла",
+        "vstem": "тыңла",
+        "pres": "тыңлый",
+        "cls": "V",
+        "back": true,
+        "en": "listen (to)",
+        "cond": "тыңласам",
+        "fut": "тыңлаячакмын"
+      },
+      {
+        "inf": "тору",
+        "stem": "тор",
+        "vstem": "тор",
+        "pres": "тора",
+        "cls": "C",
+        "back": true,
+        "en": "get up, stand",
+        "cond": "торсам",
+        "fut": "торачакмын"
+      },
+      {
+        "inf": "шөгыльләнү",
+        "stem": "шөгыльлән",
+        "vstem": "шөгыльлән",
+        "pres": "шөгыльләнә",
+        "cls": "C",
+        "back": false,
+        "en": "engage in, take up",
+        "cond": "шөгыльләнсәм",
+        "note": "спорт белән шөгыльләнү = to do sports",
+        "fut": "шөгыльләнәчәкмен"
+      },
+      {
+        "inf": "булу",
+        "stem": "бул",
+        "vstem": "бул",
+        "pres": "була",
+        "cls": "C",
+        "back": true,
+        "en": "be, become",
+        "cond": "булсам",
+        "fut": "булачакмын"
+      },
+      {
+        "inf": "булдыру",
+        "stem": "булдыр",
+        "vstem": "булдыр",
+        "pres": "булдыра",
+        "cls": "C",
+        "back": true,
+        "en": "manage, pull off",
+        "cond": "булдырсам",
+        "fut": "булдырачакмын"
+      },
+      {
+        "inf": "аңлау",
+        "stem": "аңла",
+        "vstem": "аңла",
+        "pres": "аңлый",
+        "cls": "V",
+        "back": true,
+        "en": "understand",
+        "cond": "аңласам",
+        "fut": "аңлаячакмын"
+      },
+      {
+        "inf": "аңлату",
+        "stem": "аңлат",
+        "vstem": "аңлат",
+        "pres": "аңлата",
+        "cls": "C",
+        "back": true,
+        "en": "explain",
+        "cond": "аңлатсам",
+        "fut": "аңлатачакмын"
+      },
+      {
+        "inf": "итү",
+        "stem": "ит",
+        "vstem": "ит",
+        "pres": "итә",
+        "cls": "C",
+        "back": false,
+        "en": "do, make (light verb)",
+        "cond": "итсәм",
+        "note": "рөхсәт итү = permit",
+        "fut": "итәчәкмен"
+      },
+      {
+        "inf": "тию",
+        "stem": "ти",
+        "vstem": "ти",
+        "pres": "тия",
+        "cls": "V",
+        "back": false,
+        "en": "touch, strike",
+        "cond": "тисәм",
+        "note": "салкын тию = catch cold",
+        "fut": "тиячәкмен"
+      },
+      {
+        "inf": "яту",
+        "stem": "ят",
+        "vstem": "ят",
+        "pres": "ята",
+        "cls": "C",
+        "back": true,
+        "en": "lie down",
+        "cond": "ятсам",
+        "fut": "ятачакмын"
+      },
+      {
+        "inf": "авыру",
+        "stem": "авыр",
+        "vstem": "авыр",
+        "pres": "авырый",
+        "cls": "C",
+        "back": true,
+        "en": "be ill",
+        "cond": "авырсам",
+        "note": "irregular present авырый; regular conditional авырса",
+        "fut": "авырачакмын"
+      },
+      {
+        "inf": "авырту",
+        "stem": "авырт",
+        "vstem": "авырт",
+        "pres": "авырта",
+        "cls": "C",
+        "back": true,
+        "en": "ache, hurt",
+        "cond": "авыртсам",
+        "note": "башым авырта = my head aches",
+        "fut": "авыртачакмын"
+      },
+      {
+        "inf": "ярату",
+        "stem": "ярат",
+        "vstem": "ярат",
+        "pres": "ярата",
+        "cls": "C",
+        "back": true,
+        "en": "love",
+        "cond": "яратсам",
+        "note": "VERB (фигыль) for the feeling; Мин сине яратам = I love you. Contrast the NOUN мәхәббәт.",
+        "fut": "яратачакмын"
+      },
+      {
+        "inf": "ашау",
+        "stem": "аша",
+        "vstem": "аша",
+        "pres": "ашый",
+        "cls": "V",
+        "back": true,
+        "en": "eat",
+        "cond": "ашасам",
+        "fut": "ашаячакмын",
+        "note": "Атна-6 homework: Мин ашасам / Без ашасак."
+      },
+      {
+        "inf": "күрү",
+        "stem": "күр",
+        "vstem": "күр",
+        "pres": "күрә",
+        "cls": "C",
+        "back": false,
+        "en": "see",
+        "cond": "күрсәм",
+        "fut": "күрәчәкмен",
+        "note": "Атна-6 homework: Без күрсәк. Күреп булса (да) = if/even if it's possible to see."
+      },
+      {
+        "inf": "күчену",
+        "stem": "күчен",
+        "vstem": "күчен",
+        "pres": "күченә",
+        "cls": "C",
+        "back": false,
+        "en": "move, relocate",
+        "cond": "күченсәм",
+        "fut": "күченәчәкмен",
+        "note": "Атна-6 homework negative: Мин күченмәсәм = if I don't move."
+      },
+      {
+        "inf": "яшәү",
+        "stem": "яшә",
+        "vstem": "яшә",
+        "pres": "яши",
+        "cls": "V",
+        "back": false,
+        "en": "live, reside",
+        "cond": "яшәсәм",
+        "fut": "яшәячәкмен",
+        "note": "Монда яшәп булса да = even if it's possible to live here."
+      },
+      {
+        "inf": "белү",
+        "stem": "бел",
+        "vstem": "бел",
+        "pres": "белә",
+        "cls": "C",
+        "back": false,
+        "en": "know",
+        "cond": "белсәм",
+        "fut": "беләчәкмен",
+        "note": "Әти-әнием белсә дә = even if my parents find out."
+      },
+      {
+        "inf": "ярау",
+        "stem": "яра",
+        "vstem": "яра",
+        "pres": "ярый",
+        "cls": "V",
+        "back": true,
+        "en": "be allowed, be fitting",
+        "cond": "ярасам",
+        "fut": "яраячакмын",
+        "note": "Negative ярамау = not be allowed: Ярамаса да = even if it's not allowed."
+      },
+      {
+        "inf": "теләү",
+        "stem": "телә",
+        "vstem": "телә",
+        "pres": "тели",
+        "cls": "V",
+        "back": false,
+        "en": "want, wish",
+        "cond": "теләсәм",
+        "fut": "теләячәкмен",
+        "note": "Теләмәсәк тә = even if we don't want to."
+      },
+      {
+        "inf": "киену",
+        "stem": "киен",
+        "vstem": "киен",
+        "pres": "киенә",
+        "cls": "C",
+        "back": false,
+        "en": "get dressed",
+        "cond": "киенсәм",
+        "fut": "киенәчәкмен",
+        "note": "Җылы киенсәгез дә = even if you all dress warmly."
+      },
+      {
+        "inf": "яву",
+        "stem": "яв",
+        "vstem": "яв",
+        "pres": "ява",
+        "cls": "C",
+        "back": true,
+        "en": "fall (rain/snow)",
+        "cond": "явса",
+        "fut": "явачак",
+        "note": "Impersonal — used with кар/яңгыр as subject: Кар яуса да = even if it snows."
+      },
+      {
+        "inf": "башлану",
+        "stem": "башлан",
+        "vstem": "башлан",
+        "pres": "башлана",
+        "cls": "C",
+        "back": true,
+        "en": "begin (intransitive)",
+        "cond": "башланса",
+        "fut": "башланачак",
+        "note": "Августта гына башланса да = even if it only starts in August."
+      },
+      {
+        "inf": "сату",
+        "stem": "сат",
+        "vstem": "сат",
+        "pres": "сата",
+        "cls": "C",
+        "back": true,
+        "en": "sell",
+        "cond": "сатсам",
+        "fut": "сатачакмын",
+        "note": "сатып алу (compound) = to buy, lit. 'sell-and take'."
+      },
+      {
+        "inf": "алу",
+        "stem": "ал",
+        "vstem": "ал",
+        "pres": "ала",
+        "cls": "C",
+        "back": true,
+        "en": "take; buy (with сатып)",
+        "cond": "алсам",
+        "fut": "алачакмын",
+        "note": "Сатып алырга кирәк = need to buy."
+      },
+      {
+        "inf": "бирү",
+        "stem": "бир",
+        "vstem": "бир",
+        "pres": "бирә",
+        "cls": "C",
+        "back": false,
+        "en": "give",
+        "cond": "бирсәм",
+        "fut": "бирәчәкмен",
+        "note": "Җавап бир! = Give an answer! (imperative)"
+      },
+      {
+        "inf": "эшләү",
+        "stem": "эшлә",
+        "vstem": "эшлә",
+        "pres": "эшли",
+        "cls": "V",
+        "back": false,
+        "en": "work, do",
+        "cond": "эшләсәм",
+        "fut": "эшләячәкмен",
+        "note": "Эшлисем килә = I want to work (desiderative, -асы/-әсе килә)."
+      },
+      {
+        "inf": "әйләнү",
+        "stem": "әйлән",
+        "vstem": "әйлән",
+        "pres": "әйләнә",
+        "cls": "C",
+        "back": false,
+        "en": "turn, spin",
+        "cond": "әйләнсәм",
+        "fut": "әйләнәчәкмен",
+        "note": "баш әйләнү = to feel dizzy (lit. the head spinning)."
+      },
+      {
+        "inf": "ару",
+        "stem": "ар",
+        "vstem": "ар",
+        "pres": "ара",
+        "cls": "C",
+        "back": true,
+        "en": "get tired",
+        "cond": "арсам",
+        "fut": "арачакмын",
+        "note": "Күзләрең арса = if your eyes get tired. 2sg cond: Арсаң."
+      },
+      {
+        "inf": "сызлау",
+        "stem": "сызла",
+        "vstem": "сызла",
+        "pres": "сызлый",
+        "cls": "V",
+        "back": true,
+        "en": "ache (dull/chronic pain)",
+        "cond": "сызласам",
+        "fut": "сызлаячакмын",
+        "note": "Теш сызласа = if a tooth aches."
+      },
+      {
+        "inf": "болгану",
+        "stem": "болган",
+        "vstem": "болган",
+        "pres": "болгана",
+        "cls": "C",
+        "back": true,
+        "en": "churn, be stirred; feel nauseous",
+        "cond": "болганса",
+        "fut": "болганачак",
+        "note": "Күңел болгансa = if you feel nauseous (lit. the mood churns)."
+      },
+      {
+        "inf": "тазару",
+        "stem": "тазар",
+        "vstem": "тазар",
+        "pres": "тазара",
+        "cls": "C",
+        "back": true,
+        "en": "become healthy/clean",
+        "cond": "тазарсам",
+        "fut": "тазарачакмын",
+        "note": "Тазарырга! = Get healthy! (slide imperative)."
+      },
+      {
+        "inf": "ябыгу",
+        "stem": "ябыг",
+        "vstem": "ябыг",
+        "pres": "ябыга",
+        "cls": "C",
+        "back": true,
+        "en": "lose weight, become thin",
+        "cond": "ябыгсам",
+        "fut": "ябыгачакмын",
+        "note": "Ябыгырга! = Lose weight! (slide imperative)."
+      },
+      {
+        "inf": "йоклау",
+        "stem": "йокла",
+        "vstem": "йокла",
+        "pres": "йоклый",
+        "cls": "V",
+        "back": true,
+        "en": "sleep",
+        "cond": "йокласам",
+        "fut": "йоклаячакмын",
+        "note": "Телевизор эшләсә дә, мин йоклыйм = even if the TV is on, I sleep."
+      },
+      {
+        "inf": "оныту",
+        "stem": "оныт",
+        "vstem": "оныт",
+        "pres": "онытa",
+        "cls": "C",
+        "back": true,
+        "en": "forget",
+        "cond": "онытсам",
+        "fut": "онытачакмын",
+        "note": "Онытсаң да = even if you forget."
+      },
+      {
+        "inf": "йөрү",
+        "stem": "йөр",
+        "vstem": "йөр",
+        "pres": "йөри",
+        "cls": "C",
+        "back": false,
+        "en": "walk, go around",
+        "cond": "йөрсәм",
+        "fut": "йөрәчәкмен"
+      },
+      {
+        "inf": "утыру",
+        "stem": "утыр",
+        "vstem": "утыр",
+        "pres": "утыра",
+        "cls": "C",
+        "back": true,
+        "en": "sit, sit down",
+        "cond": "утырсам",
+        "fut": "утырачакмын"
+      }
+    ],
+    "nouns": [
+      {
+        "s": "мәхәббәт",
+        "en": "love",
+        "back": false,
+        "cat": "Emotion",
+        "note": "NOUN (исем) for love; literary/philosophical (чиста мәхәббәт = pure love). Sufi 'ishq — Salauat's 'ishq majazi -> 'ishq haqiqi thread. Contrast the verb ярату."
+      },
+      {
+        "s": "йөрәк",
+        "en": "heart",
+        "back": false,
+        "cat": "Body / emotion",
+        "note": "Tatar seats intense emotion in the heart (йөрәк) — йөрәк сызылу, йөрәккә ут кабу, йөрәк ярылу."
+      },
+      {
+        "s": "баш",
+        "en": "head",
+        "back": true,
+        "cat": "Body / emotion",
+        "note": "The other seat of emotion — баш түбәгә тию, башны түбән салу, башка сугу."
+      },
+      {
+        "s": "бабай",
+        "en": "grandfather",
+        "back": true,
+        "cat": "Family"
+      },
+      {
+        "s": "әби",
+        "en": "grandmother",
+        "back": false,
+        "cat": "Family"
+      },
+      {
+        "s": "ул",
+        "en": "son",
+        "back": true,
+        "cat": "Family",
+        "note": "улы = his/her son (3sg possessive); бабайның улы = grandfather's boy"
+      },
+      {
+        "s": "кул",
+        "en": "hand",
+        "back": true,
+        "cat": "Body / emotion",
+        "note": "уң кул = right hand"
+      },
+      {
+        "s": "уң",
+        "en": "right (side)",
+        "back": true,
+        "cat": "Direction"
+      },
+      {
+        "s": "шигырь",
+        "en": "poem",
+        "back": false,
+        "cat": "Culture"
+      },
+      {
+        "s": "язучы",
+        "en": "writer",
+        "back": true,
+        "cat": "Culture"
+      },
+      {
+        "s": "хикәя",
+        "en": "story",
+        "back": false,
+        "cat": "Culture"
+      },
+      {
+        "s": "тел",
+        "en": "language, tongue",
+        "back": false,
+        "cat": "Culture",
+        "note": "central to the lecture: тел = the living archive"
+      },
+      {
+        "s": "хәтер",
+        "en": "memory",
+        "back": false,
+        "cat": "Culture",
+        "note": "мәдәни хәтер = cultural memory (lecture theme)"
+      },
+      {
+        "s": "халык",
+        "en": "a people, the folk",
+        "back": true,
+        "cat": "Culture",
+        "note": "тел — халыкның хәтере = language is a people's memory"
+      },
+      {
+        "s": "дару",
+        "en": "medicine",
+        "back": true,
+        "cat": "Health"
+      },
+      {
+        "s": "табип",
+        "en": "doctor",
+        "back": true,
+        "cat": "Health",
+        "loan": true,
+        "note": "LOANWORD HARMONY: back endings (табипка) despite front и"
+      },
+      {
+        "s": "спорт",
+        "en": "sport",
+        "back": true,
+        "cat": "Health",
+        "loan": true
+      },
+      {
+        "s": "сәламәтлек",
+        "en": "health",
+        "back": false,
+        "cat": "Health"
+      },
+      {
+        "s": "салкын",
+        "en": "cold",
+        "back": true,
+        "cat": "Health"
+      },
+      {
+        "s": "бал",
+        "en": "honey",
+        "back": true,
+        "cat": "Food & home"
+      },
+      {
+        "s": "бүләк",
+        "en": "gift",
+        "back": false,
+        "cat": "Daily life"
+      },
+      {
+        "s": "көн",
+        "en": "day",
+        "back": false,
+        "cat": "Daily life",
+        "note": "туган көн = birthday"
+      },
+      {
+        "s": "имтихан",
+        "en": "exam",
+        "back": true,
+        "cat": "Daily life"
+      },
+      {
+        "s": "рөхсәт",
+        "en": "permission",
+        "back": false,
+        "cat": "Daily life"
+      },
+      {
+        "s": "җавап",
+        "en": "answer",
+        "back": true,
+        "cat": "Daily life"
+      },
+      {
+        "s": "урман",
+        "en": "forest",
+        "back": true,
+        "cat": "Nature"
+      },
+      {
+        "s": "хайкинг",
+        "en": "hiking",
+        "back": true,
+        "cat": "Daily life",
+        "loan": true
+      },
+      {
+        "s": "акаунт",
+        "en": "account",
+        "back": true,
+        "cat": "Daily life",
+        "loan": true
+      },
+      {
+        "s": "язылучы",
+        "en": "subscriber, follower",
+        "back": true,
+        "cat": "Daily life"
+      },
+      {
+        "s": "Уфа",
+        "en": "Ufa",
+        "back": true,
+        "cat": "Cities",
+        "note": "capital of Bashkortostan; gateway to the planned Ufa palace"
+      },
+      {
+        "s": "сул",
+        "en": "left",
+        "back": true,
+        "cat": "Direction"
+      },
+      {
+        "s": "туры",
+        "en": "straight",
+        "back": true,
+        "cat": "Direction"
+      },
+      {
+        "s": "төньяк",
+        "en": "north",
+        "back": true,
+        "cat": "Direction"
+      },
+      {
+        "s": "көньяк",
+        "en": "south",
+        "back": true,
+        "cat": "Direction"
+      },
+      {
+        "s": "көнчыгыш",
+        "en": "east",
+        "back": true,
+        "cat": "Direction"
+      },
+      {
+        "s": "көнбатыш",
+        "en": "west",
+        "back": true,
+        "cat": "Direction"
+      },
+      {
+        "s": "күз",
+        "en": "eye",
+        "back": false,
+        "cat": "Body"
+      },
+      {
+        "s": "колак",
+        "en": "ear",
+        "back": true,
+        "cat": "Body"
+      },
+      {
+        "s": "борын",
+        "en": "nose",
+        "back": true,
+        "cat": "Body"
+      },
+      {
+        "s": "авыз",
+        "en": "mouth",
+        "back": true,
+        "cat": "Body"
+      },
+      {
+        "s": "теш",
+        "en": "tooth",
+        "back": false,
+        "cat": "Body"
+      },
+      {
+        "s": "чәч",
+        "en": "hair",
+        "back": false,
+        "cat": "Body"
+      },
+      {
+        "s": "бит",
+        "en": "face",
+        "back": false,
+        "cat": "Body",
+        "note": "йөз also = face (and = hundred)"
+      },
+      {
+        "s": "муен",
+        "en": "neck",
+        "back": true,
+        "cat": "Body"
+      },
+      {
+        "s": "җилкә",
+        "en": "shoulder",
+        "back": false,
+        "cat": "Body"
+      },
+      {
+        "s": "аяк",
+        "en": "leg, foot",
+        "back": true,
+        "cat": "Body"
+      },
+      {
+        "s": "бармак",
+        "en": "finger",
+        "back": true,
+        "cat": "Body"
+      },
+      {
+        "s": "тез",
+        "en": "knee",
+        "back": false,
+        "cat": "Body"
+      },
+      {
+        "s": "эч",
+        "en": "belly, stomach",
+        "back": false,
+        "cat": "Body",
+        "note": "homonym with эч! = drink (imperative)"
+      },
+      {
+        "s": "арка",
+        "en": "back, spine",
+        "back": true,
+        "cat": "Body"
+      },
+      {
+        "s": "даруханә",
+        "en": "pharmacy",
+        "back": false,
+        "cat": "Health",
+        "note": "Даруханәгә барсаң, бу дару ал = if you go to the pharmacy, take this medicine. Dative -гә confirms front harmony despite the back-vowel start."
+      },
+      {
+        "s": "ашказаны",
+        "en": "stomach",
+        "back": true,
+        "cat": "Body",
+        "note": "Ашказаны авыртса = if the stomach aches."
+      },
+      {
+        "s": "тән",
+        "en": "body",
+        "back": false,
+        "cat": "Body",
+        "note": "Тәнем сәламәт булсын = may my body be healthy."
+      },
+      {
+        "s": "гәүдә",
+        "en": "body, figure",
+        "back": false,
+        "cat": "Body"
+      },
+      {
+        "s": "бала",
+        "en": "child",
+        "back": true,
+        "cat": "Family"
+      },
+      {
+        "s": "бәби",
+        "en": "baby",
+        "back": false,
+        "cat": "Family",
+        "note": "Таза бала, таза бәби = healthy child, healthy baby."
+      },
+      {
+        "s": "таза",
+        "en": "healthy, strong",
+        "back": true,
+        "cat": "Health"
+      },
+      {
+        "s": "ябык",
+        "en": "thin",
+        "back": true,
+        "cat": "Health",
+        "note": "Ябык-таза = thin-and-fit."
+      },
+      {
+        "s": "җан",
+        "en": "soul",
+        "back": true,
+        "cat": "Emotion",
+        "note": "Сөям җаным тәнем белән = I love with my soul and body."
+      },
+      {
+        "s": "чәй",
+        "en": "tea",
+        "back": false,
+        "cat": "Food & home"
+      },
+      {
+        "s": "дус",
+        "en": "friend",
+        "back": true,
+        "cat": "Daily life",
+        "note": "дустым = my friend (possessive)."
+      },
+      {
+        "s": "мең",
+        "en": "thousand",
+        "back": false,
+        "cat": "Daily life"
+      },
+      {
+        "s": "тест",
+        "en": "test",
+        "back": true,
+        "loan": true,
+        "cat": "Daily life"
+      },
+      {
+        "s": "рус",
+        "en": "Russian",
+        "back": true,
+        "cat": "Culture",
+        "note": "русча = in Russian / the Russian language (adverbial form)."
+      },
+      {
+        "s": "кар",
+        "en": "snow",
+        "back": true,
+        "cat": "Nature"
+      },
+      {
+        "s": "җылы",
+        "en": "warm",
+        "back": true,
+        "cat": "Nature"
+      },
+      {
+        "s": "август",
+        "en": "August",
+        "back": true,
+        "loan": true,
+        "cat": "Time"
+      },
+      {
+        "s": "кирәк",
+        "en": "necessary, needed",
+        "back": false,
+        "cat": "Daily life",
+        "note": "Predicate modal, not a regular noun: ... кирәк = need to .... Negative conditional Кирәкмәсә дә = even if it isn't needed (кирәк behaves like a defective C-stem: кирәк+мә+сә)."
+      }
+    ],
+    "expressions": [
+      {
+        "tt": "Мин сине сагынам",
+        "translit": "Min sine sagynam",
+        "en": "I miss you",
+        "kind": "line",
+        "somatic": "heart",
+        "valence": "tender"
+      },
+      {
+        "tt": "чиста мәхәббәт",
+        "translit": "chista mäxäbbät",
+        "en": "pure love",
+        "kind": "line",
+        "somatic": "heart",
+        "valence": "tender"
+      },
+      {
+        "tt": "күтәренке",
+        "translit": "kütärenke",
+        "en": "uplifted, energetic",
+        "kind": "state",
+        "somatic": "none",
+        "valence": "positive"
+      },
+      {
+        "tt": "рәхәт",
+        "translit": "räxät",
+        "en": "content, at ease",
+        "kind": "state",
+        "somatic": "none",
+        "valence": "positive"
+      },
+      {
+        "tt": "илһамланган",
+        "translit": "ilhamlangan",
+        "en": "inspired",
+        "kind": "state",
+        "somatic": "none",
+        "valence": "positive",
+        "note": "from илһам = inspiration"
+      },
+      {
+        "tt": "баш түбәгә тию",
+        "translit": "bash tübägä tiyü",
+        "en": "to be jumping with joy",
+        "literal": "head touching the ceiling",
+        "kind": "idiom",
+        "somatic": "head",
+        "valence": "positive"
+      },
+      {
+        "tt": "йөрәккә ут кабу",
+        "translit": "yöräkkä ut kabu",
+        "en": "to be deeply touched by love/affection",
+        "literal": "the heart catching fire",
+        "kind": "idiom",
+        "somatic": "heart",
+        "valence": "positive"
+      },
+      {
+        "tt": "үпкәләгән",
+        "translit": "üpkälägän",
+        "en": "offended, resentful",
+        "kind": "state",
+        "somatic": "none",
+        "valence": "heavy"
+      },
+      {
+        "tt": "тәкәббер",
+        "translit": "täkäbber",
+        "en": "disdainful, aloof",
+        "kind": "state",
+        "somatic": "none",
+        "valence": "heavy"
+      },
+      {
+        "tt": "хәсрәтле",
+        "translit": "xäsrätle",
+        "en": "grieved, sorrowful",
+        "kind": "state",
+        "somatic": "none",
+        "valence": "heavy",
+        "note": "from хәсрәт = grief"
+      },
+      {
+        "tt": "башны түбән салу",
+        "translit": "bashny tübän salu",
+        "en": "to feel defeated, fall into despair",
+        "literal": "lowering the head",
+        "kind": "idiom",
+        "somatic": "head",
+        "valence": "heavy"
+      },
+      {
+        "tt": "йөрәк сызылу",
+        "translit": "yöräk syzylu",
+        "en": "aching sadness, deep longing",
+        "literal": "the heart aching",
+        "kind": "idiom",
+        "somatic": "heart",
+        "valence": "heavy"
+      },
+      {
+        "tt": "хәвефле",
+        "translit": "xävefle",
+        "en": "anxious, apprehensive",
+        "kind": "state",
+        "somatic": "none",
+        "valence": "anxious",
+        "note": "from хәвеф = danger/fear"
+      },
+      {
+        "tt": "каушаган",
+        "translit": "kawshagan",
+        "en": "flustered, thrown off",
+        "kind": "state",
+        "somatic": "none",
+        "valence": "anxious"
+      },
+      {
+        "tt": "йөрәк ярылу",
+        "translit": "yöräk yarylu",
+        "en": "to be suddenly startled/frightened",
+        "literal": "the heart splitting",
+        "kind": "idiom",
+        "somatic": "heart",
+        "valence": "anxious"
+      },
+      {
+        "tt": "йөрәк кайнау",
+        "translit": "yöräk kaynau",
+        "en": "to boil over with fury",
+        "literal": "the heart boiling",
+        "kind": "idiom",
+        "somatic": "heart",
+        "valence": "anxious"
+      },
+      {
+        "tt": "башка сугу",
+        "translit": "bashka sugu",
+        "en": "to be utterly shocked by bad news",
+        "literal": "a blow to the head",
+        "kind": "idiom",
+        "somatic": "head",
+        "valence": "anxious"
+      },
+      {
+        "tt": "Исәнме(сез)!",
+        "translit": "Isänme(sez)!",
+        "en": "Hello! (informal / polite)",
+        "kind": "greeting",
+        "somatic": "none",
+        "valence": "neutral"
+      },
+      {
+        "tt": "Рәхмәт!",
+        "translit": "Räxmät!",
+        "en": "Thank you!",
+        "kind": "greeting",
+        "somatic": "none",
+        "valence": "neutral"
+      },
+      {
+        "tt": "Исән булыгыз!",
+        "translit": "Isän bulygyz!",
+        "en": "Stay well! (lit. be healthy)",
+        "kind": "greeting",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "closing from the CLI / Tatar.Mosaics lecture slide"
+      },
+      {
+        "tt": "бәлки",
+        "translit": "bälki",
+        "en": "perhaps, maybe",
+        "kind": "doubt",
+        "somatic": "none",
+        "valence": "uncertain"
+      },
+      {
+        "tt": "ихтимал",
+        "translit": "ixtimal",
+        "en": "possibly, probably",
+        "kind": "doubt",
+        "somatic": "none",
+        "valence": "uncertain"
+      },
+      {
+        "tt": "мөгаен",
+        "translit": "mögaen",
+        "en": "most likely",
+        "kind": "doubt",
+        "somatic": "none",
+        "valence": "uncertain"
+      },
+      {
+        "tt": "ахрысы",
+        "translit": "axrysy",
+        "en": "apparently, it seems",
+        "kind": "doubt",
+        "somatic": "none",
+        "valence": "uncertain"
+      },
+      {
+        "tt": "кебек",
+        "translit": "kebek",
+        "en": "like, as if",
+        "kind": "doubt",
+        "somatic": "none",
+        "valence": "uncertain",
+        "note": "X кебек = like X / seems like X"
+      },
+      {
+        "tt": "шикелле",
+        "translit": "shikelle",
+        "en": "as if, seemingly",
+        "kind": "doubt",
+        "somatic": "none",
+        "valence": "uncertain"
+      },
+      {
+        "tt": "икән",
+        "translit": "ikän",
+        "en": "apparently, turns out (evidential)",
+        "kind": "doubt",
+        "somatic": "none",
+        "valence": "uncertain"
+      },
+      {
+        "tt": "микән",
+        "translit": "mikän",
+        "en": "I wonder (if)",
+        "kind": "doubt",
+        "somatic": "none",
+        "valence": "uncertain",
+        "note": "...-мы микән = I wonder whether..."
+      },
+      {
+        "tt": "әллә",
+        "translit": "ällä",
+        "en": "perhaps; whether…or",
+        "kind": "doubt",
+        "somatic": "none",
+        "valence": "uncertain"
+      },
+      {
+        "tt": "булса кирәк",
+        "translit": "bulsa keräk",
+        "en": "must be, probably is",
+        "kind": "doubt",
+        "somatic": "none",
+        "valence": "uncertain"
+      },
+      {
+        "tt": "-дыр / -дер",
+        "translit": "-dyr / -der",
+        "en": "presumptive: must be, probably",
+        "kind": "doubt",
+        "somatic": "none",
+        "valence": "uncertain",
+        "note": "киләдер = he's probably coming; өйдәдер = must be home"
+      },
+      {
+        "tt": "…янында",
+        "translit": "…yanynda",
+        "en": "beside, next to",
+        "literal": "at its side",
+        "kind": "spatial",
+        "somatic": "none",
+        "valence": "neutral"
+      },
+      {
+        "tt": "…эчендә",
+        "translit": "…echendä",
+        "en": "inside",
+        "literal": "in its interior",
+        "kind": "spatial",
+        "somatic": "none",
+        "valence": "neutral"
+      },
+      {
+        "tt": "…өстендә",
+        "translit": "…östendä",
+        "en": "on top of",
+        "kind": "spatial",
+        "somatic": "none",
+        "valence": "neutral"
+      },
+      {
+        "tt": "…астында",
+        "translit": "…astynda",
+        "en": "under",
+        "kind": "spatial",
+        "somatic": "none",
+        "valence": "neutral"
+      },
+      {
+        "tt": "…артында",
+        "translit": "…artynda",
+        "en": "behind",
+        "kind": "spatial",
+        "somatic": "none",
+        "valence": "neutral"
+      },
+      {
+        "tt": "…алдында",
+        "translit": "…aldynda",
+        "en": "in front of",
+        "kind": "spatial",
+        "somatic": "none",
+        "valence": "neutral"
+      },
+      {
+        "tt": "уңга бор",
+        "translit": "uñga bor",
+        "en": "turn right",
+        "kind": "line",
+        "somatic": "none",
+        "valence": "neutral"
+      },
+      {
+        "tt": "сулга бор",
+        "translit": "sulga bor",
+        "en": "turn left",
+        "kind": "line",
+        "somatic": "none",
+        "valence": "neutral"
+      },
+      {
+        "tt": "туры бар",
+        "translit": "tury bar",
+        "en": "go straight",
+        "kind": "line",
+        "somatic": "none",
+        "valence": "neutral"
+      },
+      {
+        "tt": "-мы / -ме",
+        "translit": "-my / -me",
+        "en": "yes/no question particle",
+        "kind": "grammar",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Attaches (harmony-matched) to the word being questioned: Әмир киләме? = Is Amir coming? Биштәме? = At five?"
+      },
+      {
+        "tt": "мени",
+        "translit": "meni",
+        "en": "really?! (emphatic/surprised question)",
+        "kind": "grammar",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Mыни/мени — stronger, more surprised cousin of -мы/-ме."
+      },
+      {
+        "tt": "түгел",
+        "translit": "tügel",
+        "en": "is not, not (negates a non-verbal predicate)",
+        "kind": "grammar",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Биштә түгел = Not at five. Әмир түгел = It's not Amir. (Contrast verb negation, which uses -мый/-ми on the verb itself.)"
+      },
+      {
+        "tt": "...са да / ...сә дә",
+        "translit": "...sa da / ...sä dä",
+        "en": "even if, although (concessive)",
+        "kind": "grammar",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Conditional verb + да/дә, harmony-matched to the verb form: Онытсаң да = even if you forget. Кар яуса да = even if it snows."
+      },
+      {
+        "tt": "-асы/-әсе ... килә",
+        "translit": "-asy/-äse ... kilä",
+        "en": "want to (do something)",
+        "kind": "grammar",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Desiderative: verb stem + -асы/-әсе (possessive-marked) + килә. Эшлисем килә = I want to work (lit. 'my wanting-to-work comes')."
+      },
+      {
+        "tt": "эч поша",
+        "translit": "ech posha",
+        "en": "to feel restless, bored, or anxious",
+        "literal": "the belly is churning",
+        "kind": "idiom",
+        "somatic": "none",
+        "valence": "anxious"
+      },
+      {
+        "tt": "баш әйләнү",
+        "translit": "bash äylänü",
+        "en": "to feel dizzy",
+        "literal": "the head spinning",
+        "kind": "idiom",
+        "somatic": "head",
+        "valence": "anxious"
+      },
+      {
+        "tt": "күңел болгану",
+        "translit": "küñel bolganu",
+        "en": "to feel nauseous",
+        "literal": "the mood/spirit churning",
+        "kind": "idiom",
+        "somatic": "none",
+        "valence": "anxious"
+      }
+    ]
+  },
+  "media": [
+    {
+      "id": "med_lecture_complex_by_design",
+      "type": "lecture",
+      "title": "Complex by Design: The Tatars, Language, Identity, and Cultural Memory",
+      "by": "Chulpan Khismatova (Philologist, Behavioral Researcher, Ethnic Tatar — Duke University)",
+      "date": "2026-06-03",
+      "url": "https://asu.zoom.us/j/2928409566",
+      "lang": "en",
+      "note": "CLI guest lecture. Thesis: Tatar as a LIVING ARCHIVE of identity, resilience, and cultural memory — what it means to carry a language and, through it, an entire people's history. Directly mirrors the anamnesis / anti-mankurt frame.",
+      "tatar": [
+        "тел",
+        "хәтер",
+        "халык"
+      ]
+    },
+    {
+      "id": "med_book_tatar_empire",
+      "type": "book",
+      "title": "Tatar Empire: Kazan's Muslims and the Making of Imperial Russia",
+      "by": "Danielle Ross",
+      "lang": "en",
+      "note": "History of Kazan's Muslim Tatar society and its role in imperial Russia. Context for the Kazan palace loci."
+    },
+    {
+      "id": "med_book_becoming_muslim",
+      "type": "book",
+      "title": "Becoming Muslim in Imperial Russia: Conversion, Apostasy, and Literacy",
+      "by": "Agnès Nilüfer Kefeli",
+      "lang": "en",
+      "note": "Literacy, conversion, and apostasy among the Volga peoples — language and faith as identity."
+    },
+    {
+      "id": "med_poem_un_kuly",
+      "type": "poem",
+      "title": "Аларның уң кулы мин! (I am their right hand!)",
+      "by": "Роберт Миңнуллин (Robert Miñnullin), Tatar children's poet",
+      "lang": "tt",
+      "note": "Family-hearth poem. Each line stacks a relative in the genitive + the additive да/дә ('...too'). Good for the genitive case and family vocabulary.",
+      "tatar": [
+        "Бабайның да улы мин,",
+        "Әбинең дә улы мин,",
+        "Әтинең дә улы мин,",
+        "Әнинең дә улы мин —",
+        "Аларның уң кулы мин!"
+      ]
+    },
+    {
+      "id": "med_image_kul_sharif_night",
+      "type": "image",
+      "title": "Kul Sharif Mosque at night, Kazan Kremlin",
+      "lang": "tt",
+      "note": "Visual anchor (Locus image) for the Kul Sharif station. White stone, turquoise domes lit against black sky."
+    },
+    {
+      "id": "med_text_ufa_realestate",
+      "type": "text",
+      "title": "Ufa real-estate flyer (authentic regional text)",
+      "lang": "ru",
+      "note": "Authentic everyday text from Ufa (TERA agency, Oktyabrya Ave). Use as a reading/listening sample for the Ufa Gate station — bridges to the Bashkir-heritage Ufa palace."
+    },
+    {
+      "id": "med_slide_rahmat",
+      "type": "slide",
+      "title": "Рәхмәт! / Исән булыгыз! — closing greeting slide",
+      "by": "Tatar.Mosaics (Chulpan Khismatova)",
+      "lang": "tt",
+      "note": "Greeting + farewell anchor; Tatar leather-mosaic art (Sahtian, 2010).",
+      "tatar": [
+        "Рәхмәт!",
+        "Исән булыгыз!"
+      ]
+    }
+  ],
+  "palace": {
+    "name": "Nested Hearth — Kazan class layer",
+    "route": "Walk the stations in the same order every time (Ricci's rule). Bizhbulyak -> Ufa -> Bashkortostan is the outer frame; this layer is the Kazan class palace.",
+    "stations": [
+      {
+        "id": "st_kul_sharif",
+        "locus": "Кол Шәриф",
+        "locus_en": "Kul Sharif Mosque",
+        "zone": "Landmarks",
+        "vocab": [
+          "мәчет",
+          "керү",
+          "Казан"
+        ],
+        "expressions": [
+          "Исәнме(сез)!",
+          "Рәхмәт!"
+        ],
+        "media": [
+          "med_image_kul_sharif_night"
+        ],
+        "listen": {
+          "tt": "Мин Кол Шәрифкә керәм.",
+          "en": "I enter Kul Sharif."
+        },
+        "speak": {
+          "tt": "Исәнмесез! Мин монда киләм.",
+          "en": "Hello! I come here."
+        },
+        "note": "Dative -кә on Кол Шәриф (front). Greet on arrival."
+      },
+      {
+        "id": "st_lecture_hall",
+        "locus": "Лекция залы",
+        "locus_en": "The Lecture Hall",
+        "zone": "Civic places",
+        "vocab": [
+          "тел",
+          "хәтер",
+          "халык",
+          "өйрәнү",
+          "сөйләшү"
+        ],
+        "expressions": [
+          "Рәхмәт!",
+          "Исән булыгыз!"
+        ],
+        "media": [
+          "med_lecture_complex_by_design"
+        ],
+        "listen": {
+          "tt": "Тел — халыкның хәтере.",
+          "en": "Language is a people's memory."
+        },
+        "speak": {
+          "tt": "Мин татар телен өйрәнәм, чөнки ул — минем хәтерем.",
+          "en": "I study Tatar because it is my memory."
+        },
+        "note": "Bind Chulpan Khismatova's lecture here. Speaking prompt = your own 'why I study Tatar'."
+      },
+      {
+        "id": "st_family_hearth",
+        "locus": "Гаилә учагы",
+        "locus_en": "The Family Hearth",
+        "zone": "People",
+        "vocab": [
+          "бабай",
+          "әби",
+          "әти",
+          "әни",
+          "ул",
+          "кул",
+          "уң"
+        ],
+        "expressions": [],
+        "media": [
+          "med_poem_un_kuly"
+        ],
+        "listen": {
+          "tt": "Әнинең дә улы мин — аларның уң кулы мин!",
+          "en": "I am mother's son too — I am their right hand!"
+        },
+        "speak": {
+          "tt": "Мин әнинең улы.",
+          "en": "I am my mother's son."
+        },
+        "note": "Genitive -ның/-нең + additive да/дә. Recite a poem line, then build your own."
+      },
+      {
+        "id": "st_heart_room",
+        "locus": "Йөрәк бүлмәсе",
+        "locus_en": "The Heart Room",
+        "zone": "Emotion",
+        "vocab": [
+          "йөрәк",
+          "мәхәббәт",
+          "сагыну",
+          "ярату"
+        ],
+        "expressions": [
+          "Мин сине сагынам",
+          "йөрәккә ут кабу",
+          "йөрәк сызылу",
+          "йөрәк ярылу",
+          "йөрәк кайнау",
+          "чиста мәхәббәт"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Йөрәккә ут кабу — мин сине сагынам.",
+          "en": "The heart catches fire — I miss you."
+        },
+        "speak": {
+          "tt": "Мин сине сагынам.",
+          "en": "I miss you."
+        },
+        "note": "All heart-seated feelings live here. Verb ярату vs noun мәхәббәт."
+      },
+      {
+        "id": "st_head_room",
+        "locus": "Баш бүлмәсе",
+        "locus_en": "The Head Room",
+        "zone": "Emotion",
+        "vocab": [
+          "баш"
+        ],
+        "expressions": [
+          "баш түбәгә тию",
+          "башны түбән салу",
+          "башка сугу",
+          "күтәренке",
+          "рәхәт",
+          "хәвефле",
+          "каушаган"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Баш түбәгә тию — мин бик шат!",
+          "en": "Head to the ceiling — I am overjoyed!"
+        },
+        "speak": {
+          "tt": "Мин бүген рәхәт.",
+          "en": "I feel at ease today."
+        },
+        "note": "Head-seated idioms + general mood states."
+      },
+      {
+        "id": "st_library",
+        "locus": "Китапханә",
+        "locus_en": "The Library",
+        "zone": "Civic places",
+        "vocab": [
+          "китап",
+          "язучы",
+          "хикәя",
+          "шигырь",
+          "уку"
+        ],
+        "expressions": [],
+        "media": [
+          "med_book_tatar_empire",
+          "med_book_becoming_muslim"
+        ],
+        "listen": {
+          "tt": "Мин бу китапны укыйм.",
+          "en": "I am reading this book."
+        },
+        "speak": {
+          "tt": "Мин тарих китабын яратам.",
+          "en": "I love history books."
+        },
+        "note": "Ross and Kefeli live here — Kazan's Muslim history as palace context."
+      },
+      {
+        "id": "st_ufa_gate",
+        "locus": "Уфа капкасы",
+        "locus_en": "The Ufa Gate",
+        "zone": "Cities & water",
+        "vocab": [
+          "Уфа",
+          "өй",
+          "сату",
+          "алу"
+        ],
+        "expressions": [],
+        "media": [
+          "med_text_ufa_realestate"
+        ],
+        "listen": {
+          "tt": "Мин Уфада өй сатып алам.",
+          "en": "I am buying a house in Ufa."
+        },
+        "speak": {
+          "tt": "Мин Уфага барам.",
+          "en": "I am going to Ufa."
+        },
+        "note": "Bridge station to the planned Bashkir-heritage Ufa palace; authentic Ufa text as the reading sample."
+      },
+      {
+        "id": "st_body",
+        "locus": "Тән",
+        "locus_en": "The Body",
+        "zone": "Body",
+        "vocab": [
+          "баш",
+          "күз",
+          "колак",
+          "борын",
+          "авыз",
+          "теш",
+          "тел",
+          "кул",
+          "аяк",
+          "йөрәк",
+          "эч"
+        ],
+        "expressions": [],
+        "media": [],
+        "listen": {
+          "tt": "Минем башым авырта.",
+          "en": "My head aches."
+        },
+        "speak": {
+          "tt": "Бу — минем күзем.",
+          "en": "This is my eye."
+        },
+        "note": "Body vocabulary — the literal seat of the Heart Room and Head Room idioms. Pair with авырту: X-ым авырта = my X aches."
+      },
+      {
+        "id": "st_crossroads",
+        "locus": "Юл чаты",
+        "locus_en": "The Crossroads",
+        "zone": "Direction",
+        "vocab": [
+          "уң",
+          "сул",
+          "туры",
+          "төньяк",
+          "көньяк",
+          "көнчыгыш",
+          "көнбатыш",
+          "бару"
+        ],
+        "expressions": [
+          "уңга бор",
+          "сулга бор",
+          "туры бар",
+          "…янында",
+          "…эчендә"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Уңга бор, аннары туры бар.",
+          "en": "Turn right, then go straight."
+        },
+        "speak": {
+          "tt": "Мин сулга барам.",
+          "en": "I am going to the left."
+        },
+        "note": "Motion to a direction takes the dative (уңга, сулга, төньякка). Spatial postpositions (янында, эчендә) take possessive + locative."
+      },
+      {
+        "id": "st_future_window",
+        "locus": "Киләчәк тәрәзәсе",
+        "locus_en": "The Window of the Future",
+        "zone": "Time",
+        "vocab": [
+          "булу",
+          "бару",
+          "килү",
+          "өйрәнү",
+          "эшләү"
+        ],
+        "expressions": [
+          "бәлки",
+          "ихтимал",
+          "микән",
+          "икән",
+          "булса кирәк",
+          "-дыр / -дер"
+        ],
+        "media": [
+          "med_lecture_complex_by_design"
+        ],
+        "listen": {
+          "tt": "Бәлки, мин иртәгә Уфага барачакмын.",
+          "en": "Perhaps I will go to Ufa tomorrow."
+        },
+        "speak": {
+          "tt": "Мин татарча сөйләшәчәкмен.",
+          "en": "I will speak Tatar."
+        },
+        "note": "Future definite = vstem + -ачак/-әчәк (vowel-stems: -ячак/-ячәк) + endings. Soften certainty with doubt words (бәлки, ихтимал) or the presumptive -дыр."
+      },
+      {
+        "id": "st_question_corner",
+        "locus": "Сорау почмагы",
+        "locus_en": "The Question Corner",
+        "zone": "Grammar",
+        "vocab": [],
+        "expressions": [
+          "-мы / -ме",
+          "мени",
+          "түгел",
+          "-дыр / -дер"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Әмир ничәдә килә? — Биштәдер.",
+          "en": "What time does Amir come? — Probably at five."
+        },
+        "speak": {
+          "tt": "Әмир биштә киләме? — Киләдер.",
+          "en": "Is Amir coming at five? — He's probably coming."
+        },
+        "note": "From the Тыр-мер slide: -мы/-ме asks a yes/no question, түгел negates a noun predicate (Биштә түгel), -дыр/-дер softens a statement into a guess. Stack them: Биштәме? Биштә түгел."
+      },
+      {
+        "id": "st_pharmacy",
+        "locus": "Даруханә",
+        "locus_en": "The Pharmacy",
+        "zone": "Health",
+        "vocab": [
+          "даруханә",
+          "дару",
+          "ашказаны",
+          "сату",
+          "алу"
+        ],
+        "expressions": [
+          "...са да / ...сә дә"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Даруханәгә барсаң, бу дару ал.",
+          "en": "If you go to the pharmacy, take this medicine."
+        },
+        "speak": {
+          "tt": "Даруханәгә барсаң да, мин синең белән барам.",
+          "en": "Even if you go to the pharmacy, I'll come with you."
+        },
+        "note": "Pairs the plain conditional (барсаң, бу дару ал) against its concessive twin (барсаң да, ...) — the same stem, opposite logic, just by adding да/дә."
+      },
+      {
+        "id": "st_symptoms",
+        "locus": "Симптомнар бүлмәсе",
+        "locus_en": "The Symptoms Room",
+        "zone": "Health",
+        "vocab": [
+          "баш",
+          "теш",
+          "ашказаны",
+          "күз",
+          "ару",
+          "сызлау",
+          "болгану",
+          "әйләнү",
+          "тию"
+        ],
+        "expressions": [
+          "баш әйләнү",
+          "күңел болгану",
+          "эч поша"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Баш авыртса, дару эчәргә кирәк.",
+          "en": "If your head hurts, you need to take medicine."
+        },
+        "speak": {
+          "tt": "Теш сызласа, табипка барырга кирәк.",
+          "en": "If a tooth aches, you need to go to the doctor."
+        },
+        "note": "Advice worksheet pattern: [body part] + [symptom verb, conditional] + кирәк. Same frame for every ailment — баш авыртса, салкын тисә, ашказаны авыртса, теш сызласа, күз арса, күңел болганса."
+      },
+      {
+        "id": "st_body_goals",
+        "locus": "Тазару бүлмәсе",
+        "locus_en": "The Getting-Healthy Room",
+        "zone": "Health",
+        "vocab": [
+          "тән",
+          "гәүдә",
+          "таза",
+          "ябык",
+          "бала",
+          "бәби",
+          "тазару",
+          "ябыгу",
+          "йоклау",
+          "шөгыльләнү",
+          "спорт"
+        ],
+        "expressions": [],
+        "media": [],
+        "listen": {
+          "tt": "Тәнем сәламәт булсын.",
+          "en": "May my body be healthy."
+        },
+        "speak": {
+          "tt": "Спорт белән шөгыльләнмәсәң, сәламәт булмыйсың.",
+          "en": "If you don't do sports, you won't be healthy."
+        },
+        "note": "Тазарырга! / Ябыгырга! — the slide's two bare-infinitive imperatives, body-positive vs. body-critical framing side by side."
+      },
+      {
+        "id": "st_weather",
+        "locus": "Көн торышы бүлмәсе",
+        "locus_en": "The Weather Room",
+        "zone": "Nature",
+        "vocab": [
+          "кар",
+          "җылы",
+          "август",
+          "яву",
+          "башлану",
+          "киену",
+          "салкын",
+          "тию"
+        ],
+        "expressions": [
+          "...са да / ...сә дә"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Салкын тисә, чәй белән бал эч.",
+          "en": "If you catch a cold, drink tea with honey."
+        },
+        "speak": {
+          "tt": "Кар яуса да, без укырга барабыз.",
+          "en": "Even if it snows, we go to study."
+        },
+        "note": "Concessive drill: Августта гына башланса да — even a far-off, narrow condition (only in August) still takes the same -са да pattern."
+      },
+      {
+        "id": "st_goals_university",
+        "locus": "Максат бүлмәсе",
+        "locus_en": "The Goals Room",
+        "zone": "Time",
+        "vocab": [
+          "тырышу",
+          "эшләү",
+          "акаунт",
+          "язылучы",
+          "мең",
+          "тест",
+          "рус",
+          "имтихан"
+        ],
+        "expressions": [
+          "-асы/-әсе ... килә"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Тырышсам, мин Америка университетында эшлим.",
+          "en": "If I try, I work at an American university."
+        },
+        "speak": {
+          "tt": "Мин тырышсам, русча өйрәнәчәкмен. Эшлисем килә.",
+          "en": "If I try, I will learn Russian. I want to work."
+        },
+        "note": "Stacks the conditional (тырышсам) with the future definite (өйрәнәчәкмен) and the desiderative (эшлисем килә) — three tenses/moods practicing the same ambition."
+      },
+      {
+        "id": "st_permission_room",
+        "locus": "Рөхсәт бүлмәсе",
+        "locus_en": "The Permission Room",
+        "zone": "Family",
+        "vocab": [
+          "рөхсәт",
+          "итү",
+          "тыңлау",
+          "белү"
+        ],
+        "expressions": [],
+        "media": [],
+        "listen": {
+          "tt": "Әнием рөхсәт итмәсә, мин аны тыңламыйм.",
+          "en": "If my mother doesn't permit it, I don't listen to her/it."
+        },
+        "speak": {
+          "tt": "Мин үзем рөхсәт итәм.",
+          "en": "I permit it myself."
+        },
+        "note": "рөхсәт итү = light-verb compound (permission + 'do'); only итү conjugates, рөхсәт stays fixed."
+      },
+      {
+        "id": "st_friends_gifts",
+        "locus": "Дуслык бүлмәсе",
+        "locus_en": "The Friendship Room",
+        "zone": "People",
+        "vocab": [
+          "дус",
+          "бүләк",
+          "көн",
+          "чакыру",
+          "сату",
+          "алу"
+        ],
+        "expressions": [],
+        "media": [],
+        "listen": {
+          "tt": "Дустым туган көненә чакырса, матур бүләк сатып алырга кирәк.",
+          "en": "If my friend invites me to their birthday, I need to buy a nice gift."
+        },
+        "speak": {
+          "tt": "Мин дустыма бүләк сатып алам.",
+          "en": "I'm buying a gift for my friend."
+        },
+        "note": "сатып алу = compound verb 'sell-and-take' = buy; only алу conjugates, сатып stays as a fixed converb."
+      },
+      {
+        "id": "st_forest_hiking",
+        "locus": "Урман бүлмәсе",
+        "locus_en": "The Forest Room",
+        "zone": "Nature",
+        "vocab": [
+          "урман",
+          "хайкинг",
+          "сорау",
+          "йөрү"
+        ],
+        "expressions": [],
+        "media": [],
+        "listen": {
+          "tt": "Сорамасалар, без хайкингка урманга бармыйбыз.",
+          "en": "If they don't ask, we don't go hiking to the forest."
+        },
+        "speak": {
+          "tt": "Мин урманда йөрергә яратам.",
+          "en": "I love walking in the forest."
+        },
+        "note": "Reunites урман and хайкинг, which already lived in vocab.nouns but had no station of their own."
+      }
+    ]
+  }
+}
