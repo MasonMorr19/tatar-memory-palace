@@ -2,7 +2,7 @@
   "meta": {
     "title": "Nested Hearth — Tatar Memory Palace Database",
     "owner": "Salauat",
-    "version": "0.6.0",
+    "version": "0.7.0",
     "updated": "2026-06-30",
     "purpose": "Single source of truth that binds VOCAB + MEDIA + PALACE so every drill (listening, speaking) is generated from one spine. Edit this file in VSCode/Claude Code; the app and tools read from it.",
     "schema": {
@@ -552,6 +552,17 @@
         "en": "sit, sit down",
         "cond": "утырсам",
         "fut": "утырачакмын"
+      },
+      {
+        "inf": "бару",
+        "stem": "бар",
+        "vstem": "бар",
+        "pres": "бара",
+        "cls": "C",
+        "back": true,
+        "en": "to go / to ride",
+        "cond": "барсам",
+        "note": "Bashkir infinitive ends in -ыу (барыу) vs Tatar -у (бару) — a reliable pattern across many verbs. Peg: riding a horse into a BAR."
       }
     ],
     "nouns": [
@@ -990,6 +1001,13 @@
         "back": false,
         "cat": "Daily life",
         "note": "Predicate modal, not a regular noun: ... кирәк = need to .... Negative conditional Кирәкмәсә дә = even if it isn't needed (кирәк behaves like a defective C-stem: кирәк+мә+сә)."
+      },
+      {
+        "s": "ат",
+        "en": "horse",
+        "back": true,
+        "cat": "Nature",
+        "note": "Cognate — identical in Tatar and Bashkir (ат/ат). Peg: an OTTER riding a horse."
       }
     ],
     "expressions": [
@@ -1674,6 +1692,27 @@
           "en": "I am going to Ufa."
         },
         "note": "Bridge station to the planned Bashkir-heritage Ufa palace; authentic Ufa text as the reading sample."
+      },
+      {
+        "id": "st_ufa_monument",
+        "locus": "Салават Юлаев һәйкәле",
+        "locus_en": "Salavat Yulaev Monument (Ufa)",
+        "zone": "Cities & water",
+        "vocab": [
+          "бару",
+          "ат"
+        ],
+        "expressions": [],
+        "media": [],
+        "listen": {
+          "tt": "Салауат Юлаев атта бара.",
+          "en": "Salavat Yulaev rides on horseback (lit. goes by horse)."
+        },
+        "speak": {
+          "tt": "Мин атта барам.",
+          "en": "I ride a horse."
+        },
+        "note": "Outer-frame Bashkir layer (Bizhbulyak -> Ufa -> Bashkortostan). Compare бару (Tatar) / барыу (Bashkir) — the -у vs -ыу infinitive split shows up across many verb pairs. ат (horse) is a perfect cognate, identical in both languages — the statue itself is Salavat Yulaev on horseback."
       },
       {
         "id": "st_body",
@@ -2862,6 +2901,18 @@
         "p3": "үбә",
         "kw": "OOP",
         "sc": "OOP! — a quick kiss on the cheek."
+      },
+      {
+        "id": 71,
+        "stem": "яшә",
+        "en": "to live",
+        "pron": "yäshä",
+        "soft": true,
+        "ev": true,
+        "vl": false,
+        "p3": "яши",
+        "kw": "YA-SHA",
+        "sc": "You shout \"yeah, sha!\" — living it up."
       }
     ],
     "subjects": [
