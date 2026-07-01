@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:#e7e1d4}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#cfc6b3;border-radius:6px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+<div style="font-family:'IBM Plex Sans',system-ui,sans-serif;color:#211c17;background:#f1ede3;min-height:100vh;padding:30px 22px 64px">
+  <div style="max-width:1120px;margin:0 auto">
+
+    <header style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;padding-bottom:20px;border-bottom:1.5px solid #211c17">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#b23a2e;margin-bottom:8px">Татар · Verb Lab</div>
+        <h1 style="font-family:'Source Serif 4',serif;font-weight:700;font-size:40px;line-height:1;margin:0;letter-spacing:-.01em">Tatar Verb Lab</h1>
+      </div>
+      <p style="margin:0;max-width:430px;font-size:13.5px;line-height:1.55;color:#5a5145">Tatar is <strong style="color:#211c17">SOV</strong> — the verb always lands last. Train the reflex: <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#211c17">кем → кайчан → кайда → нәрсә → <span style="color:#b23a2e">ЭШ</span></span></p>
+    </header>
+
+    <nav style="display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 26px">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+        <button onClick="{{ t.onClick }}" style="cursor:pointer;border:1.5px solid {{ t.abd }};background:{{ t.abg }};color:{{ t.afg }};border-radius:8px;padding:9px 15px 8px;text-align:left;font-family:inherit;transition:all .15s">
+          <div style="font-size:13.5px;font-weight:600;letter-spacing:-.01em;white-space:nowrap">{{ t.label }}</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.62;margin-top:2px">{{ t.sub }}</div>
+        </button>
+      </sc-for>
+    </nav>
+
+    <!-- ============ BUILDER ============ -->
+    <sc-if value="{{ tBuilder }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Sentence Builder">
+      <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:18px">
+        <button onClick="{{ onCompose }}" style="cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;border:1.5px solid {{ compBd }};background:{{ compBg }};color:{{ compFg }};border-radius:7px;padding:7px 14px">Compose</button>
+        <button onClick="{{ onDrill }}" style="cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;border:1.5px solid {{ drillBd }};background:{{ drillBg }};color:{{ drillFg }};border-radius:7px;padding:7px 14px">Reorder drill</button>
+        <div style="flex:1"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8a7f70;display:flex;gap:7px;align-items:center;flex-wrap:wrap">
+          <span style="color:#365b73">кем</span><span>·</span><span style="color:#9a6420">кайчан</span><span>·</span><span style="color:#4f6b3f">кайда</span><span>·</span><span style="color:#7d5f33">нәрсә</span><span>·</span><span style="background:#b23a2e;color:#fff;padding:2px 6px;border-radius:4px">ЭШ</span>
+        </div>
+      </div>
+
+      <!-- COMPOSE -->
+      <sc-if value="{{ bCompose }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8a7f70">Verb tense</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <sc-for list="{{ bTenseBtns }}" as="tb" hint-placeholder-count="3">
+              <button onClick="{{ tb.onClick }}" style="cursor:pointer;font-family:inherit;font-size:12.5px;font-weight:600;border:1.5px solid {{ tb.bd }};background:{{ tb.bg }};color:{{ tb.fg }};border-radius:7px;padding:7px 13px">{{ tb.label }}</button>
+            </sc-for>
+          </div>
+          <div style="font-size:11.5px;color:#9a8f7e">the verb auto-conjugates to who + tense</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px">
+          <sc-for list="{{ slots }}" as="slot" hint-placeholder-count="6">
+            <div style="border:1.5px solid {{ slot.bd }};background:{{ slot.bg2 }};border-radius:11px;padding:13px 14px 14px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px">
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:{{ slot.lc }}">{{ slot.label }}</div>
+                <div style="font-size:11px;color:#9a8f7e">{{ slot.hint }}</div>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <sc-for list="{{ slot.chips }}" as="chip" hint-placeholder-count="4">
+                  <button onClick="{{ chip.onClick }}" style="cursor:pointer;font-family:inherit;border:1px solid {{ chip.bd }};background:{{ chip.bg }};color:{{ chip.fg }};border-radius:6px;padding:5px 9px;font-size:13px;line-height:1.2">{{ chip.tat }}<span style="font-size:10px;opacity:.55;margin-left:5px">{{ chip.en }}</span></button>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="margin-top:18px;border:1.5px solid #211c17;border-radius:13px;overflow:hidden">
+          <div style="background:#211c17;color:#f1ede3;padding:18px 22px">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#cf9b8f;margin-bottom:9px">Tatar · SOV</div>
+            <div style="font-family:'Source Serif 4',serif;font-size:30px;line-height:1.25;font-weight:600">{{ tatSentence }}</div>
+          </div>
+          <div style="background:#fbf9f3;padding:14px 22px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+            <div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9a8f7e;margin-bottom:4px">English · SVO</div>
+              <div style="font-size:16px;color:#4a4239">{{ enSentence }}</div>
+            </div>
+            <button onClick="{{ onClearCompose }}" style="cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;border:1.5px solid #e0d8c7;background:#fff;color:#8a7f70;border-radius:7px;padding:7px 13px">Reset</button>
+          </div>
+        </div>
+        <p style="font-size:12.5px;color:#8a7f70;margin:13px 2px 0;line-height:1.5">Notice the verb you pick auto-conjugates to the subject and snaps to the <strong style="color:#b23a2e">end</strong>. Read the Tatar and English side-by-side until the reorder feels automatic.</p>
+      </div>
+      </sc-if>
+
+      <!-- DRILL -->
+      <sc-if value="{{ bDrill }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <div style="border:1.5px solid #e4ddcf;background:#fbf9f3;border-radius:13px;padding:20px 22px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9a8f7e;margin-bottom:7px">Say it in Tatar · #{{ drillNo }}</div>
+          <div style="font-family:'Source Serif 4',serif;font-size:25px;line-height:1.3;font-weight:600;color:#211c17">{{ drillEn }}</div>
+
+          <div style="margin-top:18px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8a7f70;margin-bottom:8px">Your sentence</div>
+          <div style="min-height:52px;border:1.5px dashed {{ answerBd }};background:{{ answerBg }};border-radius:10px;padding:10px;display:flex;flex-wrap:wrap;gap:7px;align-items:center">
+            <sc-for list="{{ placed }}" as="c" hint-placeholder-count="3">
+              <button onClick="{{ c.onClick }}" style="cursor:pointer;font-family:'Source Serif 4',serif;font-size:18px;border:1.5px solid {{ c.fg }};background:{{ c.bg }};color:{{ c.fg }};border-radius:7px;padding:5px 12px;font-weight:600">{{ c.t }}</button>
+            </sc-for>
+            <span style="font-size:13px;color:#b9af9d;font-style:italic" style-empty="">tap chips below →</span>
+          </div>
+
+          <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;min-height:40px">
+            <sc-for list="{{ pool }}" as="c" hint-placeholder-count="4">
+              <button onClick="{{ c.onClick }}" style="cursor:pointer;font-family:'Source Serif 4',serif;font-size:18px;border:1.5px solid #ddd5c4;background:#fff;color:#3a322a;border-radius:7px;padding:6px 13px;font-weight:600">{{ c.t }}</button>
+            </sc-for>
+          </div>
+
+          <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:9px;align-items:center">
+            <button onClick="{{ onCheck }}" style="cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;border:none;background:#211c17;color:#f1ede3;border-radius:8px;padding:10px 18px">Check</button>
+            <button onClick="{{ onResetDrill }}" style="cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;border:1.5px solid #e0d8c7;background:#fff;color:#8a7f70;border-radius:8px;padding:10px 15px">Clear</button>
+            <button onClick="{{ onNextDrill }}" style="cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;border:1.5px solid #e0d8c7;background:#fff;color:#8a7f70;border-radius:8px;padding:10px 15px">Next →</button>
+            <div style="flex:1"></div>
+            <div style="font-size:14px;font-weight:600;color:{{ resultColor }}">{{ resultText }}</div>
+          </div>
+        </div>
+        <p style="font-size:12.5px;color:#8a7f70;margin:13px 2px 0;line-height:1.5">Drop the time/place words up front, the object before the verb — and let the <strong style="color:#b23a2e">verb fall last</strong>. That ordering instinct is the whole game.</p>
+      </div>
+      </sc-if>
+    </section>
+    </sc-if>
+
+    <!-- ============ RESPOND ============ -->
+    <sc-if value="{{ tRespond }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Respond">
+      <p style="margin:0 0 18px;max-width:620px;font-size:13.5px;line-height:1.6;color:#5a5145">She asks — you answer. Pick the right <strong style="color:#4f6b3f">Әйе</strong> / <strong style="color:#a8392c">Юк</strong>, then say the full sentence aloud: <strong>yes</strong> keeps the verb positive, <strong>no</strong> flips it negative. The verb still lands last.</p>
+
+      <div style="border:1.5px solid #211c17;border-radius:14px;overflow:hidden">
+        <div style="background:#fbf9f3;padding:22px 24px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9a8f7e;margin-bottom:10px">Сорауга җавап бир · {{ qaNo }} / {{ qaTotal }}</div>
+          <div style="font-family:'Source Serif 4',serif;font-size:27px;line-height:1.3;font-weight:600;color:#211c17">{{ qaQ }}</div>
+          <div style="font-size:14.5px;color:#8a7f70;margin-top:7px">{{ qaEn }}</div>
+
+          <div style="display:flex;gap:10px;margin-top:18px">
+            <button onClick="{{ qaPickYes }}" style="cursor:pointer;font-family:inherit;font-size:14px;font-weight:600;border:1.5px solid {{ yesBd }};background:{{ yesBg }};color:{{ yesFg }};border-radius:9px;padding:11px 22px">Әйе — yes</button>
+            <button onClick="{{ qaPickNo }}" style="cursor:pointer;font-family:inherit;font-size:14px;font-weight:600;border:1.5px solid {{ noBd }};background:{{ noBg }};color:{{ noFg }};border-radius:9px;padding:11px 22px">Юк — no</button>
+          </div>
+        </div>
+
+        <sc-if value="{{ qaAnswered }}" hint-placeholder-val="{{ true }}">
+        <div style="background:{{ qaAnsBg }};border-top:1.5px solid {{ qaAnsBd }};padding:20px 24px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:{{ qaAccent }};margin-bottom:9px">{{ qaAnswerLabel }}</div>
+          <div style="font-family:'Source Serif 4',serif;font-size:25px;line-height:1.3;font-weight:600;color:#211c17">{{ qaAnswerText }}</div>
+          <sc-if value="{{ qaNote }}" hint-placeholder-val="x"><div style="font-size:13px;line-height:1.55;color:#5a5145;margin-top:11px;padding-left:13px;border-left:2.5px solid {{ qaAccent }}">{{ qaNote }}</div></sc-if>
+          <div style="font-size:13px;color:#9a8f7e;margin-top:13px"><span style="font-weight:600;color:#7a6f60">{{ qaOtherLabel }}:</span> {{ qaOtherText }}</div>
+        </div>
+        </sc-if>
+
+        <div style="background:#211c17;padding:13px 24px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#a99e8b">tap Әйе or Юк, then read the answer aloud</span>
+          <button onClick="{{ qaNext }}" style="cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;border:none;background:#f1ede3;color:#211c17;border-radius:8px;padding:9px 18px">Next question →</button>
+        </div>
+      </div>
+    </section>
+    </sc-if>
+
+    <!-- ============ PEGS ============ -->
+    <sc-if value="{{ tPegs }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Memory Pegs">
+      <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end;justify-content:space-between;margin-bottom:18px">
+        <p style="margin:0;max-width:560px;font-size:13.5px;line-height:1.6;color:#5a5145">Each verb gets a <strong style="color:#211c17">sound-alike keyword</strong> and a vivid micro-scene. Picture the scene the instant you hear the Tatar — the meaning rides in on the image. Numbers double as positional pegs for ordered recall.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:14px;margin-bottom:22px">
+        <sc-for list="{{ chains }}" as="ch" hint-placeholder-count="4">
+          <div style="border:1.5px solid #211c17;border-radius:13px;background:#211c17;color:#f1ede3;padding:17px 20px">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#cf9b8f;margin-bottom:13px">{{ ch.title }}</div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ ch.steps }}" as="j" hint-placeholder-count="5">
+                <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+                  <span style="font-family:'Source Serif 4',serif;font-size:18px;font-weight:600">{{ j.tat }}</span>
+                  <span style="font-size:11.5px;color:#a99e8b">{{ j.en }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#b23a2e;margin:4px 0 13px">About me · your go-to sentences</div>
+      <p style="margin:0 0 14px;max-width:600px;font-size:13px;line-height:1.6;color:#5a5145">Complete sentences joined with <strong style="color:#211c17">connectives</strong> (һәм, да/дә, яки, ләкин, чөнки, шуңа күрә). These are editable templates — click any line and make it yours, then memorize the ones you say most.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px;margin-bottom:30px">
+        <sc-for list="{{ aboutMe }}" as="a" hint-placeholder-count="6">
+          <div style="border:1.5px solid #e4ddcf;background:#fbf9f3;border-radius:11px;padding:14px 15px">
+            <div style="font-family:'Source Serif 4',serif;font-size:18px;font-weight:600;line-height:1.4;color:#211c17">{{ a.tat }}</div>
+            <div style="font-size:12.5px;color:#8a7f70;margin-top:7px">{{ a.en }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#9a6420;margin:4px 0 13px">Verbs · sound-alike pegs</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:13px">
+        <sc-for list="{{ pegCards }}" as="p" hint-placeholder-count="12">
+          <div style="border:1.5px solid #e4ddcf;background:#fbf9f3;border-radius:11px;padding:14px 15px 15px;display:flex;flex-direction:column;gap:2px">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px">
+              <div>
+                <div style="font-family:'Source Serif 4',serif;font-size:24px;font-weight:700;line-height:1;letter-spacing:-.01em">{{ p.stem }}</div>
+                <sc-if value="{{ showPron }}" hint-placeholder-val="{{ true }}"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#b23a2e;margin-top:3px">{{ p.pron }}</div></sc-if>
+              </div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#b9af9d;border:1px solid #e4ddcf;border-radius:5px;padding:2px 6px">{{ p.num }}</div>
+            </div>
+            <div style="font-size:13px;color:#4a4239;margin-top:1px">{{ p.en }}</div>
+            <div style="height:1px;background:#ece4d4;margin:9px 0 8px"></div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:#9a6420;text-transform:uppercase;margin-bottom:4px">🔑 {{ p.kw }}</div>
+            <div style="font-size:13px;line-height:1.45;color:#5a5145">{{ p.sc }}</div>
+            <div style="margin-top:auto;padding-top:9px"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:{{ p.clsColor }};border:1px solid {{ p.clsBd }};border-radius:4px;padding:2px 6px">{{ p.cls }}</span></div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+    </sc-if>
+
+    <!-- ============ CONJUGATOR ============ -->
+    <sc-if value="{{ tConj }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Conjugator">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;margin-bottom:18px">
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8a7f70;margin-bottom:6px">Verb</div>
+          <select onChange="{{ onSelectVerb }}" value="{{ cvId }}" style="font-family:'Source Serif 4',serif;font-size:18px;font-weight:600;border:1.5px solid #211c17;background:#fff;color:#211c17;border-radius:8px;padding:8px 12px;min-width:230px">
+            <sc-for list="{{ verbOpts }}" as="o" hint-placeholder-count="10">
+              <option value="{{ o.id }}">{{ o.label }}</option>
+            </sc-for>
+          </select>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8a7f70;margin-bottom:6px">Tense</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <sc-for list="{{ tenseBtns }}" as="tb" hint-placeholder-count="4">
+              <button onClick="{{ tb.onClick }}" style="cursor:pointer;font-family:inherit;font-size:12.5px;font-weight:600;border:1.5px solid {{ tb.bd }};background:{{ tb.bg }};color:{{ tb.fg }};border-radius:7px;padding:8px 12px">{{ tb.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <button onClick="{{ onToggleNeg }}" style="cursor:pointer;font-family:inherit;font-size:12.5px;font-weight:600;border:1.5px solid {{ negBd }};background:{{ negBg }};color:{{ negFg }};border-radius:7px;padding:8px 13px">Negative</button>
+      </div>
+
+      <div style="border:1.5px solid #211c17;border-radius:13px;overflow:hidden;margin-bottom:18px">
+        <div style="background:#211c17;color:#f1ede3;padding:20px 22px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#cf9b8f;margin-bottom:10px">{{ bigLabel }} · {{ tenseName }}</div>
+          <div style="font-family:'Source Serif 4',serif;font-size:38px;line-height:1;font-weight:700;letter-spacing:-.01em;margin-bottom:14px">{{ bigForm }}</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center">
+            <sc-for list="{{ bigSegs }}" as="s" hint-placeholder-count="3">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:15px;background:{{ s.bg }};color:{{ s.fg }};border-radius:6px;padding:5px 10px">{{ s.text }}</span>
+              <span style="color:#5a5145;font-size:14px">{{ s.plus }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div style="background:#fbf9f3;padding:13px 22px;font-size:13px;line-height:1.55;color:#5a5145">{{ tenseNote }}</div>
+      </div>
+
+      <div style="display:flex;gap:13px;flex-wrap:wrap;align-items:flex-start">
+        <div style="flex:1;min-width:280px;border:1.5px solid #e4ddcf;border-radius:12px;overflow:hidden">
+          <sc-for list="{{ table }}" as="r" hint-placeholder-count="6">
+            <div onClick="{{ r.onClick }}" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid #ece4d4;background:{{ r.rowBg }}">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8a7f70;min-width:110px">{{ r.label }}</span>
+              <span style="font-family:'Source Serif 4',serif;font-size:19px;font-weight:600;color:#211c17">{{ r.form }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="flex:0 0 200px;border:1.5px solid #e4ddcf;border-radius:12px;background:#fbf9f3;padding:15px 16px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8a7f70;margin-bottom:11px">Suffix key</div>
+          <div style="display:flex;flex-direction:column;gap:9px;font-size:12.5px">
+            <div style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:18px;border-radius:4px;background:#efe9dd;flex:none"></span> stem</div>
+            <div style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:18px;border-radius:4px;background:#e6eef0;flex:none"></span> negation</div>
+            <div style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:18px;border-radius:4px;background:#f3e6d2;flex:none"></span> tense marker</div>
+            <div style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:18px;border-radius:4px;background:#f3dedb;flex:none"></span> personal ending</div>
+          </div>
+          <p style="font-size:11.5px;line-height:1.5;color:#9a8f7e;margin:13px 0 0">Vowel harmony picks the variant automatically — front vs. back, voiced vs. voiceless.</p>
+        </div>
+      </div>
+    </section>
+    </sc-if>
+
+    <!-- ============ NUANCES ============ -->
+    <sc-if value="{{ tNuances }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Nuances">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#365b73;margin-bottom:14px">Grammar rules · little things that matter</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:13px;margin-bottom:30px">
+        <sc-for list="{{ rulesRef }}" as="r" hint-placeholder-count="5">
+          <div style="border:1.5px solid #e4ddcf;background:#fbf9f3;border-radius:11px;padding:15px 16px">
+            <div style="font-family:'Source Serif 4',serif;font-size:17px;font-weight:700;color:#211c17;margin-bottom:7px">{{ r.title }}</div>
+            <div style="font-size:13px;line-height:1.55;color:#5a5145">{{ r.body }}</div>
+            <div style="font-family:'Source Serif 4',serif;font-size:14.5px;color:#b23a2e;margin-top:9px">{{ r.ex }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#b23a2e;margin-bottom:14px">Verb pairs · easy to confuse</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:13px;margin-bottom:30px">
+        <sc-for list="{{ verbPairs }}" as="p" hint-placeholder-count="6">
+          <div style="border:1.5px solid #e4ddcf;background:#fbf9f3;border-radius:11px;padding:15px 16px">
+            <div style="display:flex;align-items:baseline;gap:10px">
+              <span style="font-family:'Source Serif 4',serif;font-size:23px;font-weight:700">{{ p.a }}</span>
+              <span style="font-size:12px;color:#b9af9d;font-style:italic">vs</span>
+              <span style="font-family:'Source Serif 4',serif;font-size:23px;font-weight:700">{{ p.b }}</span>
+            </div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9a6420;margin:5px 0 9px">{{ p.aen }} · {{ p.ben }}</div>
+            <div style="font-size:13px;line-height:1.5;color:#5a5145">{{ p.note }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px">
+        <div style="border:1.5px solid #e4ddcf;background:#fbf9f3;border-radius:12px;padding:17px 18px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#9a6420;margin-bottom:13px">Frequency & time</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <sc-for list="{{ freqRef }}" as="f" hint-placeholder-count="6">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid #ece4d4;padding-bottom:7px">
+                <span style="font-family:'Source Serif 4',serif;font-size:17px;font-weight:600;color:#211c17">{{ f.tat }}</span>
+                <span style="font-size:12.5px;color:#8a7f70;text-align:right">{{ f.en }}</span>
+              </div>
+            </sc-for>
+            <sc-for list="{{ timeRef }}" as="f" hint-placeholder-count="4">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid #ece4d4;padding-bottom:7px">
+                <span style="font-family:'Source Serif 4',serif;font-size:17px;font-weight:600;color:#365b73">{{ f.tat }}</span>
+                <span style="font-size:12.5px;color:#8a7f70;text-align:right">{{ f.en }}</span>
+              </div>
+            </sc-for>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#a8392c;margin:7px 0 1px">Past-time markers</div>
+            <sc-for list="{{ pastTimeRef }}" as="f" hint-placeholder-count="5">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid #ece4d4;padding-bottom:7px">
+                <span style="font-family:'Source Serif 4',serif;font-size:17px;font-weight:600;color:#a8392c">{{ f.tat }}</span>
+                <span style="font-size:12.5px;color:#8a7f70;text-align:right">{{ f.en }}</span>
+              </div>
+            </sc-for>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#4f6b3f;margin:7px 0 1px">Future-time markers</div>
+            <sc-for list="{{ futTimeRef }}" as="f" hint-placeholder-count="5">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid #ece4d4;padding-bottom:7px">
+                <span style="font-family:'Source Serif 4',serif;font-size:17px;font-weight:600;color:#4f6b3f">{{ f.tat }}</span>
+                <span style="font-size:12.5px;color:#8a7f70;text-align:right">{{ f.en }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <p style="font-size:12px;line-height:1.55;color:#9a8f7e;margin:13px 0 0">Frequency words sit right before the verb. With <strong style="color:#7a6f60">беркайчан да</strong> the verb must be negative: <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px">Мин беркайчан да тартмыйм.</span></p>
+        </div>
+
+        <div style="border:1.5px solid #e4ddcf;background:#fbf9f3;border-radius:12px;padding:17px 18px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#b23a2e;margin-bottom:13px">Emotions & states</div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <sc-for list="{{ emoRef }}" as="e" hint-placeholder-count="6">
+              <div style="border-bottom:1px solid #ece4d4;padding-bottom:10px">
+                <div style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap">
+                  <span style="font-family:'Source Serif 4',serif;font-size:18px;font-weight:600;color:#211c17">{{ e.tat }}</span>
+                  <span style="font-size:12.5px;color:#8a7f70">{{ e.en }}</span>
+                </div>
+                <div style="font-size:11.5px;color:#9a8f7e;margin-top:3px">{{ e.note }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#4f6b3f;margin:30px 0 14px">Connectives · join your ideas</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:11px">
+        <sc-for list="{{ connectives }}" as="c" hint-placeholder-count="7">
+          <div style="border:1.5px solid #e4ddcf;background:#fbf9f3;border-radius:10px;padding:12px 14px">
+            <div style="display:flex;align-items:baseline;gap:9px"><span style="font-family:'Source Serif 4',serif;font-size:19px;font-weight:700;color:#211c17">{{ c.tat }}</span><span style="font-size:12.5px;color:#4f6b3f;font-weight:600">{{ c.en }}</span></div>
+            <div style="font-size:12px;color:#8a7f70;margin-top:5px">{{ c.note }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#9a6420;margin:30px 0 14px">Word-building endings · сүз ясагыч кушымчалар</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:13px">
+        <sc-for list="{{ endingsRef }}" as="e" hint-placeholder-count="6">
+          <div style="border:1.5px solid #e4ddcf;background:#fbf9f3;border-radius:11px;padding:15px 16px">
+            <div style="font-family:'Source Serif 4',serif;font-size:17px;font-weight:700;color:#211c17;margin-bottom:7px">{{ e.title }}</div>
+            <div style="font-size:13px;line-height:1.55;color:#5a5145">{{ e.body }}</div>
+            <div style="font-family:'Source Serif 4',serif;font-size:14.5px;color:#b23a2e;margin-top:9px">{{ e.ex }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+    </sc-if>
+
+    <!-- ============ NUMBERS ============ -->
+    <sc-if value="{{ tNumbers }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Numbers">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#b23a2e;margin-bottom:14px">Cardinals · саннар</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:9px;margin-bottom:28px">
+        <sc-for list="{{ cardinals }}" as="c" hint-placeholder-count="12">
+          <div style="border:1.5px solid #e4ddcf;background:#fbf9f3;border-radius:9px;padding:10px 12px;display:flex;align-items:baseline;gap:9px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#b9af9d;min-width:30px">{{ c.n }}</span>
+            <span style="font-family:'Source Serif 4',serif;font-size:18px;font-weight:600;color:#211c17">{{ c.tat }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#9a6420;margin-bottom:14px">Ordinals · -ынчы / -енче</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:9px;margin-bottom:28px">
+        <sc-for list="{{ ordinals }}" as="o" hint-placeholder-count="6">
+          <div style="border:1.5px solid #e4ddcf;background:#fbf9f3;border-radius:9px;padding:10px 12px;display:flex;align-items:baseline;gap:9px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#b9af9d;min-width:34px">{{ o.n }}</span>
+            <span style="font-family:'Source Serif 4',serif;font-size:18px;font-weight:600;color:#211c17">{{ o.tat }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:13px">
+        <div style="border:1.5px solid #211c17;background:#211c17;color:#f1ede3;border-radius:12px;padding:17px 19px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#cf9b8f;margin-bottom:9px">Counting rule</div>
+          <p style="margin:0;font-size:14px;line-height:1.6">After a number, the noun stays <strong>singular</strong> — no plural suffix.</p>
+          <p style="margin:9px 0 0;font-family:'Source Serif 4',serif;font-size:19px">ике китап · биш кеше · ун ел</p>
+          <p style="margin:7px 0 0;font-size:12.5px;color:#a99e8b">not ике китап<span style="text-decoration:line-through">лар</span></p>
+        </div>
+        <div style="border:1.5px solid #e4ddcf;background:#fbf9f3;border-radius:12px;padding:17px 19px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#9a6420;margin-bottom:9px">Compounds & ordinals</div>
+          <p style="margin:0;font-size:13.5px;line-height:1.6;color:#4a4239">Just chain the words: <span style="font-family:'Source Serif 4',serif">егерме бер</span> (21), <span style="font-family:'Source Serif 4',serif">йөз илле</span> (150). For ordinals, only the <strong>last</strong> word takes the suffix:</p>
+          <p style="margin:9px 0 0;font-family:'Source Serif 4',serif;font-size:18px;color:#211c17">егерме беренче = 21st</p>
+        </div>
+        <div style="border:1.5px solid #e4ddcf;background:#fbf9f3;border-radius:12px;padding:17px 19px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#365b73;margin-bottom:9px">How many?</div>
+          <p style="margin:0;font-size:13.5px;line-height:1.6;color:#4a4239"><span style="font-family:'Source Serif 4',serif;font-size:17px">ничә</span> = how many (countable) · <span style="font-family:'Source Serif 4',serif;font-size:17px">күпме</span> = how much / many</p>
+          <p style="margin:9px 0 0;font-family:'Source Serif 4',serif;font-size:17px;color:#211c17">Ничә китап? — Биш китап.</p>
+        </div>
+      </div>
+
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#365b73;margin:32px 0 14px">Telling time · сәгать ничә?</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:16px">
+        <sc-for list="{{ timeTelling }}" as="t" hint-placeholder-count="6">
+          <div style="border:1.5px solid #e4ddcf;background:#fbf9f3;border-radius:10px;padding:12px 14px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#b23a2e">{{ t.clock }}</span><span style="font-size:11px;color:#9a8f7e">{{ t.en }}</span></div>
+            <div style="font-family:'Source Serif 4',serif;font-size:18px;font-weight:600;color:#211c17;margin:7px 0 3px">{{ t.tat }}</div>
+            <div style="font-size:11.5px;color:#9a8f7e;font-style:italic">lit. {{ t.lit }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="border:1.5px solid #211c17;background:#211c17;color:#f1ede3;border-radius:12px;padding:17px 20px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#cf9b8f;margin-bottom:13px">The clock system</div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <sc-for list="{{ clockRules }}" as="r" hint-placeholder-count="5">
+            <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap">
+              <span style="font-size:13px;font-weight:600;color:#f1ede3;min-width:155px">{{ r.t }}</span>
+              <span style="flex:1;min-width:200px;font-size:13px;line-height:1.5;color:#c8bda9">{{ r.b }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    </sc-if>
+
+    <!-- ============ DICTIONARY ============ -->
+    <sc-if value="{{ tDict }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Dictionary">
+      <input oninput="{{ onSearch }}" placeholder="Search Tatar, English, or sound…" style="width:100%;font-family:inherit;font-size:15px;border:1.5px solid #211c17;background:#fff;color:#211c17;border-radius:9px;padding:11px 15px;outline:none;margin-bottom:13px">
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:16px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8a7f70">Show</div>
+        <div style="display:flex;flex-wrap:wrap;gap:7px">
+          <sc-for list="{{ dictFilters }}" as="f" hint-placeholder-count="6">
+            <button onClick="{{ f.onClick }}" style="cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;border:1.5px solid {{ f.bd }};background:{{ f.bg }};color:{{ f.fg }};border-radius:7px;padding:6px 12px">{{ f.label }}</button>
+          </sc-for>
+        </div>
+        <div style="flex:1"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a7f70">{{ dictCount }} words</div>
+      </div>
+      <div style="border:1.5px solid #e4ddcf;border-radius:12px;overflow:hidden;background:#fbf9f3">
+        <sc-for list="{{ dictList }}" as="d" hint-placeholder-count="10">
+          <div style="display:flex;align-items:center;gap:14px;padding:11px 16px;border-bottom:1px solid #ece4d4">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#b9af9d;min-width:22px">{{ d.num }}</span>
+            <span style="font-family:'Source Serif 4',serif;font-size:21px;font-weight:600;min-width:130px">{{ d.stem }}</span>
+            <sc-if value="{{ showPron }}" hint-placeholder-val="{{ true }}"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#b23a2e;min-width:110px">{{ d.pron }}</span></sc-if>
+            <span style="flex:1;font-size:14px;color:#4a4239">{{ d.en }}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:{{ d.tagColor }};border:1px solid {{ d.tagBd }};border-radius:4px;padding:2px 6px;white-space:nowrap">{{ d.tag }}</span>
+            <sc-if value="{{ d.canConj }}" hint-placeholder-val="x"><button onClick="{{ d.onClick }}" style="cursor:pointer;font-family:inherit;font-size:11.5px;font-weight:600;border:1.5px solid #e0d8c7;background:#fff;color:#8a7f70;border-radius:6px;padding:5px 10px;white-space:nowrap">conjugate →</button></sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+    </sc-if>
+
+    <!-- ============ FLASHCARDS ============ -->
+    <sc-if value="{{ tCards }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Flashcards">
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-bottom:20px">
+        <button onClick="{{ onToggleDir }}" style="cursor:pointer;font-family:inherit;font-size:12.5px;font-weight:600;border:1.5px solid #e0d8c7;background:#fff;color:#5a5145;border-radius:8px;padding:8px 14px">{{ dirLabel }}</button>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a7f70">card {{ fcPos }} / {{ fcTotal }} · <span style="color:#4f6b3f">{{ fcKnown }} learned</span></div>
+      </div>
+
+      <div onClick="{{ onFlip }}" style="cursor:pointer;border:1.5px solid #211c17;border-radius:16px;background:#fbf9f3;min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:34px 24px;position:relative">
+        <div style="position:absolute;top:14px;right:16px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#b9af9d">#{{ fcNum }}</div>
+        <sc-if value="{{ fcFront }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="font-family:'Source Serif 4',serif;font-size:46px;font-weight:700;line-height:1;letter-spacing:-.01em">{{ fcFrontMain }}</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9a8f7e;margin-top:14px">{{ fcFrontSub }}</div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ fcBack }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="font-family:'Source Serif 4',serif;font-size:40px;font-weight:700;line-height:1.05">{{ fcBackMain }}</div>
+            <sc-if value="{{ showPron }}" hint-placeholder-val="{{ true }}"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#b23a2e;margin-top:10px">{{ fcBackSub }}</div></sc-if>
+            <div style="height:1px;width:80px;background:#ddd5c4;margin:16px auto"></div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#9a6420;margin-bottom:5px">🔑 {{ fcKw }}</div>
+            <div style="font-size:14px;color:#5a5145;max-width:340px">{{ fcSc }}</div>
+          </div>
+        </sc-if>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:18px">
+        <button onClick="{{ onPrev }}" style="cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;border:1.5px solid #e0d8c7;background:#fff;color:#8a7f70;border-radius:8px;padding:10px 14px">← Prev</button>
+        <div style="flex:1"></div>
+        <button onClick="{{ onAgain }}" style="cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;border:1.5px solid #d8b3ad;background:#f7ece9;color:#a8392c;border-radius:8px;padding:10px 16px">Again</button>
+        <button onClick="{{ onGood }}" style="cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;border:1.5px solid #c2d0b3;background:#eef3e8;color:#4f6b3f;border-radius:8px;padding:10px 16px">Good</button>
+        <button onClick="{{ onEasy }}" style="cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;border:none;background:#211c17;color:#f1ede3;border-radius:8px;padding:10px 18px">Easy</button>
+        <div style="flex:1"></div>
+        <button onClick="{{ onNextCard }}" style="cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;border:1.5px solid #e0d8c7;background:#fff;color:#8a7f70;border-radius:8px;padding:10px 14px">Next →</button>
+      </div>
+      <p style="font-size:12.5px;color:#8a7f70;margin:15px 2px 0;line-height:1.5">Tap the card to flip. Rate yourself — “learned” count and your last position are saved automatically.</p>
+    </section>
+    </sc-if>
+
+  </div>
+</div>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#b23a2e"/><text x="50" y="64" font-family="Georgia,serif" font-size="46" fill="#fbf9f3" text-anchor="middle" font-weight="700">Ə</text></svg></template></x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1120,&quot;height&quot;:860},&quot;showPron&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;startTab&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;builder&quot;,&quot;pegs&quot;,&quot;conj&quot;,&quot;dict&quot;,&quot;cards&quot;],&quot;default&quot;:&quot;builder&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  verbs = [
+    {id:1,stem:"бар",en:"to go",pron:"bar",soft:false,ev:false,vl:false,p3:"бара",kw:"BAR",sc:"Stroll into a BAR — to go."},
+    {id:2,stem:"кил",en:"to come",pron:"kil",soft:true,ev:false,vl:false,p3:"килә",kw:"KEEL",sc:"A boat's KEEL glides ashore — to come."},
+    {id:3,stem:"кит",en:"to leave",pron:"kit",soft:true,ev:false,vl:true,p3:"китә",kw:"KIT",sc:"Grab your KIT and leave."},
+    {id:4,stem:"кал",en:"to stay / remain",pron:"kal",soft:false,ev:false,vl:false,p3:"кала",kw:"CALL",sc:"You CALL out: I'll stay!"},
+    {id:5,stem:"кер",en:"to enter",pron:"ker",soft:true,ev:false,vl:false,p3:"керә",kw:"CARE",sc:"Step in with CARE — to enter."},
+    {id:6,stem:"чык",en:"to go out / exit",pron:"chyk",soft:false,ev:false,vl:true,p3:"чыга",kw:"CHICK",sc:"A CHICK hatches out of the shell."},
+    {id:7,stem:"утыр",en:"to sit",pron:"utyr",soft:false,ev:false,vl:false,p3:"утыра",kw:"UTTER",sc:"UTTERLY tired, you sit down."},
+    {id:8,stem:"тор",en:"to get up / stand",pron:"tor",soft:false,ev:false,vl:false,p3:"тора",kw:"TORO",sc:"The bull TORO rises to its feet."},
+    {id:9,stem:"йокла",en:"to sleep",pron:"yokla",soft:false,ev:true,vl:false,p3:"йоклый",kw:"YO-CLAW",sc:"You yawn, claw the blanket, sleep."},
+    {id:10,stem:"уян",en:"to wake up",pron:"uyan",soft:false,ev:false,vl:false,p3:"уяна",kw:"U-YAWN",sc:"A huge YAWN — you wake up."},
+    {id:11,stem:"аша",en:"to eat",pron:"asha",soft:false,ev:true,vl:false,p3:"ашый",kw:"A-SHA",sc:"You devour A SHAwarma — to eat."},
+    {id:12,stem:"эч",en:"to drink",pron:"ech",soft:true,ev:false,vl:true,p3:"эчә",kw:"ETCH",sc:"An icy drink: you gasp ETCH!"},
+    {id:13,stem:"пешер",en:"to cook",pron:"pesher",soft:true,ev:false,vl:false,p3:"пешерә",kw:"PRESSURE",sc:"PRESSURE-cook the stew."},
+    {id:14,stem:"яз",en:"to write",pron:"yaz",soft:false,ev:false,vl:false,p3:"яза",kw:"YAZ",sc:"You spray YAZ graffiti on the wall."},
+    {id:15,stem:"укы",en:"to read / study",pron:"uky",soft:false,ev:true,vl:false,p3:"укый",kw:"OOH-KEY",sc:"OOH-KEY, you read aloud."},
+    {id:16,stem:"бел",en:"to know",pron:"bel",soft:true,ev:false,vl:false,p3:"белә",kw:"BELL",sc:"A BELL rings — now you know."},
+    {id:17,stem:"аңла",en:"to understand",pron:"angla",soft:false,ev:true,vl:false,p3:"аңлый",kw:"ANGLE",sc:"The ANGLE clicks — you get it."},
+    {id:18,stem:"сөйлә",en:"to tell / say",pron:"söylä",soft:true,ev:true,vl:false,p3:"сөйли",kw:"SAIL-a",sc:"You SAIL a tale across the room."},
+    {id:19,stem:"сөйләш",en:"to converse / speak with",pron:"söyläsh",soft:true,ev:false,vl:true,p3:"сөйләшә",kw:"SAIL-ASH",sc:"Two boats SAIL & chat the day away."},
+    {id:20,stem:"әйт",en:"to say",pron:"äyt",soft:true,ev:false,vl:true,p3:"әйтә",kw:"EIGHT",sc:"You shout EIGHT! — to say."},
+    {id:21,stem:"сора",en:"to ask",pron:"sora",soft:false,ev:true,vl:false,p3:"сорый",kw:"SORRY",sc:"SORRY, may I ask a question?"},
+    {id:22,stem:"бир",en:"to give",pron:"bir",soft:true,ev:false,vl:false,p3:"бирә",kw:"BEER",sc:"You hand over a BEER — to give."},
+    {id:23,stem:"ал",en:"to take",pron:"al",soft:false,ev:false,vl:false,p3:"ала",kw:"ALL",sc:"Take it ALL."},
+    {id:24,stem:"кара",en:"to look / watch",pron:"kara",soft:false,ev:true,vl:false,p3:"карый",kw:"KARA-te",sc:"You watch the KARAte match."},
+    {id:25,stem:"күр",en:"to see",pron:"kür",soft:true,ev:false,vl:false,p3:"күрә",kw:"CURE",sc:"At last you see the CURE."},
+    {id:26,stem:"ишет",en:"to hear",pron:"ishet",soft:true,ev:false,vl:true,p3:"ишетә",kw:"IS-IT",sc:"IS-IT a sound? — you hear it."},
+    {id:27,stem:"тыңла",en:"to listen",pron:"tyngla",soft:false,ev:true,vl:false,p3:"тыңлый",kw:"TONG-la",sc:"Listen close, TONGs to your ear."},
+    {id:28,stem:"ярат",en:"to love / like",pron:"yarat",soft:false,ev:false,vl:true,p3:"ярата",kw:"YACHT",sc:"You love your gleaming YACHT."},
+    {id:29,stem:"телә",en:"to want / wish",pron:"telä",soft:true,ev:true,vl:false,p3:"тели",kw:"TELL-a",sc:"You TELL a wish you want."},
+    {id:30,stem:"ал",disp:"сатып ал",pre:"сатып ",en:"to buy",pron:"satyp al",soft:false,ev:false,vl:false,p3:"ала",kw:"SIT-UP-ALL",sc:"SIT UP, take it ALL — to buy."},
+    {id:31,stem:"сат",en:"to sell",pron:"sat",soft:false,ev:false,vl:true,p3:"сата",kw:"SAT",sc:"You SAT and sold the whole lot."},
+    {id:32,stem:"эшлә",en:"to work / do",pron:"eshlä",soft:true,ev:true,vl:false,p3:"эшли",kw:"ASH-LAY",sc:"You work as ASH LAYs on the forge."},
+    {id:33,stem:"яса",en:"to make",pron:"yasa",soft:false,ev:true,vl:false,p3:"ясый",kw:"YA-SAW",sc:"YA, the SAW builds it — to make."},
+    {id:34,stem:"ит",disp:"ял ит",pre:"ял ",en:"to rest",pron:"yal it",soft:true,ev:false,vl:true,p3:"итә",kw:"YALL-EAT",sc:"Y'ALL EAT, then rest a while."},
+    {id:35,stem:"эзлә",en:"to search / look for",pron:"ezlä",soft:true,ev:true,vl:false,p3:"эзли",kw:"EASEL-a",sc:"You search behind the EASEL."},
+    {id:36,stem:"тап",en:"to find",pron:"tap",soft:false,ev:false,vl:true,p3:"таба",kw:"TAP",sc:"You TAP it — found at last!"},
+    {id:37,stem:"оныт",en:"to forget",pron:"onyt",soft:false,ev:false,vl:true,p3:"оныта",kw:"OH-NOT",sc:"OH NOT again — you forgot."},
+    {id:38,stem:"хәтерлә",en:"to remember",pron:"xäterlä",soft:true,ev:true,vl:false,p3:"хәтерли",kw:"HEAD-er",sc:"A HEADER jogs your memory."},
+    {id:39,stem:"өйрән",en:"to learn",pron:"öyrän",soft:true,ev:false,vl:false,p3:"өйрәнә",kw:"OY-RUN",sc:"Oy, you RUN the drills — to learn."},
+    {id:40,stem:"өйрәт",en:"to teach",pron:"öyrät",soft:true,ev:false,vl:true,p3:"өйрәтә",kw:"OY-RAT",sc:"You teach the oy-RAT a new trick."},
+    {id:41,stem:"кабатла",en:"to repeat",pron:"kabatla",soft:false,ev:true,vl:false,p3:"кабатлый",kw:"KEBAB-la",sc:"A KEBAB on loop — repeat, repeat."},
+    {id:42,stem:"ит",disp:"тәрҗемә ит",pre:"тәрҗемә ",en:"to translate",pron:"tärcemä it",soft:true,ev:false,vl:true,p3:"итә",kw:"TARGET-ME",sc:"TARGET-ME, then translate the line."},
+    {id:43,stem:"йөр",en:"to walk around / go about",pron:"yör",soft:true,ev:false,vl:false,p3:"йөри",kw:"YORE",sc:"You wander streets of YORE."},
+    {id:44,stem:"йөгер",en:"to run",pron:"yöger",soft:true,ev:false,vl:false,p3:"йөгерә",kw:"YO-GER",sc:"A YOGa-er sprints down the track."},
+    {id:45,stem:"йөз",en:"to swim",pron:"yöz",soft:true,ev:false,vl:false,p3:"йөзә",kw:"WHOSE",sc:"WHOSE lane is this? — you swim."},
+    {id:46,stem:"бие",en:"to dance",pron:"biye",soft:true,ev:true,vl:false,p3:"бии",kw:"BEE-ye",sc:"A BEE dances mid-air."},
+    {id:47,stem:"җырла",en:"to sing",pron:"cyrla",soft:false,ev:true,vl:false,p3:"җырлый",kw:"JEER-la",sc:"Belt out JEER-ah — to sing."},
+    {id:48,stem:"уйна",en:"to play",pron:"uyna",soft:false,ev:true,vl:false,p3:"уйный",kw:"OY-na",sc:"Oy now! the kids play on."},
+    {id:49,stem:"тырыш",en:"to try / be diligent",pron:"tyrysh",soft:false,ev:false,vl:true,p3:"тырыша",kw:"TIRE-ish",sc:"You TIRE yourself trying hard."},
+    {id:50,stem:"түлә",en:"to pay",pron:"tülä",soft:true,ev:true,vl:false,p3:"түли",kw:"TOO-LA",sc:"Pay the TOLL at the booth."},
+    {id:51,stem:"чакыр",en:"to invite / call",pron:"chakyr",soft:false,ev:false,vl:false,p3:"чакыра",kw:"CHA-KEER",sc:"Cha, here! — you invite them in."},
+    {id:52,stem:"сал",en:"to put in / pour",pron:"sal",soft:false,ev:false,vl:false,p3:"сала",kw:"SALT",sc:"Put the SALT in the pot."},
+    {id:53,stem:"куй",en:"to put / place",pron:"kuy",soft:false,ev:false,vl:false,p3:"куя",kw:"COO-ey",sc:"Set the COOing dove down gently."},
+    {id:54,stem:"елмай",en:"to smile",pron:"yelmay",soft:false,ev:false,vl:false,p3:"елмая",kw:"YELL-MY",sc:"Smile wide and yell MY!"},
+    {id:55,stem:"көл",en:"to laugh",pron:"köl",soft:true,ev:false,vl:false,p3:"көлә",kw:"COAL",sc:"You laugh at the lump of COAL."},
+    {id:56,stem:"ела",en:"to cry",pron:"yela",soft:false,ev:true,vl:false,p3:"елый",kw:"YELL-a",sc:"You cry out and YELL-a."},
+    {id:57,stem:"сагын",en:"to miss / long for",pron:"sagyn",soft:false,ev:false,vl:false,p3:"сагына",kw:"SAG-in",sc:"Your heart SAGs in longing."},
+    {id:58,stem:"таныш",en:"to get acquainted",pron:"tanysh",soft:false,ev:false,vl:true,p3:"таныша",kw:"TAN-ish",sc:"You meet a TANned stranger."},
+    {id:59,stem:"очраш",en:"to meet up",pron:"ochrash",soft:false,ev:false,vl:true,p3:"очраша",kw:"OACH-RASH",sc:"You bump into a joyful RASH of friends."},
+    {id:60,stem:"башла",en:"to begin",pron:"bashla",soft:false,ev:true,vl:false,p3:"башлый",kw:"BASH-la",sc:"The BASH kicks off — to begin."},
+    {id:61,stem:"бетер",en:"to finish",pron:"beter",soft:true,ev:false,vl:false,p3:"бетерә",kw:"BET-er",sc:"You settle the BET — finished."},
+    {id:62,stem:"көт",en:"to wait",pron:"köt",soft:true,ev:false,vl:true,p3:"көтә",kw:"COT",sc:"You wait by the COT."},
+    {id:63,stem:"кайт",en:"to return / come back",pron:"kayt",soft:false,ev:false,vl:true,p3:"кайта",kw:"KITE",sc:"Bring the KITE back home."},
+    {id:64,stem:"куллан",en:"to use",pron:"kullan",soft:false,ev:false,vl:false,p3:"куллана",kw:"COOL-AN",sc:"You use the COOL fAN all summer."},
+    {id:65,stem:"ит",disp:"сәяхәт ит",pre:"сәяхәт ",en:"to travel",pron:"säyaxät it",soft:true,ev:false,vl:true,p3:"итә",kw:"SAY-A-HAT",sc:"You travel and SAY: a hat!"},
+    {id:66,stem:"кызыксын",en:"to be interested",pron:"kyzyksyn",soft:false,ev:false,vl:false,p3:"кызыксына",kw:"KIZIK-SIN",sc:"A curious KIZIK draws your interest."},
+    {id:67,stem:"килеш",en:"to agree / fit",pron:"kilesh",soft:true,ev:false,vl:true,p3:"килешә",kw:"KEY-LESH",sc:"The KEY fits — you agree."},
+    {id:68,stem:"ю",en:"to wash",pron:"yu",soft:false,ev:false,vl:false,p3:"юа",kw:"YOU",sc:"YOU scrub your hands clean — to wash."},
+    {id:69,stem:"кочакла",en:"to hug / embrace",pron:"kochakla",soft:false,ev:true,vl:false,p3:"кочаклый",kw:"KOACH-la",sc:"Coach-la! — a big warm hug."},
+    {id:70,stem:"үп",en:"to kiss",pron:"üp",soft:true,ev:false,vl:true,p3:"үбә",kw:"OOP",sc:"OOP! — a quick kiss on the cheek."},
+    {id:71,stem:"бул",en:"to be / become",pron:"bul",soft:false,ev:false,vl:false,p3:"була",kw:"BULL",sc:"A BULL becomes the champion — to be / become."},
+    {id:72,stem:"яшә",en:"to live",pron:"yäshä",soft:true,ev:true,vl:false,p3:"яши",kw:"YASH-a",sc:"You live behind a YASHmak veil — to live."},
+    {id:73,stem:"үс",en:"to grow",pron:"üs",soft:true,ev:false,vl:true,p3:"үсә",kw:"OOSE",sc:"A gOOSE grows tall — to grow."},
+    {id:74,stem:"ач",en:"to open",pron:"ach",soft:false,ev:false,vl:true,p3:"ача",kw:"ACHOO",sc:"ACHOO! — you fling the door open."},
+    {id:75,stem:"яп",en:"to close",pron:"yap",soft:false,ev:false,vl:true,p3:"яба",kw:"YAP",sc:"YAP! — the lid snaps shut."},
+    {id:76,stem:"бас",en:"to step / press",pron:"bas",soft:false,ev:false,vl:true,p3:"баса",kw:"BUS",sc:"You step up onto the BUS — to step."},
+    {id:77,stem:"төш",en:"to get off / descend",pron:"tösh",soft:true,ev:false,vl:true,p3:"төшә",kw:"TOSH",sc:"You climb down — TOSH to the floor."},
+    {id:78,stem:"мен",en:"to climb / board",pron:"men",soft:true,ev:false,vl:false,p3:"менә",kw:"MEN",sc:"MEN scale the mast — to climb."},
+    {id:79,stem:"җит",en:"to suffice / reach",pron:"cit",soft:true,ev:false,vl:true,p3:"җитә",kw:"JEET",sc:"Enough! JEET — it's plenty — to suffice."},
+    {id:80,stem:"сакла",en:"to keep / protect",pron:"sakla",soft:false,ev:true,vl:false,p3:"саклый",kw:"SUCK-la",sc:"You guard the gate — сакла."},
+    {id:81,stem:"уйла",en:"to think",pron:"uyla",soft:false,ev:true,vl:false,p3:"уйлый",kw:"OY-la",sc:"Oy, let me think it over — уйла."},
+    {id:82,stem:"сайла",en:"to choose",pron:"sayla",soft:false,ev:true,vl:false,p3:"сайлый",kw:"SIGH-la",sc:"You sigh, then choose — сайла."},
+    {id:83,stem:"сана",en:"to count",pron:"sana",soft:false,ev:true,vl:false,p3:"саный",kw:"SUN-a",sc:"Count the SUNs one by one — сана."},
+    {id:84,stem:"ки",en:"to wear / put on",pron:"ki",soft:true,ev:true,vl:false,p3:"кия",kw:"KEY",sc:"You wear the KEY on a string — ки."},
+    {id:85,stem:"ат",en:"to throw / shoot",pron:"at",soft:false,ev:false,vl:true,p3:"ата",kw:"AT",sc:"You hurl a dart AT the board — to throw."},
+    {id:86,stem:"тот",en:"to hold / catch",pron:"tot",soft:false,ev:false,vl:true,p3:"тота",kw:"TOAST",sc:"You hold the TOAST tight — тот."},
+    {id:87,stem:"шалтырат",en:"to phone / ring",pron:"shaltyrat",soft:false,ev:false,vl:true,p3:"шалтырата",kw:"SHOUT-it",sc:"The phone SHOUTs out — you ring."},
+    {id:88,stem:"катнаш",en:"to take part",pron:"katnash",soft:false,ev:false,vl:true,p3:"катнаша",kw:"CUT-nash",sc:"You dive into the mash — join in."},
+    {id:89,stem:"ит",disp:"ярдәм ит",pre:"ярдәм ",en:"to help",pron:"yärdäm it",soft:true,ev:false,vl:true,p3:"итә",kw:"YARD-MATE",sc:"YARD-mate lends a hand — to help."},
+    {id:90,stem:"ит",disp:"кабул ит",pre:"кабул ",en:"to accept",pron:"kabul it",soft:true,ev:false,vl:true,p3:"итә",kw:"KABUL",sc:"Kabul opens its gates — to accept."}
+  ];
+
+  subjects = [
+    {tat:"Мин",en:"I",p:0},{tat:"Син",en:"You",p:1},{tat:"Ул",en:"He/She",p:2},
+    {tat:"Без",en:"We",p:3},{tat:"Сез",en:"You (pl)",p:4},{tat:"Алар",en:"They",p:5},
+    {tat:"Минем дустым",en:"My friend",p:2},{tat:"Әнием",en:"My mom",p:2},{tat:"Укытучы",en:"The teacher",p:2}
+  ];
+  times = [
+    {tat:"иртән",en:"in the morning"},{tat:"кичен",en:"in the evening"},{tat:"көндез",en:"at midday"},
+    {tat:"төнлә",en:"at night"},{tat:"бүген",en:"today"},{tat:"кичә",en:"yesterday"},
+    {tat:"иртәгә",en:"tomorrow"},{tat:"тиздән",en:"soon"},{tat:"киләсе атнада",en:"next week"},
+    {tat:"еш",en:"often"},{tat:"гадәттә",en:"usually"},{tat:"кайвакыт",en:"sometimes"},
+    {tat:"сирәк",en:"rarely"},{tat:"һәрвакыт",en:"always"},{tat:"буш вакытта",en:"in free time"}
+  ];
+  places = [
+    {tat:"өйдә",en:"at home"},{tat:"мәктәптә",en:"at school"},{tat:"мәктәпкә",en:"to school"},
+    {tat:"урамда",en:"on the street"},{tat:"кибеткә",en:"to the store"},{tat:"паркта",en:"in the park"},{tat:"монда",en:"here"}
+  ];
+  objects = [
+    {tat:"китап",en:"a book"},{tat:"су",en:"water"},{tat:"кофе",en:"coffee"},{tat:"чәй",en:"tea"},{tat:"музыка",en:"music"},
+    {tat:"татарча",en:"Tatar"},{tat:"футбол",en:"football"},{tat:"аш",en:"food"},{tat:"хат",en:"a letter"},
+    {tat:"акча",en:"money"},{tat:"тел",en:"a language"},{tat:"хыял",en:"a dream"},
+    {tat:"машина",en:"a car"},{tat:"алма",en:"an apple"},{tat:"күлмәк",en:"a dress"}
+  ];
+  advs = [{tat:"тиз",en:"quickly"},{tat:"яхшы",en:"well"},{tat:"бергә",en:"together"},{tat:"әкрен",en:"slowly"}];
+  determiners = [{tat:"бу",en:"this"},{tat:"шул",en:"that"},{tat:"теге",en:"that yonder"}];
+  builderMods = [{tat:"бик",en:"very"},{tat:"бераз",en:"a little"},{tat:"иң",en:"the most"}];
+  builderAdjs = [
+    {tat:"зур",en:"big"},{tat:"кечкенә",en:"small"},{tat:"матур",en:"beautiful"},{tat:"яңа",en:"new"},
+    {tat:"яхшы",en:"good"},{tat:"тәмле",en:"tasty"},{tat:"кызыл",en:"red"},{tat:"зәңгәр",en:"blue"},
+    {tat:"ак",en:"white"},{tat:"кара",en:"black"},{tat:"яшел",en:"green"},{tat:"кыйммәт",en:"expensive"}
+  ];
+  bodyParts = [
+    {tat:"баш",pron:"bash",en:"head"},{tat:"чәч",pron:"chäch",en:"hair"},{tat:"йөз",pron:"yöz",en:"face"},
+    {tat:"күз",pron:"küz",en:"eye"},{tat:"колак",pron:"kolak",en:"ear"},{tat:"борын",pron:"boryn",en:"nose"},
+    {tat:"авыз",pron:"avyz",en:"mouth"},{tat:"теш",pron:"tesh",en:"tooth"},{tat:"ирен",pron:"iren",en:"lip"},
+    {tat:"муен",pron:"muyen",en:"neck"},{tat:"җилкә",pron:"cilkä",en:"shoulder"},{tat:"кул",pron:"kul",en:"hand / arm"},
+    {tat:"бармак",pron:"barmak",en:"finger"},{tat:"аяк",pron:"ayak",en:"leg / foot"},{tat:"тез",pron:"tez",en:"knee"},
+    {tat:"йөрәк",pron:"yöräk",en:"heart"},{tat:"эч",pron:"ech",en:"belly / stomach"},{tat:"арка",pron:"arka",en:"back"},
+    {tat:"тән",pron:"tän",en:"body"}
+  ];
+  colors = [
+    {tat:"ак",pron:"ak",en:"white"},{tat:"кара",pron:"kara",en:"black"},{tat:"кызыл",pron:"kyzyl",en:"red"},
+    {tat:"сары",pron:"sary",en:"yellow"},{tat:"яшел",pron:"yäshel",en:"green"},{tat:"зәңгәр",pron:"zäñgär",en:"blue"},
+    {tat:"күк",pron:"kük",en:"sky-blue"},{tat:"коңгырт",pron:"koñgyrt",en:"brown"},{tat:"соры",pron:"sory",en:"grey"},
+    {tat:"алсу",pron:"alsu",en:"pink"},{tat:"шәмәхә",pron:"shämäxä",en:"purple"},{tat:"кызгылт-сары",pron:"kyzgylt-sary",en:"orange"}
+  ];
+  adjAll = [
+    {tat:"зур",pron:"zur",en:"big"},{tat:"кечкенә",pron:"kechkenä",en:"small"},{tat:"яхшы",pron:"yaxshy",en:"good"},
+    {tat:"начар",pron:"nachar",en:"bad"},{tat:"матур",pron:"matur",en:"beautiful"},{tat:"яңа",pron:"yaña",en:"new"},
+    {tat:"иске",pron:"iske",en:"old (thing)"},{tat:"карт",pron:"kart",en:"old (person)"},{tat:"яшь",pron:"yäsh",en:"young"},
+    {tat:"озын",pron:"ozyn",en:"long / tall"},{tat:"кыска",pron:"kyska",en:"short"},{tat:"җылы",pron:"cyly",en:"warm"},
+    {tat:"салкын",pron:"salkyn",en:"cold"},{tat:"кайнар",pron:"kaynar",en:"hot"},{tat:"тәмле",pron:"tämle",en:"tasty"},
+    {tat:"авыр",pron:"avyr",en:"heavy / hard"},{tat:"җиңел",pron:"ciñel",en:"light / easy"},{tat:"ерак",pron:"erak",en:"far"},
+    {tat:"якын",pron:"yakyn",en:"near"},{tat:"көчле",pron:"köchle",en:"strong"},{tat:"кыйммәт",pron:"kyymmät",en:"expensive"},
+    {tat:"арзан",pron:"arzan",en:"cheap"},{tat:"чиста",pron:"chista",en:"clean"}
+  ];
+  modifiers = [
+    {tat:"бик",pron:"bik",en:"very"},{tat:"бераз",pron:"beraz",en:"a little"},{tat:"иң",pron:"iñ",en:"most (superlative)"},
+    {tat:"артык",pron:"artyk",en:"too (much)"},{tat:"тагын",pron:"tagyn",en:"more / again"},{tat:"шактый",pron:"shaktyy",en:"quite"},
+    {tat:"гына / генә",pron:"gyna / genä",en:"only / just"},{tat:"бөтенләй",pron:"bötenläy",en:"completely"},{tat:"әле",pron:"äle",en:"still / yet"}
+  ];
+  emotionAdjs = [
+    {tat:"шат",pron:"shat",en:"glad"},{tat:"бәхетле",pron:"bäxetle",en:"happy"},{tat:"моңсу",pron:"moñsu",en:"sad"},
+    {tat:"ачулы",pron:"achuly",en:"angry"},{tat:"курыккан",pron:"kurykkan",en:"scared"},{tat:"борчулы",pron:"borchuly",en:"worried"},
+    {tat:"арыган",pron:"arygan",en:"tired"},{tat:"тыныч",pron:"tynych",en:"calm"},{tat:"кәефле",pron:"käefle",en:"cheerful"},
+    {tat:"ялыккан",pron:"yalykkan",en:"bored"}
+  ];
+
+  drills = [
+    {en:"I read a book in the evening.",chunks:[{t:"Мин",r:"subj"},{t:"кичен",r:"time"},{t:"китап",r:"obj"},{t:"укыйм",r:"verb"}]},
+    {en:"He goes to school in the morning.",chunks:[{t:"Ул",r:"subj"},{t:"иртән",r:"time"},{t:"мәктәпкә",r:"place"},{t:"бара",r:"verb"}]},
+    {en:"We eat at home.",chunks:[{t:"Без",r:"subj"},{t:"өйдә",r:"place"},{t:"ашыйбыз",r:"verb"}]},
+    {en:"They often play football.",chunks:[{t:"Алар",r:"subj"},{t:"еш",r:"time"},{t:"футбол",r:"obj"},{t:"уйныйлар",r:"verb"}]},
+    {en:"I am learning Tatar.",chunks:[{t:"Мин",r:"subj"},{t:"татар телен",r:"obj"},{t:"өйрәнәм",r:"verb"}]},
+    {en:"She listens to music at home.",chunks:[{t:"Ул",r:"subj"},{t:"өйдә",r:"place"},{t:"музыка",r:"obj"},{t:"тыңлый",r:"verb"}]},
+    {en:"Yesterday I wrote a letter.",chunks:[{t:"Кичә",r:"time"},{t:"мин",r:"subj"},{t:"хат",r:"obj"},{t:"яздым",r:"verb"}]},
+    {en:"On weekends we meet friends.",chunks:[{t:"Ял көннәрендә",r:"time"},{t:"без",r:"subj"},{t:"дуслар белән",r:"obj"},{t:"очрашабыз",r:"verb"}]},
+    {en:"He doesn’t drink coffee in the morning.",chunks:[{t:"Ул",r:"subj"},{t:"иртән",r:"time"},{t:"кофе",r:"obj"},{t:"эчми",r:"verb"}]},
+    {en:"I usually cook food at home.",chunks:[{t:"Мин",r:"subj"},{t:"гадәттә",r:"time"},{t:"өйдә",r:"place"},{t:"аш",r:"obj"},{t:"пешерәм",r:"verb"}]},
+    {en:"Do you speak Tatar?",chunks:[{t:"Син",r:"subj"},{t:"татарча",r:"obj"},{t:"сөйләшәсеңме?",r:"verb"}]},
+    {en:"Tomorrow I will go to the store.",chunks:[{t:"Иртәгә",r:"time"},{t:"мин",r:"subj"},{t:"кибеткә",r:"place"},{t:"барачакмын",r:"verb"}]},
+    {en:"Tomorrow I will read a book.",chunks:[{t:"Иртәгә",r:"time"},{t:"мин",r:"subj"},{t:"китап",r:"obj"},{t:"укыячакмын",r:"verb"}]},
+    {en:"Next week we will meet.",chunks:[{t:"Киләсе атнада",r:"time"},{t:"без",r:"subj"},{t:"очрашачакбыз",r:"verb"}]},
+    {en:"She will not come today.",chunks:[{t:"Ул",r:"subj"},{t:"бүген",r:"time"},{t:"килмәячәк",r:"verb"}]}
+  ];
+
+  journeySteps = [
+    {tat:"Иртән мин уянам.",en:"In the morning I wake up."},
+    {tat:"Аннары мин торам.",en:"Then I get up."},
+    {tat:"Мин кофе эчәм.",en:"I drink coffee."},
+    {tat:"Мин мәктәпкә барам.",en:"I go to school."},
+    {tat:"Көндез мин китап укыйм.",en:"At midday I read."},
+    {tat:"Кичен мин дусларым белән сөйләшәм.",en:"In the evening I talk with friends."},
+    {tat:"Төнлә мин йоклыйм.",en:"At night I sleep."}
+  ];
+
+  chains = [
+    {title:"A day, verb by verb", steps:[
+      {tat:"Иртән мин уянам.",en:"In the morning I wake up."},
+      {tat:"Аннары мин торам.",en:"Then I get up."},
+      {tat:"Мин кофе эчәм.",en:"I drink coffee."},
+      {tat:"Мин мәктәпкә барам.",en:"I go to school."},
+      {tat:"Көндез мин китап укыйм.",en:"At midday I read."},
+      {tat:"Кичен мин дусларым белән сөйләшәм.",en:"In the evening I talk with friends."},
+      {tat:"Төнлә мин йоклыйм.",en:"At night I sleep."}
+    ]},
+    {title:"Буш вакытта · in my free time", steps:[
+      {tat:"Буш вакытта мин китап укыйм.",en:"In my free time I read."},
+      {tat:"Кайвакыт мин йөгерәм.",en:"Sometimes I run."},
+      {tat:"Мин дусларым белән очрашам.",en:"I meet my friends."},
+      {tat:"Кичен мин музыка тыңлыйм.",en:"In the evening I listen to music."},
+      {tat:"Ял көннәрендә мин сәяхәт итәм.",en:"On weekends I travel."}
+    ]},
+    {title:"Кибеткә · a trip to the store", steps:[
+      {tat:"Мин кибеткә барам.",en:"I go to the store."},
+      {tat:"Мин сөт сатып алам.",en:"I buy milk."},
+      {tat:"Мин акча түлим.",en:"I pay."},
+      {tat:"Аннары мин өйгә кайтам.",en:"Then I return home."}
+    ]},
+    {title:"Кәеф · feelings through a day", steps:[
+      {tat:"Иртән мин шат уянам.",en:"In the morning I wake up happy."},
+      {tat:"Көндез мин арам.",en:"During the day I get tired."},
+      {tat:"Мин дусларым белән көләм.",en:"I laugh with my friends."},
+      {tat:"Кичен мин тыныч ял итәм.",en:"In the evening I rest calmly."},
+      {tat:"Төнлә мин рәхәт йоклыйм.",en:"At night I sleep peacefully."}
+    ]}
+  ];
+
+  verbPairs = [
+    {a:"уян",aen:"wake up",b:"тор",ben:"get up",note:"уян = your eyes open, you become conscious. тор = you physically rise / stand up. Иртән мин уянам, аннары торам."},
+    {a:"кара",aen:"look / watch",b:"күр",ben:"see",note:"кара = look at / watch on purpose (телевизор карыйм). күр = perceive, see — often involuntary: Мин аны күрәм."},
+    {a:"бел",aen:"know",b:"аңла",ben:"understand",note:"бел = hold knowledge of a fact. аңла = grasp meaning. Мин беләм, ләкин аңламыйм — I know, but I don't understand."},
+    {a:"әйт",aen:"say",b:"сөйлә",ben:"tell / speak",note:"әйт = say one specific thing. сөйлә = narrate, speak at length. Add -ш → сөйләш = converse with someone (mutual)."},
+    {a:"бар",aen:"go",b:"кит",ben:"leave",note:"бар = go toward a destination. кит = depart / leave from here. чык = step out of an enclosed space (бүлмәдән чык)."},
+    {a:"ал",aen:"take",b:"сатып ал",ben:"buy",note:"ал = take / get. сатып ал = literally 'take by selling' = buy — same verb ал, with сатып in front."},
+    {a:"эшлә",aen:"do / work",b:"яса",ben:"make",note:"эшлә = do a task, work (өй эше эшлим). яса = make / produce, and set phrases: йога ясыйм, күнегү ясыйм."},
+    {a:"бар",aen:"go (once)",b:"йөр",ben:"go regularly",note:"бар = a single trip somewhere. йөр = attend regularly or move about: мәктәпкә йөрим = I go to school (every day)."},
+    {a:"ярат",aen:"love / like",b:"ошый",ben:"it pleases (me)",note:"ярат takes an object: мин кофены яратам. ошый flips it — dative + 3rd person: миңа кофе ошый = coffee pleases me."}
+  ];
+
+  freqRef = [
+    {tat:"һәрвакыт",en:"always"},{tat:"гадәттә",en:"usually"},{tat:"еш",en:"often"},
+    {tat:"кайвакыт",en:"sometimes"},{tat:"сирәк",en:"rarely"},{tat:"беркайчан да",en:"never (+ neg. verb)"},
+    {tat:"көн саен",en:"every day"},{tat:"атнага бер тапкыр",en:"once a week"},{tat:"буш вакытта",en:"in free time"}
+  ];
+  timeRef = [
+    {tat:"иртән · иртә белән",en:"in the morning"},{tat:"көндез",en:"during the day"},
+    {tat:"кичен · кич белән",en:"in the evening"},{tat:"төнлә",en:"at night"}
+  ];
+  emoRef = [
+    {tat:"Мин шат",en:"I'm glad / happy",note:"adjective predicate — no verb needed"},
+    {tat:"Минем кәефем яхшы",en:"My mood is good",note:"lit. 'my mood [is] good'; кәефем начар = bad mood"},
+    {tat:"Мин ардым",en:"I'm tired",note:"арырга — past tense marks the state you're now in"},
+    {tat:"Миңа күңелле",en:"I'm having fun",note:"dative + adjective; күңелсез = bored / dull"},
+    {tat:"Мин куркам",en:"I'm afraid",note:"куркырга — present tense"},
+    {tat:"Мин борчылам",en:"I'm worried",note:"борчылырга"},
+    {tat:"Мин сагынам",en:"I miss (someone)",note:"сагынырга — longing for"},
+    {tat:"Мин кызыксынам",en:"I'm interested",note:"кызыксынырга + …белән: тарих белән кызыксынам"}
+  ];
+
+  qaBank = [
+    {q:"Син татарча сөйләшәсеңме?",en:"Do you speak Tatar?",yes:"Әйе, мин татарча сөйләшәм.",no:"Юк, мин татарча сөйләшмим."},
+    {q:"Син кичә китап укыдыңмы?",en:"Did you read a book yesterday?",yes:"Әйе, мин кичә китап укыдым.",no:"Юк, мин кичә китап укымадым."},
+    {q:"Син еш спорт белән шөгыльләнәсеңме?",en:"Do you often do sports?",yes:"Әйе, мин еш спорт белән шөгыльләнәм.",no:"Юк, мин сирәк шөгыльләнәм.",note:"Swap the frequency word to soften a 'no': еш → сирәк (rarely)."},
+    {q:"Сиңа кофе ошыймы?",en:"Do you like coffee?",yes:"Әйе, миңа кофе ошый.",no:"Юк, миңа кофе ошамый.",note:"'Like' here is ошарга — it flips to dative (миңа …) + 3rd person, never -мын."},
+    {q:"Син бүген ардыңмы?",en:"Are you tired today?",yes:"Әйе, мин бүген бик ардым.",no:"Юк, мин армадым.",note:"арырга (to tire) — past tense describes the state you're in right now."},
+    {q:"Синең кәефең яхшымы?",en:"Is your mood good?",yes:"Әйе, минем кәефем яхшы.",no:"Юк, минем кәефем начар.",note:"No verb — кәеф (mood) + adjective. Flip yes/no by swapping яхшы ↔ начар."},
+    {q:"Син иртән иртә торасыңмы?",en:"Do you get up early?",yes:"Әйе, мин иртән иртә торам.",no:"Юк, мин соң торам.",note:"тор = get up (rise). Note it's not уян (wake up)."},
+    {q:"Алар футбол уйныйлармы?",en:"Do they play football?",yes:"Әйе, алар футбол уйныйлар.",no:"Юк, алар уйнамыйлар."},
+    {q:"Син буш вакытта китап укыйсыңмы?",en:"Do you read in your free time?",yes:"Әйе, мин буш вакытта китап укыйм.",no:"Юк, мин буш вакытта йоклыйм."},
+    {q:"Ул кичә эшкә килдеме?",en:"Did he come to work yesterday?",yes:"Әйе, ул кичә эшкә килде.",no:"Юк, ул килмәде."},
+    {q:"Син Казанда булганмы?",en:"Have you been to Kazan?",yes:"Әйе, мин Казанда булганмын.",no:"Юк, мин Казанда булмаганмын.",note:"Indefinite past (-ган) — used for life experience you're reporting."},
+    {q:"Сез татар телен өйрәнәсезме?",en:"Are you (pl) learning Tatar?",yes:"Әйе, без татар телен өйрәнәбез.",no:"Юк, без өйрәнмибез."},
+    {q:"Син музыканы яратасыңмы?",en:"Do you love music?",yes:"Әйе, мин музыканы бик яратам.",no:"Юк, мин музыканы яратмыйм.",note:"ярат takes a direct object (музыканы) — contrast with ошый above."},
+    {q:"Син кайвакыт йөзәсеңме?",en:"Do you sometimes swim?",yes:"Әйе, мин кайвакыт йөзәм.",no:"Юк, мин беркайчан да йөзмим.",note:"'Never' = беркайчан да + a negative verb (йөзмим)."},
+    {q:"Син еш кино карыйсыңмы?",en:"Do you often watch films?",yes:"Әйе, мин еш кино карыйм.",no:"Юк, мин сирәк кино карыйм.",note:"Soften a 'no' with сирәк (rarely) rather than a flat negative."},
+    {q:"Бу синең китабыңмы?",en:"Is this your book?",yes:"Әйе, бу минем китабым.",no:"Юк, бу минем китабым түгел.",note:"бу = this. To say something is NOT a noun, use түгел — not verb negation."},
+    {q:"Өстәлдә китап бармы?",en:"Is there a book on the table?",yes:"Әйе, өстәлдә китап бар.",no:"Юк, өстәлдә китап юк.",note:"'There is' = бар, 'there isn't' = юк — both land last."},
+    {q:"Синең машинаң бармы?",en:"Do you have a car?",yes:"Әйе, минем машинам бар.",no:"Юк, минем машинам юк.",note:"Possession uses бар/юк: literally 'my car exists / doesn't exist'."},
+    {q:"Алар сирәк киләме?",en:"Do they come rarely?",yes:"Әйе, алар сирәк килә.",no:"Юк, алар еш килә.",note:"You can answer by flipping the frequency word itself: сирәк ↔ еш."},
+    {q:"Сиңа татар теле кызыкмы?",en:"Is Tatar interesting to you?",yes:"Әйе, миңа татар теле бик кызык.",no:"Юк, миңа кызык түгел.",note:"кызык (interesting) is an adjective — negate with түгел."},
+    {q:"Син былтыр чит илгә бардыңмы?",en:"Did you go abroad last year?",yes:"Әйе, мин былтыр чит илгә бардым.",no:"Юк, мин былтыр чит илгә бармадым.",note:"былтыр = last year → pairs with the definite (witnessed) past -дым."},
+    {q:"Син кичә машина йөрттеңме?",en:"Did you drive yesterday?",yes:"Әйе, мин кичә машина йөрттем.",no:"Юк, мин кичә машина йөртмәдем."},
+    {q:"Син иртәгә эшкә барачаксыңмы?",en:"Will you go to work tomorrow?",yes:"Әйе, мин иртәгә эшкә барачакмын.",no:"Юк, мин иртәгә бармаячакмын.",note:"Definite future -ачак: бар→барачак. Negative inserts -ма: бармаячак."},
+    {q:"Син татарча өйрәнәчәксеңме?",en:"Will you learn Tatar?",yes:"Әйе, мин татарча өйрәнәчәкмен.",no:"Юк, мин өйрәнмәячәкмен.",note:"Front-vowel verb → -әчәк, and endings harmonise: -мен, -сең."}
+  ];
+
+  nouns = [
+    {tat:"кеше",pron:"keshe",en:"person",cat:"people"},{tat:"дус",pron:"dus",en:"friend",cat:"people"},
+    {tat:"әни",pron:"äni",en:"mother",cat:"people"},{tat:"әти",pron:"äti",en:"father",cat:"people"},
+    {tat:"әби",pron:"äbi",en:"grandmother",cat:"people"},{tat:"бабай",pron:"babay",en:"grandfather",cat:"people"},
+    {tat:"бала",pron:"bala",en:"child",cat:"people"},{tat:"малай",pron:"malay",en:"boy",cat:"people"},
+    {tat:"кыз",pron:"kyz",en:"girl",cat:"people"},{tat:"укытучы",pron:"ukytuchy",en:"teacher",cat:"people"},
+    {tat:"табиб",pron:"tabib",en:"doctor",cat:"people"},{tat:"күрше",pron:"kürshe",en:"neighbour",cat:"people"},
+    {tat:"өй",pron:"öy",en:"house / home",cat:"place"},{tat:"мәктәп",pron:"mäktäp",en:"school",cat:"place"},
+    {tat:"шәһәр",pron:"shähär",en:"city",cat:"place"},{tat:"авыл",pron:"avyl",en:"village",cat:"place"},
+    {tat:"кибет",pron:"kibet",en:"store",cat:"place"},{tat:"парк",pron:"park",en:"park",cat:"place"},
+    {tat:"ил",pron:"il",en:"country",cat:"place"},{tat:"бүлмә",pron:"bülmä",en:"room",cat:"place"},
+    {tat:"университет",pron:"universitet",en:"university",cat:"place"},{tat:"китапханә",pron:"kitapxanä",en:"library",cat:"place"},
+    {tat:"диңгез",pron:"diñgez",en:"sea",cat:"place"},
+    {tat:"китап",pron:"kitap",en:"book",cat:"thing"},{tat:"өстәл",pron:"östäl",en:"table",cat:"thing"},
+    {tat:"урындык",pron:"uryndyk",en:"chair",cat:"thing"},{tat:"машина",pron:"mashina",en:"car",cat:"thing"},
+    {tat:"телефон",pron:"telefon",en:"phone",cat:"thing"},{tat:"ачкыч",pron:"achkych",en:"key",cat:"thing"},
+    {tat:"чәй",pron:"chäy",en:"tea",cat:"thing"},{tat:"акча",pron:"akcha",en:"money",cat:"thing"},
+    {tat:"хат",pron:"xat",en:"letter",cat:"thing"},{tat:"сүзлек",pron:"süzlek",en:"dictionary",cat:"thing"},
+    {tat:"сәгать",pron:"sägat",en:"clock / watch",cat:"thing"},{tat:"дәфтәр",pron:"däftär",en:"notebook",cat:"thing"},
+    {tat:"таш",pron:"tash",en:"stone",cat:"thing"},{tat:"кирпеч",pron:"kirpech",en:"brick",cat:"thing"},{tat:"идән",pron:"idän",en:"floor",cat:"thing"},
+    {tat:"дивар",pron:"divar",en:"wall",cat:"thing"},{tat:"мич",pron:"mich",en:"stove / furnace",cat:"thing"},{tat:"тәңкә",pron:"täñkä",en:"coin",cat:"thing"},
+    {tat:"тел",pron:"tel",en:"language",cat:"idea"},{tat:"тарих",pron:"tarix",en:"history",cat:"idea"},
+    {tat:"вакыт",pron:"vakyt",en:"time",cat:"idea"},{tat:"тормыш",pron:"tormysh",en:"life",cat:"idea"},
+    {tat:"фикер",pron:"fiker",en:"thought / opinion",cat:"idea"},{tat:"белем",pron:"belem",en:"knowledge",cat:"idea"},
+    {tat:"мәдәният",pron:"mädäniyat",en:"culture",cat:"idea"},{tat:"хыял",pron:"xyyal",en:"dream",cat:"idea"},
+    {tat:"азатлык",pron:"azatlyk",en:"freedom",cat:"idea"},{tat:"сәнгать",pron:"sängat",en:"art",cat:"idea"},
+    {tat:"дин",pron:"din",en:"religion",cat:"idea"},{tat:"гасыр",pron:"gasyr",en:"century",cat:"idea"},{tat:"истәлек",pron:"istälek",en:"heritage / monument",cat:"idea"},
+    {tat:"шатлык",pron:"shatlyk",en:"joy",cat:"emotion"},{tat:"кайгы",pron:"kaygy",en:"grief",cat:"emotion"},
+    {tat:"курку",pron:"kurku",en:"fear",cat:"emotion"},{tat:"өмет",pron:"ömet",en:"hope",cat:"emotion"},
+    {tat:"сагыш",pron:"sagysh",en:"longing",cat:"emotion"},{tat:"ачу",pron:"achu",en:"anger",cat:"emotion"},
+    {tat:"тынычлык",pron:"tynychlyk",en:"calm / peace",cat:"emotion"},{tat:"мәхәббәт",pron:"mäxäbbät",en:"love",cat:"emotion"},
+    {tat:"кызыксыну",pron:"kyzyksynu",en:"interest",cat:"emotion"},{tat:"горурлык",pron:"gorurlyk",en:"pride",cat:"emotion"},
+    {tat:"дуслык",pron:"duslyk",en:"friendship",cat:"emotion"},{tat:"ышаныч",pron:"yshanych",en:"trust / confidence",cat:"emotion"},
+    // people
+    {tat:"ир",pron:"ir",en:"man / husband",cat:"people"},{tat:"хатын",pron:"xatyn",en:"woman / wife",cat:"people"},
+    {tat:"апа",pron:"apa",en:"elder sister / aunt",cat:"people"},{tat:"абый",pron:"abyy",en:"elder brother",cat:"people"},
+    {tat:"эне",pron:"ene",en:"younger brother",cat:"people"},{tat:"сеңел",pron:"señel",en:"younger sister",cat:"people"},
+    {tat:"гаилә",pron:"gailä",en:"family",cat:"people"},{tat:"кунак",pron:"kunak",en:"guest",cat:"people"},
+    {tat:"халык",pron:"xalyk",en:"people / nation",cat:"people"},
+    // place
+    {tat:"урам",pron:"uram",en:"street",cat:"place"},{tat:"бакча",pron:"bakcha",en:"garden",cat:"place"},
+    {tat:"урман",pron:"urman",en:"forest",cat:"place"},{tat:"тау",pron:"taw",en:"mountain",cat:"place"},
+    {tat:"елга",pron:"yelga",en:"river",cat:"place"},{tat:"кыр",pron:"kyr",en:"field",cat:"place"},
+    {tat:"эш",pron:"esh",en:"work / job",cat:"place"},{tat:"хастаханә",pron:"xastaxanä",en:"hospital",cat:"place"},
+    {tat:"аэропорт",pron:"aeroport",en:"airport",cat:"place"},{tat:"юл",pron:"yul",en:"road / way",cat:"place"},
+    // thing (objects + food + nature)
+    {tat:"су",pron:"su",en:"water",cat:"thing"},{tat:"икмәк",pron:"ikmäk",en:"bread",cat:"thing"},
+    {tat:"сөт",pron:"söt",en:"milk",cat:"thing"},{tat:"ит",pron:"it",en:"meat",cat:"thing"},
+    {tat:"балык",pron:"balyk",en:"fish",cat:"thing"},{tat:"йомырка",pron:"yomyrka",en:"egg",cat:"thing"},
+    {tat:"җиләк-җимеш",pron:"ciläk-cimesh",en:"fruit & berries",cat:"thing"},{tat:"кием",pron:"kiyem",en:"clothing",cat:"thing"},
+    {tat:"ишек",pron:"ishek",en:"door",cat:"thing"},{tat:"тәрәзә",pron:"täräzä",en:"window",cat:"thing"},
+    {tat:"кәгазь",pron:"kägaz",en:"paper",cat:"thing"},{tat:"чәчәк",pron:"chächäk",en:"flower",cat:"thing"},
+    {tat:"кояш",pron:"koyash",en:"sun",cat:"thing"},{tat:"йолдыз",pron:"yoldyz",en:"star",cat:"thing"},
+    {tat:"кар",pron:"kar",en:"snow",cat:"thing"},{tat:"яңгыр",pron:"yañgyr",en:"rain",cat:"thing"},
+    {tat:"җил",pron:"cil",en:"wind",cat:"thing"},
+    // idea / time / abstract
+    {tat:"көн",pron:"kön",en:"day",cat:"idea"},{tat:"төн",pron:"tön",en:"night",cat:"idea"},
+    {tat:"ел",pron:"yel",en:"year",cat:"idea"},{tat:"ай",pron:"ay",en:"month / moon",cat:"idea"},
+    {tat:"атна",pron:"atna",en:"week",cat:"idea"},{tat:"һава",pron:"hava",en:"air / weather",cat:"idea"},
+    {tat:"эш",pron:"esh",en:"work / matter",cat:"idea"},{tat:"сүз",pron:"süz",en:"word",cat:"idea"}
+  ];
+  cardinals = [
+    {n:0,tat:"ноль"},{n:1,tat:"бер"},{n:2,tat:"ике"},{n:3,tat:"өч"},{n:4,tat:"дүрт"},{n:5,tat:"биш"},
+    {n:6,tat:"алты"},{n:7,tat:"җиде"},{n:8,tat:"сигез"},{n:9,tat:"тугыз"},{n:10,tat:"ун"},
+    {n:11,tat:"унбер"},{n:12,tat:"унике"},{n:13,tat:"унөч"},{n:14,tat:"ундүрт"},{n:15,tat:"унбиш"},
+    {n:16,tat:"уналты"},{n:17,tat:"унҗиде"},{n:18,tat:"унсигез"},{n:19,tat:"унтугыз"},{n:20,tat:"егерме"},
+    {n:30,tat:"утыз"},{n:40,tat:"кырык"},{n:50,tat:"илле"},{n:60,tat:"алтмыш"},{n:70,tat:"җитмеш"},
+    {n:80,tat:"сиксән"},{n:90,tat:"туксан"},{n:100,tat:"йөз"},{n:1000,tat:"мең"}
+  ];
+  ordinals = [
+    {n:"1st",tat:"беренче"},{n:"2nd",tat:"икенче"},{n:"3rd",tat:"өченче"},{n:"4th",tat:"дүртенче"},
+    {n:"5th",tat:"бишенче"},{n:"6th",tat:"алтынчы"},{n:"7th",tat:"җиденче"},{n:"8th",tat:"сигезенче"},
+    {n:"9th",tat:"тугызынчы"},{n:"10th",tat:"унынчы"},{n:"20th",tat:"егерменче"},{n:"100th",tat:"йөзенче"}
+  ];
+  connectives = [
+    {tat:"һәм",en:"and",note:"links words or clauses: чәй һәм кофе"},
+    {tat:"да / дә",en:"also / too",note:"goes after the word; voiceless → та/тә. Ул да килә."},
+    {tat:"яки",en:"or",note:"чәй яки кофе"},
+    {tat:"ләкин",en:"but",note:"a clear contrast"},
+    {tat:"ә",en:"and / but",note:"mild contrast: Мин барам, ә ул бармый."},
+    {tat:"чөнки",en:"because",note:"gives a reason: …, чөнки …"},
+    {tat:"шуңа күрә",en:"so / therefore",note:"states a result"}
+  ];
+  rulesRef = [
+    {title:"Yes / no questions: -мы / -ме",body:"Add the question particle to the word you're asking about — usually the verb or predicate. No word-order change. -мы after back-vowel (hard) words, -ме after front-vowel (soft) words.",ex:"Син барасың → Син барасыңмы? · Ул өйдә → Ул өйдәме? · Бу китапмы?"},
+    {title:"There is / isn't: бар / юк",body:"бар = there is / exists / I have. юк = there isn't. The thing comes first; бар or юк lands last.",ex:"Өстәлдә китап бар. · Минем машинам юк."},
+    {title:"How many: ничә / күпме",body:"ничә = how many (countable, expects a number). күпме = how much / how many (amount). The counted noun stays SINGULAR.",ex:"Ничә китап? — Биш китап. · Күпме акча?"},
+    {title:"This / that / these / those",body:"бу = this, шул = that, теге = that (over there). For 'these / those', keep the word singular and pluralize the noun instead.",ex:"бу китап = this book · бу китаплар = these books · шул кеше = that person"},
+    {title:"Indefinite past, 1st person",body:"The -ганмын / -гәнмен form (I …) often means you weren't aware of the action — it was accidental, or you can't personally remember it. Contrast the plain definite past -дым (you witnessed it).",ex:"Мин онытканмын = I forgot (not on purpose) · Мин 1947 елда туганмын = I was born in 1947"},
+    {title:"Two futures: -ачак vs -ыр",body:"Definite future -ачак/-әчәк (-ячак after a vowel) = it WILL happen, for sure — this is your everyday 'I will'. Indefinite future -ыр/-ер/-ар/-әр = maybe, probably, I suppose — softer and more bookish. Negatives differ: -маячак vs -мас.",ex:"Мин барачакмын = I will go (definitely) · Мин барырмын = I'll probably go / I might"},
+    {title:"Building the -ачак future",body:"Add -ачак (back) / -әчәк (front) to a consonant stem; after a vowel it's -ячак / -ячәк. Final -й melts into -я (куй→куячак); к→г and п→б voice before it (чык→чыгачак, тап→табачак). Then add мын·сың·—·быз·сыз·лар.",ex:"укы → укыячакмын · кил → киләчәкмен · яз → язмаячакмын (neg.)"}
+  ];
+  endingsRef = [
+    {title:"-лы / -ле — with / having",body:"Turns a noun into an adjective meaning 'having X'. Vowel harmony picks -лы (back) or -ле (front).",ex:"көч → көчле (strong) · тәм → тәмле (tasty) · акыл → акыллы (clever)"},
+    {title:"-сыз / -сез — without",body:"The opposite — 'lacking X'. -сыз after back vowels, -сез after front.",ex:"көчсез (weak) · эшсез (jobless) · акчасыз (penniless)"},
+    {title:"-рак / -рәк — comparative (more)",body:"Add to an adjective for 'more / -er'. Front vs back harmony.",ex:"зур → зуррак (bigger) · яхшы → яхшырак (better) · матуррак (prettier)"},
+    {title:"иң — superlative (most)",body:"Just place иң before the adjective — no suffix needed.",ex:"иң зур (biggest) · иң яхшы (best) · иң матур (most beautiful)"},
+    {title:"-лар / -ләр — plural",body:"Marks plural nouns (spoken variants -лар/-ләр/-нар/-нәр by harmony). Drop it after a number.",ex:"китап → китаплар · кеше → кешеләр · but: биш китап (five books)"},
+    {title:"-дагы / -дәге — 'the one at/in'",body:"Builds an adjective of place from the locative: 'the … that is at/in X'.",ex:"өйдәге китап (the book at home) · шәһәрдәге парк (the park in the city)"}
+  ];
+  aboutMe = [
+    {tat:"Минем исемем … , һәм мин …'да яшим.",en:"My name is …, and I live in …."},
+    {tat:"Мин еш китап укыйм, чөнки тарих белән кызыксынам.",en:"I often read, because I'm interested in history."},
+    {tat:"Мин кофе яки чәй эчәм, ләкин кофены күбрәк яратам.",en:"I drink coffee or tea, but I like coffee more."},
+    {tat:"Мин татарча сөйләшәм, инглизчә дә сөйләшәм.",en:"I speak Tatar, and I also speak English."},
+    {tat:"Кичен мин ардым, шуңа күрә иртә йоклыйм.",en:"In the evening I'm tired, so I sleep early."},
+    {tat:"Буш вакытта мин йөгерәм һәм музыка тыңлыйм.",en:"In my free time I run and listen to music."}
+  ];
+
+  pastTimeRef = [
+    {tat:"кичә",en:"yesterday"},{tat:"үткән атнада",en:"last week"},{tat:"үткән айда",en:"last month"},
+    {tat:"былтыр",en:"last year"},{tat:"өч көн элек",en:"three days ago"},{tat:"күптән",en:"long ago"},
+    {tat:"күптән түгел",en:"recently"}
+  ];
+  futTimeRef = [
+    {tat:"иртәгә",en:"tomorrow"},{tat:"тиздән",en:"soon"},{tat:"киләсе атнада",en:"next week"},
+    {tat:"киләсе айда",en:"next month"},{tat:"киләсе елда",en:"next year"},{tat:"берсекөнгә",en:"the day after tomorrow"},
+    {tat:"аннары",en:"afterwards / then"}
+  ];
+  timeTelling = [
+    {clock:"4:00",tat:"сәгать дүрт",lit:"hour four",en:"four o'clock"},
+    {clock:"5:30",tat:"алтынчы ярты",lit:"half of the 6th",en:"half past five"},
+    {clock:"9:30",tat:"унынчы ярты",lit:"half of the 10th",en:"half past nine"},
+    {clock:"9:25",tat:"25 минут унынчыда",lit:"25 min into the 10th",en:"nine twenty-five"},
+    {clock:"6:50",tat:"җиде тулырга ун минут",lit:"10 min for 7 to fill",en:"ten to seven"},
+    {clock:"4:45",tat:"биш тулырга унбиш минут",lit:"15 min for 5 to fill",en:"quarter to five"}
+  ];
+  clockRules = [
+    {t:"On the hour",b:"сәгать + number. Сәгать дүрт = 4:00."},
+    {t:"Half past → use the NEXT hour",b:"[next-hour ordinal] + ярты. алтынчы ярты = 5:30 — literally 'half of the sixth'."},
+    {t:"Minutes past",b:"[minutes] минут + [next-hour ordinal] in -да. 25 минут унынчыда = 9:25."},
+    {t:"Minutes to",b:"[coming hour] тулырга [minutes] минут. җиде тулырга ун минут = 6:50."},
+    {t:"At what time?",b:"Add the locative -да/-дә: сәгать дүрттә = at 4 o'clock."}
+  ];
+
+  PERSONS = [["Мин","I"],["Син","you"],["Ул","he/she"],["Без","we"],["Сез","you all"],["Алар","they"]];
+
+  constructor(props){
+    super(props);
+    let saved = {};
+    try { saved = JSON.parse(localStorage.getItem("tatarVerbLab.v1") || "{}"); } catch(e){}
+    const startTab = saved.tab || (props && props.startTab) || "builder";
+    const d0 = this.drills[0];
+    this.state = {
+      tab: startTab, cvId:1, tense:"pres", cneg:false, cperson:2, q:"",
+      fcIdx:0, fcFlipped:false, fcDir:"tat2en", srs: saved.srs || {},
+      bMode:"compose",
+      bWho:this.subjects[0], bWhen:null, bWhere:null, bObj:this.objects[0], bAdj:null, bMod:null, bAdv:null, bVerbId:15, bTense:"pres",
+      dIdx:0, pool:this._shuffle(d0.chunks.slice()), placed:[], dCheck:null,
+      qaIdx:0, qaPick:null,
+      bDet:null, dictCats:{verb:true,people:true,place:true,thing:true,idea:true,emotion:true,body:true,color:true,adj:true,mod:true}
+    };
+  }
+
+  _shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+  _persist(){ try{ localStorage.setItem("tatarVerbLab.v1", JSON.stringify({tab:this.state.tab, srs:this.state.srs})); }catch(e){} }
+  _cap(s){ return s ? s.charAt(0).toUpperCase()+s.slice(1) : s; }
+
+  // Definite (categorical) future -ачак/-әчәк · returns {base, suf}
+  futII(v){
+    let s = v.stem; const soft = v.soft;
+    const last = s[s.length-1];
+    if(last==="й") return {base:s.slice(0,-1), suf:(soft?"ячәк":"ячак")};
+    if(v.ev){
+      if(last==="у"||last==="ү") return {base:s, suf:(soft?"әчәк":"ачак")};
+      return {base:s, suf:(soft?"ячәк":"ячак")};
+    }
+    let base = s;
+    if(last==="к") base = s.slice(0,-1)+"г";
+    else if(last==="п") base = s.slice(0,-1)+"б";
+    return {base, suf:(soft?"әчәк":"ачак")};
+  }
+
+  seg(text,kind){
+    const m = {stem:["#efe9dd","#3a322a"],pre:["#efe9dd","#857a6c"],neg:["#e6eef0","#3d6b86"],tense:["#f3e6d2","#9a6420"],person:["#f3dedb","#b23a2e"]};
+    const c = m[kind];
+    return {text, bg:c[0], fg:c[1]};
+  }
+
+  conj(v, tense, p, neg){
+    const s = v.soft, pre = v.pre || "", segs = []; let form = "";
+    if(tense==="pres"){
+      const pe = ["м", s?"сең":"сың","", s?"без":"быз", s?"сез":"сез", s?"ләр":"лар"][p];
+      const peSez = s?"сез":"сыз"; const pers = ["м", s?"сең":"сың","", s?"без":"быз", peSez, s?"ләр":"лар"][p];
+      if(!neg){
+        segs.push(this.seg(v.p3,"tense"));
+        if(pers) segs.push(this.seg(pers,"person"));
+        form = v.p3 + pers;
+      } else {
+        const nb = s?"ми":"мый";
+        segs.push(this.seg(v.stem,"stem"), this.seg(nb,"neg"));
+        if(pers) segs.push(this.seg(pers,"person"));
+        form = v.stem + nb + pers;
+      }
+    } else if(tense==="dpast"){
+      const pe = ["м","ң","","к", s?"гез":"гыз", s?"ләр":"лар"][p];
+      if(!neg){
+        const t = v.vl ? (s?"те":"ты") : (s?"де":"ды");
+        segs.push(this.seg(v.stem,"stem"), this.seg(t,"tense"));
+        if(pe) segs.push(this.seg(pe,"person"));
+        form = v.stem + t + pe;
+      } else {
+        const n = s?"мә":"ма", t = s?"де":"ды";
+        segs.push(this.seg(v.stem,"stem"), this.seg(n,"neg"), this.seg(t,"tense"));
+        if(pe) segs.push(this.seg(pe,"person"));
+        form = v.stem + n + t + pe;
+      }
+    } else if(tense==="ipast"){
+      const pe = [s?"мен":"мын", s?"сең":"сың","", s?"без":"быз", s?"сез":"сыз", s?"нәр":"нар"][p];
+      if(!neg){
+        const t = v.vl ? (s?"кән":"кан") : (s?"гән":"ган");
+        segs.push(this.seg(v.stem,"stem"), this.seg(t,"tense"));
+        if(pe) segs.push(this.seg(pe,"person"));
+        form = v.stem + t + pe;
+      } else {
+        const t = s?"мәгән":"маган";
+        segs.push(this.seg(v.stem,"stem"), this.seg(t,"neg"));
+        if(pe) segs.push(this.seg(pe,"person"));
+        form = v.stem + t + pe;
+      }
+    } else if(tense==="fut2"){
+      const pe = [s?"мен":"мын", s?"сең":"сың","", s?"без":"быз", s?"сез":"сыз", s?"ләр":"лар"][p];
+      if(!neg){
+        const f = this.futII(v);
+        segs.push(this.seg(f.base,"stem"), this.seg(f.suf,"tense"));
+        if(pe) segs.push(this.seg(pe,"person"));
+        form = f.base + f.suf + pe;
+      } else {
+        const n = s?"мә":"ма", suf = s?"ячәк":"ячак";
+        segs.push(this.seg(v.stem,"stem"), this.seg(n,"neg"), this.seg(suf,"tense"));
+        if(pe) segs.push(this.seg(pe,"person"));
+        form = v.stem + n + suf + pe;
+      }
+    } else { // imp
+      const plural = (p===3||p===4||p===5);
+      if(!neg){
+        if(plural){ const pl = v.ev ? (s?"гез":"гыз") : (s?"егез":"ыгыз"); segs.push(this.seg(v.stem,"stem"), this.seg(pl,"person")); form = v.stem+pl; }
+        else { segs.push(this.seg(v.stem,"stem")); form = v.stem; }
+      } else {
+        const n = s?"мә":"ма";
+        if(plural){ const pl = s?"гез":"гыз"; segs.push(this.seg(v.stem,"stem"), this.seg(n,"neg"), this.seg(pl,"person")); form = v.stem+n+pl; }
+        else { segs.push(this.seg(v.stem,"stem"), this.seg(n,"neg")); form = v.stem+n; }
+      }
+    }
+    if(pre){ segs.unshift(this.seg(pre.trim(),"pre")); form = pre + form; }
+    return {form, segs};
+  }
+
+  // --- builder ---
+  setSlot(key,val){
+    const cur = this.state[key];
+    const same = cur && val && cur.tat===val.tat;
+    this.setState({[key]: same?null:val});
+  }
+  setVerb(id){ this.setState({bVerbId:id}); }
+  clearCompose(){ this.setState({bWho:null,bWhen:null,bWhere:null,bDet:null,bMod:null,bAdj:null,bObj:null,bAdv:null,bVerbId:null}); }
+
+  // --- drill ---
+  initDrill(i){ const ch = this.drills[i].chunks.slice(); this.setState({dIdx:i, pool:this._shuffle(ch), placed:[], dCheck:null}); }
+  tapPool(i){ const pool=this.state.pool.slice(); const [c]=pool.splice(i,1); this.setState({pool, placed:[...this.state.placed,c], dCheck:null}); }
+  tapPlaced(i){ const placed=this.state.placed.slice(); const [c]=placed.splice(i,1); this.setState({placed, pool:[...this.state.pool,c], dCheck:null}); }
+  checkDrill(){ const user=this.state.placed.map(c=>c.t).join("|"); const correct=this.drills[this.state.dIdx].chunks.map(c=>c.t).join("|"); this.setState({dCheck: user===correct ? "ok" : "no"}); }
+
+  // --- flashcards ---
+  rate(box){ const cur=this.verbs[this.state.fcIdx % this.verbs.length]; const srs={...this.state.srs,[cur.id]:box}; this.setState({srs, fcFlipped:false, fcIdx:(this.state.fcIdx+1)%this.verbs.length}, ()=>this._persist()); this._persist(); }
+
+  renderVals(){
+    const st = this.state;
+    const showPron = this.props.showPron !== false;
+
+    const tabsDef = [
+      {id:"builder",label:"Sentence Builder",sub:"SOV reflex"},
+      {id:"respond",label:"Respond",sub:"Q & A"},
+      {id:"pegs",label:"Memory Pegs",sub:"verbs"},
+      {id:"conj",label:"Conjugator",sub:"suffix lab"},
+      {id:"nuances",label:"Nuances",sub:"rules & pairs"},
+      {id:"numbers",label:"Numbers",sub:"counting"},
+      {id:"dict",label:"Dictionary",sub:"words"},
+      {id:"cards",label:"Flashcards",sub:"recall"}
+    ];
+    const tabs = tabsDef.map(t=>({...t, onClick:()=>this.setState({tab:t.id},()=>this._persist()),
+      abg:t.id===st.tab?"#211c17":"transparent", afg:t.id===st.tab?"#fbf9f3":"#857a6c", abd:t.id===st.tab?"#211c17":"#ddd5c4"}));
+
+    // ---- builder compose ----
+    const roleC = {subj:["#e7eef2","#365b73"],time:["#f5ead6","#9a6420"],place:["#e8efe1","#4f6b3f"],obj:["#f0e7da","#7d5f33"],det:["#ece8f2","#6a5f8a"],adj:["#efe7d3","#9a6420"],mod:["#eae4ef","#7a5c8a"],verb:["#f6dbd6","#a8392c"]};
+    const mkChips = (key, arr, role) => arr.map(o=>{
+      const active = st[key] && st[key].tat===o.tat;
+      const rc = roleC[role];
+      return {tat:o.tat, en:o.en, active,
+        bg: active?rc[0]:"#fff", fg: active?rc[1]:"#5a5145", bd: active?rc[1]:"#e0d8c7",
+        onClick:()=>this.setSlot(key,o)};
+    });
+    const verbChips = this.verbs.map(v=>{
+      const active = st.bVerbId===v.id; const rc=roleC.verb;
+      return {tat:(v.disp||v.stem), en:v.en.replace("to ",""), active,
+        bg:active?rc[0]:"#fff", fg:active?rc[1]:"#5a5145", bd:active?rc[1]:"#e0d8c7",
+        onClick:()=>this.setVerb(v.id)};
+    });
+    const slots = [
+      {key:"who",label:"1 · Кем? — who",hint:"subject",lc:"#365b73",bd:"#dfe6ea",bg2:"#fbf9f3",chips:mkChips("bWho",this.subjects,"subj")},
+      {key:"when",label:"2 · Кайчан? — when",hint:"time",lc:"#9a6420",bd:"#ece2d0",bg2:"#fbf9f3",chips:mkChips("bWhen",this.times,"time")},
+      {key:"where",label:"3 · Кайда? — where",hint:"place",lc:"#4f6b3f",bd:"#e1e8da",bg2:"#fbf9f3",chips:mkChips("bWhere",this.places,"place")},
+      {key:"det",label:"4 · Бу/Шул — this/that",hint:"determiner",lc:"#6a5f8a",bd:"#e2dded",bg2:"#fbf9f3",chips:mkChips("bDet",this.determiners,"det")},
+      {key:"mod",label:"5 · Күпме? — degree",hint:"intensifier",lc:"#7a5c8a",bd:"#e2dded",bg2:"#fbf9f3",chips:mkChips("bMod",this.builderMods,"mod")},
+      {key:"adj",label:"6 · Нинди? — what kind",hint:"adjective / colour",lc:"#9a6420",bd:"#ece2d0",bg2:"#fbf9f3",chips:mkChips("bAdj",this.builderAdjs,"adj")},
+      {key:"obj",label:"7 · Нәрсә? — what",hint:"object / noun",lc:"#7d5f33",bd:"#ece2d0",bg2:"#fbf9f3",chips:mkChips("bObj",this.objects,"obj")},
+      {key:"adv",label:"8 · Ничек? — how",hint:"manner",lc:"#8a7f70",bd:"#e4ddcf",bg2:"#fbf9f3",chips:mkChips("bAdv",this.advs,"obj")},
+      {key:"verb",label:"9 · Эш — VERB (last!)",hint:"auto-conjugates",lc:"#b23a2e",bd:"#e6c4be",bg2:"#fdf4f2",chips:verbChips}
+    ];
+    const subj = st.bWho, vb = this.verbs.find(v=>v.id===st.bVerbId);
+    const bTense = st.bTense || "pres";
+    const conjVerb = vb ? this.conj(vb,bTense,subj?subj.p:2,false).form : "";
+    const enVerbAux = {pres:"", dpast:"", fut2:"will "}[bTense];
+    const enVerbTail = {pres:"", dpast:" (past)", fut2:""}[bTense];
+    const bTenseBtns = [["pres","Present"],["dpast","Past"],["fut2","Future"]].map(([id,label])=>({label,
+      onClick:()=>this.setState({bTense:id}), bg:bTense===id?"#211c17":"#fff", fg:bTense===id?"#fbf9f3":"#5a5145", bd:bTense===id?"#211c17":"#e0d8c7"}));
+    const adjTat = st.bAdj ? ((st.bMod?st.bMod.tat+" ":"")+st.bAdj.tat) : null;
+    const adjEn = st.bAdj ? ((st.bMod?st.bMod.en+" ":"")+st.bAdj.en) : null;
+    const objTat = [st.bDet&&st.bDet.tat, adjTat, st.bObj&&st.bObj.tat].filter(Boolean).join(" ") || null;
+    const objEn = [st.bDet&&st.bDet.en, adjEn, st.bObj&&st.bObj.en].filter(Boolean).join(" ") || null;
+    const tatParts = [st.bWho&&st.bWho.tat, st.bWhen&&st.bWhen.tat, st.bWhere&&st.bWhere.tat, objTat, st.bAdv&&st.bAdv.tat, conjVerb].filter(Boolean);
+    const tatSentence = tatParts.length ? this._cap(tatParts.join(" "))+"." : "…";
+    const enVerbPhrase = vb ? (enVerbAux + vb.en.replace("to ","") + enVerbTail) : null;
+    const enParts = [subj&&subj.en, enVerbPhrase, objEn, st.bWhere&&st.bWhere.en, st.bAdv&&st.bAdv.en, st.bWhen&&st.bWhen.en].filter(Boolean);
+    const enSentence = enParts.length ? this._cap(enParts.join(" "))+"." : "…";
+
+    // ---- drill ----
+    const placed = st.placed.map((c,i)=>{ const rc=roleC[c.r]||roleC.obj; return {t:c.t, bg:rc[0], fg:rc[1], onClick:()=>this.tapPlaced(i)}; });
+    const pool = st.pool.map((c,i)=>({t:c.t, onClick:()=>this.tapPool(i)}));
+    const resultText = st.dCheck==="ok" ? "✓ Verb last — perfect SOV." : st.dCheck==="no" ? "Not yet — verb goes to the end." : "";
+    const resultColor = st.dCheck==="ok" ? "#4f6b3f" : st.dCheck==="no" ? "#a8392c" : "#8a7f70";
+    const answerBd = st.dCheck==="ok" ? "#7ca06a" : st.dCheck==="no" ? "#d8b3ad" : "#d6cdbb";
+    const answerBg = st.dCheck==="ok" ? "#f0f5ec" : "#fff";
+
+    // ---- pegs ----
+    const clsOf = v => v.soft ? {cls:"front vowel",clsColor:"#3d6b86",clsBd:"#cfdde4"} : {cls:"back vowel",clsColor:"#9a6420",clsBd:"#e8d8bd"};
+    const pegCards = this.verbs.map(v=>({num:v.id, stem:(v.disp||v.stem), pron:v.pron, en:v.en, kw:v.kw, sc:v.sc, ...clsOf(v)}));
+    const journey = this.journeySteps ? this.journeySteps : [];
+    const jr = this.journeySteps; // not used
+    const journeyArr = this.journeySteps;
+
+    // ---- conjugator ----
+    const cv = this.verbs.find(v=>v.id===st.cvId) || this.verbs[0];
+    const tenseNames = {pres:"Present tense", dpast:"Definite past", ipast:"Indefinite past", fut2:"Definite future", imp:"Imperative"};
+    const tenseNotes = {
+      pres:"Habitual & ongoing action. Stem + -а/-ә after consonants, or -ый/-и after vowels, then the personal ending.",
+      dpast:"Witnessed, certain past with -ды/-де/-ты/-те. “I did it, and I know it for a fact.”",
+      ipast:"Reported / unwitnessed past with -ган/-гән/-кан/-кән. Things you heard about, read, or didn’t notice yourself.",
+      fut2:"Certain future with -ачак/-әчәк (-ячак/-ячәк after a vowel). “I will definitely do it.” Negative inserts -ма/-мә: язмаячакмын. (The softer -ыр future — see Nuances — hints at maybe.)",
+      imp:"Command form. Singular = the bare stem; plural adds -ыгыз/-егез. Negate with -ма/-мә."
+    };
+    const isImp = st.tense==="imp";
+    let table, big, bigLabel;
+    if(isImp){
+      const sing=this.conj(cv,"imp",1,st.cneg), pl=this.conj(cv,"imp",4,st.cneg);
+      table=[{label:"Син — sing.", ...sing, onClick:()=>{}}, {label:"Сез — pl.", ...pl, onClick:()=>{}}].map(r=>({...r, rowBg:"#fbf9f3"}));
+      big=sing; bigLabel="Син";
+    } else {
+      table=[0,1,2,3,4,5].map(p=>{ const c=this.conj(cv,st.tense,p,st.cneg); return {label:this.PERSONS[p][0]+" · "+this.PERSONS[p][1], form:c.form, onClick:()=>this.setState({cperson:p}), rowBg: p===st.cperson?"#f6efe6":"#fbf9f3"}; });
+      big=this.conj(cv,st.tense,st.cperson,st.cneg); bigLabel=this.PERSONS[st.cperson][0];
+    }
+    const bigSegs = big.segs.map((s,i)=>({...s, plus: i<big.segs.length-1 ? "+" : ""}));
+    const tenseBtns = [["pres","Present"],["dpast","Past · seen"],["ipast","Past · heard"],["fut2","Future"],["imp","Imperative"]].map(([id,label])=>({label,
+      onClick:()=>this.setState({tense:id}), bg:st.tense===id?"#211c17":"#fff", fg:st.tense===id?"#fbf9f3":"#5a5145", bd:st.tense===id?"#211c17":"#e0d8c7"}));
+    const verbOpts = this.verbs.map(v=>({id:v.id, label:(v.disp||v.stem)+" — "+v.en.replace("to ","")}));
+
+    // ---- dictionary ----
+    const q = (st.q||"").toLowerCase().trim();
+    const cats = st.dictCats;
+    const catMeta = {people:["People","#365b73","#cfdde4"],place:["Place","#4f6b3f","#cddbc4"],thing:["Thing","#7d5f33","#e6d8bd"],idea:["Idea","#6a5f8a","#d8d2e6"],emotion:["Emotion","#a8392c","#e6c9c4"],body:["Body","#b23a2e","#e6c9c4"],color:["Colour","#365b73","#cfdde4"],adj:["Adjective","#9a6420","#e6d8bd"],mod:["Modifier","#6a5f8a","#d8d2e6"]};
+    let dictEntries = [];
+    if(cats.verb) dictEntries = this.verbs.map(v=>({num:String(v.id), stem:(v.disp||v.stem), pron:v.pron, en:v.en, tag:(v.soft?"verb · front":"verb · back"), tagColor:"#b23a2e", tagBd:"#e6c9c4", canConj:true, onClick:()=>this.setState({tab:"conj", cvId:v.id},()=>this._persist())}));
+    this.nouns.forEach(n=>{ if(cats[n.cat]){ const m=catMeta[n.cat]; dictEntries.push({num:"", stem:n.tat, pron:n.pron, en:n.en, tag:m[0], tagColor:m[1], tagBd:m[2], canConj:false, onClick:()=>{}}); } });
+    const extraWords = [].concat(
+      this.bodyParts.map(x=>({...x,cat:"body"})),
+      this.colors.map(x=>({...x,cat:"color"})),
+      this.adjAll.map(x=>({...x,cat:"adj"})),
+      this.modifiers.map(x=>({...x,cat:"mod"})),
+      this.emotionAdjs.map(x=>({...x,cat:"emotion"}))
+    );
+    extraWords.forEach(n=>{ if(cats[n.cat]){ const m=catMeta[n.cat]; dictEntries.push({num:"", stem:n.tat, pron:n.pron, en:n.en, tag:m[0], tagColor:m[1], tagBd:m[2], canConj:false, onClick:()=>{}}); } });
+    const dictList = dictEntries.filter(e=> !q || e.stem.toLowerCase().includes(q) || e.en.toLowerCase().includes(q) || e.pron.toLowerCase().includes(q));
+    const filterDefs = [["verb","Verbs"],["people","People"],["place","Places"],["thing","Things"],["idea","Ideas"],["emotion","Emotions"],["body","Body"],["color","Colours"],["adj","Adjectives"],["mod","Modifiers"]];
+    const dictFilters = filterDefs.map(([k,label])=>({label, onClick:()=>this.setState({dictCats:{...cats,[k]:!cats[k]}}), bg:cats[k]?"#211c17":"#fff", fg:cats[k]?"#fbf9f3":"#8a7f70", bd:cats[k]?"#211c17":"#e0d8c7"}));
+
+    // ---- flashcards ----
+    const fc = this.verbs[st.fcIdx % this.verbs.length];
+    const t2e = st.fcDir==="tat2en";
+    const fcKnown = Object.values(st.srs).filter(b=>b>=4).length;
+
+    // ---- respond ----
+    const qa = this.qaBank[st.qaIdx % this.qaBank.length];
+    const qaAnswered = st.qaPick!==null;
+    const qaIsYes = st.qaPick==="yes", qaIsNo = st.qaPick==="no";
+    const qaAnswerText = qaIsYes ? qa.yes : qa.no;
+    const qaAnswerLabel = qaIsYes ? "Әйе — yes" : "Юк — no";
+    const qaOtherText = qaIsYes ? qa.no : qa.yes;
+    const qaOtherLabel = qaIsYes ? "Юк" : "Әйе";
+
+    return {
+      tabs, showPron,
+      tBuilder: st.tab==="builder", tRespond: st.tab==="respond", tPegs: st.tab==="pegs", tConj: st.tab==="conj", tNuances: st.tab==="nuances", tNumbers: st.tab==="numbers", tDict: st.tab==="dict", tCards: st.tab==="cards",
+      // builder mode
+      bCompose: st.bMode==="compose", bDrill: st.bMode==="drill",
+      onCompose:()=>this.setState({bMode:"compose"}), onDrill:()=>this.setState({bMode:"drill"}),
+      compBg: st.bMode==="compose"?"#211c17":"#fff", compFg: st.bMode==="compose"?"#fbf9f3":"#5a5145", compBd: st.bMode==="compose"?"#211c17":"#e0d8c7",
+      drillBg: st.bMode==="drill"?"#211c17":"#fff", drillFg: st.bMode==="drill"?"#fbf9f3":"#5a5145", drillBd: st.bMode==="drill"?"#211c17":"#e0d8c7",
+      // compose
+      slots, tatSentence, enSentence, bTenseBtns, onClearCompose:()=>this.clearCompose(),
+      // drill
+      drillNo: st.dIdx+1, drillEn: this.drills[st.dIdx].en, placed, pool, resultText, resultColor, answerBd, answerBg,
+      onCheck:()=>this.checkDrill(), onResetDrill:()=>this.initDrill(st.dIdx), onNextDrill:()=>this.initDrill((st.dIdx+1)%this.drills.length),
+      // pegs
+      pegCards, chains: this.chains,
+      // respond
+      qaNo: st.qaIdx+1, qaTotal: this.qaBank.length, qaQ: qa.q, qaEn: qa.en,
+      qaPickYes:()=>this.setState({qaPick:"yes"}), qaPickNo:()=>this.setState({qaPick:"no"}),
+      qaNext:()=>this.setState({qaIdx:(st.qaIdx+1)%this.qaBank.length, qaPick:null}),
+      yesBg:qaIsYes?"#eef3e8":"#fff", yesFg:qaIsYes?"#4f6b3f":"#5a5145", yesBd:qaIsYes?"#7ca06a":"#e0d8c7",
+      noBg:qaIsNo?"#f7ece9":"#fff", noFg:qaIsNo?"#a8392c":"#5a5145", noBd:qaIsNo?"#d8b3ad":"#e0d8c7",
+      qaAnswered, qaAnswerLabel, qaAnswerText, qaNote:qa.note||"", qaOtherLabel, qaOtherText,
+      qaAccent: qaIsYes?"#4f6b3f":"#a8392c", qaAnsBg: qaIsYes?"#f0f5ec":"#f9efec", qaAnsBd: qaIsYes?"#c2d0b3":"#e3c6bf",
+      // nuances
+      verbPairs:this.verbPairs, freqRef:this.freqRef, timeRef:this.timeRef, pastTimeRef:this.pastTimeRef, futTimeRef:this.futTimeRef, emoRef:this.emoRef, rulesRef:this.rulesRef, endingsRef:this.endingsRef, connectives:this.connectives,
+      // numbers + about-me
+      cardinals:this.cardinals, ordinals:this.ordinals, aboutMe:this.aboutMe, timeTelling:this.timeTelling, clockRules:this.clockRules,
+      // conj
+      verbOpts, cvId:st.cvId, onSelectVerb:(e)=>this.setState({cvId:parseInt(e.target.value,10)},()=>this._persist()),
+      tenseBtns, onToggleNeg:()=>this.setState({cneg:!st.cneg}),
+      negBg: st.cneg?"#3d6b86":"#fff", negFg: st.cneg?"#fff":"#5a5145", negBd: st.cneg?"#3d6b86":"#e0d8c7",
+      bigForm: big.form, bigSegs, bigLabel, tenseName: tenseNames[st.tense], tenseNote: tenseNotes[st.tense], table,
+      // dict
+      onSearch:(e)=>this.setState({q:e.target.value}), dictCount: dictList.length, dictList, dictFilters,
+      // flashcards
+      onToggleDir:()=>this.setState({fcDir: t2e?"en2tat":"tat2en", fcFlipped:false}),
+      dirLabel: t2e ? "Tatar → English" : "English → Tatar",
+      fcPos: (st.fcIdx % this.verbs.length)+1, fcTotal: this.verbs.length, fcKnown, fcNum: fc.id,
+      fcFront: !st.fcFlipped, fcBack: st.fcFlipped,
+      fcFrontMain: t2e ? (fc.disp||fc.stem) : fc.en,
+      fcFrontSub: t2e ? (showPron?fc.pron:"tap to flip") : "tap to reveal Tatar",
+      fcBackMain: t2e ? fc.en : (fc.disp||fc.stem),
+      fcBackSub: fc.pron, fcKw: fc.kw, fcSc: fc.sc,
+      onFlip:()=>this.setState({fcFlipped:!st.fcFlipped}),
+      onAgain:()=>this.rate(1), onGood:()=>{ const cur=this.verbs[st.fcIdx%this.verbs.length]; const b=Math.min((st.srs[cur.id]||0)+1,4); this.rate(b); }, onEasy:()=>this.rate(5),
+      onPrev:()=>this.setState({fcIdx:(st.fcIdx-1+this.verbs.length)%this.verbs.length, fcFlipped:false}),
+      onNextCard:()=>this.setState({fcIdx:(st.fcIdx+1)%this.verbs.length, fcFlipped:false})
+    };
+  }
+}
+</script>
+</body>
+</html>
