@@ -6,11 +6,16 @@ import edge_tts
 
 # Tatar has no native TTS voice on any free engine (verified: gTTS's supported
 # language list and Edge's neural voice catalog both lack "tt" and "ba"). We
-# use a Russian neural voice as a phonetic approximation -- the same strategy
+# approximate with a neighboring Cyrillic voice instead -- the same strategy
 # the web app's browser speechSynthesis fallback already uses, but with much
 # higher audio quality since these are real neural voices, not gTTS/robotic
-# browser TTS. Swap VOICE below if Tatar ever gets one.
-VOICE = "ru-RU-SvetlanaNeural"
+# browser TTS. Kazakh (kk-KZ), not Russian, is the right stand-in: Kazakh
+# Cyrillic already contains Ә, Ң, Ө, Ү and Һ natively, so its text normalizer
+# reads them correctly. Russian's alphabet has none of those letters, so
+# ru-RU voices were mangling every word that used them (only Җ has no Kazakh
+# equivalent -- Kazakh uses plain Ж there). Swap VOICE below if Tatar ever
+# gets its own voice.
+VOICE = "kk-KZ-AigulNeural"
 
 
 class AudioEngine:
