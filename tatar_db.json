@@ -2,7 +2,7 @@
   "meta": {
     "title": "Nested Hearth — Tatar Memory Palace Database",
     "owner": "Salauat",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "updated": "2026-06-30",
     "purpose": "Single source of truth that binds VOCAB + MEDIA + PALACE so every drill (listening, speaking) is generated from one spine. Edit this file in VSCode/Claude Code; the app and tools read from it.",
     "schema": {
@@ -10,7 +10,8 @@
       "nouns": "s, en, back(bool), cat, [loan], [note]",
       "expressions": "tt, translit, en, [literal], kind(idiom|state|greeting|line), [somatic(heart|head|none)], [valence], [note]",
       "media": "id, type(lecture|book|poem|image|text|slide), title, [by], [date], [url], lang, note, [tatar]",
-      "stations": "id, locus, locus_en, zone, vocab[surface forms], expressions[tt], media[ids], listen{tt,en}, speak{tt,en}, note"
+      "stations": "id, locus, locus_en, zone, vocab[surface forms], expressions[tt], media[ids], listen{tt,en}, speak{tt,en}, note",
+      "verbLab": "self-contained Verb Lab toolkit merged from the 'Tatar Verb Lab' Claude design — verbs(id,stem,en,pron,soft,ev,vl,p3,kw,sc,[pre],[disp]) drive the conjugator/pegs/flashcards; subjects/times/places/objects/advs/determiners/builderMods/builderAdjs/bodyParts/colors/adjAll/modifiers/emotionAdjs feed the Sentence Builder; drills/journeySteps/chains/verbPairs/qaBank/nouns/cardinals/ordinals/connectives/rulesRef/endingsRef/aboutMe/pastTimeRef/timeTelling/clockRules/freqRef/timeRef/emoRef/PERSONS feed Respond, Nuances, Numbers, and Dictionary. Independent of vocab.verbs (that spine covers the Palace/Cog/Speech Lab tabs) since the two schemas serve different pedagogy (principal-parts reference vs. mnemonic-peg drilling)."
     },
     "harmony_note": "back=true takes -са/-га/-ка/-да/-ны (back vowels а о у ы); back=false takes -сә/-гә/-кә/-дә/-не (front ә ө ү е и). Loanwords carry an EXPLICIT flag because the last written vowel can lie (табип -> back)."
   },
@@ -2010,6 +2011,3008 @@
         },
         "note": "Reunites урман and хайкинг, which already lived in vocab.nouns but had no station of their own."
       }
+    ]
+  },
+  "verbLab": {
+    "verbs": [
+      {
+        "id": 1,
+        "stem": "бар",
+        "en": "to go",
+        "pron": "bar",
+        "soft": false,
+        "ev": false,
+        "vl": false,
+        "p3": "бара",
+        "kw": "BAR",
+        "sc": "Stroll into a BAR — to go."
+      },
+      {
+        "id": 2,
+        "stem": "кил",
+        "en": "to come",
+        "pron": "kil",
+        "soft": true,
+        "ev": false,
+        "vl": false,
+        "p3": "килә",
+        "kw": "KEEL",
+        "sc": "A boat's KEEL glides ashore — to come."
+      },
+      {
+        "id": 3,
+        "stem": "кит",
+        "en": "to leave",
+        "pron": "kit",
+        "soft": true,
+        "ev": false,
+        "vl": true,
+        "p3": "китә",
+        "kw": "KIT",
+        "sc": "Grab your KIT and leave."
+      },
+      {
+        "id": 4,
+        "stem": "кал",
+        "en": "to stay / remain",
+        "pron": "kal",
+        "soft": false,
+        "ev": false,
+        "vl": false,
+        "p3": "кала",
+        "kw": "CALL",
+        "sc": "You CALL out: I'll stay!"
+      },
+      {
+        "id": 5,
+        "stem": "кер",
+        "en": "to enter",
+        "pron": "ker",
+        "soft": true,
+        "ev": false,
+        "vl": false,
+        "p3": "керә",
+        "kw": "CARE",
+        "sc": "Step in with CARE — to enter."
+      },
+      {
+        "id": 6,
+        "stem": "чык",
+        "en": "to go out / exit",
+        "pron": "chyk",
+        "soft": false,
+        "ev": false,
+        "vl": true,
+        "p3": "чыга",
+        "kw": "CHICK",
+        "sc": "A CHICK hatches out of the shell."
+      },
+      {
+        "id": 7,
+        "stem": "утыр",
+        "en": "to sit",
+        "pron": "utyr",
+        "soft": false,
+        "ev": false,
+        "vl": false,
+        "p3": "утыра",
+        "kw": "UTTER",
+        "sc": "UTTERLY tired, you sit down."
+      },
+      {
+        "id": 8,
+        "stem": "тор",
+        "en": "to get up / stand",
+        "pron": "tor",
+        "soft": false,
+        "ev": false,
+        "vl": false,
+        "p3": "тора",
+        "kw": "TORO",
+        "sc": "The bull TORO rises to its feet."
+      },
+      {
+        "id": 9,
+        "stem": "йокла",
+        "en": "to sleep",
+        "pron": "yokla",
+        "soft": false,
+        "ev": true,
+        "vl": false,
+        "p3": "йоклый",
+        "kw": "YO-CLAW",
+        "sc": "You yawn, claw the blanket, sleep."
+      },
+      {
+        "id": 10,
+        "stem": "уян",
+        "en": "to wake up",
+        "pron": "uyan",
+        "soft": false,
+        "ev": false,
+        "vl": false,
+        "p3": "уяна",
+        "kw": "U-YAWN",
+        "sc": "A huge YAWN — you wake up."
+      },
+      {
+        "id": 11,
+        "stem": "аша",
+        "en": "to eat",
+        "pron": "asha",
+        "soft": false,
+        "ev": true,
+        "vl": false,
+        "p3": "ашый",
+        "kw": "A-SHA",
+        "sc": "You devour A SHAwarma — to eat."
+      },
+      {
+        "id": 12,
+        "stem": "эч",
+        "en": "to drink",
+        "pron": "ech",
+        "soft": true,
+        "ev": false,
+        "vl": true,
+        "p3": "эчә",
+        "kw": "ETCH",
+        "sc": "An icy drink: you gasp ETCH!"
+      },
+      {
+        "id": 13,
+        "stem": "пешер",
+        "en": "to cook",
+        "pron": "pesher",
+        "soft": true,
+        "ev": false,
+        "vl": false,
+        "p3": "пешерә",
+        "kw": "PRESSURE",
+        "sc": "PRESSURE-cook the stew."
+      },
+      {
+        "id": 14,
+        "stem": "яз",
+        "en": "to write",
+        "pron": "yaz",
+        "soft": false,
+        "ev": false,
+        "vl": false,
+        "p3": "яза",
+        "kw": "YAZ",
+        "sc": "You spray YAZ graffiti on the wall."
+      },
+      {
+        "id": 15,
+        "stem": "укы",
+        "en": "to read / study",
+        "pron": "uky",
+        "soft": false,
+        "ev": true,
+        "vl": false,
+        "p3": "укый",
+        "kw": "OOH-KEY",
+        "sc": "OOH-KEY, you read aloud."
+      },
+      {
+        "id": 16,
+        "stem": "бел",
+        "en": "to know",
+        "pron": "bel",
+        "soft": true,
+        "ev": false,
+        "vl": false,
+        "p3": "белә",
+        "kw": "BELL",
+        "sc": "A BELL rings — now you know."
+      },
+      {
+        "id": 17,
+        "stem": "аңла",
+        "en": "to understand",
+        "pron": "angla",
+        "soft": false,
+        "ev": true,
+        "vl": false,
+        "p3": "аңлый",
+        "kw": "ANGLE",
+        "sc": "The ANGLE clicks — you get it."
+      },
+      {
+        "id": 18,
+        "stem": "сөйлә",
+        "en": "to tell / say",
+        "pron": "söylä",
+        "soft": true,
+        "ev": true,
+        "vl": false,
+        "p3": "сөйли",
+        "kw": "SAIL-a",
+        "sc": "You SAIL a tale across the room."
+      },
+      {
+        "id": 19,
+        "stem": "сөйләш",
+        "en": "to converse / speak with",
+        "pron": "söyläsh",
+        "soft": true,
+        "ev": false,
+        "vl": true,
+        "p3": "сөйләшә",
+        "kw": "SAIL-ASH",
+        "sc": "Two boats SAIL & chat the day away."
+      },
+      {
+        "id": 20,
+        "stem": "әйт",
+        "en": "to say",
+        "pron": "äyt",
+        "soft": true,
+        "ev": false,
+        "vl": true,
+        "p3": "әйтә",
+        "kw": "EIGHT",
+        "sc": "You shout EIGHT! — to say."
+      },
+      {
+        "id": 21,
+        "stem": "сора",
+        "en": "to ask",
+        "pron": "sora",
+        "soft": false,
+        "ev": true,
+        "vl": false,
+        "p3": "сорый",
+        "kw": "SORRY",
+        "sc": "SORRY, may I ask a question?"
+      },
+      {
+        "id": 22,
+        "stem": "бир",
+        "en": "to give",
+        "pron": "bir",
+        "soft": true,
+        "ev": false,
+        "vl": false,
+        "p3": "бирә",
+        "kw": "BEER",
+        "sc": "You hand over a BEER — to give."
+      },
+      {
+        "id": 23,
+        "stem": "ал",
+        "en": "to take",
+        "pron": "al",
+        "soft": false,
+        "ev": false,
+        "vl": false,
+        "p3": "ала",
+        "kw": "ALL",
+        "sc": "Take it ALL."
+      },
+      {
+        "id": 24,
+        "stem": "кара",
+        "en": "to look / watch",
+        "pron": "kara",
+        "soft": false,
+        "ev": true,
+        "vl": false,
+        "p3": "карый",
+        "kw": "KARA-te",
+        "sc": "You watch the KARAte match."
+      },
+      {
+        "id": 25,
+        "stem": "күр",
+        "en": "to see",
+        "pron": "kür",
+        "soft": true,
+        "ev": false,
+        "vl": false,
+        "p3": "күрә",
+        "kw": "CURE",
+        "sc": "At last you see the CURE."
+      },
+      {
+        "id": 26,
+        "stem": "ишет",
+        "en": "to hear",
+        "pron": "ishet",
+        "soft": true,
+        "ev": false,
+        "vl": true,
+        "p3": "ишетә",
+        "kw": "IS-IT",
+        "sc": "IS-IT a sound? — you hear it."
+      },
+      {
+        "id": 27,
+        "stem": "тыңла",
+        "en": "to listen",
+        "pron": "tyngla",
+        "soft": false,
+        "ev": true,
+        "vl": false,
+        "p3": "тыңлый",
+        "kw": "TONG-la",
+        "sc": "Listen close, TONGs to your ear."
+      },
+      {
+        "id": 28,
+        "stem": "ярат",
+        "en": "to love / like",
+        "pron": "yarat",
+        "soft": false,
+        "ev": false,
+        "vl": true,
+        "p3": "ярата",
+        "kw": "YACHT",
+        "sc": "You love your gleaming YACHT."
+      },
+      {
+        "id": 29,
+        "stem": "телә",
+        "en": "to want / wish",
+        "pron": "telä",
+        "soft": true,
+        "ev": true,
+        "vl": false,
+        "p3": "тели",
+        "kw": "TELL-a",
+        "sc": "You TELL a wish you want."
+      },
+      {
+        "id": 30,
+        "stem": "ал",
+        "disp": "сатып ал",
+        "pre": "сатып ",
+        "en": "to buy",
+        "pron": "satyp al",
+        "soft": false,
+        "ev": false,
+        "vl": false,
+        "p3": "ала",
+        "kw": "SIT-UP-ALL",
+        "sc": "SIT UP, take it ALL — to buy."
+      },
+      {
+        "id": 31,
+        "stem": "сат",
+        "en": "to sell",
+        "pron": "sat",
+        "soft": false,
+        "ev": false,
+        "vl": true,
+        "p3": "сата",
+        "kw": "SAT",
+        "sc": "You SAT and sold the whole lot."
+      },
+      {
+        "id": 32,
+        "stem": "эшлә",
+        "en": "to work / do",
+        "pron": "eshlä",
+        "soft": true,
+        "ev": true,
+        "vl": false,
+        "p3": "эшли",
+        "kw": "ASH-LAY",
+        "sc": "You work as ASH LAYs on the forge."
+      },
+      {
+        "id": 33,
+        "stem": "яса",
+        "en": "to make",
+        "pron": "yasa",
+        "soft": false,
+        "ev": true,
+        "vl": false,
+        "p3": "ясый",
+        "kw": "YA-SAW",
+        "sc": "YA, the SAW builds it — to make."
+      },
+      {
+        "id": 34,
+        "stem": "ит",
+        "disp": "ял ит",
+        "pre": "ял ",
+        "en": "to rest",
+        "pron": "yal it",
+        "soft": true,
+        "ev": false,
+        "vl": true,
+        "p3": "итә",
+        "kw": "YALL-EAT",
+        "sc": "Y'ALL EAT, then rest a while."
+      },
+      {
+        "id": 35,
+        "stem": "эзлә",
+        "en": "to search / look for",
+        "pron": "ezlä",
+        "soft": true,
+        "ev": true,
+        "vl": false,
+        "p3": "эзли",
+        "kw": "EASEL-a",
+        "sc": "You search behind the EASEL."
+      },
+      {
+        "id": 36,
+        "stem": "тап",
+        "en": "to find",
+        "pron": "tap",
+        "soft": false,
+        "ev": false,
+        "vl": true,
+        "p3": "таба",
+        "kw": "TAP",
+        "sc": "You TAP it — found at last!"
+      },
+      {
+        "id": 37,
+        "stem": "оныт",
+        "en": "to forget",
+        "pron": "onyt",
+        "soft": false,
+        "ev": false,
+        "vl": true,
+        "p3": "оныта",
+        "kw": "OH-NOT",
+        "sc": "OH NOT again — you forgot."
+      },
+      {
+        "id": 38,
+        "stem": "хәтерлә",
+        "en": "to remember",
+        "pron": "xäterlä",
+        "soft": true,
+        "ev": true,
+        "vl": false,
+        "p3": "хәтерли",
+        "kw": "HEAD-er",
+        "sc": "A HEADER jogs your memory."
+      },
+      {
+        "id": 39,
+        "stem": "өйрән",
+        "en": "to learn",
+        "pron": "öyrän",
+        "soft": true,
+        "ev": false,
+        "vl": false,
+        "p3": "өйрәнә",
+        "kw": "OY-RUN",
+        "sc": "Oy, you RUN the drills — to learn."
+      },
+      {
+        "id": 40,
+        "stem": "өйрәт",
+        "en": "to teach",
+        "pron": "öyrät",
+        "soft": true,
+        "ev": false,
+        "vl": true,
+        "p3": "өйрәтә",
+        "kw": "OY-RAT",
+        "sc": "You teach the oy-RAT a new trick."
+      },
+      {
+        "id": 41,
+        "stem": "кабатла",
+        "en": "to repeat",
+        "pron": "kabatla",
+        "soft": false,
+        "ev": true,
+        "vl": false,
+        "p3": "кабатлый",
+        "kw": "KEBAB-la",
+        "sc": "A KEBAB on loop — repeat, repeat."
+      },
+      {
+        "id": 42,
+        "stem": "ит",
+        "disp": "тәрҗемә ит",
+        "pre": "тәрҗемә ",
+        "en": "to translate",
+        "pron": "tärcemä it",
+        "soft": true,
+        "ev": false,
+        "vl": true,
+        "p3": "итә",
+        "kw": "TARGET-ME",
+        "sc": "TARGET-ME, then translate the line."
+      },
+      {
+        "id": 43,
+        "stem": "йөр",
+        "en": "to walk around / go about",
+        "pron": "yör",
+        "soft": true,
+        "ev": false,
+        "vl": false,
+        "p3": "йөри",
+        "kw": "YORE",
+        "sc": "You wander streets of YORE."
+      },
+      {
+        "id": 44,
+        "stem": "йөгер",
+        "en": "to run",
+        "pron": "yöger",
+        "soft": true,
+        "ev": false,
+        "vl": false,
+        "p3": "йөгерә",
+        "kw": "YO-GER",
+        "sc": "A YOGa-er sprints down the track."
+      },
+      {
+        "id": 45,
+        "stem": "йөз",
+        "en": "to swim",
+        "pron": "yöz",
+        "soft": true,
+        "ev": false,
+        "vl": false,
+        "p3": "йөзә",
+        "kw": "WHOSE",
+        "sc": "WHOSE lane is this? — you swim."
+      },
+      {
+        "id": 46,
+        "stem": "бие",
+        "en": "to dance",
+        "pron": "biye",
+        "soft": true,
+        "ev": true,
+        "vl": false,
+        "p3": "бии",
+        "kw": "BEE-ye",
+        "sc": "A BEE dances mid-air."
+      },
+      {
+        "id": 47,
+        "stem": "җырла",
+        "en": "to sing",
+        "pron": "cyrla",
+        "soft": false,
+        "ev": true,
+        "vl": false,
+        "p3": "җырлый",
+        "kw": "JEER-la",
+        "sc": "Belt out JEER-ah — to sing."
+      },
+      {
+        "id": 48,
+        "stem": "уйна",
+        "en": "to play",
+        "pron": "uyna",
+        "soft": false,
+        "ev": true,
+        "vl": false,
+        "p3": "уйный",
+        "kw": "OY-na",
+        "sc": "Oy now! the kids play on."
+      },
+      {
+        "id": 49,
+        "stem": "тырыш",
+        "en": "to try / be diligent",
+        "pron": "tyrysh",
+        "soft": false,
+        "ev": false,
+        "vl": true,
+        "p3": "тырыша",
+        "kw": "TIRE-ish",
+        "sc": "You TIRE yourself trying hard."
+      },
+      {
+        "id": 50,
+        "stem": "түлә",
+        "en": "to pay",
+        "pron": "tülä",
+        "soft": true,
+        "ev": true,
+        "vl": false,
+        "p3": "түли",
+        "kw": "TOO-LA",
+        "sc": "Pay the TOLL at the booth."
+      },
+      {
+        "id": 51,
+        "stem": "чакыр",
+        "en": "to invite / call",
+        "pron": "chakyr",
+        "soft": false,
+        "ev": false,
+        "vl": false,
+        "p3": "чакыра",
+        "kw": "CHA-KEER",
+        "sc": "Cha, here! — you invite them in."
+      },
+      {
+        "id": 52,
+        "stem": "сал",
+        "en": "to put in / pour",
+        "pron": "sal",
+        "soft": false,
+        "ev": false,
+        "vl": false,
+        "p3": "сала",
+        "kw": "SALT",
+        "sc": "Put the SALT in the pot."
+      },
+      {
+        "id": 53,
+        "stem": "куй",
+        "en": "to put / place",
+        "pron": "kuy",
+        "soft": false,
+        "ev": false,
+        "vl": false,
+        "p3": "куя",
+        "kw": "COO-ey",
+        "sc": "Set the COOing dove down gently."
+      },
+      {
+        "id": 54,
+        "stem": "елмай",
+        "en": "to smile",
+        "pron": "yelmay",
+        "soft": false,
+        "ev": false,
+        "vl": false,
+        "p3": "елмая",
+        "kw": "YELL-MY",
+        "sc": "Smile wide and yell MY!"
+      },
+      {
+        "id": 55,
+        "stem": "көл",
+        "en": "to laugh",
+        "pron": "köl",
+        "soft": true,
+        "ev": false,
+        "vl": false,
+        "p3": "көлә",
+        "kw": "COAL",
+        "sc": "You laugh at the lump of COAL."
+      },
+      {
+        "id": 56,
+        "stem": "ела",
+        "en": "to cry",
+        "pron": "yela",
+        "soft": false,
+        "ev": true,
+        "vl": false,
+        "p3": "елый",
+        "kw": "YELL-a",
+        "sc": "You cry out and YELL-a."
+      },
+      {
+        "id": 57,
+        "stem": "сагын",
+        "en": "to miss / long for",
+        "pron": "sagyn",
+        "soft": false,
+        "ev": false,
+        "vl": false,
+        "p3": "сагына",
+        "kw": "SAG-in",
+        "sc": "Your heart SAGs in longing."
+      },
+      {
+        "id": 58,
+        "stem": "таныш",
+        "en": "to get acquainted",
+        "pron": "tanysh",
+        "soft": false,
+        "ev": false,
+        "vl": true,
+        "p3": "таныша",
+        "kw": "TAN-ish",
+        "sc": "You meet a TANned stranger."
+      },
+      {
+        "id": 59,
+        "stem": "очраш",
+        "en": "to meet up",
+        "pron": "ochrash",
+        "soft": false,
+        "ev": false,
+        "vl": true,
+        "p3": "очраша",
+        "kw": "OACH-RASH",
+        "sc": "You bump into a joyful RASH of friends."
+      },
+      {
+        "id": 60,
+        "stem": "башла",
+        "en": "to begin",
+        "pron": "bashla",
+        "soft": false,
+        "ev": true,
+        "vl": false,
+        "p3": "башлый",
+        "kw": "BASH-la",
+        "sc": "The BASH kicks off — to begin."
+      },
+      {
+        "id": 61,
+        "stem": "бетер",
+        "en": "to finish",
+        "pron": "beter",
+        "soft": true,
+        "ev": false,
+        "vl": false,
+        "p3": "бетерә",
+        "kw": "BET-er",
+        "sc": "You settle the BET — finished."
+      },
+      {
+        "id": 62,
+        "stem": "көт",
+        "en": "to wait",
+        "pron": "köt",
+        "soft": true,
+        "ev": false,
+        "vl": true,
+        "p3": "көтә",
+        "kw": "COT",
+        "sc": "You wait by the COT."
+      },
+      {
+        "id": 63,
+        "stem": "кайт",
+        "en": "to return / come back",
+        "pron": "kayt",
+        "soft": false,
+        "ev": false,
+        "vl": true,
+        "p3": "кайта",
+        "kw": "KITE",
+        "sc": "Bring the KITE back home."
+      },
+      {
+        "id": 64,
+        "stem": "куллан",
+        "en": "to use",
+        "pron": "kullan",
+        "soft": false,
+        "ev": false,
+        "vl": false,
+        "p3": "куллана",
+        "kw": "COOL-AN",
+        "sc": "You use the COOL fAN all summer."
+      },
+      {
+        "id": 65,
+        "stem": "ит",
+        "disp": "сәяхәт ит",
+        "pre": "сәяхәт ",
+        "en": "to travel",
+        "pron": "säyaxät it",
+        "soft": true,
+        "ev": false,
+        "vl": true,
+        "p3": "итә",
+        "kw": "SAY-A-HAT",
+        "sc": "You travel and SAY: a hat!"
+      },
+      {
+        "id": 66,
+        "stem": "кызыксын",
+        "en": "to be interested",
+        "pron": "kyzyksyn",
+        "soft": false,
+        "ev": false,
+        "vl": false,
+        "p3": "кызыксына",
+        "kw": "KIZIK-SIN",
+        "sc": "A curious KIZIK draws your interest."
+      },
+      {
+        "id": 67,
+        "stem": "килеш",
+        "en": "to agree / fit",
+        "pron": "kilesh",
+        "soft": true,
+        "ev": false,
+        "vl": true,
+        "p3": "килешә",
+        "kw": "KEY-LESH",
+        "sc": "The KEY fits — you agree."
+      },
+      {
+        "id": 68,
+        "stem": "ю",
+        "en": "to wash",
+        "pron": "yu",
+        "soft": false,
+        "ev": false,
+        "vl": false,
+        "p3": "юа",
+        "kw": "YOU",
+        "sc": "YOU scrub your hands clean — to wash."
+      },
+      {
+        "id": 69,
+        "stem": "кочакла",
+        "en": "to hug / embrace",
+        "pron": "kochakla",
+        "soft": false,
+        "ev": true,
+        "vl": false,
+        "p3": "кочаклый",
+        "kw": "KOACH-la",
+        "sc": "Coach-la! — a big warm hug."
+      },
+      {
+        "id": 70,
+        "stem": "үп",
+        "en": "to kiss",
+        "pron": "üp",
+        "soft": true,
+        "ev": false,
+        "vl": true,
+        "p3": "үбә",
+        "kw": "OOP",
+        "sc": "OOP! — a quick kiss on the cheek."
+      }
+    ],
+    "subjects": [
+      {
+        "tat": "Мин",
+        "en": "I",
+        "p": 0
+      },
+      {
+        "tat": "Син",
+        "en": "You",
+        "p": 1
+      },
+      {
+        "tat": "Ул",
+        "en": "He/She",
+        "p": 2
+      },
+      {
+        "tat": "Без",
+        "en": "We",
+        "p": 3
+      },
+      {
+        "tat": "Сез",
+        "en": "You (pl)",
+        "p": 4
+      },
+      {
+        "tat": "Алар",
+        "en": "They",
+        "p": 5
+      },
+      {
+        "tat": "Минем дустым",
+        "en": "My friend",
+        "p": 2
+      },
+      {
+        "tat": "Әнием",
+        "en": "My mom",
+        "p": 2
+      },
+      {
+        "tat": "Укытучы",
+        "en": "The teacher",
+        "p": 2
+      }
+    ],
+    "times": [
+      {
+        "tat": "иртән",
+        "en": "in the morning"
+      },
+      {
+        "tat": "кичен",
+        "en": "in the evening"
+      },
+      {
+        "tat": "көндез",
+        "en": "at midday"
+      },
+      {
+        "tat": "төнлә",
+        "en": "at night"
+      },
+      {
+        "tat": "бүген",
+        "en": "today"
+      },
+      {
+        "tat": "кичә",
+        "en": "yesterday"
+      },
+      {
+        "tat": "еш",
+        "en": "often"
+      },
+      {
+        "tat": "гадәттә",
+        "en": "usually"
+      },
+      {
+        "tat": "кайвакыт",
+        "en": "sometimes"
+      },
+      {
+        "tat": "сирәк",
+        "en": "rarely"
+      },
+      {
+        "tat": "һәрвакыт",
+        "en": "always"
+      },
+      {
+        "tat": "буш вакытта",
+        "en": "in free time"
+      }
+    ],
+    "places": [
+      {
+        "tat": "өйдә",
+        "en": "at home"
+      },
+      {
+        "tat": "мәктәптә",
+        "en": "at school"
+      },
+      {
+        "tat": "мәктәпкә",
+        "en": "to school"
+      },
+      {
+        "tat": "урамда",
+        "en": "on the street"
+      },
+      {
+        "tat": "кибеткә",
+        "en": "to the store"
+      },
+      {
+        "tat": "паркта",
+        "en": "in the park"
+      },
+      {
+        "tat": "монда",
+        "en": "here"
+      }
+    ],
+    "objects": [
+      {
+        "tat": "китап",
+        "en": "a book"
+      },
+      {
+        "tat": "су",
+        "en": "water"
+      },
+      {
+        "tat": "кофе",
+        "en": "coffee"
+      },
+      {
+        "tat": "чәй",
+        "en": "tea"
+      },
+      {
+        "tat": "музыка",
+        "en": "music"
+      },
+      {
+        "tat": "татарча",
+        "en": "Tatar"
+      },
+      {
+        "tat": "футбол",
+        "en": "football"
+      },
+      {
+        "tat": "аш",
+        "en": "food"
+      },
+      {
+        "tat": "хат",
+        "en": "a letter"
+      },
+      {
+        "tat": "акча",
+        "en": "money"
+      },
+      {
+        "tat": "тел",
+        "en": "a language"
+      },
+      {
+        "tat": "хыял",
+        "en": "a dream"
+      },
+      {
+        "tat": "машина",
+        "en": "a car"
+      },
+      {
+        "tat": "алма",
+        "en": "an apple"
+      },
+      {
+        "tat": "күлмәк",
+        "en": "a dress"
+      }
+    ],
+    "advs": [
+      {
+        "tat": "тиз",
+        "en": "quickly"
+      },
+      {
+        "tat": "яхшы",
+        "en": "well"
+      },
+      {
+        "tat": "бергә",
+        "en": "together"
+      },
+      {
+        "tat": "әкрен",
+        "en": "slowly"
+      }
+    ],
+    "determiners": [
+      {
+        "tat": "бу",
+        "en": "this"
+      },
+      {
+        "tat": "шул",
+        "en": "that"
+      },
+      {
+        "tat": "теге",
+        "en": "that yonder"
+      }
+    ],
+    "builderMods": [
+      {
+        "tat": "бик",
+        "en": "very"
+      },
+      {
+        "tat": "бераз",
+        "en": "a little"
+      },
+      {
+        "tat": "иң",
+        "en": "the most"
+      }
+    ],
+    "builderAdjs": [
+      {
+        "tat": "зур",
+        "en": "big"
+      },
+      {
+        "tat": "кечкенә",
+        "en": "small"
+      },
+      {
+        "tat": "матур",
+        "en": "beautiful"
+      },
+      {
+        "tat": "яңа",
+        "en": "new"
+      },
+      {
+        "tat": "яхшы",
+        "en": "good"
+      },
+      {
+        "tat": "тәмле",
+        "en": "tasty"
+      },
+      {
+        "tat": "кызыл",
+        "en": "red"
+      },
+      {
+        "tat": "зәңгәр",
+        "en": "blue"
+      },
+      {
+        "tat": "ак",
+        "en": "white"
+      },
+      {
+        "tat": "кара",
+        "en": "black"
+      },
+      {
+        "tat": "яшел",
+        "en": "green"
+      },
+      {
+        "tat": "кыйммәт",
+        "en": "expensive"
+      }
+    ],
+    "bodyParts": [
+      {
+        "tat": "баш",
+        "pron": "bash",
+        "en": "head"
+      },
+      {
+        "tat": "чәч",
+        "pron": "chäch",
+        "en": "hair"
+      },
+      {
+        "tat": "йөз",
+        "pron": "yöz",
+        "en": "face"
+      },
+      {
+        "tat": "күз",
+        "pron": "küz",
+        "en": "eye"
+      },
+      {
+        "tat": "колак",
+        "pron": "kolak",
+        "en": "ear"
+      },
+      {
+        "tat": "борын",
+        "pron": "boryn",
+        "en": "nose"
+      },
+      {
+        "tat": "авыз",
+        "pron": "avyz",
+        "en": "mouth"
+      },
+      {
+        "tat": "теш",
+        "pron": "tesh",
+        "en": "tooth"
+      },
+      {
+        "tat": "ирен",
+        "pron": "iren",
+        "en": "lip"
+      },
+      {
+        "tat": "муен",
+        "pron": "muyen",
+        "en": "neck"
+      },
+      {
+        "tat": "җилкә",
+        "pron": "cilkä",
+        "en": "shoulder"
+      },
+      {
+        "tat": "кул",
+        "pron": "kul",
+        "en": "hand / arm"
+      },
+      {
+        "tat": "бармак",
+        "pron": "barmak",
+        "en": "finger"
+      },
+      {
+        "tat": "аяк",
+        "pron": "ayak",
+        "en": "leg / foot"
+      },
+      {
+        "tat": "тез",
+        "pron": "tez",
+        "en": "knee"
+      },
+      {
+        "tat": "йөрәк",
+        "pron": "yöräk",
+        "en": "heart"
+      },
+      {
+        "tat": "эч",
+        "pron": "ech",
+        "en": "belly / stomach"
+      },
+      {
+        "tat": "арка",
+        "pron": "arka",
+        "en": "back"
+      },
+      {
+        "tat": "тән",
+        "pron": "tän",
+        "en": "body"
+      }
+    ],
+    "colors": [
+      {
+        "tat": "ак",
+        "pron": "ak",
+        "en": "white"
+      },
+      {
+        "tat": "кара",
+        "pron": "kara",
+        "en": "black"
+      },
+      {
+        "tat": "кызыл",
+        "pron": "kyzyl",
+        "en": "red"
+      },
+      {
+        "tat": "сары",
+        "pron": "sary",
+        "en": "yellow"
+      },
+      {
+        "tat": "яшел",
+        "pron": "yäshel",
+        "en": "green"
+      },
+      {
+        "tat": "зәңгәр",
+        "pron": "zäñgär",
+        "en": "blue"
+      },
+      {
+        "tat": "күк",
+        "pron": "kük",
+        "en": "sky-blue"
+      },
+      {
+        "tat": "коңгырт",
+        "pron": "koñgyrt",
+        "en": "brown"
+      },
+      {
+        "tat": "соры",
+        "pron": "sory",
+        "en": "grey"
+      },
+      {
+        "tat": "алсу",
+        "pron": "alsu",
+        "en": "pink"
+      },
+      {
+        "tat": "шәмәхә",
+        "pron": "shämäxä",
+        "en": "purple"
+      },
+      {
+        "tat": "кызгылт-сары",
+        "pron": "kyzgylt-sary",
+        "en": "orange"
+      }
+    ],
+    "adjAll": [
+      {
+        "tat": "зур",
+        "pron": "zur",
+        "en": "big"
+      },
+      {
+        "tat": "кечкенә",
+        "pron": "kechkenä",
+        "en": "small"
+      },
+      {
+        "tat": "яхшы",
+        "pron": "yaxshy",
+        "en": "good"
+      },
+      {
+        "tat": "начар",
+        "pron": "nachar",
+        "en": "bad"
+      },
+      {
+        "tat": "матур",
+        "pron": "matur",
+        "en": "beautiful"
+      },
+      {
+        "tat": "яңа",
+        "pron": "yaña",
+        "en": "new"
+      },
+      {
+        "tat": "иске",
+        "pron": "iske",
+        "en": "old (thing)"
+      },
+      {
+        "tat": "карт",
+        "pron": "kart",
+        "en": "old (person)"
+      },
+      {
+        "tat": "яшь",
+        "pron": "yäsh",
+        "en": "young"
+      },
+      {
+        "tat": "озын",
+        "pron": "ozyn",
+        "en": "long / tall"
+      },
+      {
+        "tat": "кыска",
+        "pron": "kyska",
+        "en": "short"
+      },
+      {
+        "tat": "җылы",
+        "pron": "cyly",
+        "en": "warm"
+      },
+      {
+        "tat": "салкын",
+        "pron": "salkyn",
+        "en": "cold"
+      },
+      {
+        "tat": "кайнар",
+        "pron": "kaynar",
+        "en": "hot"
+      },
+      {
+        "tat": "тәмле",
+        "pron": "tämle",
+        "en": "tasty"
+      },
+      {
+        "tat": "авыр",
+        "pron": "avyr",
+        "en": "heavy / hard"
+      },
+      {
+        "tat": "җиңел",
+        "pron": "ciñel",
+        "en": "light / easy"
+      },
+      {
+        "tat": "ерак",
+        "pron": "erak",
+        "en": "far"
+      },
+      {
+        "tat": "якын",
+        "pron": "yakyn",
+        "en": "near"
+      },
+      {
+        "tat": "көчле",
+        "pron": "köchle",
+        "en": "strong"
+      },
+      {
+        "tat": "кыйммәт",
+        "pron": "kyymmät",
+        "en": "expensive"
+      },
+      {
+        "tat": "арзан",
+        "pron": "arzan",
+        "en": "cheap"
+      },
+      {
+        "tat": "чиста",
+        "pron": "chista",
+        "en": "clean"
+      }
+    ],
+    "modifiers": [
+      {
+        "tat": "бик",
+        "pron": "bik",
+        "en": "very"
+      },
+      {
+        "tat": "бераз",
+        "pron": "beraz",
+        "en": "a little"
+      },
+      {
+        "tat": "иң",
+        "pron": "iñ",
+        "en": "most (superlative)"
+      },
+      {
+        "tat": "артык",
+        "pron": "artyk",
+        "en": "too (much)"
+      },
+      {
+        "tat": "тагын",
+        "pron": "tagyn",
+        "en": "more / again"
+      },
+      {
+        "tat": "шактый",
+        "pron": "shaktyy",
+        "en": "quite"
+      },
+      {
+        "tat": "гына / генә",
+        "pron": "gyna / genä",
+        "en": "only / just"
+      },
+      {
+        "tat": "бөтенләй",
+        "pron": "bötenläy",
+        "en": "completely"
+      },
+      {
+        "tat": "әле",
+        "pron": "äle",
+        "en": "still / yet"
+      }
+    ],
+    "emotionAdjs": [
+      {
+        "tat": "шат",
+        "pron": "shat",
+        "en": "glad"
+      },
+      {
+        "tat": "бәхетле",
+        "pron": "bäxetle",
+        "en": "happy"
+      },
+      {
+        "tat": "моңсу",
+        "pron": "moñsu",
+        "en": "sad"
+      },
+      {
+        "tat": "ачулы",
+        "pron": "achuly",
+        "en": "angry"
+      },
+      {
+        "tat": "курыккан",
+        "pron": "kurykkan",
+        "en": "scared"
+      },
+      {
+        "tat": "борчулы",
+        "pron": "borchuly",
+        "en": "worried"
+      },
+      {
+        "tat": "арыган",
+        "pron": "arygan",
+        "en": "tired"
+      },
+      {
+        "tat": "тыныч",
+        "pron": "tynych",
+        "en": "calm"
+      },
+      {
+        "tat": "кәефле",
+        "pron": "käefle",
+        "en": "cheerful"
+      },
+      {
+        "tat": "ялыккан",
+        "pron": "yalykkan",
+        "en": "bored"
+      }
+    ],
+    "drills": [
+      {
+        "en": "I read a book in the evening.",
+        "chunks": [
+          {
+            "t": "Мин",
+            "r": "subj"
+          },
+          {
+            "t": "кичен",
+            "r": "time"
+          },
+          {
+            "t": "китап",
+            "r": "obj"
+          },
+          {
+            "t": "укыйм",
+            "r": "verb"
+          }
+        ]
+      },
+      {
+        "en": "He goes to school in the morning.",
+        "chunks": [
+          {
+            "t": "Ул",
+            "r": "subj"
+          },
+          {
+            "t": "иртән",
+            "r": "time"
+          },
+          {
+            "t": "мәктәпкә",
+            "r": "place"
+          },
+          {
+            "t": "бара",
+            "r": "verb"
+          }
+        ]
+      },
+      {
+        "en": "We eat at home.",
+        "chunks": [
+          {
+            "t": "Без",
+            "r": "subj"
+          },
+          {
+            "t": "өйдә",
+            "r": "place"
+          },
+          {
+            "t": "ашыйбыз",
+            "r": "verb"
+          }
+        ]
+      },
+      {
+        "en": "They often play football.",
+        "chunks": [
+          {
+            "t": "Алар",
+            "r": "subj"
+          },
+          {
+            "t": "еш",
+            "r": "time"
+          },
+          {
+            "t": "футбол",
+            "r": "obj"
+          },
+          {
+            "t": "уйныйлар",
+            "r": "verb"
+          }
+        ]
+      },
+      {
+        "en": "I am learning Tatar.",
+        "chunks": [
+          {
+            "t": "Мин",
+            "r": "subj"
+          },
+          {
+            "t": "татар телен",
+            "r": "obj"
+          },
+          {
+            "t": "өйрәнәм",
+            "r": "verb"
+          }
+        ]
+      },
+      {
+        "en": "She listens to music at home.",
+        "chunks": [
+          {
+            "t": "Ул",
+            "r": "subj"
+          },
+          {
+            "t": "өйдә",
+            "r": "place"
+          },
+          {
+            "t": "музыка",
+            "r": "obj"
+          },
+          {
+            "t": "тыңлый",
+            "r": "verb"
+          }
+        ]
+      },
+      {
+        "en": "Yesterday I wrote a letter.",
+        "chunks": [
+          {
+            "t": "Кичә",
+            "r": "time"
+          },
+          {
+            "t": "мин",
+            "r": "subj"
+          },
+          {
+            "t": "хат",
+            "r": "obj"
+          },
+          {
+            "t": "яздым",
+            "r": "verb"
+          }
+        ]
+      },
+      {
+        "en": "On weekends we meet friends.",
+        "chunks": [
+          {
+            "t": "Ял көннәрендә",
+            "r": "time"
+          },
+          {
+            "t": "без",
+            "r": "subj"
+          },
+          {
+            "t": "дуслар белән",
+            "r": "obj"
+          },
+          {
+            "t": "очрашабыз",
+            "r": "verb"
+          }
+        ]
+      },
+      {
+        "en": "He doesn’t drink coffee in the morning.",
+        "chunks": [
+          {
+            "t": "Ул",
+            "r": "subj"
+          },
+          {
+            "t": "иртән",
+            "r": "time"
+          },
+          {
+            "t": "кофе",
+            "r": "obj"
+          },
+          {
+            "t": "эчми",
+            "r": "verb"
+          }
+        ]
+      },
+      {
+        "en": "I usually cook food at home.",
+        "chunks": [
+          {
+            "t": "Мин",
+            "r": "subj"
+          },
+          {
+            "t": "гадәттә",
+            "r": "time"
+          },
+          {
+            "t": "өйдә",
+            "r": "place"
+          },
+          {
+            "t": "аш",
+            "r": "obj"
+          },
+          {
+            "t": "пешерәм",
+            "r": "verb"
+          }
+        ]
+      },
+      {
+        "en": "Do you speak Tatar?",
+        "chunks": [
+          {
+            "t": "Син",
+            "r": "subj"
+          },
+          {
+            "t": "татарча",
+            "r": "obj"
+          },
+          {
+            "t": "сөйләшәсеңме?",
+            "r": "verb"
+          }
+        ]
+      },
+      {
+        "en": "Tomorrow I will go to the store.",
+        "chunks": [
+          {
+            "t": "Иртәгә",
+            "r": "time"
+          },
+          {
+            "t": "мин",
+            "r": "subj"
+          },
+          {
+            "t": "кибеткә",
+            "r": "place"
+          },
+          {
+            "t": "барам",
+            "r": "verb"
+          }
+        ]
+      }
+    ],
+    "journeySteps": [
+      {
+        "tat": "Иртән мин уянам.",
+        "en": "In the morning I wake up."
+      },
+      {
+        "tat": "Аннары мин торам.",
+        "en": "Then I get up."
+      },
+      {
+        "tat": "Мин кофе эчәм.",
+        "en": "I drink coffee."
+      },
+      {
+        "tat": "Мин мәктәпкә барам.",
+        "en": "I go to school."
+      },
+      {
+        "tat": "Көндез мин китап укыйм.",
+        "en": "At midday I read."
+      },
+      {
+        "tat": "Кичен мин дусларым белән сөйләшәм.",
+        "en": "In the evening I talk with friends."
+      },
+      {
+        "tat": "Төнлә мин йоклыйм.",
+        "en": "At night I sleep."
+      }
+    ],
+    "chains": [
+      {
+        "title": "A day, verb by verb",
+        "steps": [
+          {
+            "tat": "Иртән мин уянам.",
+            "en": "In the morning I wake up."
+          },
+          {
+            "tat": "Аннары мин торам.",
+            "en": "Then I get up."
+          },
+          {
+            "tat": "Мин кофе эчәм.",
+            "en": "I drink coffee."
+          },
+          {
+            "tat": "Мин мәктәпкә барам.",
+            "en": "I go to school."
+          },
+          {
+            "tat": "Көндез мин китап укыйм.",
+            "en": "At midday I read."
+          },
+          {
+            "tat": "Кичен мин дусларым белән сөйләшәм.",
+            "en": "In the evening I talk with friends."
+          },
+          {
+            "tat": "Төнлә мин йоклыйм.",
+            "en": "At night I sleep."
+          }
+        ]
+      },
+      {
+        "title": "Буш вакытта · in my free time",
+        "steps": [
+          {
+            "tat": "Буш вакытта мин китап укыйм.",
+            "en": "In my free time I read."
+          },
+          {
+            "tat": "Кайвакыт мин йөгерәм.",
+            "en": "Sometimes I run."
+          },
+          {
+            "tat": "Мин дусларым белән очрашам.",
+            "en": "I meet my friends."
+          },
+          {
+            "tat": "Кичен мин музыка тыңлыйм.",
+            "en": "In the evening I listen to music."
+          },
+          {
+            "tat": "Ял көннәрендә мин сәяхәт итәм.",
+            "en": "On weekends I travel."
+          }
+        ]
+      },
+      {
+        "title": "Кибеткә · a trip to the store",
+        "steps": [
+          {
+            "tat": "Мин кибеткә барам.",
+            "en": "I go to the store."
+          },
+          {
+            "tat": "Мин сөт сатып алам.",
+            "en": "I buy milk."
+          },
+          {
+            "tat": "Мин акча түлим.",
+            "en": "I pay."
+          },
+          {
+            "tat": "Аннары мин өйгә кайтам.",
+            "en": "Then I return home."
+          }
+        ]
+      },
+      {
+        "title": "Кәеф · feelings through a day",
+        "steps": [
+          {
+            "tat": "Иртән мин шат уянам.",
+            "en": "In the morning I wake up happy."
+          },
+          {
+            "tat": "Көндез мин арам.",
+            "en": "During the day I get tired."
+          },
+          {
+            "tat": "Мин дусларым белән көләм.",
+            "en": "I laugh with my friends."
+          },
+          {
+            "tat": "Кичен мин тыныч ял итәм.",
+            "en": "In the evening I rest calmly."
+          },
+          {
+            "tat": "Төнлә мин рәхәт йоклыйм.",
+            "en": "At night I sleep peacefully."
+          }
+        ]
+      }
+    ],
+    "verbPairs": [
+      {
+        "a": "уян",
+        "aen": "wake up",
+        "b": "тор",
+        "ben": "get up",
+        "note": "уян = your eyes open, you become conscious. тор = you physically rise / stand up. Иртән мин уянам, аннары торам."
+      },
+      {
+        "a": "кара",
+        "aen": "look / watch",
+        "b": "күр",
+        "ben": "see",
+        "note": "кара = look at / watch on purpose (телевизор карыйм). күр = perceive, see — often involuntary: Мин аны күрәм."
+      },
+      {
+        "a": "бел",
+        "aen": "know",
+        "b": "аңла",
+        "ben": "understand",
+        "note": "бел = hold knowledge of a fact. аңла = grasp meaning. Мин беләм, ләкин аңламыйм — I know, but I don't understand."
+      },
+      {
+        "a": "әйт",
+        "aen": "say",
+        "b": "сөйлә",
+        "ben": "tell / speak",
+        "note": "әйт = say one specific thing. сөйлә = narrate, speak at length. Add -ш → сөйләш = converse with someone (mutual)."
+      },
+      {
+        "a": "бар",
+        "aen": "go",
+        "b": "кит",
+        "ben": "leave",
+        "note": "бар = go toward a destination. кит = depart / leave from here. чык = step out of an enclosed space (бүлмәдән чык)."
+      },
+      {
+        "a": "ал",
+        "aen": "take",
+        "b": "сатып ал",
+        "ben": "buy",
+        "note": "ал = take / get. сатып ал = literally 'take by selling' = buy — same verb ал, with сатып in front."
+      },
+      {
+        "a": "эшлә",
+        "aen": "do / work",
+        "b": "яса",
+        "ben": "make",
+        "note": "эшлә = do a task, work (өй эше эшлим). яса = make / produce, and set phrases: йога ясыйм, күнегү ясыйм."
+      },
+      {
+        "a": "бар",
+        "aen": "go (once)",
+        "b": "йөр",
+        "ben": "go regularly",
+        "note": "бар = a single trip somewhere. йөр = attend regularly or move about: мәктәпкә йөрим = I go to school (every day)."
+      },
+      {
+        "a": "ярат",
+        "aen": "love / like",
+        "b": "ошый",
+        "ben": "it pleases (me)",
+        "note": "ярат takes an object: мин кофены яратам. ошый flips it — dative + 3rd person: миңа кофе ошый = coffee pleases me."
+      }
+    ],
+    "freqRef": [
+      {
+        "tat": "һәрвакыт",
+        "en": "always"
+      },
+      {
+        "tat": "гадәттә",
+        "en": "usually"
+      },
+      {
+        "tat": "еш",
+        "en": "often"
+      },
+      {
+        "tat": "кайвакыт",
+        "en": "sometimes"
+      },
+      {
+        "tat": "сирәк",
+        "en": "rarely"
+      },
+      {
+        "tat": "беркайчан да",
+        "en": "never (+ neg. verb)"
+      },
+      {
+        "tat": "көн саен",
+        "en": "every day"
+      },
+      {
+        "tat": "атнага бер тапкыр",
+        "en": "once a week"
+      },
+      {
+        "tat": "буш вакытта",
+        "en": "in free time"
+      }
+    ],
+    "timeRef": [
+      {
+        "tat": "иртән · иртә белән",
+        "en": "in the morning"
+      },
+      {
+        "tat": "көндез",
+        "en": "during the day"
+      },
+      {
+        "tat": "кичен · кич белән",
+        "en": "in the evening"
+      },
+      {
+        "tat": "төнлә",
+        "en": "at night"
+      }
+    ],
+    "emoRef": [
+      {
+        "tat": "Мин шат",
+        "en": "I'm glad / happy",
+        "note": "adjective predicate — no verb needed"
+      },
+      {
+        "tat": "Минем кәефем яхшы",
+        "en": "My mood is good",
+        "note": "lit. 'my mood [is] good'; кәефем начар = bad mood"
+      },
+      {
+        "tat": "Мин ардым",
+        "en": "I'm tired",
+        "note": "арырга — past tense marks the state you're now in"
+      },
+      {
+        "tat": "Миңа күңелле",
+        "en": "I'm having fun",
+        "note": "dative + adjective; күңелсез = bored / dull"
+      },
+      {
+        "tat": "Мин куркам",
+        "en": "I'm afraid",
+        "note": "куркырга — present tense"
+      },
+      {
+        "tat": "Мин борчылам",
+        "en": "I'm worried",
+        "note": "борчылырга"
+      },
+      {
+        "tat": "Мин сагынам",
+        "en": "I miss (someone)",
+        "note": "сагынырга — longing for"
+      },
+      {
+        "tat": "Мин кызыксынам",
+        "en": "I'm interested",
+        "note": "кызыксынырга + …белән: тарих белән кызыксынам"
+      }
+    ],
+    "qaBank": [
+      {
+        "q": "Син татарча сөйләшәсеңме?",
+        "en": "Do you speak Tatar?",
+        "yes": "Әйе, мин татарча сөйләшәм.",
+        "no": "Юк, мин татарча сөйләшмим."
+      },
+      {
+        "q": "Син кичә китап укыдыңмы?",
+        "en": "Did you read a book yesterday?",
+        "yes": "Әйе, мин кичә китап укыдым.",
+        "no": "Юк, мин кичә китап укымадым."
+      },
+      {
+        "q": "Син еш спорт белән шөгыльләнәсеңме?",
+        "en": "Do you often do sports?",
+        "yes": "Әйе, мин еш спорт белән шөгыльләнәм.",
+        "no": "Юк, мин сирәк шөгыльләнәм.",
+        "note": "Swap the frequency word to soften a 'no': еш → сирәк (rarely)."
+      },
+      {
+        "q": "Сиңа кофе ошыймы?",
+        "en": "Do you like coffee?",
+        "yes": "Әйе, миңа кофе ошый.",
+        "no": "Юк, миңа кофе ошамый.",
+        "note": "'Like' here is ошарга — it flips to dative (миңа …) + 3rd person, never -мын."
+      },
+      {
+        "q": "Син бүген ардыңмы?",
+        "en": "Are you tired today?",
+        "yes": "Әйе, мин бүген бик ардым.",
+        "no": "Юк, мин армадым.",
+        "note": "арырга (to tire) — past tense describes the state you're in right now."
+      },
+      {
+        "q": "Синең кәефең яхшымы?",
+        "en": "Is your mood good?",
+        "yes": "Әйе, минем кәефем яхшы.",
+        "no": "Юк, минем кәефем начар.",
+        "note": "No verb — кәеф (mood) + adjective. Flip yes/no by swapping яхшы ↔ начар."
+      },
+      {
+        "q": "Син иртән иртә торасыңмы?",
+        "en": "Do you get up early?",
+        "yes": "Әйе, мин иртән иртә торам.",
+        "no": "Юк, мин соң торам.",
+        "note": "тор = get up (rise). Note it's not уян (wake up)."
+      },
+      {
+        "q": "Алар футбол уйныйлармы?",
+        "en": "Do they play football?",
+        "yes": "Әйе, алар футбол уйныйлар.",
+        "no": "Юк, алар уйнамыйлар."
+      },
+      {
+        "q": "Син буш вакытта китап укыйсыңмы?",
+        "en": "Do you read in your free time?",
+        "yes": "Әйе, мин буш вакытта китап укыйм.",
+        "no": "Юк, мин буш вакытта йоклыйм."
+      },
+      {
+        "q": "Ул кичә эшкә килдеме?",
+        "en": "Did he come to work yesterday?",
+        "yes": "Әйе, ул кичә эшкә килде.",
+        "no": "Юк, ул килмәде."
+      },
+      {
+        "q": "Син Казанда булганмы?",
+        "en": "Have you been to Kazan?",
+        "yes": "Әйе, мин Казанда булганмын.",
+        "no": "Юк, мин Казанда булмаганмын.",
+        "note": "Indefinite past (-ган) — used for life experience you're reporting."
+      },
+      {
+        "q": "Сез татар телен өйрәнәсезме?",
+        "en": "Are you (pl) learning Tatar?",
+        "yes": "Әйе, без татар телен өйрәнәбез.",
+        "no": "Юк, без өйрәнмибез."
+      },
+      {
+        "q": "Син музыканы яратасыңмы?",
+        "en": "Do you love music?",
+        "yes": "Әйе, мин музыканы бик яратам.",
+        "no": "Юк, мин музыканы яратмыйм.",
+        "note": "ярат takes a direct object (музыканы) — contrast with ошый above."
+      },
+      {
+        "q": "Син кайвакыт йөзәсеңме?",
+        "en": "Do you sometimes swim?",
+        "yes": "Әйе, мин кайвакыт йөзәм.",
+        "no": "Юк, мин беркайчан да йөзмим.",
+        "note": "'Never' = беркайчан да + a negative verb (йөзмим)."
+      },
+      {
+        "q": "Син еш кино карыйсыңмы?",
+        "en": "Do you often watch films?",
+        "yes": "Әйе, мин еш кино карыйм.",
+        "no": "Юк, мин сирәк кино карыйм.",
+        "note": "Soften a 'no' with сирәк (rarely) rather than a flat negative."
+      },
+      {
+        "q": "Бу синең китабыңмы?",
+        "en": "Is this your book?",
+        "yes": "Әйе, бу минем китабым.",
+        "no": "Юк, бу минем китабым түгел.",
+        "note": "бу = this. To say something is NOT a noun, use түгел — not verb negation."
+      },
+      {
+        "q": "Өстәлдә китап бармы?",
+        "en": "Is there a book on the table?",
+        "yes": "Әйе, өстәлдә китап бар.",
+        "no": "Юк, өстәлдә китап юк.",
+        "note": "'There is' = бар, 'there isn't' = юк — both land last."
+      },
+      {
+        "q": "Синең машинаң бармы?",
+        "en": "Do you have a car?",
+        "yes": "Әйе, минем машинам бар.",
+        "no": "Юк, минем машинам юк.",
+        "note": "Possession uses бар/юк: literally 'my car exists / doesn't exist'."
+      },
+      {
+        "q": "Алар сирәк киләме?",
+        "en": "Do they come rarely?",
+        "yes": "Әйе, алар сирәк килә.",
+        "no": "Юк, алар еш килә.",
+        "note": "You can answer by flipping the frequency word itself: сирәк ↔ еш."
+      },
+      {
+        "q": "Сиңа татар теле кызыкмы?",
+        "en": "Is Tatar interesting to you?",
+        "yes": "Әйе, миңа татар теле бик кызык.",
+        "no": "Юк, миңа кызык түгел.",
+        "note": "кызык (interesting) is an adjective — negate with түгел."
+      },
+      {
+        "q": "Син былтыр чит илгә бардыңмы?",
+        "en": "Did you go abroad last year?",
+        "yes": "Әйе, мин былтыр чит илгә бардым.",
+        "no": "Юк, мин былтыр чит илгә бармадым.",
+        "note": "былтыр = last year → pairs with the definite (witnessed) past -дым."
+      },
+      {
+        "q": "Син кичә машина йөрттеңме?",
+        "en": "Did you drive yesterday?",
+        "yes": "Әйе, мин кичә машина йөрттем.",
+        "no": "Юк, мин кичә машина йөртмәдем."
+      }
+    ],
+    "nouns": [
+      {
+        "tat": "кеше",
+        "pron": "keshe",
+        "en": "person",
+        "cat": "people"
+      },
+      {
+        "tat": "дус",
+        "pron": "dus",
+        "en": "friend",
+        "cat": "people"
+      },
+      {
+        "tat": "әни",
+        "pron": "äni",
+        "en": "mother",
+        "cat": "people"
+      },
+      {
+        "tat": "әти",
+        "pron": "äti",
+        "en": "father",
+        "cat": "people"
+      },
+      {
+        "tat": "әби",
+        "pron": "äbi",
+        "en": "grandmother",
+        "cat": "people"
+      },
+      {
+        "tat": "бабай",
+        "pron": "babay",
+        "en": "grandfather",
+        "cat": "people"
+      },
+      {
+        "tat": "бала",
+        "pron": "bala",
+        "en": "child",
+        "cat": "people"
+      },
+      {
+        "tat": "малай",
+        "pron": "malay",
+        "en": "boy",
+        "cat": "people"
+      },
+      {
+        "tat": "кыз",
+        "pron": "kyz",
+        "en": "girl",
+        "cat": "people"
+      },
+      {
+        "tat": "укытучы",
+        "pron": "ukytuchy",
+        "en": "teacher",
+        "cat": "people"
+      },
+      {
+        "tat": "табиб",
+        "pron": "tabib",
+        "en": "doctor",
+        "cat": "people"
+      },
+      {
+        "tat": "күрше",
+        "pron": "kürshe",
+        "en": "neighbour",
+        "cat": "people"
+      },
+      {
+        "tat": "өй",
+        "pron": "öy",
+        "en": "house / home",
+        "cat": "place"
+      },
+      {
+        "tat": "мәктәп",
+        "pron": "mäktäp",
+        "en": "school",
+        "cat": "place"
+      },
+      {
+        "tat": "шәһәр",
+        "pron": "shähär",
+        "en": "city",
+        "cat": "place"
+      },
+      {
+        "tat": "авыл",
+        "pron": "avyl",
+        "en": "village",
+        "cat": "place"
+      },
+      {
+        "tat": "кибет",
+        "pron": "kibet",
+        "en": "store",
+        "cat": "place"
+      },
+      {
+        "tat": "парк",
+        "pron": "park",
+        "en": "park",
+        "cat": "place"
+      },
+      {
+        "tat": "ил",
+        "pron": "il",
+        "en": "country",
+        "cat": "place"
+      },
+      {
+        "tat": "бүлмә",
+        "pron": "bülmä",
+        "en": "room",
+        "cat": "place"
+      },
+      {
+        "tat": "университет",
+        "pron": "universitet",
+        "en": "university",
+        "cat": "place"
+      },
+      {
+        "tat": "китапханә",
+        "pron": "kitapxanä",
+        "en": "library",
+        "cat": "place"
+      },
+      {
+        "tat": "диңгез",
+        "pron": "diñgez",
+        "en": "sea",
+        "cat": "place"
+      },
+      {
+        "tat": "китап",
+        "pron": "kitap",
+        "en": "book",
+        "cat": "thing"
+      },
+      {
+        "tat": "өстәл",
+        "pron": "östäl",
+        "en": "table",
+        "cat": "thing"
+      },
+      {
+        "tat": "урындык",
+        "pron": "uryndyk",
+        "en": "chair",
+        "cat": "thing"
+      },
+      {
+        "tat": "машина",
+        "pron": "mashina",
+        "en": "car",
+        "cat": "thing"
+      },
+      {
+        "tat": "телефон",
+        "pron": "telefon",
+        "en": "phone",
+        "cat": "thing"
+      },
+      {
+        "tat": "ачкыч",
+        "pron": "achkych",
+        "en": "key",
+        "cat": "thing"
+      },
+      {
+        "tat": "чәй",
+        "pron": "chäy",
+        "en": "tea",
+        "cat": "thing"
+      },
+      {
+        "tat": "акча",
+        "pron": "akcha",
+        "en": "money",
+        "cat": "thing"
+      },
+      {
+        "tat": "хат",
+        "pron": "xat",
+        "en": "letter",
+        "cat": "thing"
+      },
+      {
+        "tat": "сүзлек",
+        "pron": "süzlek",
+        "en": "dictionary",
+        "cat": "thing"
+      },
+      {
+        "tat": "сәгать",
+        "pron": "sägat",
+        "en": "clock / watch",
+        "cat": "thing"
+      },
+      {
+        "tat": "дәфтәр",
+        "pron": "däftär",
+        "en": "notebook",
+        "cat": "thing"
+      },
+      {
+        "tat": "таш",
+        "pron": "tash",
+        "en": "stone",
+        "cat": "thing"
+      },
+      {
+        "tat": "кирпеч",
+        "pron": "kirpech",
+        "en": "brick",
+        "cat": "thing"
+      },
+      {
+        "tat": "идән",
+        "pron": "idän",
+        "en": "floor",
+        "cat": "thing"
+      },
+      {
+        "tat": "дивар",
+        "pron": "divar",
+        "en": "wall",
+        "cat": "thing"
+      },
+      {
+        "tat": "мич",
+        "pron": "mich",
+        "en": "stove / furnace",
+        "cat": "thing"
+      },
+      {
+        "tat": "тәңкә",
+        "pron": "täñkä",
+        "en": "coin",
+        "cat": "thing"
+      },
+      {
+        "tat": "тел",
+        "pron": "tel",
+        "en": "language",
+        "cat": "idea"
+      },
+      {
+        "tat": "тарих",
+        "pron": "tarix",
+        "en": "history",
+        "cat": "idea"
+      },
+      {
+        "tat": "вакыт",
+        "pron": "vakyt",
+        "en": "time",
+        "cat": "idea"
+      },
+      {
+        "tat": "тормыш",
+        "pron": "tormysh",
+        "en": "life",
+        "cat": "idea"
+      },
+      {
+        "tat": "фикер",
+        "pron": "fiker",
+        "en": "thought / opinion",
+        "cat": "idea"
+      },
+      {
+        "tat": "белем",
+        "pron": "belem",
+        "en": "knowledge",
+        "cat": "idea"
+      },
+      {
+        "tat": "мәдәният",
+        "pron": "mädäniyat",
+        "en": "culture",
+        "cat": "idea"
+      },
+      {
+        "tat": "хыял",
+        "pron": "xyyal",
+        "en": "dream",
+        "cat": "idea"
+      },
+      {
+        "tat": "азатлык",
+        "pron": "azatlyk",
+        "en": "freedom",
+        "cat": "idea"
+      },
+      {
+        "tat": "сәнгать",
+        "pron": "sängat",
+        "en": "art",
+        "cat": "idea"
+      },
+      {
+        "tat": "дин",
+        "pron": "din",
+        "en": "religion",
+        "cat": "idea"
+      },
+      {
+        "tat": "гасыр",
+        "pron": "gasyr",
+        "en": "century",
+        "cat": "idea"
+      },
+      {
+        "tat": "истәлек",
+        "pron": "istälek",
+        "en": "heritage / monument",
+        "cat": "idea"
+      },
+      {
+        "tat": "шатлык",
+        "pron": "shatlyk",
+        "en": "joy",
+        "cat": "emotion"
+      },
+      {
+        "tat": "кайгы",
+        "pron": "kaygy",
+        "en": "grief",
+        "cat": "emotion"
+      },
+      {
+        "tat": "курку",
+        "pron": "kurku",
+        "en": "fear",
+        "cat": "emotion"
+      },
+      {
+        "tat": "өмет",
+        "pron": "ömet",
+        "en": "hope",
+        "cat": "emotion"
+      },
+      {
+        "tat": "сагыш",
+        "pron": "sagysh",
+        "en": "longing",
+        "cat": "emotion"
+      },
+      {
+        "tat": "ачу",
+        "pron": "achu",
+        "en": "anger",
+        "cat": "emotion"
+      },
+      {
+        "tat": "тынычлык",
+        "pron": "tynychlyk",
+        "en": "calm / peace",
+        "cat": "emotion"
+      },
+      {
+        "tat": "мәхәббәт",
+        "pron": "mäxäbbät",
+        "en": "love",
+        "cat": "emotion"
+      },
+      {
+        "tat": "кызыксыну",
+        "pron": "kyzyksynu",
+        "en": "interest",
+        "cat": "emotion"
+      },
+      {
+        "tat": "горурлык",
+        "pron": "gorurlyk",
+        "en": "pride",
+        "cat": "emotion"
+      }
+    ],
+    "cardinals": [
+      {
+        "n": 0,
+        "tat": "ноль"
+      },
+      {
+        "n": 1,
+        "tat": "бер"
+      },
+      {
+        "n": 2,
+        "tat": "ике"
+      },
+      {
+        "n": 3,
+        "tat": "өч"
+      },
+      {
+        "n": 4,
+        "tat": "дүрт"
+      },
+      {
+        "n": 5,
+        "tat": "биш"
+      },
+      {
+        "n": 6,
+        "tat": "алты"
+      },
+      {
+        "n": 7,
+        "tat": "җиде"
+      },
+      {
+        "n": 8,
+        "tat": "сигез"
+      },
+      {
+        "n": 9,
+        "tat": "тугыз"
+      },
+      {
+        "n": 10,
+        "tat": "ун"
+      },
+      {
+        "n": 11,
+        "tat": "унбер"
+      },
+      {
+        "n": 12,
+        "tat": "унике"
+      },
+      {
+        "n": 13,
+        "tat": "унөч"
+      },
+      {
+        "n": 14,
+        "tat": "ундүрт"
+      },
+      {
+        "n": 15,
+        "tat": "унбиш"
+      },
+      {
+        "n": 16,
+        "tat": "уналты"
+      },
+      {
+        "n": 17,
+        "tat": "унҗиде"
+      },
+      {
+        "n": 18,
+        "tat": "унсигез"
+      },
+      {
+        "n": 19,
+        "tat": "унтугыз"
+      },
+      {
+        "n": 20,
+        "tat": "егерме"
+      },
+      {
+        "n": 30,
+        "tat": "утыз"
+      },
+      {
+        "n": 40,
+        "tat": "кырык"
+      },
+      {
+        "n": 50,
+        "tat": "илле"
+      },
+      {
+        "n": 60,
+        "tat": "алтмыш"
+      },
+      {
+        "n": 70,
+        "tat": "җитмеш"
+      },
+      {
+        "n": 80,
+        "tat": "сиксән"
+      },
+      {
+        "n": 90,
+        "tat": "туксан"
+      },
+      {
+        "n": 100,
+        "tat": "йөз"
+      },
+      {
+        "n": 1000,
+        "tat": "мең"
+      }
+    ],
+    "ordinals": [
+      {
+        "n": "1st",
+        "tat": "беренче"
+      },
+      {
+        "n": "2nd",
+        "tat": "икенче"
+      },
+      {
+        "n": "3rd",
+        "tat": "өченче"
+      },
+      {
+        "n": "4th",
+        "tat": "дүртенче"
+      },
+      {
+        "n": "5th",
+        "tat": "бишенче"
+      },
+      {
+        "n": "6th",
+        "tat": "алтынчы"
+      },
+      {
+        "n": "7th",
+        "tat": "җиденче"
+      },
+      {
+        "n": "8th",
+        "tat": "сигезенче"
+      },
+      {
+        "n": "9th",
+        "tat": "тугызынчы"
+      },
+      {
+        "n": "10th",
+        "tat": "унынчы"
+      },
+      {
+        "n": "20th",
+        "tat": "егерменче"
+      },
+      {
+        "n": "100th",
+        "tat": "йөзенче"
+      }
+    ],
+    "connectives": [
+      {
+        "tat": "һәм",
+        "en": "and",
+        "note": "links words or clauses: чәй һәм кофе"
+      },
+      {
+        "tat": "да / дә",
+        "en": "also / too",
+        "note": "goes after the word; voiceless → та/тә. Ул да килә."
+      },
+      {
+        "tat": "яки",
+        "en": "or",
+        "note": "чәй яки кофе"
+      },
+      {
+        "tat": "ләкин",
+        "en": "but",
+        "note": "a clear contrast"
+      },
+      {
+        "tat": "ә",
+        "en": "and / but",
+        "note": "mild contrast: Мин барам, ә ул бармый."
+      },
+      {
+        "tat": "чөнки",
+        "en": "because",
+        "note": "gives a reason: …, чөнки …"
+      },
+      {
+        "tat": "шуңа күрә",
+        "en": "so / therefore",
+        "note": "states a result"
+      }
+    ],
+    "rulesRef": [
+      {
+        "title": "Yes / no questions: -мы / -ме",
+        "body": "Add the question particle to the word you're asking about — usually the verb or predicate. No word-order change. -мы after back-vowel (hard) words, -ме after front-vowel (soft) words.",
+        "ex": "Син барасың → Син барасыңмы? · Ул өйдә → Ул өйдәме? · Бу китапмы?"
+      },
+      {
+        "title": "There is / isn't: бар / юк",
+        "body": "бар = there is / exists / I have. юк = there isn't. The thing comes first; бар or юк lands last.",
+        "ex": "Өстәлдә китап бар. · Минем машинам юк."
+      },
+      {
+        "title": "How many: ничә / күпме",
+        "body": "ничә = how many (countable, expects a number). күпме = how much / how many (amount). The counted noun stays SINGULAR.",
+        "ex": "Ничә китап? — Биш китап. · Күпме акча?"
+      },
+      {
+        "title": "This / that / these / those",
+        "body": "бу = this, шул = that, теге = that (over there). For 'these / those', keep the word singular and pluralize the noun instead.",
+        "ex": "бу китап = this book · бу китаплар = these books · шул кеше = that person"
+      },
+      {
+        "title": "Indefinite past, 1st person",
+        "body": "The -ганмын / -гәнмен form (I …) often means you weren't aware of the action — it was accidental, or you can't personally remember it. Contrast the plain definite past -дым (you witnessed it).",
+        "ex": "Мин онытканмын = I forgot (not on purpose) · Мин 1947 елда туганмын = I was born in 1947"
+      }
+    ],
+    "endingsRef": [
+      {
+        "title": "-лы / -ле — with / having",
+        "body": "Turns a noun into an adjective meaning 'having X'. Vowel harmony picks -лы (back) or -ле (front).",
+        "ex": "көч → көчле (strong) · тәм → тәмле (tasty) · акыл → акыллы (clever)"
+      },
+      {
+        "title": "-сыз / -сез — without",
+        "body": "The opposite — 'lacking X'. -сыз after back vowels, -сез after front.",
+        "ex": "көчсез (weak) · эшсез (jobless) · акчасыз (penniless)"
+      },
+      {
+        "title": "-рак / -рәк — comparative (more)",
+        "body": "Add to an adjective for 'more / -er'. Front vs back harmony.",
+        "ex": "зур → зуррак (bigger) · яхшы → яхшырак (better) · матуррак (prettier)"
+      },
+      {
+        "title": "иң — superlative (most)",
+        "body": "Just place иң before the adjective — no suffix needed.",
+        "ex": "иң зур (biggest) · иң яхшы (best) · иң матур (most beautiful)"
+      },
+      {
+        "title": "-лар / -ләр — plural",
+        "body": "Marks plural nouns (spoken variants -лар/-ләр/-нар/-нәр by harmony). Drop it after a number.",
+        "ex": "китап → китаплар · кеше → кешеләр · but: биш китап (five books)"
+      },
+      {
+        "title": "-дагы / -дәге — 'the one at/in'",
+        "body": "Builds an adjective of place from the locative: 'the … that is at/in X'.",
+        "ex": "өйдәге китап (the book at home) · шәһәрдәге парк (the park in the city)"
+      }
+    ],
+    "aboutMe": [
+      {
+        "tat": "Минем исемем … , һәм мин …'да яшим.",
+        "en": "My name is …, and I live in …."
+      },
+      {
+        "tat": "Мин еш китап укыйм, чөнки тарих белән кызыксынам.",
+        "en": "I often read, because I'm interested in history."
+      },
+      {
+        "tat": "Мин кофе яки чәй эчәм, ләкин кофены күбрәк яратам.",
+        "en": "I drink coffee or tea, but I like coffee more."
+      },
+      {
+        "tat": "Мин татарча сөйләшәм, инглизчә дә сөйләшәм.",
+        "en": "I speak Tatar, and I also speak English."
+      },
+      {
+        "tat": "Кичен мин ардым, шуңа күрә иртә йоклыйм.",
+        "en": "In the evening I'm tired, so I sleep early."
+      },
+      {
+        "tat": "Буш вакытта мин йөгерәм һәм музыка тыңлыйм.",
+        "en": "In my free time I run and listen to music."
+      }
+    ],
+    "pastTimeRef": [
+      {
+        "tat": "кичә",
+        "en": "yesterday"
+      },
+      {
+        "tat": "үткән атнада",
+        "en": "last week"
+      },
+      {
+        "tat": "үткән айда",
+        "en": "last month"
+      },
+      {
+        "tat": "былтыр",
+        "en": "last year"
+      },
+      {
+        "tat": "өч көн элек",
+        "en": "three days ago"
+      },
+      {
+        "tat": "күптән",
+        "en": "long ago"
+      },
+      {
+        "tat": "күптән түгел",
+        "en": "recently"
+      }
+    ],
+    "timeTelling": [
+      {
+        "clock": "4:00",
+        "tat": "сәгать дүрт",
+        "lit": "hour four",
+        "en": "four o'clock"
+      },
+      {
+        "clock": "5:30",
+        "tat": "алтынчы ярты",
+        "lit": "half of the 6th",
+        "en": "half past five"
+      },
+      {
+        "clock": "9:30",
+        "tat": "унынчы ярты",
+        "lit": "half of the 10th",
+        "en": "half past nine"
+      },
+      {
+        "clock": "9:25",
+        "tat": "25 минут унынчыда",
+        "lit": "25 min into the 10th",
+        "en": "nine twenty-five"
+      },
+      {
+        "clock": "6:50",
+        "tat": "җиде тулырга ун минут",
+        "lit": "10 min for 7 to fill",
+        "en": "ten to seven"
+      },
+      {
+        "clock": "4:45",
+        "tat": "биш тулырга унбиш минут",
+        "lit": "15 min for 5 to fill",
+        "en": "quarter to five"
+      }
+    ],
+    "clockRules": [
+      {
+        "t": "On the hour",
+        "b": "сәгать + number. Сәгать дүрт = 4:00."
+      },
+      {
+        "t": "Half past → use the NEXT hour",
+        "b": "[next-hour ordinal] + ярты. алтынчы ярты = 5:30 — literally 'half of the sixth'."
+      },
+      {
+        "t": "Minutes past",
+        "b": "[minutes] минут + [next-hour ordinal] in -да. 25 минут унынчыда = 9:25."
+      },
+      {
+        "t": "Minutes to",
+        "b": "[coming hour] тулырга [minutes] минут. җиде тулырга ун минут = 6:50."
+      },
+      {
+        "t": "At what time?",
+        "b": "Add the locative -да/-дә: сәгать дүрттә = at 4 o'clock."
+      }
+    ],
+    "PERSONS": [
+      [
+        "Мин",
+        "I"
+      ],
+      [
+        "Син",
+        "you"
+      ],
+      [
+        "Ул",
+        "he/she"
+      ],
+      [
+        "Без",
+        "we"
+      ],
+      [
+        "Сез",
+        "you all"
+      ],
+      [
+        "Алар",
+        "they"
+      ]
     ]
   }
 }
