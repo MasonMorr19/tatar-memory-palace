@@ -2,7 +2,7 @@
   "meta": {
     "title": "Nested Hearth — Tatar Memory Palace Database",
     "owner": "Salauat",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "updated": "2026-06-30",
     "purpose": "Single source of truth that binds VOCAB + MEDIA + PALACE so every drill (listening, speaking) is generated from one spine. Edit this file in VSCode/Claude Code; the app and tools read from it.",
     "schema": {
@@ -11,7 +11,7 @@
       "expressions": "tt, translit, en, [literal], kind(idiom|state|greeting|line), [somatic(heart|head|none)], [valence], [note]",
       "media": "id, type(lecture|book|poem|image|text|slide), title, [by], [date], [url], lang, note, [tatar]",
       "stations": "id, locus, locus_en, zone, vocab[surface forms], expressions[tt], media[ids], listen{tt,en}, speak{tt,en}, note",
-      "verbLab": "self-contained Verb Lab toolkit merged from the 'Tatar Verb Lab' Claude design — verbs(id,stem,en,pron,soft,ev,vl,p3,kw,sc,[pre],[disp]) drive the conjugator/pegs/flashcards; subjects/times/places/objects/advs/determiners/builderMods/builderAdjs/bodyParts/colors/adjAll/modifiers/emotionAdjs feed the Sentence Builder; drills/journeySteps/chains/verbPairs/qaBank/nouns/cardinals/ordinals/connectives/rulesRef/endingsRef/aboutMe/pastTimeRef/timeTelling/clockRules/freqRef/timeRef/emoRef/PERSONS feed Respond, Nuances, Numbers, and Dictionary. Independent of vocab.verbs (that spine covers the Palace/Cog/Speech Lab tabs) since the two schemas serve different pedagogy (principal-parts reference vs. mnemonic-peg drilling)."
+      "verbLab": "self-contained Verb Lab toolkit merged from the 'Tatar Verb Lab' Claude design — verbs(id,stem,en,pron,soft,ev,vl,p3,kw,sc,[pre],[disp]) drive the conjugator/pegs/flashcards; subjects/times/places/objects/advs/determiners/builderMods/builderAdjs/bodyParts/colors/adjAll/modifiers/emotionAdjs feed the Sentence Builder; drills/journeySteps/chains/verbPairs/qaBank/nouns/cardinals/ordinals/connectives/rulesRef/endingsRef/aboutMe/pastTimeRef/timeTelling/clockRules/freqRef/timeRef/emoRef/PERSONS feed Respond, Nuances, Numbers, and Dictionary. Independent of vocab.verbs (that spine covers the Palace/Cog/Speech Lab tabs) since the two schemas serve different pedagogy (principal-parts reference vs. mnemonic-peg drilling). Extended for exam prep: doubtRef (modal/doubt particles), directionsRef+cardinalDirections+directionPhrases (location & directions), phrasesRef (the 48 curriculum expressions from vocab.expressions, cross-linked not re-invented), curriculumNouns (the 68 curriculum nouns from vocab.nouns, cross-linked)."
     },
     "harmony_note": "back=true takes -са/-га/-ка/-да/-ны (back vowels а о у ы); back=false takes -сә/-гә/-кә/-дә/-не (front ә ө ү е и). Loanwords carry an EXPLICIT flag because the last written vowel can lie (табип -> back)."
   },
@@ -5013,6 +5013,908 @@
         "Алар",
         "they"
       ]
+    ],
+    "doubtRef": [
+      {
+        "tat": "бугай",
+        "en": "seems / apparently",
+        "note": "Follows the verb/adjective, marks a guess based on evidence you can see. Ул өйдә бугай = He seems to be home (I think, based on the lights being on)."
+      },
+      {
+        "tat": "ахры",
+        "en": "probably / it seems",
+        "note": "Similar to бугай but slightly more tentative — 'I suppose'. Ул кайткан ахры = He's probably come back."
+      },
+      {
+        "tat": "кебек",
+        "en": "like / as if",
+        "note": "Comparison or resemblance, follows a noun or clause. Ул арыган кебек = He looks/seems tired (lit. 'like tired')."
+      },
+      {
+        "tat": "шикелле",
+        "en": "like / as if",
+        "note": "Interchangeable with кебек in most contexts, slightly more literary. Яңгыр ява шикелле = It looks like it's raining."
+      },
+      {
+        "tat": "мөгаен",
+        "en": "probably / most likely",
+        "note": "A stronger, more confident guess than бугай/ахры — placed before the clause. Мөгаен, ул онытты = He probably forgot."
+      },
+      {
+        "tat": "бәлки",
+        "en": "maybe / perhaps",
+        "note": "Genuine uncertainty, often opens the sentence. Бәлки, мин иртәгә килермен = Maybe I'll come tomorrow (pairs naturally with the aorist future)."
+      },
+      {
+        "tat": "мөмкин",
+        "en": "possible / maybe",
+        "note": "'It's possible that...' — can stand with булырга (мөмкин булырга) or alone as a one-word hedge."
+      },
+      {
+        "tat": "диярлек",
+        "en": "almost / nearly",
+        "note": "Softens a claim toward 'as good as'. Бетте диярлек = It's almost finished."
+      },
+      {
+        "tat": "билгеле",
+        "en": "of course / evidently",
+        "note": "Marks something as obvious/certain — the opposite pole from бугай/ахры on the confidence scale."
+      }
+    ],
+    "directionsRef": [
+      {
+        "tat": "эчендә",
+        "en": "inside",
+        "note": "Postposition + locative; follows the genitive-marked noun: өйнең эчендә = inside the house."
+      },
+      {
+        "tat": "өстендә",
+        "en": "on top of / above",
+        "note": "өстәлнең өстендә = on top of the table."
+      },
+      {
+        "tat": "астында",
+        "en": "under / below",
+        "note": "өстәлнең астында = under the table."
+      },
+      {
+        "tat": "янында",
+        "en": "next to / near",
+        "note": "мәктәпнең янында = next to the school. Most common everyday 'near'."
+      },
+      {
+        "tat": "каршында",
+        "en": "opposite / facing",
+        "note": "кибетнең каршында = across from the store."
+      },
+      {
+        "tat": "арасында",
+        "en": "between / among",
+        "note": "ике өйнең арасында = between the two houses."
+      },
+      {
+        "tat": "артында",
+        "en": "behind",
+        "note": "машина артында = behind the car."
+      },
+      {
+        "tat": "алдында",
+        "en": "in front of",
+        "note": "мәктәп алдында = in front of the school."
+      }
+    ],
+    "cardinalDirections": [
+      {
+        "tat": "төньяк",
+        "en": "north"
+      },
+      {
+        "tat": "көньяк",
+        "en": "south"
+      },
+      {
+        "tat": "көнчыгыш",
+        "en": "east"
+      },
+      {
+        "tat": "көнбатыш",
+        "en": "west"
+      }
+    ],
+    "directionPhrases": [
+      {
+        "tat": "...кайда?",
+        "en": "Where is ...?",
+        "note": "Кибет кайда? = Where's the store?"
+      },
+      {
+        "tat": "...ничек барырга?",
+        "en": "How do I get to ...?",
+        "note": "Мәктәпкә ничек барырга? = How do I get to school?"
+      },
+      {
+        "tat": "Туры барыгыз",
+        "en": "Go straight",
+        "note": "Imperative plural/polite — command form of бару (to go)."
+      },
+      {
+        "tat": "Уңга борылыгыз",
+        "en": "Turn right",
+        "note": "уң = right; борылырга = to turn."
+      },
+      {
+        "tat": "Сулга борылыгыз",
+        "en": "Turn left",
+        "note": "сул = left."
+      },
+      {
+        "tat": "Артка кайтыгыз",
+        "en": "Go back",
+        "note": "арт = back/behind; кайтырга = to return."
+      },
+      {
+        "tat": "Якын түгел",
+        "en": "It's not close",
+        "note": "якын = near, түгel negates a noun/adjective (not a verb)."
+      },
+      {
+        "tat": "Бик якын",
+        "en": "Very close",
+        "note": "бик = very, modifies the adjective якын."
+      },
+      {
+        "tat": "Ерак түгел",
+        "en": "It's not far",
+        "note": "ерак = far."
+      }
+    ],
+    "phrasesRef": [
+      {
+        "tat": "Мин сине сагынам",
+        "translit": "Min sine sagynam",
+        "en": "I miss you",
+        "kind": "line",
+        "note": ""
+      },
+      {
+        "tat": "чиста мәхәббәт",
+        "translit": "chista mäxäbbät",
+        "en": "pure love",
+        "kind": "line",
+        "note": ""
+      },
+      {
+        "tat": "күтәренке",
+        "translit": "kütärenke",
+        "en": "uplifted, energetic",
+        "kind": "state",
+        "note": ""
+      },
+      {
+        "tat": "рәхәт",
+        "translit": "räxät",
+        "en": "content, at ease",
+        "kind": "state",
+        "note": ""
+      },
+      {
+        "tat": "илһамланган",
+        "translit": "ilhamlangan",
+        "en": "inspired",
+        "kind": "state",
+        "note": "from илһам = inspiration"
+      },
+      {
+        "tat": "баш түбәгә тию",
+        "translit": "bash tübägä tiyü",
+        "en": "to be jumping with joy",
+        "kind": "idiom",
+        "note": ""
+      },
+      {
+        "tat": "йөрәккә ут кабу",
+        "translit": "yöräkkä ut kabu",
+        "en": "to be deeply touched by love/affection",
+        "kind": "idiom",
+        "note": ""
+      },
+      {
+        "tat": "үпкәләгән",
+        "translit": "üpkälägän",
+        "en": "offended, resentful",
+        "kind": "state",
+        "note": ""
+      },
+      {
+        "tat": "тәкәббер",
+        "translit": "täkäbber",
+        "en": "disdainful, aloof",
+        "kind": "state",
+        "note": ""
+      },
+      {
+        "tat": "хәсрәтле",
+        "translit": "xäsrätle",
+        "en": "grieved, sorrowful",
+        "kind": "state",
+        "note": "from хәсрәт = grief"
+      },
+      {
+        "tat": "башны түбән салу",
+        "translit": "bashny tübän salu",
+        "en": "to feel defeated, fall into despair",
+        "kind": "idiom",
+        "note": ""
+      },
+      {
+        "tat": "йөрәк сызылу",
+        "translit": "yöräk syzylu",
+        "en": "aching sadness, deep longing",
+        "kind": "idiom",
+        "note": ""
+      },
+      {
+        "tat": "хәвефле",
+        "translit": "xävefle",
+        "en": "anxious, apprehensive",
+        "kind": "state",
+        "note": "from хәвеф = danger/fear"
+      },
+      {
+        "tat": "каушаган",
+        "translit": "kawshagan",
+        "en": "flustered, thrown off",
+        "kind": "state",
+        "note": ""
+      },
+      {
+        "tat": "йөрәк ярылу",
+        "translit": "yöräk yarylu",
+        "en": "to be suddenly startled/frightened",
+        "kind": "idiom",
+        "note": ""
+      },
+      {
+        "tat": "йөрәк кайнау",
+        "translit": "yöräk kaynau",
+        "en": "to boil over with fury",
+        "kind": "idiom",
+        "note": ""
+      },
+      {
+        "tat": "башка сугу",
+        "translit": "bashka sugu",
+        "en": "to be utterly shocked by bad news",
+        "kind": "idiom",
+        "note": ""
+      },
+      {
+        "tat": "Исәнме(сез)!",
+        "translit": "Isänme(sez)!",
+        "en": "Hello! (informal / polite)",
+        "kind": "greeting",
+        "note": ""
+      },
+      {
+        "tat": "Рәхмәт!",
+        "translit": "Räxmät!",
+        "en": "Thank you!",
+        "kind": "greeting",
+        "note": ""
+      },
+      {
+        "tat": "Исән булыгыз!",
+        "translit": "Isän bulygyz!",
+        "en": "Stay well! (lit. be healthy)",
+        "kind": "greeting",
+        "note": "closing from the CLI / Tatar.Mosaics lecture slide"
+      },
+      {
+        "tat": "бәлки",
+        "translit": "bälki",
+        "en": "perhaps, maybe",
+        "kind": "doubt",
+        "note": ""
+      },
+      {
+        "tat": "ихтимал",
+        "translit": "ixtimal",
+        "en": "possibly, probably",
+        "kind": "doubt",
+        "note": ""
+      },
+      {
+        "tat": "мөгаен",
+        "translit": "mögaen",
+        "en": "most likely",
+        "kind": "doubt",
+        "note": ""
+      },
+      {
+        "tat": "ахрысы",
+        "translit": "axrysy",
+        "en": "apparently, it seems",
+        "kind": "doubt",
+        "note": ""
+      },
+      {
+        "tat": "кебек",
+        "translit": "kebek",
+        "en": "like, as if",
+        "kind": "doubt",
+        "note": "X кебек = like X / seems like X"
+      },
+      {
+        "tat": "шикелле",
+        "translit": "shikelle",
+        "en": "as if, seemingly",
+        "kind": "doubt",
+        "note": ""
+      },
+      {
+        "tat": "икән",
+        "translit": "ikän",
+        "en": "apparently, turns out (evidential)",
+        "kind": "doubt",
+        "note": ""
+      },
+      {
+        "tat": "микән",
+        "translit": "mikän",
+        "en": "I wonder (if)",
+        "kind": "doubt",
+        "note": "...-мы микән = I wonder whether..."
+      },
+      {
+        "tat": "әллә",
+        "translit": "ällä",
+        "en": "perhaps; whether…or",
+        "kind": "doubt",
+        "note": ""
+      },
+      {
+        "tat": "булса кирәк",
+        "translit": "bulsa keräk",
+        "en": "must be, probably is",
+        "kind": "doubt",
+        "note": ""
+      },
+      {
+        "tat": "-дыр / -дер",
+        "translit": "-dyr / -der",
+        "en": "presumptive: must be, probably",
+        "kind": "doubt",
+        "note": "киләдер = he's probably coming; өйдәдер = must be home"
+      },
+      {
+        "tat": "…янында",
+        "translit": "…yanynda",
+        "en": "beside, next to",
+        "kind": "spatial",
+        "note": ""
+      },
+      {
+        "tat": "…эчендә",
+        "translit": "…echendä",
+        "en": "inside",
+        "kind": "spatial",
+        "note": ""
+      },
+      {
+        "tat": "…өстендә",
+        "translit": "…östendä",
+        "en": "on top of",
+        "kind": "spatial",
+        "note": ""
+      },
+      {
+        "tat": "…астында",
+        "translit": "…astynda",
+        "en": "under",
+        "kind": "spatial",
+        "note": ""
+      },
+      {
+        "tat": "…артында",
+        "translit": "…artynda",
+        "en": "behind",
+        "kind": "spatial",
+        "note": ""
+      },
+      {
+        "tat": "…алдында",
+        "translit": "…aldynda",
+        "en": "in front of",
+        "kind": "spatial",
+        "note": ""
+      },
+      {
+        "tat": "уңга бор",
+        "translit": "uñga bor",
+        "en": "turn right",
+        "kind": "line",
+        "note": ""
+      },
+      {
+        "tat": "сулга бор",
+        "translit": "sulga bor",
+        "en": "turn left",
+        "kind": "line",
+        "note": ""
+      },
+      {
+        "tat": "туры бар",
+        "translit": "tury bar",
+        "en": "go straight",
+        "kind": "line",
+        "note": ""
+      },
+      {
+        "tat": "-мы / -ме",
+        "translit": "-my / -me",
+        "en": "yes/no question particle",
+        "kind": "grammar",
+        "note": "Attaches (harmony-matched) to the word being questioned: Әмир киләме? = Is Amir coming? Биштәме? = At five?"
+      },
+      {
+        "tat": "мени",
+        "translit": "meni",
+        "en": "really?! (emphatic/surprised question)",
+        "kind": "grammar",
+        "note": "Mыни/мени — stronger, more surprised cousin of -мы/-ме."
+      },
+      {
+        "tat": "түгел",
+        "translit": "tügel",
+        "en": "is not, not (negates a non-verbal predicate)",
+        "kind": "grammar",
+        "note": "Биштә түгел = Not at five. Әмир түгел = It's not Amir. (Contrast verb negation, which uses -мый/-ми on the verb itself.)"
+      },
+      {
+        "tat": "...са да / ...сә дә",
+        "translit": "...sa da / ...sä dä",
+        "en": "even if, although (concessive)",
+        "kind": "grammar",
+        "note": "Conditional verb + да/дә, harmony-matched to the verb form: Онытсаң да = even if you forget. Кар яуса да = even if it snows."
+      },
+      {
+        "tat": "-асы/-әсе ... килә",
+        "translit": "-asy/-äse ... kilä",
+        "en": "want to (do something)",
+        "kind": "grammar",
+        "note": "Desiderative: verb stem + -асы/-әсе (possessive-marked) + килә. Эшлисем килә = I want to work (lit. 'my wanting-to-work comes')."
+      },
+      {
+        "tat": "эч поша",
+        "translit": "ech posha",
+        "en": "to feel restless, bored, or anxious",
+        "kind": "idiom",
+        "note": ""
+      },
+      {
+        "tat": "баш әйләнү",
+        "translit": "bash äylänü",
+        "en": "to feel dizzy",
+        "kind": "idiom",
+        "note": ""
+      },
+      {
+        "tat": "күңел болгану",
+        "translit": "küñel bolganu",
+        "en": "to feel nauseous",
+        "kind": "idiom",
+        "note": ""
+      }
+    ],
+    "curriculumNouns": [
+      {
+        "tat": "мәхәббәт",
+        "en": "love",
+        "cat": "emotion",
+        "note": "NOUN (исем) for love; literary/philosophical (чиста мәхәббәт = pure love). Sufi 'ishq — Salauat's 'ishq majazi -> 'ishq haqiqi thread. Contrast the verb ярату."
+      },
+      {
+        "tat": "йөрәк",
+        "en": "heart",
+        "cat": "body / emotion",
+        "note": "Tatar seats intense emotion in the heart (йөрәк) — йөрәк сызылу, йөрәккә ут кабу, йөрәк ярылу."
+      },
+      {
+        "tat": "баш",
+        "en": "head",
+        "cat": "body / emotion",
+        "note": "The other seat of emotion — баш түбәгә тию, башны түбән салу, башка сугу."
+      },
+      {
+        "tat": "бабай",
+        "en": "grandfather",
+        "cat": "family",
+        "note": ""
+      },
+      {
+        "tat": "әби",
+        "en": "grandmother",
+        "cat": "family",
+        "note": ""
+      },
+      {
+        "tat": "ул",
+        "en": "son",
+        "cat": "family",
+        "note": "улы = his/her son (3sg possessive); бабайның улы = grandfather's boy"
+      },
+      {
+        "tat": "кул",
+        "en": "hand",
+        "cat": "body / emotion",
+        "note": "уң кул = right hand"
+      },
+      {
+        "tat": "уң",
+        "en": "right (side)",
+        "cat": "direction",
+        "note": ""
+      },
+      {
+        "tat": "шигырь",
+        "en": "poem",
+        "cat": "culture",
+        "note": ""
+      },
+      {
+        "tat": "язучы",
+        "en": "writer",
+        "cat": "culture",
+        "note": ""
+      },
+      {
+        "tat": "хикәя",
+        "en": "story",
+        "cat": "culture",
+        "note": ""
+      },
+      {
+        "tat": "тел",
+        "en": "language, tongue",
+        "cat": "culture",
+        "note": "central to the lecture: тел = the living archive"
+      },
+      {
+        "tat": "хәтер",
+        "en": "memory",
+        "cat": "culture",
+        "note": "мәдәни хәтер = cultural memory (lecture theme)"
+      },
+      {
+        "tat": "халык",
+        "en": "a people, the folk",
+        "cat": "culture",
+        "note": "тел — халыкның хәтере = language is a people's memory"
+      },
+      {
+        "tat": "дару",
+        "en": "medicine",
+        "cat": "health",
+        "note": ""
+      },
+      {
+        "tat": "табип",
+        "en": "doctor",
+        "cat": "health",
+        "note": "LOANWORD HARMONY: back endings (табипка) despite front и"
+      },
+      {
+        "tat": "спорт",
+        "en": "sport",
+        "cat": "health",
+        "note": ""
+      },
+      {
+        "tat": "сәламәтлек",
+        "en": "health",
+        "cat": "health",
+        "note": ""
+      },
+      {
+        "tat": "салкын",
+        "en": "cold",
+        "cat": "health",
+        "note": ""
+      },
+      {
+        "tat": "бал",
+        "en": "honey",
+        "cat": "food & home",
+        "note": ""
+      },
+      {
+        "tat": "бүләк",
+        "en": "gift",
+        "cat": "daily life",
+        "note": ""
+      },
+      {
+        "tat": "көн",
+        "en": "day",
+        "cat": "daily life",
+        "note": "туган көн = birthday"
+      },
+      {
+        "tat": "имтихан",
+        "en": "exam",
+        "cat": "daily life",
+        "note": ""
+      },
+      {
+        "tat": "рөхсәт",
+        "en": "permission",
+        "cat": "daily life",
+        "note": ""
+      },
+      {
+        "tat": "җавап",
+        "en": "answer",
+        "cat": "daily life",
+        "note": ""
+      },
+      {
+        "tat": "урман",
+        "en": "forest",
+        "cat": "nature",
+        "note": ""
+      },
+      {
+        "tat": "хайкинг",
+        "en": "hiking",
+        "cat": "daily life",
+        "note": ""
+      },
+      {
+        "tat": "акаунт",
+        "en": "account",
+        "cat": "daily life",
+        "note": ""
+      },
+      {
+        "tat": "язылучы",
+        "en": "subscriber, follower",
+        "cat": "daily life",
+        "note": ""
+      },
+      {
+        "tat": "Уфа",
+        "en": "Ufa",
+        "cat": "cities",
+        "note": "capital of Bashkortostan; gateway to the planned Ufa palace"
+      },
+      {
+        "tat": "сул",
+        "en": "left",
+        "cat": "direction",
+        "note": ""
+      },
+      {
+        "tat": "туры",
+        "en": "straight",
+        "cat": "direction",
+        "note": ""
+      },
+      {
+        "tat": "төньяк",
+        "en": "north",
+        "cat": "direction",
+        "note": ""
+      },
+      {
+        "tat": "көньяк",
+        "en": "south",
+        "cat": "direction",
+        "note": ""
+      },
+      {
+        "tat": "көнчыгыш",
+        "en": "east",
+        "cat": "direction",
+        "note": ""
+      },
+      {
+        "tat": "көнбатыш",
+        "en": "west",
+        "cat": "direction",
+        "note": ""
+      },
+      {
+        "tat": "күз",
+        "en": "eye",
+        "cat": "body",
+        "note": ""
+      },
+      {
+        "tat": "колак",
+        "en": "ear",
+        "cat": "body",
+        "note": ""
+      },
+      {
+        "tat": "борын",
+        "en": "nose",
+        "cat": "body",
+        "note": ""
+      },
+      {
+        "tat": "авыз",
+        "en": "mouth",
+        "cat": "body",
+        "note": ""
+      },
+      {
+        "tat": "теш",
+        "en": "tooth",
+        "cat": "body",
+        "note": ""
+      },
+      {
+        "tat": "чәч",
+        "en": "hair",
+        "cat": "body",
+        "note": ""
+      },
+      {
+        "tat": "бит",
+        "en": "face",
+        "cat": "body",
+        "note": "йөз also = face (and = hundred)"
+      },
+      {
+        "tat": "муен",
+        "en": "neck",
+        "cat": "body",
+        "note": ""
+      },
+      {
+        "tat": "җилкә",
+        "en": "shoulder",
+        "cat": "body",
+        "note": ""
+      },
+      {
+        "tat": "аяк",
+        "en": "leg, foot",
+        "cat": "body",
+        "note": ""
+      },
+      {
+        "tat": "бармак",
+        "en": "finger",
+        "cat": "body",
+        "note": ""
+      },
+      {
+        "tat": "тез",
+        "en": "knee",
+        "cat": "body",
+        "note": ""
+      },
+      {
+        "tat": "эч",
+        "en": "belly, stomach",
+        "cat": "body",
+        "note": "homonym with эч! = drink (imperative)"
+      },
+      {
+        "tat": "арка",
+        "en": "back, spine",
+        "cat": "body",
+        "note": ""
+      },
+      {
+        "tat": "даруханә",
+        "en": "pharmacy",
+        "cat": "health",
+        "note": "Даруханәгә барсаң, бу дару ал = if you go to the pharmacy, take this medicine. Dative -гә confirms front harmony despite the back-vowel start."
+      },
+      {
+        "tat": "ашказаны",
+        "en": "stomach",
+        "cat": "body",
+        "note": "Ашказаны авыртса = if the stomach aches."
+      },
+      {
+        "tat": "тән",
+        "en": "body",
+        "cat": "body",
+        "note": "Тәнем сәламәт булсын = may my body be healthy."
+      },
+      {
+        "tat": "гәүдә",
+        "en": "body, figure",
+        "cat": "body",
+        "note": ""
+      },
+      {
+        "tat": "бала",
+        "en": "child",
+        "cat": "family",
+        "note": ""
+      },
+      {
+        "tat": "бәби",
+        "en": "baby",
+        "cat": "family",
+        "note": "Таза бала, таза бәби = healthy child, healthy baby."
+      },
+      {
+        "tat": "таза",
+        "en": "healthy, strong",
+        "cat": "health",
+        "note": ""
+      },
+      {
+        "tat": "ябык",
+        "en": "thin",
+        "cat": "health",
+        "note": "Ябык-таза = thin-and-fit."
+      },
+      {
+        "tat": "җан",
+        "en": "soul",
+        "cat": "emotion",
+        "note": "Сөям җаным тәнем белән = I love with my soul and body."
+      },
+      {
+        "tat": "чәй",
+        "en": "tea",
+        "cat": "food & home",
+        "note": ""
+      },
+      {
+        "tat": "дус",
+        "en": "friend",
+        "cat": "daily life",
+        "note": "дустым = my friend (possessive)."
+      },
+      {
+        "tat": "мең",
+        "en": "thousand",
+        "cat": "daily life",
+        "note": ""
+      },
+      {
+        "tat": "тест",
+        "en": "test",
+        "cat": "daily life",
+        "note": ""
+      },
+      {
+        "tat": "рус",
+        "en": "Russian",
+        "cat": "culture",
+        "note": "русча = in Russian / the Russian language (adverbial form)."
+      },
+      {
+        "tat": "кар",
+        "en": "snow",
+        "cat": "nature",
+        "note": ""
+      },
+      {
+        "tat": "җылы",
+        "en": "warm",
+        "cat": "nature",
+        "note": ""
+      },
+      {
+        "tat": "август",
+        "en": "August",
+        "cat": "time",
+        "note": ""
+      },
+      {
+        "tat": "кирәк",
+        "en": "necessary, needed",
+        "cat": "daily life",
+        "note": "Predicate modal, not a regular noun: ... кирәк = need to .... Negative conditional Кирәкмәсә дә = even if it isn't needed (кирәк behaves like a defective C-stem: кирәк+мә+сә)."
+      }
     ]
   }
 }
