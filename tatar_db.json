@@ -2,7 +2,7 @@
   "meta": {
     "title": "Nested Hearth — Tatar Memory Palace Database",
     "owner": "Salauat",
-    "version": "0.10.0",
+    "version": "0.11.0",
     "updated": "2026-07-01",
     "purpose": "Single source of truth that binds VOCAB + MEDIA + PALACE so every drill (listening, speaking) is generated from one spine. Edit this file in VSCode/Claude Code; the app and tools read from it.",
     "schema": {
@@ -2384,6 +2384,623 @@
         "cat": "Daily life",
         "loan": true,
         "note": "Телевизор карамаячакмын = I will not watch TV."
+      },
+      {
+        "s": "дүшәмбе",
+        "en": "Monday",
+        "back": false,
+        "cat": "Time",
+        "note": "Day 1. Persian-derived day names, шәмбе = 'sabbath day'."
+      },
+      {
+        "s": "сишәмбе",
+        "en": "Tuesday",
+        "back": false,
+        "cat": "Time"
+      },
+      {
+        "s": "чәршәмбе",
+        "en": "Wednesday",
+        "back": false,
+        "cat": "Time"
+      },
+      {
+        "s": "пәнҗешәмбе",
+        "en": "Thursday",
+        "back": false,
+        "cat": "Time",
+        "note": "пәнҗе = five (Persian) — the fifth day from Saturday."
+      },
+      {
+        "s": "җомга",
+        "en": "Friday",
+        "back": true,
+        "cat": "Time",
+        "note": "From Arabic Jumu'ah — the mosque day. Җомгада = on Friday."
+      },
+      {
+        "s": "шимбә",
+        "en": "Saturday",
+        "back": false,
+        "cat": "Time"
+      },
+      {
+        "s": "якшәмбе",
+        "en": "Sunday",
+        "back": false,
+        "cat": "Time",
+        "note": "якшы + шәмбе ≈ 'the good day'."
+      },
+      {
+        "s": "яз",
+        "en": "spring",
+        "back": true,
+        "cat": "Time",
+        "note": "HOMONYM: яз! also = write! Peg: in SPRING the JAZZ pianist writes outdoors. Язда = in spring."
+      },
+      {
+        "s": "җәй",
+        "en": "summer",
+        "back": false,
+        "cat": "Time",
+        "note": "Җәйдә = in summer."
+      },
+      {
+        "s": "көз",
+        "en": "autumn",
+        "back": false,
+        "cat": "Time",
+        "note": "One dot from күз (eye): autumn is when the year's EYE closes. Көздә = in autumn."
+      },
+      {
+        "s": "кыш",
+        "en": "winter",
+        "back": true,
+        "cat": "Time",
+        "note": "Voiceless ш: кышта = in winter."
+      },
+      {
+        "s": "гыйнвар",
+        "en": "January",
+        "back": true,
+        "cat": "Time",
+        "loan": true
+      },
+      {
+        "s": "февраль",
+        "en": "February",
+        "back": false,
+        "cat": "Time",
+        "loan": true
+      },
+      {
+        "s": "март",
+        "en": "March",
+        "back": true,
+        "cat": "Time",
+        "loan": true
+      },
+      {
+        "s": "апрель",
+        "en": "April",
+        "back": false,
+        "cat": "Time",
+        "loan": true
+      },
+      {
+        "s": "май",
+        "en": "May",
+        "back": true,
+        "cat": "Time",
+        "loan": true
+      },
+      {
+        "s": "июнь",
+        "en": "June",
+        "back": false,
+        "cat": "Time",
+        "loan": true
+      },
+      {
+        "s": "июль",
+        "en": "July",
+        "back": false,
+        "cat": "Time",
+        "loan": true
+      },
+      {
+        "s": "сентябрь",
+        "en": "September",
+        "back": false,
+        "cat": "Time",
+        "loan": true
+      },
+      {
+        "s": "октябрь",
+        "en": "October",
+        "back": false,
+        "cat": "Time",
+        "loan": true
+      },
+      {
+        "s": "ноябрь",
+        "en": "November",
+        "back": false,
+        "cat": "Time",
+        "loan": true
+      },
+      {
+        "s": "декабрь",
+        "en": "December",
+        "back": false,
+        "cat": "Time",
+        "loan": true
+      },
+      {
+        "s": "вакыт",
+        "en": "time",
+        "back": true,
+        "cat": "Time",
+        "note": "Вакыт юк! = no time! Вакытында = on time (lit. at its time)."
+      },
+      {
+        "s": "минут",
+        "en": "minute",
+        "back": true,
+        "cat": "Time",
+        "loan": true
+      },
+      {
+        "s": "гаилә",
+        "en": "family",
+        "back": false,
+        "cat": "Family",
+        "note": "Гаиләгез бармы? = do you have a family?"
+      },
+      {
+        "s": "кыз",
+        "en": "daughter; girl",
+        "back": true,
+        "cat": "Family",
+        "note": "кызым = my daughter."
+      },
+      {
+        "s": "малай",
+        "en": "boy; son (colloquial)",
+        "back": true,
+        "cat": "Family"
+      },
+      {
+        "s": "апа",
+        "en": "older sister; aunt; ma'am",
+        "back": true,
+        "cat": "Family",
+        "note": "Older women are politely 'апа': Гөлнара апа."
+      },
+      {
+        "s": "абый",
+        "en": "older brother; uncle; sir",
+        "back": true,
+        "cat": "Family",
+        "note": "Older men are politely 'абый': Марат абый."
+      },
+      {
+        "s": "эне",
+        "en": "younger brother",
+        "back": false,
+        "cat": "Family"
+      },
+      {
+        "s": "сеңел",
+        "en": "younger sister",
+        "back": false,
+        "cat": "Family",
+        "note": "Tatar splits siblings by AGE, not just gender: апа/абый older, сеңел/эне younger."
+      },
+      {
+        "s": "туган",
+        "en": "relative; sibling",
+        "back": true,
+        "cat": "Family",
+        "note": "Also 'born': туган көн = birth-day, туган тел = native tongue."
+      },
+      {
+        "s": "кеше",
+        "en": "person, human",
+        "back": false,
+        "cat": "People",
+        "note": "Күп кеше = many people (singular after numbers/quantity!)."
+      },
+      {
+        "s": "исем",
+        "en": "name",
+        "back": false,
+        "cat": "People",
+        "note": "Минем исемем Салауат. Исемегез ничек? = what's your name?"
+      },
+      {
+        "s": "укытучы",
+        "en": "teacher",
+        "back": true,
+        "cat": "People",
+        "note": "укы (study) + -т (make) + -учы (one who) = one-who-makes-study."
+      },
+      {
+        "s": "студент",
+        "en": "student",
+        "back": true,
+        "cat": "People",
+        "loan": true
+      },
+      {
+        "s": "күрше",
+        "en": "neighbor",
+        "back": false,
+        "cat": "People",
+        "note": "дустанә күршеләр = friendly neighbors."
+      },
+      {
+        "s": "мәктәп",
+        "en": "school",
+        "back": false,
+        "cat": "Cities",
+        "note": "Voiceless п: мәктәптә = at school, мәктәпкә = to school."
+      },
+      {
+        "s": "университет",
+        "en": "university",
+        "back": true,
+        "cat": "Cities",
+        "loan": true,
+        "note": "LOANWORD: университетта, университетка (back)."
+      },
+      {
+        "s": "китапханә",
+        "en": "library",
+        "back": false,
+        "cat": "Cities",
+        "note": "китап + ханә (house) — same recipe as даруханә, ашханә."
+      },
+      {
+        "s": "базар",
+        "en": "market",
+        "back": true,
+        "cat": "Cities"
+      },
+      {
+        "s": "ашханә",
+        "en": "canteen, cafeteria",
+        "back": false,
+        "cat": "Cities",
+        "note": "аш + ханә = meal-house."
+      },
+      {
+        "s": "хастаханә",
+        "en": "hospital",
+        "back": false,
+        "cat": "Cities",
+        "note": "хаста (sick) + ханә = sick-house."
+      },
+      {
+        "s": "ил",
+        "en": "country, land",
+        "back": false,
+        "cat": "Cities",
+        "note": "Туган ил = homeland."
+      },
+      {
+        "s": "дөнья",
+        "en": "world",
+        "back": true,
+        "cat": "Cities",
+        "note": "Ends in я → back endings: дөньяда = in the world."
+      },
+      {
+        "s": "диңгез",
+        "en": "sea",
+        "back": false,
+        "cat": "Nature",
+        "note": "диңгезгә таба = toward the sea."
+      },
+      {
+        "s": "күл",
+        "en": "lake",
+        "back": false,
+        "cat": "Nature",
+        "note": "Кабан күле = Kaban Lake, Kazan's legend-lake."
+      },
+      {
+        "s": "бүлмә",
+        "en": "room",
+        "back": false,
+        "cat": "Cities",
+        "note": "Йөрәк бүлмәсе, Баш бүлмәсе — the palace's own rooms."
+      },
+      {
+        "s": "өстәл",
+        "en": "table",
+        "back": false,
+        "cat": "Food & home",
+        "note": "өстәл өстендә = on the table — өс (top) hides in both words."
+      },
+      {
+        "s": "урындык",
+        "en": "chair",
+        "back": true,
+        "cat": "Food & home",
+        "note": "урын (place) + -дык = the sit-place."
+      },
+      {
+        "s": "тәрәзә",
+        "en": "window",
+        "back": false,
+        "cat": "Food & home",
+        "note": "тәрәзә янында = by the window."
+      },
+      {
+        "s": "ишек",
+        "en": "door",
+        "back": false,
+        "cat": "Food & home"
+      },
+      {
+        "s": "машина",
+        "en": "car",
+        "back": true,
+        "cat": "Daily life",
+        "loan": true,
+        "note": "машина артында = behind the car."
+      },
+      {
+        "s": "автобус",
+        "en": "bus",
+        "back": true,
+        "cat": "Daily life",
+        "loan": true,
+        "note": "Автобуска менү = board the bus (dative!)."
+      },
+      {
+        "s": "телефон",
+        "en": "telephone",
+        "back": true,
+        "cat": "Daily life",
+        "loan": true
+      },
+      {
+        "s": "каләм",
+        "en": "pen, pencil",
+        "back": false,
+        "cat": "Daily life",
+        "note": "Arabic loan (qalam) — front endings: каләмем = my pen."
+      },
+      {
+        "s": "дәфтәр",
+        "en": "notebook",
+        "back": false,
+        "cat": "Daily life"
+      },
+      {
+        "s": "сумка",
+        "en": "bag",
+        "back": true,
+        "cat": "Daily life",
+        "loan": true
+      },
+      {
+        "s": "күлмәк",
+        "en": "shirt; dress",
+        "back": false,
+        "cat": "Daily life",
+        "note": "Күлмәгем зәңгәр = my shirt is blue (к→г between vowels!)."
+      },
+      {
+        "s": "су",
+        "en": "water",
+        "back": true,
+        "cat": "Food & home",
+        "note": "Two letters, first-exam certainty: су эчәм = I drink water."
+      },
+      {
+        "s": "алма",
+        "en": "apple",
+        "back": true,
+        "cat": "Food & home"
+      },
+      {
+        "s": "бәрәңге",
+        "en": "potato",
+        "back": false,
+        "cat": "Food & home",
+        "note": "The Tatar staple — бәрәңге белән ит."
+      },
+      {
+        "s": "йомырка",
+        "en": "egg",
+        "back": true,
+        "cat": "Food & home"
+      },
+      {
+        "s": "тоз",
+        "en": "salt",
+        "back": true,
+        "cat": "Food & home"
+      },
+      {
+        "s": "маңгай",
+        "en": "forehead",
+        "back": true,
+        "cat": "Body"
+      },
+      {
+        "s": "каш",
+        "en": "eyebrow",
+        "back": true,
+        "cat": "Body",
+        "note": "Каш белән күз арасында = 'between eyebrow and eye' = in a blink."
+      },
+      {
+        "s": "керфек",
+        "en": "eyelash",
+        "back": false,
+        "cat": "Body"
+      },
+      {
+        "s": "ирен",
+        "en": "lip",
+        "back": false,
+        "cat": "Body"
+      },
+      {
+        "s": "яңак",
+        "en": "cheek",
+        "back": true,
+        "cat": "Body"
+      },
+      {
+        "s": "бил",
+        "en": "waist, lower back",
+        "back": false,
+        "cat": "Body",
+        "note": "Билем авырта = my lower back hurts."
+      },
+      {
+        "s": "тырнак",
+        "en": "fingernail",
+        "back": true,
+        "cat": "Body"
+      },
+      {
+        "s": "үпкә",
+        "en": "lung",
+        "back": false,
+        "cat": "Body",
+        "note": "PEG: үпкәләү (to take offense — already in the spine) is literally 'to lung'! Offense sits in the lungs the way love sits in the heart."
+      },
+      {
+        "s": "ак",
+        "en": "white",
+        "back": true,
+        "cat": "Qualities",
+        "note": "Ак калфак, Агыйдел = ак + идел, the White River."
+      },
+      {
+        "s": "кара",
+        "en": "black",
+        "back": true,
+        "cat": "Qualities",
+        "note": "HOMONYM: кара! also = look! Peg: look at the BLACK CAR — кара кара!"
+      },
+      {
+        "s": "кызыл",
+        "en": "red",
+        "back": true,
+        "cat": "Qualities",
+        "note": "Кызыл мәйдан = Red Square; кыз (girl) hides at its root — 'blushing'."
+      },
+      {
+        "s": "яшел",
+        "en": "green",
+        "back": false,
+        "cat": "Qualities"
+      },
+      {
+        "s": "зәңгәр",
+        "en": "blue",
+        "back": false,
+        "cat": "Qualities"
+      },
+      {
+        "s": "сары",
+        "en": "yellow",
+        "back": true,
+        "cat": "Qualities",
+        "note": "Сары йорт = the yellow house."
+      },
+      {
+        "s": "зур",
+        "en": "big",
+        "back": true,
+        "cat": "Qualities",
+        "note": "Adjectives never agree: зур шәһәр, зур шәһәрләр — no plural on зур."
+      },
+      {
+        "s": "кечкенә",
+        "en": "small",
+        "back": false,
+        "cat": "Qualities"
+      },
+      {
+        "s": "яңа",
+        "en": "new",
+        "back": true,
+        "cat": "Qualities",
+        "note": "Яңа ел = New Year."
+      },
+      {
+        "s": "иске",
+        "en": "old (of things)",
+        "back": false,
+        "cat": "Qualities",
+        "note": "Иске Казан = old Kazan. For people use карт."
+      },
+      {
+        "s": "яшь",
+        "en": "young; age",
+        "back": false,
+        "cat": "Qualities",
+        "note": "Ничә яшь? = how old? Миңа 21 яшь = I am 21."
+      },
+      {
+        "s": "карт",
+        "en": "old (of people)",
+        "back": true,
+        "cat": "Qualities",
+        "note": "карт бабай = old grandfather; картая = grows old."
+      },
+      {
+        "s": "озын",
+        "en": "long, tall",
+        "back": true,
+        "cat": "Qualities"
+      },
+      {
+        "s": "кыска",
+        "en": "short",
+        "back": true,
+        "cat": "Qualities"
+      },
+      {
+        "s": "матур",
+        "en": "beautiful",
+        "back": true,
+        "cat": "Qualities",
+        "note": "Танышуыбызга шат, матур Казан! Comparative: матуррак."
+      },
+      {
+        "s": "яхшы",
+        "en": "good",
+        "back": true,
+        "cat": "Qualities",
+        "note": "Bashkir: яҡшы (к→ҡ)."
+      },
+      {
+        "s": "начар",
+        "en": "bad",
+        "back": true,
+        "cat": "Qualities"
+      },
+      {
+        "s": "авыр",
+        "en": "heavy; difficult",
+        "back": true,
+        "cat": "Qualities",
+        "note": "Татар теле авырмы? — Юк, җиңел!"
+      },
+      {
+        "s": "җиңел",
+        "en": "light; easy",
+        "back": false,
+        "cat": "Qualities"
       }
     ],
     "expressions": [
@@ -3168,6 +3785,150 @@
         "somatic": "none",
         "valence": "neutral",
         "note": "урта = middle: бүлмә уртасында = in the middle of the room."
+      },
+      {
+        "tt": "кем",
+        "translit": "kem",
+        "en": "who",
+        "kind": "question",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Кем ул? = who is that? Кемнең = whose (genitive)."
+      },
+      {
+        "tt": "нәрсә",
+        "translit": "närsä",
+        "en": "what",
+        "kind": "question",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Бу нәрсә? = what is this? Нәрсә эшлисең? = what are you doing?"
+      },
+      {
+        "tt": "нинди",
+        "translit": "nindi",
+        "en": "what kind of",
+        "kind": "question",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Нинди китап? = what kind of book? Answered by adjectives."
+      },
+      {
+        "tt": "кайда",
+        "translit": "qayda",
+        "en": "where (at)",
+        "kind": "question",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Кайда яшисез? — answered with LOCATIVE -да."
+      },
+      {
+        "tt": "кая",
+        "translit": "qaya",
+        "en": "where to",
+        "kind": "question",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Кая барасың? — answered with DATIVE -га."
+      },
+      {
+        "tt": "кайдан",
+        "translit": "qaydan",
+        "en": "where from",
+        "kind": "question",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Кайдан киләсез? — answered with ABLATIVE -дан. кайда/кая/кайдан mirror the three place cases."
+      },
+      {
+        "tt": "ничек",
+        "translit": "nichek",
+        "en": "how",
+        "kind": "question",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Ничек яшисез? = how are you?"
+      },
+      {
+        "tt": "нигә",
+        "translit": "nigä",
+        "en": "why",
+        "kind": "question",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Colloquial; fuller form ни өчен."
+      },
+      {
+        "tt": "ни өчен",
+        "translit": "ni öchen",
+        "en": "why, for what",
+        "kind": "question",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Lit. 'for what' — өчен the postposition."
+      },
+      {
+        "tt": "ничә",
+        "translit": "nichä",
+        "en": "how many",
+        "kind": "question",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Ничә яшь? = how old? Noun stays SINGULAR: ничә китап."
+      },
+      {
+        "tt": "күпме",
+        "translit": "küpme",
+        "en": "how much",
+        "kind": "question",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Бу күпме тора? = how much is this?"
+      },
+      {
+        "tt": "кайсы",
+        "translit": "qaysy",
+        "en": "which (one)",
+        "kind": "question",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Кайсы кайсы? = which is which?"
+      },
+      {
+        "tt": "бар",
+        "translit": "bar",
+        "en": "there is; have",
+        "kind": "grammar",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Existence & possession: Минем машинам бар = I have a car. Бүлмәдә өстәл бар."
+      },
+      {
+        "tt": "юк",
+        "translit": "yuq",
+        "en": "there isn't; don't have; no",
+        "kind": "grammar",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Mirror of бар: Акчам юк = I have no money. Also the plain 'no'. Bashkir: юҡ."
+      },
+      {
+        "tt": "-рак / -рәк",
+        "translit": "-raq / -räk",
+        "en": "comparative: -er, more",
+        "kind": "grammar",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "зуррак = bigger, матуррак = prettier. 'Than' = ablative: Казан Уфадан зуррак."
+      },
+      {
+        "tt": "иң",
+        "translit": "iñ",
+        "en": "the most (superlative)",
+        "kind": "grammar",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "иң зур = the biggest, иң матур шәһәр = the most beautiful city."
       }
     ]
   },
@@ -3402,7 +4163,17 @@
           "әни",
           "ул",
           "кул",
-          "уң"
+          "уң",
+          "гаилә",
+          "кыз",
+          "малай",
+          "апа",
+          "абый",
+          "эне",
+          "сеңел",
+          "туган",
+          "кеше",
+          "исем"
         ],
         "expressions": [],
         "media": [
@@ -3495,7 +4266,8 @@
           "язучы",
           "хикәя",
           "шигырь",
-          "уку"
+          "уку",
+          "китапханә"
         ],
         "expressions": [],
         "media": [
@@ -3574,7 +4346,16 @@
           "кул",
           "аяк",
           "йөрәк",
-          "эч"
+          "эч",
+          "тамак",
+          "маңгай",
+          "каш",
+          "керфек",
+          "ирен",
+          "яңак",
+          "бил",
+          "тырнак",
+          "үпкә"
         ],
         "expressions": [],
         "media": [],
@@ -3601,7 +4382,10 @@
           "көньяк",
           "көнчыгыш",
           "көнбатыш",
-          "бару"
+          "бару",
+          "машина",
+          "автобус",
+          "күпер"
         ],
         "expressions": [
           "уңга бор",
@@ -3696,7 +4480,8 @@
           "дару",
           "ашказаны",
           "сату",
-          "алу"
+          "алу",
+          "хастаханә"
         ],
         "expressions": [
           "...са да / ...сә дә"
@@ -3816,7 +4601,11 @@
           "мең",
           "тест",
           "рус",
-          "имтихан"
+          "имтихан",
+          "мәктәп",
+          "университет",
+          "укытучы",
+          "студент"
         ],
         "expressions": [
           "-асы/-әсе ... килә"
@@ -3947,7 +4736,8 @@
           "калфак",
           "сату",
           "алу",
-          "түләү"
+          "түләү",
+          "базар"
         ],
         "expressions": [
           "Бу күпме тора?",
@@ -3977,7 +4767,12 @@
           "тәмле",
           "ашау",
           "эчү",
-          "бирү"
+          "бирү",
+          "су",
+          "алма",
+          "бәрәңге",
+          "йомырка",
+          "тоз"
         ],
         "expressions": [
           "зинһар",
@@ -4036,7 +4831,10 @@
           "иртә",
           "кич",
           "төн",
-          "эш"
+          "эш",
+          "вакыт",
+          "минут",
+          "сәгать"
         ],
         "expressions": [
           "иртәгә",
@@ -4091,6 +4889,163 @@
           "en": "I got tired, so I am going to bed."
         },
         "note": "The glue room. һәм joins, ләкин/әмма turn, чөнки explains, аннары sequences, шуңа күрә concludes; modifiers tune (бик тиз, бергә, тагын, бер генә). Both drill lines reuse worksheet compounds: ял итү, йокларга яту."
+      },
+      {
+        "id": "st_question_words",
+        "locus": "Сорау сүзләре",
+        "locus_en": "The Question Words Room",
+        "zone": "Grammar",
+        "vocab": [],
+        "expressions": [
+          "кем",
+          "нәрсә",
+          "нинди",
+          "кайда",
+          "кая",
+          "кайдан",
+          "Кайчан?",
+          "ничек",
+          "нигә",
+          "ни өчен",
+          "ничә",
+          "күпме",
+          "кайсы"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Син кайда яшисең? Кайчан киләсең?",
+          "en": "Where do you live? When are you coming?"
+        },
+        "speak": {
+          "tt": "Бу нәрсә? Бу кем?",
+          "en": "What is this? Who is this?"
+        },
+        "note": "Every exam question starts here. The place trio mirrors the cases: кайда (at, -да) · кая (to, -га) · кайдан (from, -дан). ничә + SINGULAR noun: ничә китап, not *китаплар."
+      },
+      {
+        "id": "st_calendar",
+        "locus": "Календарь бүлмәсе",
+        "locus_en": "The Calendar Room",
+        "zone": "Time",
+        "vocab": [
+          "дүшәмбе",
+          "сишәмбе",
+          "чәршәмбе",
+          "пәнҗешәмбе",
+          "җомга",
+          "шимбә",
+          "якшәмбе",
+          "яз",
+          "җәй",
+          "көз",
+          "кыш",
+          "гыйнвар",
+          "февраль",
+          "март",
+          "апрель",
+          "май",
+          "июнь",
+          "июль",
+          "август",
+          "сентябрь",
+          "октябрь",
+          "ноябрь",
+          "декабрь"
+        ],
+        "expressions": [
+          "быел",
+          "киләсе …",
+          "узган …"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Бүген дүшәмбе, иртәгә сишәмбе була.",
+          "en": "Today is Monday; tomorrow will be Tuesday."
+        },
+        "speak": {
+          "tt": "Минем туган көнем гыйнварда.",
+          "en": "My birthday is in January."
+        },
+        "note": "Days are Persian-built (шәмбе); җомга is the Arabic mosque-day. Seasons hide pegs: яз (spring) = яз (write!), көз (autumn) is one dot from күз (eye). Months are loans — locative tells the story: гыйнварда, февральдә."
+      },
+      {
+        "id": "st_paint_room",
+        "locus": "Төсләр бүлмәсе",
+        "locus_en": "The Color Room",
+        "zone": "Description",
+        "vocab": [
+          "ак",
+          "кара",
+          "кызыл",
+          "яшел",
+          "зәңгәр",
+          "сары",
+          "зур",
+          "кечкенә",
+          "матур",
+          "яңа",
+          "иске",
+          "озын",
+          "кыска",
+          "яхшы",
+          "начар",
+          "авыр",
+          "җиңел",
+          "яшь",
+          "карт"
+        ],
+        "expressions": [
+          "-рак / -рәк",
+          "иң",
+          "бик"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Күлмәгем зәңгәр, машинам кызыл.",
+          "en": "My shirt is blue, my car is red."
+        },
+        "speak": {
+          "tt": "Казан — зур һәм матур шәһәр. Иң матур!",
+          "en": "Kazan is a big and beautiful city. The most beautiful!"
+        },
+        "note": "Adjectives never agree — no plural, no case: зур шәһәрләрдә. Compare with -рак + ablative (Казан Уфадан зуррак), crown with иң. Careful homonym: кара black / кара! look!"
+      },
+      {
+        "id": "st_home_room",
+        "locus": "Өй эче",
+        "locus_en": "Inside the House",
+        "zone": "Description",
+        "vocab": [
+          "бүлмә",
+          "өстәл",
+          "урындык",
+          "тәрәзә",
+          "ишек",
+          "каләм",
+          "дәфтәр",
+          "китап",
+          "сумка",
+          "телефон",
+          "күлмәк"
+        ],
+        "expressions": [
+          "…өстендә",
+          "…астында",
+          "…эчендә",
+          "…янында",
+          "бар",
+          "юк"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Китап өстәл өстендә ята.",
+          "en": "The book lies on the table."
+        },
+        "speak": {
+          "tt": "Минем бүлмәмдә зур тәрәзә бар.",
+          "en": "In my room there is a big window."
+        },
+        "note": "The postposition drill-room: everything is somewhere relative to the furniture. Sentence recipe: [place phrase] + [thing] + бар/юк — Өстәл астында сумка юк."
       }
     ]
   },
@@ -8514,6 +9469,514 @@
         "en": "television",
         "cat": "daily life",
         "note": "Телевизор карамаячакмын = I will not watch TV."
+      },
+      {
+        "tat": "дүшәмбе",
+        "en": "Monday",
+        "cat": "time",
+        "note": "Day 1. Persian-derived day names, шәмбе = 'sabbath day'."
+      },
+      {
+        "tat": "сишәмбе",
+        "en": "Tuesday",
+        "cat": "time"
+      },
+      {
+        "tat": "чәршәмбе",
+        "en": "Wednesday",
+        "cat": "time"
+      },
+      {
+        "tat": "пәнҗешәмбе",
+        "en": "Thursday",
+        "cat": "time",
+        "note": "пәнҗе = five (Persian) — the fifth day from Saturday."
+      },
+      {
+        "tat": "җомга",
+        "en": "Friday",
+        "cat": "time",
+        "note": "From Arabic Jumu'ah — the mosque day. Җомгада = on Friday."
+      },
+      {
+        "tat": "шимбә",
+        "en": "Saturday",
+        "cat": "time"
+      },
+      {
+        "tat": "якшәмбе",
+        "en": "Sunday",
+        "cat": "time",
+        "note": "якшы + шәмбе ≈ 'the good day'."
+      },
+      {
+        "tat": "яз",
+        "en": "spring",
+        "cat": "time",
+        "note": "HOMONYM: яз! also = write! Peg: in SPRING the JAZZ pianist writes outdoors. Язда = in spring."
+      },
+      {
+        "tat": "җәй",
+        "en": "summer",
+        "cat": "time",
+        "note": "Җәйдә = in summer."
+      },
+      {
+        "tat": "көз",
+        "en": "autumn",
+        "cat": "time",
+        "note": "One dot from күз (eye): autumn is when the year's EYE closes. Көздә = in autumn."
+      },
+      {
+        "tat": "кыш",
+        "en": "winter",
+        "cat": "time",
+        "note": "Voiceless ш: кышта = in winter."
+      },
+      {
+        "tat": "гыйнвар",
+        "en": "January",
+        "cat": "time"
+      },
+      {
+        "tat": "февраль",
+        "en": "February",
+        "cat": "time"
+      },
+      {
+        "tat": "март",
+        "en": "March",
+        "cat": "time"
+      },
+      {
+        "tat": "апрель",
+        "en": "April",
+        "cat": "time"
+      },
+      {
+        "tat": "май",
+        "en": "May",
+        "cat": "time"
+      },
+      {
+        "tat": "июнь",
+        "en": "June",
+        "cat": "time"
+      },
+      {
+        "tat": "июль",
+        "en": "July",
+        "cat": "time"
+      },
+      {
+        "tat": "сентябрь",
+        "en": "September",
+        "cat": "time"
+      },
+      {
+        "tat": "октябрь",
+        "en": "October",
+        "cat": "time"
+      },
+      {
+        "tat": "ноябрь",
+        "en": "November",
+        "cat": "time"
+      },
+      {
+        "tat": "декабрь",
+        "en": "December",
+        "cat": "time"
+      },
+      {
+        "tat": "вакыт",
+        "en": "time",
+        "cat": "time",
+        "note": "Вакыт юк! = no time! Вакытында = on time (lit. at its time)."
+      },
+      {
+        "tat": "минут",
+        "en": "minute",
+        "cat": "time"
+      },
+      {
+        "tat": "гаилә",
+        "en": "family",
+        "cat": "family",
+        "note": "Гаиләгез бармы? = do you have a family?"
+      },
+      {
+        "tat": "кыз",
+        "en": "daughter; girl",
+        "cat": "family",
+        "note": "кызым = my daughter."
+      },
+      {
+        "tat": "малай",
+        "en": "boy; son (colloquial)",
+        "cat": "family"
+      },
+      {
+        "tat": "апа",
+        "en": "older sister; aunt; ma'am",
+        "cat": "family",
+        "note": "Older women are politely 'апа': Гөлнара апа."
+      },
+      {
+        "tat": "абый",
+        "en": "older brother; uncle; sir",
+        "cat": "family",
+        "note": "Older men are politely 'абый': Марат абый."
+      },
+      {
+        "tat": "эне",
+        "en": "younger brother",
+        "cat": "family"
+      },
+      {
+        "tat": "сеңел",
+        "en": "younger sister",
+        "cat": "family",
+        "note": "Tatar splits siblings by AGE, not just gender: апа/абый older, сеңел/эне younger."
+      },
+      {
+        "tat": "туган",
+        "en": "relative; sibling",
+        "cat": "family",
+        "note": "Also 'born': туган көн = birth-day, туган тел = native tongue."
+      },
+      {
+        "tat": "кеше",
+        "en": "person, human",
+        "cat": "people",
+        "note": "Күп кеше = many people (singular after numbers/quantity!)."
+      },
+      {
+        "tat": "исем",
+        "en": "name",
+        "cat": "people",
+        "note": "Минем исемем Салауат. Исемегез ничек? = what's your name?"
+      },
+      {
+        "tat": "укытучы",
+        "en": "teacher",
+        "cat": "people",
+        "note": "укы (study) + -т (make) + -учы (one who) = one-who-makes-study."
+      },
+      {
+        "tat": "студент",
+        "en": "student",
+        "cat": "people"
+      },
+      {
+        "tat": "күрше",
+        "en": "neighbor",
+        "cat": "people",
+        "note": "дустанә күршеләр = friendly neighbors."
+      },
+      {
+        "tat": "мәктәп",
+        "en": "school",
+        "cat": "cities",
+        "note": "Voiceless п: мәктәптә = at school, мәктәпкә = to school."
+      },
+      {
+        "tat": "университет",
+        "en": "university",
+        "cat": "cities",
+        "note": "LOANWORD: университетта, университетка (back)."
+      },
+      {
+        "tat": "китапханә",
+        "en": "library",
+        "cat": "cities",
+        "note": "китап + ханә (house) — same recipe as даруханә, ашханә."
+      },
+      {
+        "tat": "базар",
+        "en": "market",
+        "cat": "cities"
+      },
+      {
+        "tat": "ашханә",
+        "en": "canteen, cafeteria",
+        "cat": "cities",
+        "note": "аш + ханә = meal-house."
+      },
+      {
+        "tat": "хастаханә",
+        "en": "hospital",
+        "cat": "cities",
+        "note": "хаста (sick) + ханә = sick-house."
+      },
+      {
+        "tat": "ил",
+        "en": "country, land",
+        "cat": "cities",
+        "note": "Туган ил = homeland."
+      },
+      {
+        "tat": "дөнья",
+        "en": "world",
+        "cat": "cities",
+        "note": "Ends in я → back endings: дөньяда = in the world."
+      },
+      {
+        "tat": "диңгез",
+        "en": "sea",
+        "cat": "nature",
+        "note": "диңгезгә таба = toward the sea."
+      },
+      {
+        "tat": "күл",
+        "en": "lake",
+        "cat": "nature",
+        "note": "Кабан күле = Kaban Lake, Kazan's legend-lake."
+      },
+      {
+        "tat": "бүлмә",
+        "en": "room",
+        "cat": "cities",
+        "note": "Йөрәк бүлмәсе, Баш бүлмәсе — the palace's own rooms."
+      },
+      {
+        "tat": "өстәл",
+        "en": "table",
+        "cat": "food & home",
+        "note": "өстәл өстендә = on the table — өс (top) hides in both words."
+      },
+      {
+        "tat": "урындык",
+        "en": "chair",
+        "cat": "food & home",
+        "note": "урын (place) + -дык = the sit-place."
+      },
+      {
+        "tat": "тәрәзә",
+        "en": "window",
+        "cat": "food & home",
+        "note": "тәрәзә янында = by the window."
+      },
+      {
+        "tat": "ишек",
+        "en": "door",
+        "cat": "food & home"
+      },
+      {
+        "tat": "машина",
+        "en": "car",
+        "cat": "daily life",
+        "note": "машина артында = behind the car."
+      },
+      {
+        "tat": "автобус",
+        "en": "bus",
+        "cat": "daily life",
+        "note": "Автобуска менү = board the bus (dative!)."
+      },
+      {
+        "tat": "телефон",
+        "en": "telephone",
+        "cat": "daily life"
+      },
+      {
+        "tat": "каләм",
+        "en": "pen, pencil",
+        "cat": "daily life",
+        "note": "Arabic loan (qalam) — front endings: каләмем = my pen."
+      },
+      {
+        "tat": "дәфтәр",
+        "en": "notebook",
+        "cat": "daily life"
+      },
+      {
+        "tat": "сумка",
+        "en": "bag",
+        "cat": "daily life"
+      },
+      {
+        "tat": "күлмәк",
+        "en": "shirt; dress",
+        "cat": "daily life",
+        "note": "Күлмәгем зәңгәр = my shirt is blue (к→г between vowels!)."
+      },
+      {
+        "tat": "су",
+        "en": "water",
+        "cat": "food & home",
+        "note": "Two letters, first-exam certainty: су эчәм = I drink water."
+      },
+      {
+        "tat": "алма",
+        "en": "apple",
+        "cat": "food & home"
+      },
+      {
+        "tat": "бәрәңге",
+        "en": "potato",
+        "cat": "food & home",
+        "note": "The Tatar staple — бәрәңге белән ит."
+      },
+      {
+        "tat": "йомырка",
+        "en": "egg",
+        "cat": "food & home"
+      },
+      {
+        "tat": "тоз",
+        "en": "salt",
+        "cat": "food & home"
+      },
+      {
+        "tat": "маңгай",
+        "en": "forehead",
+        "cat": "body"
+      },
+      {
+        "tat": "каш",
+        "en": "eyebrow",
+        "cat": "body",
+        "note": "Каш белән күз арасында = 'between eyebrow and eye' = in a blink."
+      },
+      {
+        "tat": "керфек",
+        "en": "eyelash",
+        "cat": "body"
+      },
+      {
+        "tat": "ирен",
+        "en": "lip",
+        "cat": "body"
+      },
+      {
+        "tat": "яңак",
+        "en": "cheek",
+        "cat": "body"
+      },
+      {
+        "tat": "бил",
+        "en": "waist, lower back",
+        "cat": "body",
+        "note": "Билем авырта = my lower back hurts."
+      },
+      {
+        "tat": "тырнак",
+        "en": "fingernail",
+        "cat": "body"
+      },
+      {
+        "tat": "үпкә",
+        "en": "lung",
+        "cat": "body",
+        "note": "PEG: үпкәләү (to take offense — already in the spine) is literally 'to lung'! Offense sits in the lungs the way love sits in the heart."
+      },
+      {
+        "tat": "ак",
+        "en": "white",
+        "cat": "qualities",
+        "note": "Ак калфак, Агыйдел = ак + идел, the White River."
+      },
+      {
+        "tat": "кара",
+        "en": "black",
+        "cat": "qualities",
+        "note": "HOMONYM: кара! also = look! Peg: look at the BLACK CAR — кара кара!"
+      },
+      {
+        "tat": "кызыл",
+        "en": "red",
+        "cat": "qualities",
+        "note": "Кызыл мәйдан = Red Square; кыз (girl) hides at its root — 'blushing'."
+      },
+      {
+        "tat": "яшел",
+        "en": "green",
+        "cat": "qualities"
+      },
+      {
+        "tat": "зәңгәр",
+        "en": "blue",
+        "cat": "qualities"
+      },
+      {
+        "tat": "сары",
+        "en": "yellow",
+        "cat": "qualities",
+        "note": "Сары йорт = the yellow house."
+      },
+      {
+        "tat": "зур",
+        "en": "big",
+        "cat": "qualities",
+        "note": "Adjectives never agree: зур шәһәр, зур шәһәрләр — no plural on зур."
+      },
+      {
+        "tat": "кечкенә",
+        "en": "small",
+        "cat": "qualities"
+      },
+      {
+        "tat": "яңа",
+        "en": "new",
+        "cat": "qualities",
+        "note": "Яңа ел = New Year."
+      },
+      {
+        "tat": "иске",
+        "en": "old (of things)",
+        "cat": "qualities",
+        "note": "Иске Казан = old Kazan. For people use карт."
+      },
+      {
+        "tat": "яшь",
+        "en": "young; age",
+        "cat": "qualities",
+        "note": "Ничә яшь? = how old? Миңа 21 яшь = I am 21."
+      },
+      {
+        "tat": "карт",
+        "en": "old (of people)",
+        "cat": "qualities",
+        "note": "карт бабай = old grandfather; картая = grows old."
+      },
+      {
+        "tat": "озын",
+        "en": "long, tall",
+        "cat": "qualities"
+      },
+      {
+        "tat": "кыска",
+        "en": "short",
+        "cat": "qualities"
+      },
+      {
+        "tat": "матур",
+        "en": "beautiful",
+        "cat": "qualities",
+        "note": "Танышуыбызга шат, матур Казан! Comparative: матуррак."
+      },
+      {
+        "tat": "яхшы",
+        "en": "good",
+        "cat": "qualities",
+        "note": "Bashkir: яҡшы (к→ҡ)."
+      },
+      {
+        "tat": "начар",
+        "en": "bad",
+        "cat": "qualities"
+      },
+      {
+        "tat": "авыр",
+        "en": "heavy; difficult",
+        "cat": "qualities",
+        "note": "Татар теле авырмы? — Юк, җиңел!"
+      },
+      {
+        "tat": "җиңел",
+        "en": "light; easy",
+        "cat": "qualities"
       }
     ]
   },
@@ -8861,6 +10324,93 @@
             "q": "How did Nurlat begin, and what does its name carry?",
             "a": "It grew from a station on the Volga–Bugulma railway (1911) into a sugar-and-oil town; the name carries нур — 'light'.",
             "tt": "Нурлат · нур = light"
+          }
+        ]
+      },
+      {
+        "id": "kn_exam",
+        "title": "Имтихан — Exam Patterns",
+        "icon": "🎓",
+        "facts": [
+          {
+            "q": "Definite future — 'I will go' (бару)?",
+            "a": "vstem + -ачак/-әчәк (vowel stems -ячак/-ячәк) + person: барачакмын, сөйләшәчәкмен.",
+            "tt": "барачакмын"
+          },
+          {
+            "q": "Conditional — 'if I come' (килү)?",
+            "a": "stem + -са/-сә + past-type endings: килсәм, барсаң, эшләсәк.",
+            "tt": "килсәм"
+          },
+          {
+            "q": "Yes/no question?",
+            "a": "Particle -мы/-ме on the word being asked: Киләсеңме? Биштәме? Татарчамы?",
+            "tt": "-мы / -ме"
+          },
+          {
+            "q": "Negating a noun or adjective predicate ('it's not Amir')?",
+            "a": "түгел after it: Әмир түгел, кыйммәт түгел. Verbs negate inside instead: бармыйм, килмәде.",
+            "tt": "түгел"
+          },
+          {
+            "q": "'I have / I don't have'?",
+            "a": "Possessive + бар/юк: Минем машинам бар. Акчам юк. No verb 'to have' exists.",
+            "tt": "бар / юк"
+          },
+          {
+            "q": "The six cases and their jobs?",
+            "a": "Nominative subject · genitive -ның possession · dative -га motion-to · accusative -ны definite object · locative -да place · ablative -дан source.",
+            "tt": "алты килеш"
+          },
+          {
+            "q": "Possessives 'my / your / his-her' on китап?",
+            "a": "китабым, китабың, китабы — and note voicing: п→б between vowels (китап → китабым).",
+            "tt": "китабым"
+          },
+          {
+            "q": "Comparative and superlative?",
+            "a": "-рак/-рәк with ablative for 'than': Казан Уфадан зуррак; superlative with иң: иң матур шәһәр.",
+            "tt": "-рак / -рәк · иң"
+          },
+          {
+            "q": "'Need to' pattern?",
+            "a": "Infinitive + кирәк: барырга кирәк = need to go; negative кирәкми / кирәк түгел.",
+            "tt": "кирәк"
+          },
+          {
+            "q": "'Want to' (desiderative)?",
+            "a": "-асы/-әсе + possessive + килә: эшлисем килә = I want to work; барасым килми = I don't want to go.",
+            "tt": "-асы килә"
+          },
+          {
+            "q": "'Even if' (concessive)?",
+            "a": "Conditional + да/дә: кар яуса да = even if it snows; онытсаң да = even if you forget.",
+            "tt": "-са да"
+          },
+          {
+            "q": "Plural suffix and its nasal variant?",
+            "a": "-лар/-ләр, but after м/н/ң it becomes -нар/-нәр: урамнар, көннәр, таулар.",
+            "tt": "-лар / -нар"
+          },
+          {
+            "q": "Compound verbs — which part conjugates?",
+            "a": "Only the final verb; the first word is frozen: йоклап китәчәкмен, ял иттем, сатып алдым.",
+            "tt": "йоклап китү"
+          },
+          {
+            "q": "'At N o'clock'?",
+            "a": "сәгать + numeral + locative: сәгать биштә = at five; сәгать ничәдә? = at what time?",
+            "tt": "сәгать биштә"
+          },
+          {
+            "q": "Softening a claim to 'probably'?",
+            "a": "-дыр/-дер on the predicate (киләдер = probably coming, өйдәдер = probably home) or adverbs бәлки, ихтимал, мөгаен.",
+            "tt": "-дыр / -дер"
+          },
+          {
+            "q": "The three place questions and their cases?",
+            "a": "кайда (at → -да), кая (to → -га), кайдан (from → -дан) — question and answer always share the case.",
+            "tt": "кайда · кая · кайдан"
           }
         ]
       }
