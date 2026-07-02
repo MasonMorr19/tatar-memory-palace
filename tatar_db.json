@@ -2,7 +2,7 @@
   "meta": {
     "title": "Nested Hearth — Tatar Memory Palace Database",
     "owner": "Salauat",
-    "version": "0.9.1",
+    "version": "0.10.0",
     "updated": "2026-07-01",
     "purpose": "Single source of truth that binds VOCAB + MEDIA + PALACE so every drill (listening, speaking) is generated from one spine. Edit this file in VSCode/Claude Code; the app and tools read from it.",
     "schema": {
@@ -661,6 +661,888 @@
         "cond": "укысам",
         "fut": "укыячакмын",
         "note": "Both 'read' and 'study': университетта укыйм = I study at university; китап укыйм = I read a book."
+      },
+      {
+        "inf": "язу",
+        "stem": "яз",
+        "vstem": "яз",
+        "pres": "яза",
+        "cls": "C",
+        "back": true,
+        "en": "write",
+        "cond": "язсам",
+        "fut": "язачакмын",
+        "note": "Peg: a JAZZ pianist scribbling the solo — яз!"
+      },
+      {
+        "inf": "әйтү",
+        "stem": "әйт",
+        "vstem": "әйт",
+        "pres": "әйтә",
+        "cls": "C",
+        "back": false,
+        "en": "say",
+        "cond": "әйтсәм",
+        "fut": "әйтәчәкмен",
+        "note": "Peg: you shout 'EIGHT!' — the only thing you say. Рәхмәт әйтү = to thank."
+      },
+      {
+        "inf": "уйлау",
+        "stem": "уйла",
+        "vstem": "уйла",
+        "pres": "уйлый",
+        "cls": "V",
+        "back": true,
+        "en": "think",
+        "cond": "уйласам",
+        "fut": "уйлаячакмын",
+        "note": "Peg: an OIL LAmp flicks on over the thinker's head. уйлап табу = figure out."
+      },
+      {
+        "inf": "хәтерләү",
+        "stem": "хәтерлә",
+        "vstem": "хәтерлә",
+        "pres": "хәтерли",
+        "cls": "V",
+        "back": false,
+        "en": "remember",
+        "cond": "хәтерләсәм",
+        "fut": "хәтерләячәкмен",
+        "note": "хәтер = memory (the palace's own word!) + -лә = verb it. Peg: the HAT-TAILOR sews memories into your hat lining."
+      },
+      {
+        "inf": "карау",
+        "stem": "кара",
+        "vstem": "кара",
+        "pres": "карый",
+        "cls": "V",
+        "back": true,
+        "en": "look, watch",
+        "cond": "карасам",
+        "fut": "караячакмын",
+        "note": "Peg: you can't stop looking at the shiny CAR. Телевизор карау = watch TV."
+      },
+      {
+        "inf": "ишетү",
+        "stem": "ишет",
+        "vstem": "ишет",
+        "pres": "ишетә",
+        "cls": "C",
+        "back": false,
+        "en": "hear",
+        "cond": "ишетсәм",
+        "fut": "ишетәчәкмен",
+        "note": "Peg: everything within EARSHOT — ишет. Voiceless т: ишетте."
+      },
+      {
+        "inf": "сизү",
+        "stem": "сиз",
+        "vstem": "сиз",
+        "pres": "сизә",
+        "cls": "C",
+        "back": false,
+        "en": "feel, sense",
+        "cond": "сизсәм",
+        "fut": "сизәчәкмен",
+        "note": "Peg: a hunch SEIZes you."
+      },
+      {
+        "inf": "табу",
+        "stem": "тап",
+        "vstem": "таб",
+        "pres": "таба",
+        "cls": "C",
+        "back": true,
+        "en": "find",
+        "cond": "тапсам",
+        "fut": "табачакмын",
+        "note": "VOICING: тап → таба, future табачакмын. Peg: TAP the ground — treasure!"
+      },
+      {
+        "inf": "эзләү",
+        "stem": "эзлә",
+        "vstem": "эзлә",
+        "pres": "эзли",
+        "cls": "V",
+        "back": false,
+        "en": "search, look for",
+        "cond": "эзләсәм",
+        "fut": "эзләячәкмен",
+        "note": "эз = footprint, track → эзлә = follow the footprints."
+      },
+      {
+        "inf": "уяну",
+        "stem": "уян",
+        "vstem": "уян",
+        "pres": "уяна",
+        "cls": "C",
+        "back": true,
+        "en": "wake up",
+        "cond": "уянсам",
+        "fut": "уяначакмын",
+        "note": "Peg: a giant morning YAWN — уян! уянып китү = wake with a start."
+      },
+      {
+        "inf": "кию",
+        "stem": "ки",
+        "vstem": "ки",
+        "pres": "кия",
+        "cls": "V",
+        "back": false,
+        "en": "wear, put on",
+        "cond": "кисәм",
+        "fut": "киячәкмен",
+        "note": "Peg: you wear a giant KEY on a chain. киену (get dressed) is its reflexive cousin, already in the spine."
+      },
+      {
+        "inf": "юу",
+        "stem": "ю",
+        "vstem": "ю",
+        "pres": "юа",
+        "cls": "C",
+        "back": true,
+        "en": "wash",
+        "cond": "юсам",
+        "fut": "юачакмын",
+        "note": "One-letter verb! Peg: the hose sprays YOU — to wash."
+      },
+      {
+        "inf": "пешерү",
+        "stem": "пешер",
+        "vstem": "пешер",
+        "pres": "пешерә",
+        "cls": "C",
+        "back": false,
+        "en": "cook",
+        "cond": "пешерсәм",
+        "fut": "пешерәчәкмен",
+        "note": "Peg: the PRESSURE-cooker hisses. аш пешерү = cook a meal."
+      },
+      {
+        "inf": "башлау",
+        "stem": "башла",
+        "vstem": "башла",
+        "pres": "башлый",
+        "cls": "V",
+        "back": true,
+        "en": "begin, start (something)",
+        "cond": "башласам",
+        "fut": "башлаячакмын",
+        "note": "баш = head → 'head it' = begin. Contrast башлану (begin by itself, already in the spine): дәрес башлана vs мин дәресне башлыйм."
+      },
+      {
+        "inf": "бетерү",
+        "stem": "бетер",
+        "vstem": "бетер",
+        "pres": "бетерә",
+        "cls": "C",
+        "back": false,
+        "en": "finish (something)",
+        "cond": "бетерсәм",
+        "fut": "бетерәчәкмен",
+        "note": "Peg: BETTER finish it. укып бетерү = finish reading."
+      },
+      {
+        "inf": "бетү",
+        "stem": "бет",
+        "vstem": "бет",
+        "pres": "бетә",
+        "cls": "C",
+        "back": false,
+        "en": "end, run out",
+        "cond": "бетсәм",
+        "fut": "бетәчәкмен",
+        "note": "Peg: the BET is settled — over. Сөт бетте = the milk ran out."
+      },
+      {
+        "inf": "туктау",
+        "stem": "тукта",
+        "vstem": "тукта",
+        "pres": "туктый",
+        "cls": "V",
+        "back": true,
+        "en": "stop (oneself)",
+        "cond": "туктасам",
+        "fut": "туктаячакмын",
+        "note": "Peg: the TUK-TUK screeches to a halt."
+      },
+      {
+        "inf": "туктату",
+        "stem": "туктат",
+        "vstem": "туктат",
+        "pres": "туктата",
+        "cls": "C",
+        "back": true,
+        "en": "stop (something)",
+        "cond": "туктатсам",
+        "fut": "туктатачакмын",
+        "note": "тукта + causative -т: you make it stop. Автобусны туктат!"
+      },
+      {
+        "inf": "көтү",
+        "stem": "көт",
+        "vstem": "көт",
+        "pres": "көтә",
+        "cls": "C",
+        "back": false,
+        "en": "wait",
+        "cond": "көтсәм",
+        "fut": "көтәчәкмен",
+        "note": "Peg: waiting at the door in your COAT. көтеп тору = wait around."
+      },
+      {
+        "inf": "көлү",
+        "stem": "көл",
+        "vstem": "көл",
+        "pres": "көлә",
+        "cls": "C",
+        "back": false,
+        "en": "laugh",
+        "cond": "көлсәм",
+        "fut": "көләчәкмен",
+        "note": "Peg: you CURL up laughing. көлеп җибәрү = burst out laughing."
+      },
+      {
+        "inf": "елау",
+        "stem": "ела",
+        "vstem": "ела",
+        "pres": "елый",
+        "cls": "V",
+        "back": true,
+        "en": "cry",
+        "cond": "еласам",
+        "fut": "елаячакмын",
+        "note": "Peg: a YELL, then tears. елап җибәрү = burst into tears."
+      },
+      {
+        "inf": "елмаю",
+        "stem": "елмай",
+        "vstem": "елма",
+        "pres": "елмая",
+        "cls": "V",
+        "back": true,
+        "en": "smile",
+        "cond": "елмайсам",
+        "fut": "елмаячакмын",
+        "note": "GLIDE STEM: елмай → елмаячакмын (й drops before я). Peg: ела (cry) flips into елмай (smile) — the same tears, curved up."
+      },
+      {
+        "inf": "шатлану",
+        "stem": "шатлан",
+        "vstem": "шатлан",
+        "pres": "шатлана",
+        "cls": "C",
+        "back": true,
+        "en": "be glad, rejoice",
+        "cond": "шатлансам",
+        "fut": "шатланачакмын",
+        "note": "шат = glad (мин бик шат!) + -лан = become glad."
+      },
+      {
+        "inf": "курку",
+        "stem": "курык",
+        "vstem": "курк",
+        "pres": "курка",
+        "cls": "C",
+        "back": true,
+        "en": "fear, be afraid",
+        "cond": "курыксам",
+        "fut": "куркачакмын",
+        "note": "VOICING + SYNCOPE: курык → курка, куркачакмын. Peg: the dog barks 'КУРК!' and you jump."
+      },
+      {
+        "inf": "сөю",
+        "stem": "сөй",
+        "vstem": "сө",
+        "pres": "сөя",
+        "cls": "V",
+        "back": false,
+        "en": "love (deeply)",
+        "cond": "сөйсәм",
+        "fut": "сөячәкмен",
+        "note": "GLIDE STEM: сөй → сөячәкмен. Сөям җаным-тәнем белән — the poetic verb of love; ярату is the everyday one."
+      },
+      {
+        "inf": "сөйләү",
+        "stem": "сөйлә",
+        "vstem": "сөйлә",
+        "pres": "сөйли",
+        "cls": "V",
+        "back": false,
+        "en": "tell, narrate",
+        "cond": "сөйләсәм",
+        "fut": "сөйләячәкмен",
+        "note": "Peg: the bard drizzles SOY-LA sauce on the tale. Contrast сөйләшү (converse WITH someone, reciprocal -ш)."
+      },
+      {
+        "inf": "ясау",
+        "stem": "яса",
+        "vstem": "яса",
+        "pres": "ясый",
+        "cls": "V",
+        "back": true,
+        "en": "make, do",
+        "cond": "ясасам",
+        "fut": "ясаячакмын",
+        "note": "Peg: with a SAW you make a birdhouse — я-SAW."
+      },
+      {
+        "inf": "кую",
+        "stem": "куй",
+        "vstem": "ку",
+        "pres": "куя",
+        "cls": "V",
+        "back": true,
+        "en": "put, place",
+        "cond": "куйсам",
+        "fut": "куячакмын",
+        "note": "GLIDE STEM: куй → куячакмын. Peg: you put the KOI in the pond. язып кую = jot down."
+      },
+      {
+        "inf": "йөгерү",
+        "stem": "йөгер",
+        "vstem": "йөгер",
+        "pres": "йөгерә",
+        "cls": "C",
+        "back": false,
+        "en": "run",
+        "cond": "йөгерсәм",
+        "fut": "йөгерәчәкмен",
+        "note": "Peg: spill the YOGURT and run."
+      },
+      {
+        "inf": "чабу",
+        "stem": "чап",
+        "vstem": "чаб",
+        "pres": "чаба",
+        "cls": "C",
+        "back": true,
+        "en": "dash, gallop",
+        "cond": "чапсам",
+        "fut": "чабачакмын",
+        "note": "VOICING: чап → чаба, чабачакмын. Peg: the horse CHOPs at full gallop."
+      },
+      {
+        "inf": "очу",
+        "stem": "оч",
+        "vstem": "оч",
+        "pres": "оча",
+        "cls": "C",
+        "back": true,
+        "en": "fly",
+        "cond": "очсам",
+        "fut": "очачакмын",
+        "note": "Peg: the OSTRICH finally lifts off. очкыч = the flyer = airplane."
+      },
+      {
+        "inf": "йөзү",
+        "stem": "йөз",
+        "vstem": "йөз",
+        "pres": "йөзә",
+        "cls": "C",
+        "back": false,
+        "en": "swim",
+        "cond": "йөзсәм",
+        "fut": "йөзәчәкмен",
+        "note": "Peg: йөз also means 100 (and face!) — swim 100 laps."
+      },
+      {
+        "inf": "сикерү",
+        "stem": "сикер",
+        "vstem": "сикер",
+        "pres": "сикерә",
+        "cls": "C",
+        "back": false,
+        "en": "jump",
+        "cond": "сикерсәм",
+        "fut": "сикерәчәкмен",
+        "note": "Peg: the hide-and-SEEKer jumps out."
+      },
+      {
+        "inf": "чыгу",
+        "stem": "чык",
+        "vstem": "чыг",
+        "pres": "чыга",
+        "cls": "C",
+        "back": true,
+        "en": "exit, go out",
+        "cond": "чыксам",
+        "fut": "чыгачакмын",
+        "note": "VOICING: чык → чыга, чыгачакмын. Peg: CHECK out and walk out. чыгып китү = head out."
+      },
+      {
+        "inf": "менү",
+        "stem": "мен",
+        "vstem": "мен",
+        "pres": "менә",
+        "cls": "C",
+        "back": false,
+        "en": "climb, board",
+        "cond": "менсәм",
+        "fut": "менәчәкмен",
+        "note": "Peg: MEN climbing the ladder. Автобуска менү = board the bus (dative!)."
+      },
+      {
+        "inf": "төшү",
+        "stem": "төш",
+        "vstem": "төш",
+        "pres": "төшә",
+        "cls": "C",
+        "back": false,
+        "en": "descend, get off",
+        "cond": "төшсәм",
+        "fut": "төшәчәкмен",
+        "note": "Peg: slide down on your TUSH. төш also = dream & noon — three words in one."
+      },
+      {
+        "inf": "танышу",
+        "stem": "таныш",
+        "vstem": "таныш",
+        "pres": "таныша",
+        "cls": "C",
+        "back": true,
+        "en": "meet, get acquainted",
+        "cond": "танышсам",
+        "fut": "танышачакмын",
+        "note": "таны (recognize) + -ш (each other). Takes белән: Ашот белән таныштым. Танышуыбызга шат!"
+      },
+      {
+        "inf": "исәнләшү",
+        "stem": "исәнләш",
+        "vstem": "исәнләш",
+        "pres": "исәнләшә",
+        "cls": "C",
+        "back": false,
+        "en": "greet, say hello",
+        "cond": "исәнләшсәм",
+        "fut": "исәнләшәчәкмен",
+        "note": "исән (alive & well) + -ләш = trade 'be-well's — the verb behind Исәнмесез!"
+      },
+      {
+        "inf": "саубуллашу",
+        "stem": "саубуллаш",
+        "vstem": "саубуллаш",
+        "pres": "саубуллаша",
+        "cls": "C",
+        "back": true,
+        "en": "say goodbye",
+        "cond": "саубуллашсам",
+        "fut": "саубуллашачакмын",
+        "note": "сау бул (stay healthy) + -лаш = trade goodbyes — the verb behind Сау булыгыз!"
+      },
+      {
+        "inf": "уйнау",
+        "stem": "уйна",
+        "vstem": "уйна",
+        "pres": "уйный",
+        "cls": "V",
+        "back": true,
+        "en": "play",
+        "cond": "уйнасам",
+        "fut": "уйнаячакмын",
+        "note": "Peg: 'Уй-на!' shout the kids in the yard. Теннис уйнау, курайда уйнау."
+      },
+      {
+        "inf": "җибәрү",
+        "stem": "җибәр",
+        "vstem": "җибәр",
+        "pres": "җибәрә",
+        "cls": "C",
+        "back": false,
+        "en": "send",
+        "cond": "җибәрсәм",
+        "fut": "җибәрәчәкмен",
+        "note": "Peg: you send a JIBBERing voice message. As an auxiliary = suddenness: көлеп җибәрү."
+      },
+      {
+        "inf": "йоклап китү",
+        "stem": "кит",
+        "vstem": "кит",
+        "pres": "китә",
+        "cls": "C",
+        "back": false,
+        "pre": "йоклап ",
+        "en": "fall asleep",
+        "cond": "йоклап китсәм",
+        "fut": "йоклап китәчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + китү: 'sleeping + go off'."
+      },
+      {
+        "inf": "уянып китү",
+        "stem": "кит",
+        "vstem": "кит",
+        "pres": "китә",
+        "cls": "C",
+        "back": false,
+        "pre": "уянып ",
+        "en": "wake up (suddenly)",
+        "cond": "уянып китсәм",
+        "fut": "уянып китәчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + китү: 'waking + go off'."
+      },
+      {
+        "inf": "чыгып китү",
+        "stem": "кит",
+        "vstem": "кит",
+        "pres": "китә",
+        "cls": "C",
+        "back": false,
+        "pre": "чыгып ",
+        "en": "head out, leave",
+        "cond": "чыгып китсәм",
+        "fut": "чыгып китәчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + китү: 'exiting + go off'."
+      },
+      {
+        "inf": "кереп килү",
+        "stem": "кил",
+        "vstem": "кил",
+        "pres": "килә",
+        "cls": "C",
+        "back": false,
+        "pre": "кереп ",
+        "en": "drop in, come by",
+        "cond": "кереп килсәм",
+        "fut": "кереп киләчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + килү: 'entering + come'."
+      },
+      {
+        "inf": "барып килү",
+        "stem": "кил",
+        "vstem": "кил",
+        "pres": "килә",
+        "cls": "C",
+        "back": false,
+        "pre": "барып ",
+        "en": "run an errand (go & come back)",
+        "cond": "барып килсәм",
+        "fut": "барып киләчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + килү: 'going + come'."
+      },
+      {
+        "inf": "алып килү",
+        "stem": "кил",
+        "vstem": "кил",
+        "pres": "килә",
+        "cls": "C",
+        "back": false,
+        "pre": "алып ",
+        "en": "bring (here)",
+        "cond": "алып килсәм",
+        "fut": "алып киләчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + килү: 'taking + come'."
+      },
+      {
+        "inf": "алып бару",
+        "stem": "бар",
+        "vstem": "бар",
+        "pres": "бара",
+        "cls": "C",
+        "back": true,
+        "pre": "алып ",
+        "en": "take, carry, lead (there)",
+        "cond": "алып барсам",
+        "fut": "алып барачакмын",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + бару: 'taking + go'."
+      },
+      {
+        "inf": "алып китү",
+        "stem": "кит",
+        "vstem": "кит",
+        "pres": "китә",
+        "cls": "C",
+        "back": false,
+        "pre": "алып ",
+        "en": "take away",
+        "cond": "алып китсәм",
+        "fut": "алып китәчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + китү: 'taking + go off'."
+      },
+      {
+        "inf": "көлеп җибәрү",
+        "stem": "җибәр",
+        "vstem": "җибәр",
+        "pres": "җибәрә",
+        "cls": "C",
+        "back": false,
+        "pre": "көлеп ",
+        "en": "burst out laughing",
+        "cond": "көлеп җибәрсәм",
+        "fut": "көлеп җибәрәчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + җибәрү (sudden): 'laughing + send'."
+      },
+      {
+        "inf": "елап җибәрү",
+        "stem": "җибәр",
+        "vstem": "җибәр",
+        "pres": "җибәрә",
+        "cls": "C",
+        "back": false,
+        "pre": "елап ",
+        "en": "burst into tears",
+        "cond": "елап җибәрсәм",
+        "fut": "елап җибәрәчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + җибәрү (sudden): 'crying + send'."
+      },
+      {
+        "inf": "башлап җибәрү",
+        "stem": "җибәр",
+        "vstem": "җибәр",
+        "pres": "җибәрә",
+        "cls": "C",
+        "back": false,
+        "pre": "башлап ",
+        "en": "kick off, start off",
+        "cond": "башлап җибәрсәм",
+        "fut": "башлап җибәрәчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + җибәрү (sudden): 'starting + send'."
+      },
+      {
+        "inf": "укып бетерү",
+        "stem": "бетер",
+        "vstem": "бетер",
+        "pres": "бетерә",
+        "cls": "C",
+        "back": false,
+        "pre": "укып ",
+        "en": "finish reading",
+        "cond": "укып бетерсәм",
+        "fut": "укып бетерәчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + бетерү (completive): 'reading + finish'."
+      },
+      {
+        "inf": "эшләп бетерү",
+        "stem": "бетер",
+        "vstem": "бетер",
+        "pres": "бетерә",
+        "cls": "C",
+        "back": false,
+        "pre": "эшләп ",
+        "en": "finish (a job)",
+        "cond": "эшләп бетерсәм",
+        "fut": "эшләп бетерәчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + бетерү (completive): 'working + finish'."
+      },
+      {
+        "inf": "язып кую",
+        "stem": "куй",
+        "vstem": "ку",
+        "pres": "куя",
+        "cls": "V",
+        "back": true,
+        "pre": "язып ",
+        "en": "jot down, note",
+        "cond": "язып куйсам",
+        "fut": "язып куячакмын",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + кую (for later): 'writing + put'. Glide: язып куячакмын."
+      },
+      {
+        "inf": "ашап алу",
+        "stem": "ал",
+        "vstem": "ал",
+        "pres": "ала",
+        "cls": "C",
+        "back": true,
+        "pre": "ашап ",
+        "en": "grab a bite",
+        "cond": "ашап алсам",
+        "fut": "ашап алачакмын",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + алу (quick, for oneself): 'eating + take'."
+      },
+      {
+        "inf": "укып утыру",
+        "stem": "утыр",
+        "vstem": "утыр",
+        "pres": "утыра",
+        "cls": "C",
+        "back": true,
+        "pre": "укып ",
+        "en": "be reading (seated)",
+        "cond": "укып утырсам",
+        "fut": "укып утырачакмын",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + утыру (continuous): 'reading + sit'."
+      },
+      {
+        "inf": "көтеп тору",
+        "stem": "тор",
+        "vstem": "тор",
+        "pres": "тора",
+        "cls": "C",
+        "back": true,
+        "pre": "көтеп ",
+        "en": "wait around",
+        "cond": "көтеп торсам",
+        "fut": "көтеп торачакмын",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + тору (continuous): 'waiting + stand'."
+      },
+      {
+        "inf": "карап тору",
+        "stem": "тор",
+        "vstem": "тор",
+        "pres": "тора",
+        "cls": "C",
+        "back": true,
+        "pre": "карап ",
+        "en": "look on, keep watching",
+        "cond": "карап торсам",
+        "fut": "карап торачакмын",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + тору (continuous): 'looking + stand'."
+      },
+      {
+        "inf": "уйлап табу",
+        "stem": "тап",
+        "vstem": "таб",
+        "pres": "таба",
+        "cls": "C",
+        "back": true,
+        "pre": "уйлап ",
+        "en": "figure out, invent",
+        "cond": "уйлап тапсам",
+        "fut": "уйлап табачакмын",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ① converb + табу: 'thinking + find'. Voicing: уйлап табачакмын."
+      },
+      {
+        "inf": "ял итү",
+        "stem": "ит",
+        "vstem": "ит",
+        "pres": "итә",
+        "cls": "C",
+        "back": false,
+        "pre": "ял ",
+        "en": "rest, take a break",
+        "cond": "ял итсәм",
+        "fut": "ял итәчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ② noun + итү: ял (rest) + do."
+      },
+      {
+        "inf": "ярдәм итү",
+        "stem": "ит",
+        "vstem": "ит",
+        "pres": "итә",
+        "cls": "C",
+        "back": false,
+        "pre": "ярдәм ",
+        "en": "help",
+        "cond": "ярдәм итсәм",
+        "fut": "ярдәм итәчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ② noun + итү: ярдәм (help) + do. Колинга ярдәм итәм (dative!)."
+      },
+      {
+        "inf": "сәяхәт итү",
+        "stem": "ит",
+        "vstem": "ит",
+        "pres": "итә",
+        "cls": "C",
+        "back": false,
+        "pre": "сәяхәт ",
+        "en": "travel",
+        "cond": "сәяхәт итсәм",
+        "fut": "сәяхәт итәчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ② noun + итү: сәяхәт (journey) + do."
+      },
+      {
+        "inf": "тәрҗемә итү",
+        "stem": "ит",
+        "vstem": "ит",
+        "pres": "итә",
+        "cls": "C",
+        "back": false,
+        "pre": "тәрҗемә ",
+        "en": "translate",
+        "cond": "тәрҗемә итсәм",
+        "fut": "тәрҗемә итәчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ② noun + итү: тәрҗемә (translation) + do."
+      },
+      {
+        "inf": "дәвам итү",
+        "stem": "ит",
+        "vstem": "ит",
+        "pres": "итә",
+        "cls": "C",
+        "back": false,
+        "pre": "дәвам ",
+        "en": "continue",
+        "cond": "дәвам итсәм",
+        "fut": "дәвам итәчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ② noun + итү: дәвам (continuation) + do."
+      },
+      {
+        "inf": "рәхмәт әйтү",
+        "stem": "әйт",
+        "vstem": "әйт",
+        "pres": "әйтә",
+        "cls": "C",
+        "back": false,
+        "pre": "рәхмәт ",
+        "en": "thank",
+        "cond": "рәхмәт әйтсәм",
+        "fut": "рәхмәт әйтәчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ② noun + әйтү: say a рәхмәт."
+      },
+      {
+        "inf": "кул бирү",
+        "stem": "бир",
+        "vstem": "бир",
+        "pres": "бирә",
+        "cls": "C",
+        "back": false,
+        "pre": "кул ",
+        "en": "shake hands; lend a hand",
+        "cond": "кул бирсәм",
+        "fut": "кул бирәчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ② noun + бирү: give a hand."
+      },
+      {
+        "inf": "сатып алу",
+        "stem": "ал",
+        "vstem": "ал",
+        "pres": "ала",
+        "cls": "C",
+        "back": true,
+        "pre": "сатып ",
+        "en": "buy",
+        "cond": "сатып алсам",
+        "fut": "сатып алачакмын",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. The classic: 'sell-and-take' = buy. Already met at the Market."
+      },
+      {
+        "inf": "аш пешерү",
+        "stem": "пешер",
+        "vstem": "пешер",
+        "pres": "пешерә",
+        "cls": "C",
+        "back": false,
+        "pre": "аш ",
+        "en": "cook (a meal)",
+        "cond": "аш пешерсәм",
+        "fut": "аш пешерәчәкмен",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ② noun + пешерү: cook the аш."
+      },
+      {
+        "inf": "йокларга яту",
+        "stem": "ят",
+        "vstem": "ят",
+        "pres": "ята",
+        "cls": "C",
+        "back": true,
+        "pre": "йокларга ",
+        "en": "go to bed",
+        "cond": "йокларга ятсам",
+        "fut": "йокларга ятачакмын",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ③ infinitive + яту: lie down to-sleep."
+      },
+      {
+        "inf": "ашарга утыру",
+        "stem": "утыр",
+        "vstem": "утыр",
+        "pres": "утыра",
+        "cls": "C",
+        "back": true,
+        "pre": "ашарга ",
+        "en": "sit down to eat",
+        "cond": "ашарга утырсам",
+        "fut": "ашарга утырачакмын",
+        "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ③ infinitive + утыру: sit to-eat."
       }
     ],
     "nouns": [
@@ -1410,6 +2292,98 @@
         "back": false,
         "cat": "Food & home",
         "note": "FRONT harmony despite the look: өйдә = at home, өйгә = homeward."
+      },
+      {
+        "s": "атна",
+        "en": "week",
+        "back": true,
+        "cat": "Time",
+        "note": "киләсе атнада = next week; узган атнада = last week."
+      },
+      {
+        "s": "ай",
+        "en": "month; moon",
+        "back": true,
+        "cat": "Time",
+        "note": "Two words in one: киләсе айда = next month; тулган ай = full moon."
+      },
+      {
+        "s": "ел",
+        "en": "year",
+        "back": true,
+        "cat": "Time",
+        "note": "киләсе елда = next year; быел = бу + ел = this year."
+      },
+      {
+        "s": "иртә",
+        "en": "morning",
+        "back": false,
+        "cat": "Time",
+        "note": "Frozen dative иртәгә = 'to the morning' = TOMORROW — this week's word."
+      },
+      {
+        "s": "кич",
+        "en": "evening",
+        "back": false,
+        "cat": "Time",
+        "note": "кичен = in the evening; кичә = yesterday (from the same root)."
+      },
+      {
+        "s": "төн",
+        "en": "night",
+        "back": false,
+        "cat": "Time",
+        "note": "төнлә = at night."
+      },
+      {
+        "s": "эш",
+        "en": "work, job",
+        "back": false,
+        "cat": "Daily life",
+        "note": "эштән соң = after work (ablative + соң); root of эшләү."
+      },
+      {
+        "s": "күпер",
+        "en": "bridge",
+        "back": false,
+        "cat": "Cities",
+        "note": "күпер аша = across the bridge."
+      },
+      {
+        "s": "ял",
+        "en": "rest, break",
+        "back": true,
+        "cat": "Daily life",
+        "note": "ял итү = to rest; ял көне = day off."
+      },
+      {
+        "s": "ярдәм",
+        "en": "help",
+        "back": false,
+        "cat": "Daily life",
+        "note": "ярдәм итү = to help (+ dative: Колинга ярдәм итәм)."
+      },
+      {
+        "s": "сәяхәт",
+        "en": "journey, travel",
+        "back": false,
+        "cat": "Daily life",
+        "note": "сәяхәт итү = to travel."
+      },
+      {
+        "s": "тәрҗемә",
+        "en": "translation",
+        "back": false,
+        "cat": "Culture",
+        "note": "тәрҗемә итү = to translate."
+      },
+      {
+        "s": "телевизор",
+        "en": "television",
+        "back": true,
+        "cat": "Daily life",
+        "loan": true,
+        "note": "Телевизор карамаячакмын = I will not watch TV."
       }
     ],
     "expressions": [
@@ -1865,6 +2839,335 @@
         "somatic": "none",
         "valence": "neutral",
         "note": "Поезд кайчан китә? Bashkir: Ҡасан? (к→ҡ, й dropped)."
+      },
+      {
+        "tt": "иртәгә",
+        "translit": "irtägä",
+        "en": "tomorrow",
+        "kind": "time",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Frozen dative of иртә (morning): 'to the morning'. Иртәгә мин йөгерәчәкмен."
+      },
+      {
+        "tt": "берсекөнгә",
+        "translit": "berseköngä",
+        "en": "the day after tomorrow",
+        "kind": "time",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "бер+се+көн+гә ≈ 'to the one-after day'. The step past иртәгә."
+      },
+      {
+        "tt": "кичә",
+        "translit": "kichä",
+        "en": "yesterday",
+        "kind": "time",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "From кич (evening). Кичә без бергә йөгердек."
+      },
+      {
+        "tt": "бүген",
+        "translit": "bügen",
+        "en": "today",
+        "kind": "time",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "бу + көн = 'this day'."
+      },
+      {
+        "tt": "быел",
+        "translit": "byel",
+        "en": "this year",
+        "kind": "time",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "бу + ел — same recipe as бүген."
+      },
+      {
+        "tt": "хәзер",
+        "translit": "xäzer",
+        "en": "now",
+        "kind": "time",
+        "somatic": "none",
+        "valence": "neutral"
+      },
+      {
+        "tt": "иртән",
+        "translit": "irtän",
+        "en": "in the morning",
+        "kind": "time",
+        "somatic": "none",
+        "valence": "neutral"
+      },
+      {
+        "tt": "кичен",
+        "translit": "kichen",
+        "en": "in the evening",
+        "kind": "time",
+        "somatic": "none",
+        "valence": "neutral"
+      },
+      {
+        "tt": "төнлә",
+        "translit": "tönlä",
+        "en": "at night",
+        "kind": "time",
+        "somatic": "none",
+        "valence": "neutral"
+      },
+      {
+        "tt": "киләсе …",
+        "translit": "kiläse …",
+        "en": "next …",
+        "kind": "time",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "From килү — 'the coming one'. киләсе атнада = next week, киләсе айда = next month, киләсе елда = next year."
+      },
+      {
+        "tt": "узган …",
+        "translit": "uzgan …",
+        "en": "last …",
+        "kind": "time",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "From узу (to pass) — 'the passed one'. узган атнада = last week. Mirror of киләсе."
+      },
+      {
+        "tt": "һәм",
+        "translit": "häm",
+        "en": "and",
+        "kind": "connector",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Чәй һәм чәк-чәк."
+      },
+      {
+        "tt": "ләкин",
+        "translit": "läkin",
+        "en": "but",
+        "kind": "connector",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Иртәгә укыйм, ләкин берсекөнгә ял итәм."
+      },
+      {
+        "tt": "әмма",
+        "translit": "ämma",
+        "en": "but, however",
+        "kind": "connector",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Bookish twin of ләкин."
+      },
+      {
+        "tt": "яки",
+        "translit": "yaki",
+        "en": "or",
+        "kind": "connector",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Чәй яки сөт?"
+      },
+      {
+        "tt": "чөнки",
+        "translit": "chönki",
+        "en": "because",
+        "kind": "connector",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Мин татарча өйрәнәм, чөнки ул — минем хәтерем."
+      },
+      {
+        "tt": "аннары",
+        "translit": "annary",
+        "en": "then, after that",
+        "kind": "connector",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Sequences a story: иртән йөгерәм, аннары эшлим."
+      },
+      {
+        "tt": "шуңа күрә",
+        "translit": "shuña kürä",
+        "en": "therefore, that's why",
+        "kind": "connector",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Lit. 'looking at that'. Арыдым, шуңа күрә йокларга ятам."
+      },
+      {
+        "tt": "бик",
+        "translit": "bik",
+        "en": "very",
+        "kind": "modifier",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "бик тәмле, бик яхшы."
+      },
+      {
+        "tt": "тиз",
+        "translit": "tiz",
+        "en": "fast, quickly",
+        "kind": "modifier",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Тиз йоклап китәм = I fall asleep fast."
+      },
+      {
+        "tt": "бергә",
+        "translit": "bergä",
+        "en": "together",
+        "kind": "modifier",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Колин белән бергә = together with Colin."
+      },
+      {
+        "tt": "тагын",
+        "translit": "tagyn",
+        "en": "again; more",
+        "kind": "modifier",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Тагын бер тапкыр = one more time."
+      },
+      {
+        "tt": "гына / генә",
+        "translit": "gyna / genä",
+        "en": "only, just",
+        "kind": "modifier",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Clitic after its word, harmony-matched: бер генә = just one; чәй генә = only tea."
+      },
+      {
+        "tt": "белән",
+        "translit": "belän",
+        "en": "with; by (means of)",
+        "kind": "postposition",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "After the bare noun: Ашот белән. Pronouns take genitive: минем белән = with me."
+      },
+      {
+        "tt": "өчен",
+        "translit": "öchen",
+        "en": "for, for the sake of",
+        "kind": "postposition",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "синең өчен = for you."
+      },
+      {
+        "tt": "соң",
+        "translit": "soñ",
+        "en": "after",
+        "kind": "postposition",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "+ ABLATIVE: эштән соң = after work; дәрестән соң = after class."
+      },
+      {
+        "tt": "элек",
+        "translit": "elek",
+        "en": "before; ago",
+        "kind": "postposition",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "+ ABLATIVE: эштән элек = before work; ике ел элек = two years ago."
+      },
+      {
+        "tt": "кадәр / хәтле",
+        "translit": "qadär / xätle",
+        "en": "until, up to, as far as",
+        "kind": "postposition",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "+ DATIVE: өйгә кадәр = up to the house."
+      },
+      {
+        "tt": "таба",
+        "translit": "taba",
+        "en": "toward",
+        "kind": "postposition",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "+ DATIVE: диңгезгә таба = toward the sea. (Same shape as таба 'finds' — context decides.)"
+      },
+      {
+        "tt": "аша",
+        "translit": "asha",
+        "en": "across, through",
+        "kind": "postposition",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "күпер аша = across the bridge. (Same shape as Аша! 'Eat!' — the bridge is not edible.)"
+      },
+      {
+        "tt": "буйлап",
+        "translit": "buylap",
+        "en": "along",
+        "kind": "postposition",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "урам буйлап = along the street; moving cousin of …буенда."
+      },
+      {
+        "tt": "…тышында",
+        "translit": "…tyshynda",
+        "en": "outside",
+        "kind": "spatial",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "тыш = exterior: шәһәр тышында = outside the city. Directions: тышына / тышында / тышыннан."
+      },
+      {
+        "tt": "…арасында",
+        "translit": "…arasynda",
+        "en": "between, among",
+        "kind": "spatial",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "ара = the gap: таулар арасында = between the mountains (the shikhans!)."
+      },
+      {
+        "tt": "…тирәсендә",
+        "translit": "…tiräsendä",
+        "en": "around",
+        "kind": "spatial",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "тирә = surroundings: күл тирәсендә = around the lake."
+      },
+      {
+        "tt": "…каршында",
+        "translit": "…qarshynda",
+        "en": "opposite, across from",
+        "kind": "spatial",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "каршы = facing: банк каршында = across from the bank."
+      },
+      {
+        "tt": "…буенда",
+        "translit": "…buenda",
+        "en": "along, on the bank of",
+        "kind": "spatial",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "буй = length: Идел буенда, Агыйдел буенда — the Road of Cities lines use it."
+      },
+      {
+        "tt": "…уртасында",
+        "translit": "…urtasynda",
+        "en": "in the middle of",
+        "kind": "spatial",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "урта = middle: бүлмә уртасында = in the middle of the room."
       }
     ]
   },
@@ -2305,7 +3608,13 @@
           "сулга бор",
           "туры бар",
           "…янында",
-          "…эчендә"
+          "…эчендә",
+          "…каршында",
+          "…арасында",
+          "…буенда",
+          "…тирәсендә",
+          "…тышында",
+          "…уртасында"
         ],
         "media": [],
         "listen": {
@@ -2336,7 +3645,10 @@
           "микән",
           "икән",
           "булса кирәк",
-          "-дыр / -дер"
+          "-дыр / -дер",
+          "иртәгә",
+          "берсекөнгә",
+          "киләсе …"
         ],
         "media": [
           "med_lecture_complex_by_design"
@@ -2710,6 +4022,75 @@
           "en": "One ticket to Ufa, please."
         },
         "note": "Travel frame that rides the Ufa Gate bridge. Loanword harmony: билетка, поездга. Bashkir: Өфөгә (Уфа → Өфө)."
+      },
+      {
+        "id": "st_time_road",
+        "locus": "Вакыт юлы",
+        "locus_en": "The Road of Time",
+        "zone": "Time",
+        "vocab": [
+          "көн",
+          "атна",
+          "ай",
+          "ел",
+          "иртә",
+          "кич",
+          "төн",
+          "эш"
+        ],
+        "expressions": [
+          "иртәгә",
+          "берсекөнгә",
+          "кичә",
+          "бүген",
+          "быел",
+          "хәзер",
+          "киләсе …",
+          "узган …",
+          "соң",
+          "элек"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Берсекөнгә без Казанга барачакбыз.",
+          "en": "The day after tomorrow we will go to Kazan."
+        },
+        "speak": {
+          "tt": "Киләсе атнада мин татарча сөйләшәчәкмен.",
+          "en": "Next week I will speak Tatar."
+        },
+        "note": "This week's room. The timeline: кичә → бүген → иртәгә → берсекөнгә. 'Next' = киләсе (the coming one): киләсе атнада / айда / елда; 'last' = узган. Before/after = ablative + элек/соң: эштән соң."
+      },
+      {
+        "id": "st_connector_corner",
+        "locus": "Бәйләгечләр почмагы",
+        "locus_en": "The Connector Corner",
+        "zone": "Grammar",
+        "vocab": [],
+        "expressions": [
+          "һәм",
+          "ләкин",
+          "әмма",
+          "яки",
+          "чөнки",
+          "аннары",
+          "шуңа күрә",
+          "бергә",
+          "тагын",
+          "бик",
+          "тиз",
+          "гына / генә"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Иртәгә мин укыйм, ләкин берсекөнгә ял итәчәкмен.",
+          "en": "Tomorrow I study, but the day after tomorrow I will rest."
+        },
+        "speak": {
+          "tt": "Мин арыдым, шуңа күрә йокларга ятам.",
+          "en": "I got tired, so I am going to bed."
+        },
+        "note": "The glue room. һәм joins, ләкин/әмма turn, чөнки explains, аннары sequences, шуңа күрә concludes; modifiers tune (бик тиз, бергә, тагын, бер генә). Both drill lines reuse worksheet compounds: ял итү, йокларга яту."
       }
     ]
   },
@@ -3574,6 +4955,174 @@
         "p3": "яши",
         "kw": "YA-SHA",
         "sc": "You shout \"yeah, sha!\" — living it up."
+      },
+      {
+        "id": 72,
+        "stem": "уйла",
+        "en": "to think",
+        "pron": "uyla",
+        "soft": false,
+        "ev": true,
+        "vl": false,
+        "p3": "уйлый",
+        "kw": "OIL LAMP",
+        "sc": "An OIL LAmp flicks on over the thinker's head — to think."
+      },
+      {
+        "id": 73,
+        "stem": "сиз",
+        "en": "to feel / sense",
+        "pron": "siz",
+        "soft": true,
+        "ev": false,
+        "vl": false,
+        "p3": "сизә",
+        "kw": "SEIZE",
+        "sc": "A sudden hunch SEIZes you — to sense."
+      },
+      {
+        "id": 74,
+        "stem": "ки",
+        "en": "to wear / put on",
+        "pron": "ki",
+        "soft": true,
+        "ev": true,
+        "vl": false,
+        "p3": "кия",
+        "kw": "KEY",
+        "sc": "You wear a giant KEY on a chain — to wear."
+      },
+      {
+        "id": 75,
+        "stem": "бет",
+        "en": "to end / run out",
+        "pron": "bet",
+        "soft": true,
+        "ev": false,
+        "vl": true,
+        "p3": "бетә",
+        "kw": "BET",
+        "sc": "The BET is settled, the game is over — to end."
+      },
+      {
+        "id": 76,
+        "stem": "тукта",
+        "en": "to stop (oneself)",
+        "pron": "tuqta",
+        "soft": false,
+        "ev": true,
+        "vl": false,
+        "p3": "туктый",
+        "kw": "TUK-TUK",
+        "sc": "The TUK-TUK screeches to a halt — to stop."
+      },
+      {
+        "id": 77,
+        "stem": "туктат",
+        "en": "to stop (something)",
+        "pron": "tuqtat",
+        "soft": false,
+        "ev": false,
+        "vl": true,
+        "p3": "туктата",
+        "kw": "TUK-TUK +Т",
+        "sc": "Wave the TUK-TUK down — causative -т stops something else."
+      },
+      {
+        "id": 78,
+        "stem": "шатлан",
+        "en": "to be glad / rejoice",
+        "pron": "shatlan",
+        "soft": false,
+        "ev": false,
+        "vl": false,
+        "p3": "шатлана",
+        "kw": "ШАТ = GLAD",
+        "sc": "шат (glad) + -лан = become glad — to rejoice."
+      },
+      {
+        "id": 79,
+        "stem": "оч",
+        "en": "to fly",
+        "pron": "och",
+        "soft": false,
+        "ev": false,
+        "vl": true,
+        "p3": "оча",
+        "kw": "OSTRICH",
+        "sc": "The OSTRICH finally lifts off — to fly. очкыч = airplane."
+      },
+      {
+        "id": 80,
+        "stem": "сикер",
+        "en": "to jump",
+        "pron": "siker",
+        "soft": true,
+        "ev": false,
+        "vl": false,
+        "p3": "сикерә",
+        "kw": "SEEKER",
+        "sc": "The hide-and-SEEKer leaps out — to jump."
+      },
+      {
+        "id": 81,
+        "stem": "мен",
+        "en": "to climb / board",
+        "pron": "men",
+        "soft": true,
+        "ev": false,
+        "vl": false,
+        "p3": "менә",
+        "kw": "MEN",
+        "sc": "MEN climbing the ladder — to climb, to board."
+      },
+      {
+        "id": 82,
+        "stem": "төш",
+        "en": "to descend / get off",
+        "pron": "tösh",
+        "soft": true,
+        "ev": false,
+        "vl": true,
+        "p3": "төшә",
+        "kw": "TUSH",
+        "sc": "Slide down the hill on your TUSH — to descend."
+      },
+      {
+        "id": 83,
+        "stem": "исәнләш",
+        "en": "to greet",
+        "pron": "isänläsh",
+        "soft": true,
+        "ev": false,
+        "vl": true,
+        "p3": "исәнләшә",
+        "kw": "ИСӘН SWAP",
+        "sc": "Trading Исәнме!-s at the door — исән (well) + -ләш."
+      },
+      {
+        "id": 84,
+        "stem": "саубуллаш",
+        "en": "to say goodbye",
+        "pron": "saubullash",
+        "soft": false,
+        "ev": false,
+        "vl": true,
+        "p3": "саубуллаша",
+        "kw": "САУ БУЛ SWAP",
+        "sc": "Trading Сау бул!-s at the gate — to say goodbye."
+      },
+      {
+        "id": 85,
+        "stem": "җибәр",
+        "en": "to send",
+        "pron": "jibär",
+        "soft": true,
+        "ev": false,
+        "vl": false,
+        "p3": "җибәрә",
+        "kw": "JIBBER",
+        "sc": "You send a JIBBERing voice message — to send."
       }
     ],
     "subjects": [
@@ -6887,6 +8436,84 @@
         "en": "house, home",
         "cat": "food & home",
         "note": "FRONT harmony despite the look: өйдә = at home, өйгә = homeward."
+      },
+      {
+        "tat": "атна",
+        "en": "week",
+        "cat": "time",
+        "note": "киләсе атнада = next week; узган атнада = last week."
+      },
+      {
+        "tat": "ай",
+        "en": "month; moon",
+        "cat": "time",
+        "note": "Two words in one: киләсе айда = next month; тулган ай = full moon."
+      },
+      {
+        "tat": "ел",
+        "en": "year",
+        "cat": "time",
+        "note": "киләсе елда = next year; быел = бу + ел = this year."
+      },
+      {
+        "tat": "иртә",
+        "en": "morning",
+        "cat": "time",
+        "note": "Frozen dative иртәгә = 'to the morning' = TOMORROW — this week's word."
+      },
+      {
+        "tat": "кич",
+        "en": "evening",
+        "cat": "time",
+        "note": "кичен = in the evening; кичә = yesterday (from the same root)."
+      },
+      {
+        "tat": "төн",
+        "en": "night",
+        "cat": "time",
+        "note": "төнлә = at night."
+      },
+      {
+        "tat": "эш",
+        "en": "work, job",
+        "cat": "daily life",
+        "note": "эштән соң = after work (ablative + соң); root of эшләү."
+      },
+      {
+        "tat": "күпер",
+        "en": "bridge",
+        "cat": "cities",
+        "note": "күпер аша = across the bridge."
+      },
+      {
+        "tat": "ял",
+        "en": "rest, break",
+        "cat": "daily life",
+        "note": "ял итү = to rest; ял көне = day off."
+      },
+      {
+        "tat": "ярдәм",
+        "en": "help",
+        "cat": "daily life",
+        "note": "ярдәм итү = to help (+ dative: Колинга ярдәм итәм)."
+      },
+      {
+        "tat": "сәяхәт",
+        "en": "journey, travel",
+        "cat": "daily life",
+        "note": "сәяхәт итү = to travel."
+      },
+      {
+        "tat": "тәрҗемә",
+        "en": "translation",
+        "cat": "culture",
+        "note": "тәрҗемә итү = to translate."
+      },
+      {
+        "tat": "телевизор",
+        "en": "television",
+        "cat": "daily life",
+        "note": "Телевизор карамаячакмын = I will not watch TV."
       }
     ]
   },
