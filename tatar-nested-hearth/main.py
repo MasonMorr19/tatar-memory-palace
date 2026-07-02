@@ -1,7 +1,8 @@
 """Tatar Nested Hearth -- a Pygame study app for the ASU Tatar course.
 
 Two modes, switch with TAB:
-  PALACE    walk the 20 memory-palace stations, hear each vocab word and
+  PALACE    walk the memory-palace stations (read live from the shared
+            tatar_db.json spine at the repo root), hear each vocab word and
             the listen/speak model line for that room.
   VERB LAB  walk the 71-verb mnemonic-peg deck, hear the bare verb, and
             cycle through all 7 tenses/moods to hear the conjugated form.

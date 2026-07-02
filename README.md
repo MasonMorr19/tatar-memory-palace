@@ -21,8 +21,11 @@ Listening (text-to-speech) and speaking (speech recognition) work best in **Chro
 
 ```
 Tatar Memory Palace/
-├── index.html          # the Palace Studio app (database embedded at the `const DB` line)
-├── tatar_db.json       # THE SPINE — edit this, then re-embed it into index.html
+├── index.html            # the Palace Studio app (database embedded at the `const DB` line)
+├── tatar_db.json         # THE SPINE — edit this, then re-embed it into index.html
+├── tatar-nested-hearth/  # the Pygame desktop app — reads the SAME tatar_db.json
+│   ├── main.py           #   (python main.py; needs pygame + edge-tts, kk-KZ neural voice)
+│   └── core/             #   data_loader / grammar_rules / audio_engine
 └── README.md
 ```
 

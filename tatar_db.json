@@ -2,7 +2,7 @@
   "meta": {
     "title": "Nested Hearth — Tatar Memory Palace Database",
     "owner": "Salauat",
-    "version": "0.9.0",
+    "version": "0.9.1",
     "updated": "2026-07-01",
     "purpose": "Single source of truth that binds VOCAB + MEDIA + PALACE so every drill (listening, speaking) is generated from one spine. Edit this file in VSCode/Claude Code; the app and tools read from it.",
     "schema": {
@@ -625,6 +625,42 @@
         "cond": "түләсәм",
         "fut": "түләячәкмен",
         "note": "Market verb: акча түләү = to pay money."
+      },
+      {
+        "inf": "керү",
+        "stem": "кер",
+        "vstem": "кер",
+        "pres": "керә",
+        "cls": "C",
+        "back": false,
+        "en": "enter, go in",
+        "cond": "керсәм",
+        "fut": "керәчәкмен",
+        "note": "Мин Кол Шәрифкә керәм = I enter Kul Sharif (dative of the place entered)."
+      },
+      {
+        "inf": "сөйләшү",
+        "stem": "сөйләш",
+        "vstem": "сөйләш",
+        "pres": "сөйләшә",
+        "cls": "C",
+        "back": false,
+        "en": "talk, converse",
+        "cond": "сөйләшсәм",
+        "fut": "сөйләшәчәкмен",
+        "note": "Reciprocal -ш- on сөйләү: to talk WITH someone. Татарча сөйләшәм = I speak (in) Tatar."
+      },
+      {
+        "inf": "уку",
+        "stem": "укы",
+        "vstem": "укы",
+        "pres": "укый",
+        "cls": "V",
+        "back": true,
+        "en": "read; study",
+        "cond": "укысам",
+        "fut": "укыячакмын",
+        "note": "Both 'read' and 'study': университетта укыйм = I study at university; китап укыйм = I read a book."
       }
     ],
     "nouns": [
@@ -1339,6 +1375,41 @@
         "back": true,
         "cat": "Nature",
         "note": "Arabic loan; root of Нурлат and the name Нурия."
+      },
+      {
+        "s": "китап",
+        "en": "book",
+        "back": true,
+        "cat": "Culture",
+        "note": "Arabic loan; voiceless п: китапка, китапта, китаптан."
+      },
+      {
+        "s": "мәчет",
+        "en": "mosque",
+        "back": false,
+        "cat": "Culture",
+        "note": "Кол Шәриф мәчете = Kul Sharif Mosque (izafet)."
+      },
+      {
+        "s": "әни",
+        "en": "mother",
+        "back": false,
+        "cat": "Family",
+        "note": "әнием = my mother. Bashkir uses a different word: әсәй!"
+      },
+      {
+        "s": "әти",
+        "en": "father",
+        "back": false,
+        "cat": "Family",
+        "note": "әтием = my father. Bashkir: атай."
+      },
+      {
+        "s": "өй",
+        "en": "house, home",
+        "back": false,
+        "cat": "Food & home",
+        "note": "FRONT harmony despite the look: өйдә = at home, өйгә = homeward."
       }
     ],
     "expressions": [
@@ -6786,6 +6857,36 @@
         "en": "light, ray",
         "cat": "nature",
         "note": "Arabic loan; root of Нурлат and the name Нурия."
+      },
+      {
+        "tat": "китап",
+        "en": "book",
+        "cat": "culture",
+        "note": "Arabic loan; voiceless п: китапка, китапта, китаптан."
+      },
+      {
+        "tat": "мәчет",
+        "en": "mosque",
+        "cat": "culture",
+        "note": "Кол Шәриф мәчете = Kul Sharif Mosque (izafet)."
+      },
+      {
+        "tat": "әни",
+        "en": "mother",
+        "cat": "family",
+        "note": "әнием = my mother. Bashkir uses a different word: әсәй!"
+      },
+      {
+        "tat": "әти",
+        "en": "father",
+        "cat": "family",
+        "note": "әтием = my father. Bashkir: атай."
+      },
+      {
+        "tat": "өй",
+        "en": "house, home",
+        "cat": "food & home",
+        "note": "FRONT harmony despite the look: өйдә = at home, өйгә = homeward."
       }
     ]
   },

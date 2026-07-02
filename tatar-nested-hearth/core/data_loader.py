@@ -1,12 +1,18 @@
 import json
 import os
 
-DEFAULT_DB_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "master_db.json")
+# The ONE spine: the same tatar_db.json at the repo root that the web app
+# embeds. This app used to carry its own data/master_db.json snapshot, which
+# silently drifted (it was three versions behind by the time it was merged) --
+# reading the shared spine directly means new stations, vocab, and seals show
+# up here the moment they are added there.
+DEFAULT_DB_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "tatar_db.json")
 
 
 class DataStore:
-    """Thin accessor over master_db.json -- mirrors the shape the web app's
-    DB object already uses (palace.stations, verbLab.verbs, vocab.*)."""
+    """Thin accessor over tatar_db.json -- the same shape the web app's
+    DB object uses (palace.stations, verbLab.verbs, vocab.*); extra web-only
+    layers (media, hearth, knowledge) are simply ignored here."""
 
     def __init__(self, path=DEFAULT_DB_PATH):
         with open(path, encoding="utf-8") as f:
@@ -23,7 +29,7 @@ class DataStore:
 
     @property
     def curriculum_verbs(self):
-        """The 47 curriculum verbs with full principal parts (inf/pres/cond/fut/note)."""
+        """The curriculum verbs with full principal parts (inf/pres/cond/fut/note)."""
         return self.raw["vocab"]["verbs"]
 
     @property
