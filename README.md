@@ -88,6 +88,14 @@ Sharif (кил), the Bar patron on Bauman Street (бар), the Yard-Rat in the H
 Room (ярат), the On-lah monk in the Lecture Hall (аңла) — statue, action, peg,
 and spell sentence rendered as a dark plaque on each room.
 
+**Шәһәрләр юлы — the Road of Cities** (v0.9.0): seven settlement cards on the
+Hearth tab between the rings and the wings — Бижбүләк, Стәрлетамак, Казан,
+Иннополис, Чистай, Бөгелмә, Нурлат. Each carries what the town is known for, a
+peg image (a cauldron for Kazan, a river-swallowing throat for Стәрле-**тамак**,
+Švejk saluting an oil derrick for Bugulma), one line of Tatar to say there with
+its grammar note, and a Bashkir comparison where one applies. The same material
+is quizzable as the **Шәһәрләр deck** in the knowledge wing.
+
 **Case Forge** (Sentence Cog tab): any noun through all six cases with the full
 allomorphy — voiceless finals take -ка/-кә, -та/-тә, -тан/-тән; nasal finals
 take -нан/-нән; loanwords obey their explicit `back` flag.

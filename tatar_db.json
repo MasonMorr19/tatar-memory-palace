@@ -2,7 +2,7 @@
   "meta": {
     "title": "Nested Hearth — Tatar Memory Palace Database",
     "owner": "Salauat",
-    "version": "0.8.0",
+    "version": "0.9.0",
     "updated": "2026-07-01",
     "purpose": "Single source of truth that binds VOCAB + MEDIA + PALACE so every drill (listening, speaking) is generated from one spine. Edit this file in VSCode/Claude Code; the app and tools read from it.",
     "schema": {
@@ -12,7 +12,7 @@
       "media": "id, type(lecture|book|poem|image|text|slide), title, [by], [date], [url], lang, note, [tatar]",
       "stations": "id, locus, locus_en, zone, vocab[surface forms], expressions[tt], media[ids], listen{tt,en}, speak{tt,en}, note, [seal{root,en,peg,statue,action,sentence_tt,sentence_en}] — seals are the mnemonic statue/action images ported from Tatar_Lab/palace_seals.json",
       "verbLab": "self-contained Verb Lab toolkit merged from the 'Tatar Verb Lab' Claude design — verbs(id,stem,en,pron,soft,ev,vl,p3,kw,sc,[pre],[disp]) drive the conjugator/pegs/flashcards; subjects/times/places/objects/advs/determiners/builderMods/builderAdjs/bodyParts/colors/adjAll/modifiers/emotionAdjs feed the Sentence Builder; drills/journeySteps/chains/verbPairs/qaBank/nouns/cardinals/ordinals/connectives/rulesRef/endingsRef/aboutMe/pastTimeRef/timeTelling/clockRules/freqRef/timeRef/emoRef/PERSONS feed Respond, Nuances, Numbers, and Dictionary. Independent of vocab.verbs (that spine covers the Palace/Cog/Speech Lab tabs) since the two schemas serve different pedagogy (principal-parts reference vs. mnemonic-peg drilling). Extended for exam prep: doubtRef (modal/doubt particles), directionsRef+cardinalDirections+directionPhrases (location & directions), phrasesRef (the 48 curriculum expressions from vocab.expressions, cross-linked not re-invented), curriculumNouns (the 68 curriculum nouns from vocab.nouns, cross-linked).",
-      "hearth": "rings[{tt,en,note}] — the nested frame Учак → Бижбүләк → Уфа → Башкортостан → Казан; wings are computed in the app (class rooms by zone, use-case rooms = zone 'Use cases', knowledge wing = knowledge.decks)",
+      "hearth": "rings[{tt,en,note}] — the nested frame Учак → Бижбүләк → Уфа → Башкортостан → Казан; wings are computed in the app (class rooms by zone, use-case rooms = zone 'Use cases', knowledge wing = knowledge.decks); cities{title,intro,list[{tt,en,region,icon,known,peg,line{tt,en},grammar,[bk]}]} — the Road of Cities cards",
       "knowledge": "decks[{id,title,icon,facts[{q,a,[tt],[bk],[note]}]}] — general-knowledge decks with quiz generated in-app"
     },
     "harmony_note": "back=true takes -са/-га/-ка/-да/-ны (back vowels а о у ы); back=false takes -сә/-гә/-кә/-дә/-не (front ә ө ү е и). Loanwords carry an EXPLICIT flag because the last written vowel can lie (табип -> back)."
@@ -1225,6 +1225,120 @@
         "back": true,
         "cat": "Culture",
         "note": "Bashkir national instrument; its flower is on the Bashkortostan flag."
+      },
+      {
+        "s": "шәһәр",
+        "en": "city",
+        "back": false,
+        "cat": "Cities",
+        "note": "шәһәрдә = in the city (front). Bashkir: ҡала is the everyday word."
+      },
+      {
+        "s": "авыл",
+        "en": "village",
+        "back": true,
+        "cat": "Cities",
+        "note": "Авыл учагы = the village hearth — the innermost ring."
+      },
+      {
+        "s": "башкала",
+        "en": "capital city",
+        "back": true,
+        "cat": "Cities",
+        "note": "баш (head) + кала (city): Казан — Татарстанның башкаласы."
+      },
+      {
+        "s": "тамак",
+        "en": "throat; river mouth",
+        "back": true,
+        "cat": "Body",
+        "note": "Body word hiding in a city name: Стәрле-тамак = 'mouth of the Sterlya river'. Тамагым авырта = my throat hurts."
+      },
+      {
+        "s": "елга",
+        "en": "river",
+        "back": true,
+        "cat": "Nature",
+        "note": "Стәрле елгасы = the Sterlya river. Volga = Идел, Kama = Чулман, Belaya = Агыйдел."
+      },
+      {
+        "s": "завод",
+        "en": "factory",
+        "back": true,
+        "cat": "Daily life",
+        "loan": true,
+        "note": "LOANWORD: заводта (back). Нурлатта шикәр заводы бар."
+      },
+      {
+        "s": "шикәр",
+        "en": "sugar",
+        "back": false,
+        "cat": "Food & home",
+        "note": "шикәр заводы = sugar refinery (Nurlat's landmark)."
+      },
+      {
+        "s": "сәгать заводы",
+        "en": "watch factory",
+        "back": true,
+        "cat": "Daily life",
+        "note": "Чистай's Vostok factory — Командирские watches. Izafet: сәгать заводы."
+      },
+      {
+        "s": "тау",
+        "en": "mountain, hill",
+        "back": true,
+        "cat": "Nature",
+        "note": "The Sterlitamak shikhans: Торатау, Юрактау, Куштау — тау = mountain in each name."
+      },
+      {
+        "s": "Казан",
+        "en": "Kazan",
+        "back": true,
+        "cat": "Cities",
+        "note": "Capital of Tatarstan. Казанда = in Kazan; Казанга = to Kazan."
+      },
+      {
+        "s": "Чистай",
+        "en": "Chistopol",
+        "back": true,
+        "cat": "Cities",
+        "note": "Tatar name of Chistopol, on the Кама (Tatar: Чулман)."
+      },
+      {
+        "s": "Бөгелмә",
+        "en": "Bugulma",
+        "back": false,
+        "cat": "Cities",
+        "note": "Front harmony: Бөгелмәдә = in Bugulma."
+      },
+      {
+        "s": "Нурлат",
+        "en": "Nurlat",
+        "back": true,
+        "cat": "Cities",
+        "note": "From нур = light (Arabic loan): the 'radiant' town."
+      },
+      {
+        "s": "Иннополис",
+        "en": "Innopolis",
+        "back": true,
+        "cat": "Cities",
+        "loan": true,
+        "note": "LOANWORD HARMONY: Иннополиска (back endings)."
+      },
+      {
+        "s": "Стәрлетамак",
+        "en": "Sterlitamak",
+        "back": true,
+        "cat": "Cities",
+        "note": "Стәрле + тамак = mouth of the Sterlya. Bashkir: Стәрлетамаҡ (к→ҡ)."
+      },
+      {
+        "s": "нур",
+        "en": "light, ray",
+        "back": true,
+        "cat": "Nature",
+        "note": "Arabic loan; root of Нурлат and the name Нурия."
       }
     ],
     "expressions": [
@@ -6441,6 +6555,237 @@
         "en": "necessary, needed",
         "cat": "daily life",
         "note": "Predicate modal, not a regular noun: ... кирәк = need to .... Negative conditional Кирәкмәсә дә = even if it isn't needed (кирәк behaves like a defective C-stem: кирәк+мә+сә)."
+      },
+      {
+        "tat": "ат",
+        "en": "horse",
+        "cat": "nature",
+        "note": "Cognate — identical in Tatar and Bashkir (ат/ат). Peg: an OTTER riding a horse."
+      },
+      {
+        "tat": "кунак",
+        "en": "guest",
+        "cat": "food & home",
+        "note": "Кунаклар килде = the guests came (Kul Sharif seal sentence)."
+      },
+      {
+        "tat": "табын",
+        "en": "table spread, feast table",
+        "cat": "food & home",
+        "note": "Чәй табыны = the çäy table — the hospitality script lives here."
+      },
+      {
+        "tat": "чәк-чәк",
+        "en": "çäk-çäk (honey pastry)",
+        "cat": "food & home",
+        "note": "The celebration sweet; front endings: чәк-чәкне."
+      },
+      {
+        "tat": "аш",
+        "en": "soup, meal",
+        "cat": "food & home",
+        "note": "Ашыгыз тәмле булсын! = may your meal be tasty."
+      },
+      {
+        "tat": "ит",
+        "en": "meat",
+        "cat": "food & home"
+      },
+      {
+        "tat": "икмәк",
+        "en": "bread",
+        "cat": "food & home"
+      },
+      {
+        "tat": "сөт",
+        "en": "milk",
+        "cat": "food & home"
+      },
+      {
+        "tat": "тәмле",
+        "en": "tasty",
+        "cat": "food & home",
+        "note": "Adjective: бик тәмле = very tasty."
+      },
+      {
+        "tat": "акча",
+        "en": "money",
+        "cat": "daily life"
+      },
+      {
+        "tat": "сум",
+        "en": "ruble (som)",
+        "cat": "daily life",
+        "note": "Мең сум = 1000 rubles."
+      },
+      {
+        "tat": "бәя",
+        "en": "price",
+        "cat": "daily life"
+      },
+      {
+        "tat": "кыйммәт",
+        "en": "expensive",
+        "cat": "daily life",
+        "note": "Бик кыйммәт! = too expensive! Opposite: арзан."
+      },
+      {
+        "tat": "арзан",
+        "en": "cheap",
+        "cat": "daily life"
+      },
+      {
+        "tat": "билет",
+        "en": "ticket",
+        "cat": "daily life",
+        "note": "LOANWORD HARMONY: билетка (back endings despite и/е)."
+      },
+      {
+        "tat": "поезд",
+        "en": "train",
+        "cat": "cities"
+      },
+      {
+        "tat": "вокзал",
+        "en": "train station",
+        "cat": "cities"
+      },
+      {
+        "tat": "урам",
+        "en": "street",
+        "cat": "cities",
+        "note": "Бауман урамы = Bauman Street; урамында = on the street (poss + loc)."
+      },
+      {
+        "tat": "кибет",
+        "en": "store, shop",
+        "cat": "cities",
+        "note": "Front endings: кибеткә барам = I go to the store."
+      },
+      {
+        "tat": "манара",
+        "en": "tower, minaret",
+        "cat": "cities",
+        "note": "Сөембикә манарасы = the leaning Söyembikä Tower."
+      },
+      {
+        "tat": "сәгать",
+        "en": "hour; clock",
+        "cat": "time",
+        "note": "Сәгать биштә = at five o'clock."
+      },
+      {
+        "tat": "калфак",
+        "en": "kalfak (women's cap)",
+        "cat": "culture",
+        "note": "The Kal-Fuk seal peg at Söyembikä Tower — калфак anchors кал (to stay)."
+      },
+      {
+        "tat": "түбәтәй",
+        "en": "tübätäy (men's cap)",
+        "cat": "culture"
+      },
+      {
+        "tat": "курай",
+        "en": "quray (reed flute)",
+        "cat": "culture",
+        "note": "Bashkir national instrument; its flower is on the Bashkortostan flag."
+      },
+      {
+        "tat": "шәһәр",
+        "en": "city",
+        "cat": "cities",
+        "note": "шәһәрдә = in the city (front). Bashkir: ҡала is the everyday word."
+      },
+      {
+        "tat": "авыл",
+        "en": "village",
+        "cat": "cities",
+        "note": "Авыл учагы = the village hearth — the innermost ring."
+      },
+      {
+        "tat": "башкала",
+        "en": "capital city",
+        "cat": "cities",
+        "note": "баш (head) + кала (city): Казан — Татарстанның башкаласы."
+      },
+      {
+        "tat": "тамак",
+        "en": "throat; river mouth",
+        "cat": "body",
+        "note": "Body word hiding in a city name: Стәрле-тамак = 'mouth of the Sterlya river'. Тамагым авырта = my throat hurts."
+      },
+      {
+        "tat": "елга",
+        "en": "river",
+        "cat": "nature",
+        "note": "Стәрле елгасы = the Sterlya river. Volga = Идел, Kama = Чулман, Belaya = Агыйдел."
+      },
+      {
+        "tat": "завод",
+        "en": "factory",
+        "cat": "daily life",
+        "note": "LOANWORD: заводта (back). Нурлатта шикәр заводы бар."
+      },
+      {
+        "tat": "шикәр",
+        "en": "sugar",
+        "cat": "food & home",
+        "note": "шикәр заводы = sugar refinery (Nurlat's landmark)."
+      },
+      {
+        "tat": "сәгать заводы",
+        "en": "watch factory",
+        "cat": "daily life",
+        "note": "Чистай's Vostok factory — Командирские watches. Izafet: сәгать заводы."
+      },
+      {
+        "tat": "тау",
+        "en": "mountain, hill",
+        "cat": "nature",
+        "note": "The Sterlitamak shikhans: Торатау, Юрактау, Куштау — тау = mountain in each name."
+      },
+      {
+        "tat": "Казан",
+        "en": "Kazan",
+        "cat": "cities",
+        "note": "Capital of Tatarstan. Казанда = in Kazan; Казанга = to Kazan."
+      },
+      {
+        "tat": "Чистай",
+        "en": "Chistopol",
+        "cat": "cities",
+        "note": "Tatar name of Chistopol, on the Кама (Tatar: Чулман)."
+      },
+      {
+        "tat": "Бөгелмә",
+        "en": "Bugulma",
+        "cat": "cities",
+        "note": "Front harmony: Бөгелмәдә = in Bugulma."
+      },
+      {
+        "tat": "Нурлат",
+        "en": "Nurlat",
+        "cat": "cities",
+        "note": "From нур = light (Arabic loan): the 'radiant' town."
+      },
+      {
+        "tat": "Иннополис",
+        "en": "Innopolis",
+        "cat": "cities",
+        "note": "LOANWORD HARMONY: Иннополиска (back endings)."
+      },
+      {
+        "tat": "Стәрлетамак",
+        "en": "Sterlitamak",
+        "cat": "cities",
+        "note": "Стәрле + тамак = mouth of the Sterlya. Bashkir: Стәрлетамаҡ (к→ҡ)."
+      },
+      {
+        "tat": "нур",
+        "en": "light, ray",
+        "cat": "nature",
+        "note": "Arabic loan; root of Нурлат and the name Нурия."
       }
     ]
   },
@@ -6473,7 +6818,111 @@
         "en": "Kazan",
         "note": "The outermost walkable ring: the class palace, the Kremlin walk, the exam rooms."
       }
-    ]
+    ],
+    "cities": {
+      "title": "Шәһәрләр юлы — The Road of Cities",
+      "intro": "Between the village hearth and the Kazan wing runs a road of real towns. Each is a locus: a peg image, one line of Tatar to say there, and a reason to remember it. Walk them in order: home ring first, Tatarstan wing after.",
+      "list": [
+        {
+          "tt": "Бижбүләк",
+          "en": "Bizhbulyak",
+          "region": "Башкортостан",
+          "icon": "🔥",
+          "known": "The home village — a district center in southwest Bashkortostan, long home to Chuvash, Tatar, and Bashkir neighbors side by side; the innermost ring of this palace.",
+          "peg": "The family учак (hearth) burning in the window — every route starts and ends at this fire.",
+          "line": {
+            "tt": "Мин Бижбүләктән.",
+            "en": "I am from Bizhbulyak."
+          },
+          "grammar": "Ablative of origin: -тән after voiceless к. 'Кайдан сез?' — 'Мин Бижбүләктән.'",
+          "bk": "In Bashkortostan the road signs read Бишбүләк — 'five gifts' (биш бүләк) is the folk etymology."
+        },
+        {
+          "tt": "Стәрлетамак",
+          "en": "Sterlitamak",
+          "region": "Башкортостан",
+          "icon": "⛰",
+          "known": "Second city of Bashkortostan (founded 1766 as a salt landing on the Belaya). Beside it rise the шиханнар — Torataw, Yuraktaw, Kushtaw — ancient Permian coral reefs turned lone mountains. In 2020 people encircled Kushtaw and saved it from the soda quarries.",
+          "peg": "A giant THROAT (тамак) swallowing a river: Стәрле + тамак = 'mouth of the Sterlya'. A body word hiding inside a city name.",
+          "line": {
+            "tt": "Стәрлетамак Агыйдел буенда утыра.",
+            "en": "Sterlitamak sits on the Belaya."
+          },
+          "grammar": "буенда = along/on the bank of (postposition, like Идел буе in the Kazan Walk).",
+          "bk": "Bashkir: Стәрлетамаҡ (к→ҡ); the Belaya is Ағиҙел — 'White Idel'."
+        },
+        {
+          "tt": "Казан",
+          "en": "Kazan",
+          "region": "Татарстан",
+          "icon": "🏛",
+          "known": "Capital of Tatarstan, millennium city, seat of the whole class wing of this palace — the Kremlin, Kul Sharif, Bauman Street, Kaban Lake.",
+          "peg": "A giant cauldron (казан = cooking pot!) boiling on the Volga bank — the legend says the city is named for one.",
+          "line": {
+            "tt": "Казан — Татарстанның башкаласы.",
+            "en": "Kazan is the capital of Tatarstan."
+          },
+          "grammar": "Genitive + possessive: Татарстан-ның башкала-сы (izafet chain).",
+          "bk": "Bashkir: Ҡазан — the ҡ again. The pot is also a казан in both languages: плов is cooked in one."
+        },
+        {
+          "tt": "Иннополис",
+          "en": "Innopolis",
+          "region": "Татарстан",
+          "icon": "🤖",
+          "known": "Russia's youngest town — founded in 2012, inaugurated as a city in 2015 — an IT city across the Volga from Kazan, built around Innopolis University. Delivery robots and driverless taxis share its streets.",
+          "peg": "A robot in a түбәтәй delivering чәк-чәк — the newest town on the oldest road.",
+          "line": {
+            "tt": "Иннополиста роботлар эшли.",
+            "en": "In Innopolis, robots work."
+          },
+          "grammar": "Loanword harmony: Иннополиста (back -та after voiceless с), plural -лар on робот.",
+          "bk": null
+        },
+        {
+          "tt": "Чистай",
+          "en": "Chistopol",
+          "region": "Татарстан",
+          "icon": "⌚",
+          "known": "Old merchant grain port on the Kama (Tatar: Чулман). In WWII the Soviet writers' union was evacuated here — Pasternak lived and worked in Chistopol — and so was the watch factory that became Vostok, maker of the Командирские.",
+          "peg": "A merchant on the riverbank checking an enormous wristwatch while barges of grain float past.",
+          "line": {
+            "tt": "Чистай Чулман буенда утыра.",
+            "en": "Chistopol sits on the Kama."
+          },
+          "grammar": "Чулман = the Tatar name of the Kama; same буенда pattern as Sterlitamak — reuse the frame.",
+          "bk": null
+        },
+        {
+          "tt": "Бөгелмә",
+          "en": "Bugulma",
+          "region": "Татарстан",
+          "icon": "🛢",
+          "known": "Railway junction town of the southeast oil uplands; home to Tatneft's research institute. In 1918 Jaroslav Hašek — author of Švejk — served as deputy commandant here and later wrote comic tales about it; the town keeps a Hašek museum.",
+          "peg": "The good soldier Švejk saluting an oil derrick from a train window.",
+          "line": {
+            "tt": "Бөгелмәдә нефть бар.",
+            "en": "There is oil in Bugulma."
+          },
+          "grammar": "Front harmony: Бөгелмә-дә. 'X-да/-дә Y бар' = the there-is frame — reuse it everywhere.",
+          "bk": null
+        },
+        {
+          "tt": "Нурлат",
+          "en": "Nurlat",
+          "region": "Татарстан",
+          "icon": "🌾",
+          "known": "Southern Tatarstan's grain-and-oil town, grown from a 1911 station on the Volga–Bugulma railway; its sugar refinery is one of the republic's biggest. The name carries нур — 'light'.",
+          "peg": "A beam of light (нур) shining out of a sugar cube on a railway platform.",
+          "line": {
+            "tt": "Нурлатта шикәр заводы бар.",
+            "en": "In Nurlat there is a sugar factory."
+          },
+          "grammar": "Same 'бар' frame: Нурлат-та (back -та after voiceless т) + izafet шикәр заводы.",
+          "bk": null
+        }
+      ]
+    }
   },
   "knowledge": {
     "note": "General-knowledge decks for the Hearth's knowledge wing. Each fact: q (question), a (answer), tt (Tatar anchor term), bk (Bashkir comparison per the standing rule), note.",
@@ -6635,6 +7084,55 @@
             "q": "How do Tatar and Bashkir infinitives differ?",
             "a": "Bashkir adds -ыу/-еү where Tatar has -у/-ү: бару → барыу, килү → килеү.",
             "tt": "бару / барыу"
+          }
+        ]
+      },
+      {
+        "id": "kn_cities",
+        "title": "Шәһәрләр — Cities & Towns",
+        "icon": "🚂",
+        "facts": [
+          {
+            "q": "What does the name Sterlitamak literally mean?",
+            "a": "'Mouth of the Sterlya' — Стәрле (the river) + тамак (throat/mouth), where the Sterlya meets the Ashkadar near the Belaya.",
+            "tt": "Стәрле + тамак",
+            "bk": "Стәрлетамаҡ — and тамак is also your throat: Тамагым авырта = my throat hurts."
+          },
+          {
+            "q": "What are the shikhans near Sterlitamak?",
+            "a": "Lone mountains — Торатау, Юрактау, Куштау — remains of a Permian coral reef ~280 million years old; in 2020 protesters saved Kushtau from soda quarrying.",
+            "tt": "шиханнар — Торатау, Юрактау, Куштау",
+            "note": "тау = mountain; a fourth, Шахтау, was already quarried away for soda."
+          },
+          {
+            "q": "What is Russia's youngest town?",
+            "a": "Innopolis, Tatarstan — founded in 2012, inaugurated as a city in 2015 — an IT town around Innopolis University, with delivery robots and driverless taxis.",
+            "tt": "Иннополис"
+          },
+          {
+            "q": "What is Chistopol called in Tatar, and on which river does it stand?",
+            "a": "Чистай, on the Kama — Чулман in Tatar. It grew rich as a 19th-century grain port.",
+            "tt": "Чистай · Чулман"
+          },
+          {
+            "q": "Why do writers and watch collectors both know Chistopol?",
+            "a": "In WWII the Soviet writers' union (Pasternak among them) was evacuated there, and so was the Moscow watch works that became Vostok — maker of the Командирские.",
+            "tt": "Чистай сәгать заводы"
+          },
+          {
+            "q": "Which famous writer once helped run Bugulma?",
+            "a": "Jaroslav Hašek, author of 'The Good Soldier Švejk', served as deputy commandant of Bugulma in 1918 and wrote comic tales about it; the town has a Hašek museum.",
+            "tt": "Бөгелмә"
+          },
+          {
+            "q": "What made Bugulma matter in the 20th century?",
+            "a": "The railway junction and then oil: the surrounding uplands are Tatarstan's oil country, and Tatneft's research institute (TatNIPIneft) is based there.",
+            "tt": "Бөгелмәдә нефть бар"
+          },
+          {
+            "q": "How did Nurlat begin, and what does its name carry?",
+            "a": "It grew from a station on the Volga–Bugulma railway (1911) into a sugar-and-oil town; the name carries нур — 'light'.",
+            "tt": "Нурлат · нур = light"
           }
         ]
       }
