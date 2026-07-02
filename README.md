@@ -20,12 +20,15 @@ Listening (text-to-speech) and speaking (speech recognition) work best in **Chro
 ## Layout
 
 ```
-tatar-palace/
-├── index.html          # the Palace Studio app (data embedded; auto-refreshes from data/ over http)
-├── data/
-│   └── tatar_db.json    # THE SPINE — edit this; everything reads from it
+Tatar Memory Palace/
+├── index.html          # the Palace Studio app (database embedded at the `const DB` line)
+├── tatar_db.json       # THE SPINE — edit this, then re-embed it into index.html
 └── README.md
 ```
+
+> **Keep them in sync:** the app reads only the embedded copy. After editing
+> `tatar_db.json`, replace the single `const DB = …;` line in `index.html`
+> with the compact JSON (Claude Code does this automatically when asked).
 
 `data/tatar_db.json` is the single source of truth. The pygame Memory Wheel, the Sentence Cog, the PDF Field Kit, and this app can all read the same `vocab.verbs` / `vocab.nouns` records — the schema is unchanged from `memory_wheel.py`.
 
@@ -61,6 +64,37 @@ Point Claude Code at `data/tatar_db.json` and treat it as the contract. Useful m
 - **"Bind my lecture recording"** → add a `media` entry (type `lecture`, with `url`), reference its `id` from the relevant station.
 - **"Generate a listening quiz for the Heart Room"** → read `stations[id].expressions`, emit prompts. No new data needed.
 - Keep entries **individually** schema-valid so the pygame tools keep working: `json.load(...)["vocab"]["verbs"]` must still yield the records `memory_wheel.py` expects.
+
+---
+
+## The Hearth layer (v0.8.0)
+
+The 🔥 **Hearth** tab makes the nested frame walkable: five rings
+(Учак → Бижбүләк → Өфө/Уфа → Башкортостан → Казан) drawn as nested boxes, then
+three wings hanging off them:
+
+- **Тормыш бүлмәләре — use-case rooms** (`zone: "Use cases"` stations): the Çäy
+  Table, the Market, the Canteen, the Ufa Train — deployable phrase scripts with
+  the same listen/speak drills as every other station.
+- **Дәрес бүлмәләре — class rooms**: the course palace grouped by zone, one tap
+  jumps into the Palace tab at that station.
+- **Белем бүлмәләре — knowledge rooms** (`knowledge.decks`): History, Literature,
+  Culture, and the Bashkir Wing — 24 facts, each with a Tatar anchor term and a
+  Bashkir comparison where one exists, plus a generated multiple-choice **quiz**.
+
+**Memory seals** (from the old `Tatar_Lab/palace_seals.json`) now live on the
+stations themselves: the Kal-Fuk әби at Söyembikä Tower (кал), the Keel at Kul
+Sharif (кил), the Bar patron on Bauman Street (бар), the Yard-Rat in the Heart
+Room (ярат), the On-lah monk in the Lecture Hall (аңла) — statue, action, peg,
+and spell sentence rendered as a dark plaque on each room.
+
+**Case Forge** (Sentence Cog tab): any noun through all six cases with the full
+allomorphy — voiceless finals take -ка/-кә, -та/-тә, -тан/-тән; nasal finals
+take -нан/-нән; loanwords obey their explicit `back` flag.
+
+**Voice fallback** now prefers Tatar → **Kazakh** → Bashkir → Russian: Kazakh
+Cyrillic contains ә ң ө ү һ natively (the pygame `audio_engine.py` insight), so
+if the browser has a kk voice (Edge on Windows does), pronunciation improves a lot.
 
 ---
 

@@ -2,16 +2,18 @@
   "meta": {
     "title": "Nested Hearth — Tatar Memory Palace Database",
     "owner": "Salauat",
-    "version": "0.7.0",
-    "updated": "2026-06-30",
+    "version": "0.8.0",
+    "updated": "2026-07-01",
     "purpose": "Single source of truth that binds VOCAB + MEDIA + PALACE so every drill (listening, speaking) is generated from one spine. Edit this file in VSCode/Claude Code; the app and tools read from it.",
     "schema": {
       "verbs": "inf, stem, vstem, pres, cls(C|V), back(bool), en, cond(1sg example), [loan], [note]",
       "nouns": "s, en, back(bool), cat, [loan], [note]",
       "expressions": "tt, translit, en, [literal], kind(idiom|state|greeting|line), [somatic(heart|head|none)], [valence], [note]",
       "media": "id, type(lecture|book|poem|image|text|slide), title, [by], [date], [url], lang, note, [tatar]",
-      "stations": "id, locus, locus_en, zone, vocab[surface forms], expressions[tt], media[ids], listen{tt,en}, speak{tt,en}, note",
-      "verbLab": "self-contained Verb Lab toolkit merged from the 'Tatar Verb Lab' Claude design — verbs(id,stem,en,pron,soft,ev,vl,p3,kw,sc,[pre],[disp]) drive the conjugator/pegs/flashcards; subjects/times/places/objects/advs/determiners/builderMods/builderAdjs/bodyParts/colors/adjAll/modifiers/emotionAdjs feed the Sentence Builder; drills/journeySteps/chains/verbPairs/qaBank/nouns/cardinals/ordinals/connectives/rulesRef/endingsRef/aboutMe/pastTimeRef/timeTelling/clockRules/freqRef/timeRef/emoRef/PERSONS feed Respond, Nuances, Numbers, and Dictionary. Independent of vocab.verbs (that spine covers the Palace/Cog/Speech Lab tabs) since the two schemas serve different pedagogy (principal-parts reference vs. mnemonic-peg drilling). Extended for exam prep: doubtRef (modal/doubt particles), directionsRef+cardinalDirections+directionPhrases (location & directions), phrasesRef (the 48 curriculum expressions from vocab.expressions, cross-linked not re-invented), curriculumNouns (the 68 curriculum nouns from vocab.nouns, cross-linked)."
+      "stations": "id, locus, locus_en, zone, vocab[surface forms], expressions[tt], media[ids], listen{tt,en}, speak{tt,en}, note, [seal{root,en,peg,statue,action,sentence_tt,sentence_en}] — seals are the mnemonic statue/action images ported from Tatar_Lab/palace_seals.json",
+      "verbLab": "self-contained Verb Lab toolkit merged from the 'Tatar Verb Lab' Claude design — verbs(id,stem,en,pron,soft,ev,vl,p3,kw,sc,[pre],[disp]) drive the conjugator/pegs/flashcards; subjects/times/places/objects/advs/determiners/builderMods/builderAdjs/bodyParts/colors/adjAll/modifiers/emotionAdjs feed the Sentence Builder; drills/journeySteps/chains/verbPairs/qaBank/nouns/cardinals/ordinals/connectives/rulesRef/endingsRef/aboutMe/pastTimeRef/timeTelling/clockRules/freqRef/timeRef/emoRef/PERSONS feed Respond, Nuances, Numbers, and Dictionary. Independent of vocab.verbs (that spine covers the Palace/Cog/Speech Lab tabs) since the two schemas serve different pedagogy (principal-parts reference vs. mnemonic-peg drilling). Extended for exam prep: doubtRef (modal/doubt particles), directionsRef+cardinalDirections+directionPhrases (location & directions), phrasesRef (the 48 curriculum expressions from vocab.expressions, cross-linked not re-invented), curriculumNouns (the 68 curriculum nouns from vocab.nouns, cross-linked).",
+      "hearth": "rings[{tt,en,note}] — the nested frame Учак → Бижбүләк → Уфа → Башкортостан → Казан; wings are computed in the app (class rooms by zone, use-case rooms = zone 'Use cases', knowledge wing = knowledge.decks)",
+      "knowledge": "decks[{id,title,icon,facts[{q,a,[tt],[bk],[note]}]}] — general-knowledge decks with quiz generated in-app"
     },
     "harmony_note": "back=true takes -са/-га/-ка/-да/-ны (back vowels а о у ы); back=false takes -сә/-гә/-кә/-дә/-не (front ә ө ү е и). Loanwords carry an EXPLICIT flag because the last written vowel can lie (табип -> back)."
   },
@@ -563,6 +565,66 @@
         "en": "to go / to ride",
         "cond": "барсам",
         "note": "Bashkir infinitive ends in -ыу (барыу) vs Tatar -у (бару) — a reliable pattern across many verbs. Peg: riding a horse into a BAR."
+      },
+      {
+        "inf": "килү",
+        "stem": "кил",
+        "vstem": "кил",
+        "pres": "килә",
+        "cls": "C",
+        "back": false,
+        "en": "come",
+        "cond": "килсәм",
+        "fut": "киләчәкмен",
+        "note": "Seal verb at Kul Sharif: KIL → Keel. Кунаклар килде = the guests came."
+      },
+      {
+        "inf": "калу",
+        "stem": "кал",
+        "vstem": "кал",
+        "pres": "кала",
+        "cls": "C",
+        "back": true,
+        "en": "stay, remain",
+        "cond": "калсам",
+        "fut": "калачакмын",
+        "note": "Seal verb at Söyembikä Tower: Kal-Fuk әби refuses to move. Мин Казанда калдым."
+      },
+      {
+        "inf": "китү",
+        "stem": "кит",
+        "vstem": "кит",
+        "pres": "китә",
+        "cls": "C",
+        "back": false,
+        "en": "leave, depart",
+        "cond": "китсәм",
+        "fut": "китәчәкмен",
+        "note": "Voiceless т: past китте (not китде). Поезд кайчан китә? = when does the train leave?"
+      },
+      {
+        "inf": "эчү",
+        "stem": "эч",
+        "vstem": "эч",
+        "pres": "эчә",
+        "cls": "C",
+        "back": false,
+        "en": "drink",
+        "cond": "эчсәм",
+        "fut": "эчәчәкмен",
+        "note": "Чәй эч! = drink tea. Homonym of эч = belly."
+      },
+      {
+        "inf": "түләү",
+        "stem": "түлә",
+        "vstem": "түлә",
+        "pres": "түли",
+        "cls": "V",
+        "back": false,
+        "en": "pay",
+        "cond": "түләсәм",
+        "fut": "түләячәкмен",
+        "note": "Market verb: акча түләү = to pay money."
       }
     ],
     "nouns": [
@@ -1008,6 +1070,161 @@
         "back": true,
         "cat": "Nature",
         "note": "Cognate — identical in Tatar and Bashkir (ат/ат). Peg: an OTTER riding a horse."
+      },
+      {
+        "s": "кунак",
+        "en": "guest",
+        "back": true,
+        "cat": "Food & home",
+        "note": "Кунаклар килде = the guests came (Kul Sharif seal sentence)."
+      },
+      {
+        "s": "табын",
+        "en": "table spread, feast table",
+        "back": true,
+        "cat": "Food & home",
+        "note": "Чәй табыны = the çäy table — the hospitality script lives here."
+      },
+      {
+        "s": "чәк-чәк",
+        "en": "çäk-çäk (honey pastry)",
+        "back": false,
+        "cat": "Food & home",
+        "note": "The celebration sweet; front endings: чәк-чәкне."
+      },
+      {
+        "s": "аш",
+        "en": "soup, meal",
+        "back": true,
+        "cat": "Food & home",
+        "note": "Ашыгыз тәмле булсын! = may your meal be tasty."
+      },
+      {
+        "s": "ит",
+        "en": "meat",
+        "back": false,
+        "cat": "Food & home"
+      },
+      {
+        "s": "икмәк",
+        "en": "bread",
+        "back": false,
+        "cat": "Food & home"
+      },
+      {
+        "s": "сөт",
+        "en": "milk",
+        "back": false,
+        "cat": "Food & home"
+      },
+      {
+        "s": "тәмле",
+        "en": "tasty",
+        "back": false,
+        "cat": "Food & home",
+        "note": "Adjective: бик тәмле = very tasty."
+      },
+      {
+        "s": "акча",
+        "en": "money",
+        "back": true,
+        "cat": "Daily life"
+      },
+      {
+        "s": "сум",
+        "en": "ruble (som)",
+        "back": true,
+        "cat": "Daily life",
+        "note": "Мең сум = 1000 rubles."
+      },
+      {
+        "s": "бәя",
+        "en": "price",
+        "back": false,
+        "cat": "Daily life"
+      },
+      {
+        "s": "кыйммәт",
+        "en": "expensive",
+        "back": false,
+        "cat": "Daily life",
+        "note": "Бик кыйммәт! = too expensive! Opposite: арзан."
+      },
+      {
+        "s": "арзан",
+        "en": "cheap",
+        "back": true,
+        "cat": "Daily life"
+      },
+      {
+        "s": "билет",
+        "en": "ticket",
+        "back": true,
+        "cat": "Daily life",
+        "loan": true,
+        "note": "LOANWORD HARMONY: билетка (back endings despite и/е)."
+      },
+      {
+        "s": "поезд",
+        "en": "train",
+        "back": true,
+        "cat": "Cities",
+        "loan": true
+      },
+      {
+        "s": "вокзал",
+        "en": "train station",
+        "back": true,
+        "cat": "Cities",
+        "loan": true
+      },
+      {
+        "s": "урам",
+        "en": "street",
+        "back": true,
+        "cat": "Cities",
+        "note": "Бауман урамы = Bauman Street; урамында = on the street (poss + loc)."
+      },
+      {
+        "s": "кибет",
+        "en": "store, shop",
+        "back": false,
+        "cat": "Cities",
+        "note": "Front endings: кибеткә барам = I go to the store."
+      },
+      {
+        "s": "манара",
+        "en": "tower, minaret",
+        "back": true,
+        "cat": "Cities",
+        "note": "Сөембикә манарасы = the leaning Söyembikä Tower."
+      },
+      {
+        "s": "сәгать",
+        "en": "hour; clock",
+        "back": false,
+        "cat": "Time",
+        "note": "Сәгать биштә = at five o'clock."
+      },
+      {
+        "s": "калфак",
+        "en": "kalfak (women's cap)",
+        "back": true,
+        "cat": "Culture",
+        "note": "The Kal-Fuk seal peg at Söyembikä Tower — калфак anchors кал (to stay)."
+      },
+      {
+        "s": "түбәтәй",
+        "en": "tübätäy (men's cap)",
+        "back": false,
+        "cat": "Culture"
+      },
+      {
+        "s": "курай",
+        "en": "quray (reed flute)",
+        "back": true,
+        "cat": "Culture",
+        "note": "Bashkir national instrument; its flower is on the Bashkortostan flag."
       }
     ],
     "expressions": [
@@ -1418,6 +1635,51 @@
         "kind": "idiom",
         "somatic": "none",
         "valence": "anxious"
+      },
+      {
+        "tt": "Рәхим итегез!",
+        "translit": "Räxim itegez!",
+        "en": "Welcome! / Please, come in!",
+        "kind": "greeting",
+        "somatic": "none",
+        "valence": "positive",
+        "note": "The hospitality opener. Bashkir: Рәхим итегеҙ (з→ҙ)."
+      },
+      {
+        "tt": "Ашыгыз тәмле булсын!",
+        "translit": "Ashygyz tämle bulsyn!",
+        "en": "Bon appétit! (may your meal be tasty)",
+        "kind": "greeting",
+        "somatic": "none",
+        "valence": "positive",
+        "note": "Said to people already eating; булсын = optative 'may it be'."
+      },
+      {
+        "tt": "Бу күпме тора?",
+        "translit": "Bu küpme tora?",
+        "en": "How much does this cost?",
+        "kind": "line",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "тора (stands) = costs. Bashkir: Был күпме тора? (бу→был)."
+      },
+      {
+        "tt": "зинһар",
+        "translit": "zinhar",
+        "en": "please",
+        "kind": "line",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Softens requests: бирегез, зинһар = please give."
+      },
+      {
+        "tt": "Кайчан?",
+        "translit": "Kaychan?",
+        "en": "When?",
+        "kind": "line",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Поезд кайчан китә? Bashkir: Ҡасан? (к→ҡ, й dropped)."
       }
     ]
   },
@@ -1524,7 +1786,83 @@
           "tt": "Исәнмесез! Мин монда киләм.",
           "en": "Hello! I come here."
         },
-        "note": "Dative -кә on Кол Шәриф (front). Greet on arrival."
+        "note": "Dative -кә on Кол Шәриф (front). Greet on arrival.",
+        "seal": {
+          "root": "кил",
+          "en": "to come",
+          "peg": "KIL → Keel",
+          "statue": "A massive wooden ship's KEEL.",
+          "action": "The Keel crashes through the air into the mosque courtyard. It has ARRIVED.",
+          "sentence_tt": "Кунаклар килде.",
+          "sentence_en": "The guests came."
+        }
+      },
+      {
+        "id": "st_soyembika",
+        "locus": "Сөембикә манарасы",
+        "locus_en": "Söyembikä Tower",
+        "zone": "Landmarks",
+        "vocab": [
+          "манара",
+          "калфак",
+          "әби",
+          "калу"
+        ],
+        "expressions": [],
+        "media": [],
+        "listen": {
+          "tt": "Мин Казанда калдым.",
+          "en": "I stayed in Kazan."
+        },
+        "speak": {
+          "tt": "Син Казанда каласыңмы?",
+          "en": "Are you staying in Kazan?"
+        },
+        "note": "The leaning tower of the last queen. Past definite калдым; question particle -мы on каласың.",
+        "seal": {
+          "root": "кал",
+          "en": "to stay",
+          "peg": "Kal-Fuk → Калфак",
+          "statue": "Әби wearing a giant Калфак (Kal-Fuk).",
+          "action": "She strikes her staff into the leaning bricks. She REFUSES to move. She STAYS.",
+          "sentence_tt": "Мин Казанда калдым.",
+          "sentence_en": "I stayed in Kazan."
+        }
+      },
+      {
+        "id": "st_bauman",
+        "locus": "Бауман урамы",
+        "locus_en": "Bauman Street",
+        "zone": "Landmarks",
+        "vocab": [
+          "урам",
+          "кибет",
+          "бару"
+        ],
+        "expressions": [
+          "уңга бор",
+          "сулга бор",
+          "туры бар"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Мин кибеткә барам.",
+          "en": "I am going to the store."
+        },
+        "speak": {
+          "tt": "Без Бауман урамында йөрибез.",
+          "en": "We are walking on Bauman Street."
+        },
+        "note": "Kazan's walking street. Dative of motion (кибеткә, front); урамында = possessive + locative. The Kazan Walk tab drills this locus through all cases.",
+        "seal": {
+          "root": "бар",
+          "en": "to go",
+          "peg": "BAR → Bar",
+          "statue": "A rowdy patron walking out of a BAR.",
+          "action": "He walks down the street tossing coins. He is GOING.",
+          "sentence_tt": "Мин кибеткә барам.",
+          "sentence_en": "I am going to the store."
+        }
       },
       {
         "id": "st_lecture_hall",
@@ -1553,7 +1891,16 @@
           "tt": "Мин татар телен өйрәнәм, чөнки ул — минем хәтерем.",
           "en": "I study Tatar because it is my memory."
         },
-        "note": "Bind Chulpan Khismatova's lecture here. Speaking prompt = your own 'why I study Tatar'."
+        "note": "Bind Chulpan Khismatova's lecture here. Speaking prompt = your own 'why I study Tatar'.",
+        "seal": {
+          "root": "аңла",
+          "en": "to understand",
+          "peg": "AÑLA → On-lah",
+          "statue": "A monk in lotus position.",
+          "action": "He chants 'ON-LAH' and his eyes glow gold with UNDERSTANDING.",
+          "sentence_tt": "Мин сине аңлыйм.",
+          "sentence_en": "I understand you."
+        }
       },
       {
         "id": "st_family_hearth",
@@ -1611,7 +1958,16 @@
           "tt": "Мин сине сагынам.",
           "en": "I miss you."
         },
-        "note": "All heart-seated feelings live here. Verb ярату vs noun мәхәббәт."
+        "note": "All heart-seated feelings live here. Verb ярату vs noun мәхәббәт.",
+        "seal": {
+          "root": "ярат",
+          "en": "to love",
+          "peg": "YARAT → Yard-Rat",
+          "statue": "A giant YARD-RAT in a tuxedo.",
+          "action": "The rat proposes marriage to the Heart with a diamond ring.",
+          "sentence_tt": "Мин сине яратам.",
+          "sentence_en": "I love you."
+        }
       },
       {
         "id": "st_head_room",
@@ -2049,6 +2405,126 @@
           "en": "I love walking in the forest."
         },
         "note": "Reunites урман and хайкинг, which already lived in vocab.nouns but had no station of their own."
+      },
+      {
+        "id": "st_chay_table",
+        "locus": "Чәй табыны",
+        "locus_en": "The Çäy Table",
+        "zone": "Use cases",
+        "vocab": [
+          "чәй",
+          "бал",
+          "чәк-чәк",
+          "кунак",
+          "табын",
+          "эчү",
+          "ашау"
+        ],
+        "expressions": [
+          "Рәхим итегез!",
+          "Ашыгыз тәмле булсын!",
+          "Рәхмәт!"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Рәхим итегез! Чәй эчегез, чәк-чәк ашагыз.",
+          "en": "Welcome! Drink tea, eat çäk-çäk."
+        },
+        "speak": {
+          "tt": "Рәхмәт! Чәй бик тәмле.",
+          "en": "Thank you! The tea is very tasty."
+        },
+        "note": "The hospitality script — the innermost hearth ring made speakable. Plural imperatives: эчегез (front), ашагыз (back). Bashkir: Рәхим итегеҙ."
+      },
+      {
+        "id": "st_market",
+        "locus": "Базар",
+        "locus_en": "The Market",
+        "zone": "Use cases",
+        "vocab": [
+          "акча",
+          "сум",
+          "бәя",
+          "кыйммәт",
+          "арзан",
+          "калфак",
+          "сату",
+          "алу",
+          "түләү"
+        ],
+        "expressions": [
+          "Бу күпме тора?",
+          "зинһар"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Бу калфак күпме тора? — Мең сум.",
+          "en": "How much is this kalfak? — A thousand rubles."
+        },
+        "speak": {
+          "tt": "Мин чәк-чәк сатып алам.",
+          "en": "I am buying çäk-çäk."
+        },
+        "note": "Bargaining frame: Бу ... күпме тора? → price in сум → сатып алу (compound 'buy'). Bashkir: Был күпме тора?"
+      },
+      {
+        "id": "st_ashkhana",
+        "locus": "Ашханә",
+        "locus_en": "The Canteen",
+        "zone": "Use cases",
+        "vocab": [
+          "аш",
+          "ит",
+          "икмәк",
+          "сөт",
+          "тәмле",
+          "ашау",
+          "эчү",
+          "бирү"
+        ],
+        "expressions": [
+          "зинһар",
+          "Ашыгыз тәмле булсын!"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Миңа аш һәм икмәк бирегез, зинһар.",
+          "en": "Please give me soup and bread."
+        },
+        "speak": {
+          "tt": "Мин сөт эчәм, аш ашыйм.",
+          "en": "I drink milk, I eat soup."
+        },
+        "note": "Ordering frame: dative миңа + imperative бирегез + зинһар. ашханә = аш (meal) + ханә (house), like даруханә."
+      },
+      {
+        "id": "st_train_ufa",
+        "locus": "Уфа поезды",
+        "locus_en": "The Ufa Train",
+        "zone": "Use cases",
+        "vocab": [
+          "поезд",
+          "вокзал",
+          "билет",
+          "сәгать",
+          "китү",
+          "бару",
+          "түләү"
+        ],
+        "expressions": [
+          "Кайчан?",
+          "зинһар"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Поезд Уфага кайчан китә? — Сәгать биштә.",
+          "en": "When does the train to Ufa leave? — At five o'clock."
+        },
+        "speak": {
+          "tt": "Миңа Уфага бер билет бирегез, зинһар.",
+          "en": "One ticket to Ufa, please."
+        },
+        "note": "Travel frame that rides the Ufa Gate bridge. Loanword harmony: билетка, поездга. Bashkir: Өфөгә (Уфа → Өфө)."
       }
     ]
   },
@@ -5965,6 +6441,202 @@
         "en": "necessary, needed",
         "cat": "daily life",
         "note": "Predicate modal, not a regular noun: ... кирәк = need to .... Negative conditional Кирәкмәсә дә = even if it isn't needed (кирәк behaves like a defective C-stem: кирәк+мә+сә)."
+      }
+    ]
+  },
+  "hearth": {
+    "title": "Нестед учак — The Nested Hearth",
+    "intro": "Walk from the fire outward. Each ring is a place you belong to; each wing hangs rooms on that ring. Walk the same route every time (Ricci's rule) and the wheel turns on its own.",
+    "rings": [
+      {
+        "tt": "Учак",
+        "en": "The Hearth",
+        "note": "The family fire at the center. Every route begins and ends here — Рәхим итегез!"
+      },
+      {
+        "tt": "Бижбүләк",
+        "en": "Bizhbulyak",
+        "note": "The home village ring: family, food, the çäy table. Гаилә учагы and Чәй табыны hang here."
+      },
+      {
+        "tt": "Өфө / Уфа",
+        "en": "Ufa",
+        "note": "The city over the Belaya (Ағиҙел). Salavat's monument, the Ufa Gate, the train. Уфа → Өфө in Bashkir."
+      },
+      {
+        "tt": "Башкортостан",
+        "en": "Bashkortostan",
+        "note": "The homeland ring — the kinship layer. The four shifts live here: с↔һ, ч↔с, к↔ҡ, з↔ҙ."
+      },
+      {
+        "tt": "Казан",
+        "en": "Kazan",
+        "note": "The outermost walkable ring: the class palace, the Kremlin walk, the exam rooms."
+      }
+    ]
+  },
+  "knowledge": {
+    "note": "General-knowledge decks for the Hearth's knowledge wing. Each fact: q (question), a (answer), tt (Tatar anchor term), bk (Bashkir comparison per the standing rule), note.",
+    "decks": [
+      {
+        "id": "kn_history",
+        "title": "Тарих — History",
+        "icon": "🏰",
+        "facts": [
+          {
+            "q": "When and how did Islam officially arrive on the Volga?",
+            "a": "In 922, when Ibn Fadlan's embassy from Baghdad reached the Volga Bulgars and Almış Khan adopted Islam.",
+            "tt": "Идел Болгары",
+            "note": "The deep root of Kefeli's 'Becoming Muslim in Imperial Russia' — Islam here predates the Mongol era by three centuries."
+          },
+          {
+            "q": "When did the Kazan Khanate emerge, and from what?",
+            "a": "Around 1438, founded by Oluğ Möxämmäd out of the breakup of the Golden Horde.",
+            "tt": "Казан ханлыгы",
+            "note": "The khanate inherited Bulgar's Muslim Volga civilization — the frame of Ross's 'Tatar Empire'."
+          },
+          {
+            "q": "What happened in 1552?",
+            "a": "Ivan the Terrible's armies took Kazan; the khanate fell and the Volga became a Russian river.",
+            "tt": "Явыз Иван (Ivan the Terrible)",
+            "note": "Söyembikä and Qol Şärif both enter legend in this siege."
+          },
+          {
+            "q": "Who was Söyembikä?",
+            "a": "The last ruling queen (regent) of the Kazan Khanate — the leaning tower in the Kremlin bears her name; legend says she leapt from it.",
+            "tt": "Сөембикә манарасы",
+            "bk": "Bashkir folklore claims her too — she was a Nogai princess born near today's Bashkortostan."
+          },
+          {
+            "q": "Who was Qol Şärif?",
+            "a": "The imam and poet who led Kazan's last defense in 1552. The mosque named for him — the largest in Kazan — was rebuilt in 2005 for the city's millennium.",
+            "tt": "Кол Шәриф мәчете"
+          },
+          {
+            "q": "What status does the Kazan Kremlin hold?",
+            "a": "UNESCO World Heritage Site (2000) — the only surviving Tatar fortress with both a mosque and a cathedral inside.",
+            "tt": "Казан Кремле"
+          },
+          {
+            "q": "When was the Tatar autonomous republic formed?",
+            "a": "1920 (TASSR); today's Republic of Tatarstan declared sovereignty within Russia in 1990.",
+            "tt": "Татарстан"
+          }
+        ]
+      },
+      {
+        "id": "kn_literature",
+        "title": "Әдәбият — Literature",
+        "icon": "📜",
+        "facts": [
+          {
+            "q": "Who is the Tatar national poet?",
+            "a": "Ğabdulla Tuqay (1886–1913) — died at 27, having rebuilt Tatar poetry in the people's language.",
+            "tt": "Габдулла Тукай",
+            "bk": "Bashkirs answer with Mäjit Ğafuri — the two literatures grew up as sisters."
+          },
+          {
+            "q": "What is «Туган тел»?",
+            "a": "Tuqay's poem 'Native Tongue' — sung as the unofficial anthem of the Tatar language.",
+            "tt": "И туган тел, и матур тел…",
+            "note": "Тел — халыкның хәтере: language is a people's memory (the Khismatova lecture's thesis in one line)."
+          },
+          {
+            "q": "Who wrote the Moabit Notebooks?",
+            "a": "Musa Cälil — poems written in a Berlin prison before his execution in 1944; posthumously Hero of the Soviet Union.",
+            "tt": "Муса Җәлил — «Моабит дәфтәрләре»"
+          },
+          {
+            "q": "What is the oldest monument of Volga Turkic literature?",
+            "a": "Qol Ğäli's «Кыйссаи Йосыф» (The Tale of Yusuf), c. 1233 — copied by hand for seven centuries.",
+            "tt": "Кол Гали"
+          },
+          {
+            "q": "Which Russian writer studied at Kazan University?",
+            "a": "Lev Tolstoy (he dropped out); Lenin was expelled from it. The university anchors Kazan's civic wing.",
+            "tt": "Казан университеты"
+          }
+        ]
+      },
+      {
+        "id": "kn_culture",
+        "title": "Мәдәният — Culture",
+        "icon": "🎉",
+        "facts": [
+          {
+            "q": "What is Sabantuy?",
+            "a": "The 'plow festival' (сабан + туй) each June — horse races, көрәш belt wrestling, egg-in-spoon races.",
+            "tt": "Сабантуй",
+            "bk": "Bashkirs celebrate һабантуй — the famous с→һ shift on the festival's own name."
+          },
+          {
+            "q": "What is çäk-çäk?",
+            "a": "Fried honey-dough pastry — the wedding and welcome sweet. Guests are met with чәк-чәк the way Russians offer bread and salt.",
+            "tt": "чәк-чәк"
+          },
+          {
+            "q": "Kalfak and tübätäy — what are they?",
+            "a": "The women's embroidered cap (калфак) and the men's skullcap (түбәтәй) — the two silhouettes of Tatar dress.",
+            "tt": "калфак / түбәтәй",
+            "note": "The калфак is also your memory peg for калу at Söyembikä Tower."
+          },
+          {
+            "q": "What scripts has Tatar been written in?",
+            "a": "Arabic script for a millennium → Latin Yañalif (1927) → Cyrillic (1939). A 1999 Latin revival was blocked by federal law.",
+            "tt": "иске имля → яңалиф → кириллица"
+          },
+          {
+            "q": "What family does Tatar belong to?",
+            "a": "Kipchak branch of the Turkic family — closest sibling: Bashkir.",
+            "tt": "татар теле",
+            "bk": "башҡорт теле — same sentence patterns, four regular consonant shifts."
+          },
+          {
+            "q": "What did Kazan celebrate in 2005?",
+            "a": "Its official millennium — 1000 years since the Bulgar-era founding; Kul Sharif mosque reopened for it.",
+            "tt": "Казанга мең ел"
+          }
+        ]
+      },
+      {
+        "id": "kn_bashkort",
+        "title": "Башкортостан — The Bashkir Wing",
+        "icon": "🐎",
+        "facts": [
+          {
+            "q": "What is Ufa called in Bashkir, and where does it stand?",
+            "a": "Өфө — capital of Bashkortostan, above the Belaya river, which Bashkirs call Ағиҙел ('White Idel').",
+            "tt": "Уфа → Өфө",
+            "bk": "Идел runs through both homelands: Volga = Идел, Belaya = Ағиҙел."
+          },
+          {
+            "q": "Who is Salavat Yulaev?",
+            "a": "Poet-warrior (1754–1800) who led Bashkir forces in the Pugachev rebellion; national hero of Bashkortostan.",
+            "tt": "Салават Юлаев",
+            "note": "His Ufa monument (1967) is the largest equestrian statue in Russia — ат (horse) is identical in Tatar and Bashkir, and it's the peg at the Salavat station."
+          },
+          {
+            "q": "What is Bizhbulyak?",
+            "a": "A village and district in southwest Bashkortostan — the innermost ring of this palace, the family hearth.",
+            "tt": "Бижбүләк"
+          },
+          {
+            "q": "What instrument stands for Bashkir music?",
+            "a": "The курай — a long open reed flute; the quray flower is on the Bashkortostan flag.",
+            "tt": "курай"
+          },
+          {
+            "q": "What are the four regular Tatar↔Bashkir consonant shifts?",
+            "a": "с↔һ (сау→һау), ч↔с (өчпочмак→өсмөйөш), к↔ҡ (юк→юҡ), з↔ҙ (бардым→барҙым).",
+            "tt": "дүрт тавыш күчеше",
+            "bk": "The standing rule: whenever Bashkir appears, find the Tatar cognate through these shifts."
+          },
+          {
+            "q": "How do Tatar and Bashkir infinitives differ?",
+            "a": "Bashkir adds -ыу/-еү where Tatar has -у/-ү: бару → барыу, килү → килеү.",
+            "tt": "бару / барыу"
+          }
+        ]
       }
     ]
   }
