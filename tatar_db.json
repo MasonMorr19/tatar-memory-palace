@@ -2,7 +2,7 @@
   "meta": {
     "title": "Nested Hearth — Tatar Memory Palace Database",
     "owner": "Salauat",
-    "version": "0.11.0",
+    "version": "0.12.0",
     "updated": "2026-07-01",
     "purpose": "Single source of truth that binds VOCAB + MEDIA + PALACE so every drill (listening, speaking) is generated from one spine. Edit this file in VSCode/Claude Code; the app and tools read from it.",
     "schema": {
@@ -13,7 +13,8 @@
       "stations": "id, locus, locus_en, zone, vocab[surface forms], expressions[tt], media[ids], listen{tt,en}, speak{tt,en}, note, [seal{root,en,peg,statue,action,sentence_tt,sentence_en}] — seals are the mnemonic statue/action images ported from Tatar_Lab/palace_seals.json",
       "verbLab": "self-contained Verb Lab toolkit merged from the 'Tatar Verb Lab' Claude design — verbs(id,stem,en,pron,soft,ev,vl,p3,kw,sc,[pre],[disp]) drive the conjugator/pegs/flashcards; subjects/times/places/objects/advs/determiners/builderMods/builderAdjs/bodyParts/colors/adjAll/modifiers/emotionAdjs feed the Sentence Builder; drills/journeySteps/chains/verbPairs/qaBank/nouns/cardinals/ordinals/connectives/rulesRef/endingsRef/aboutMe/pastTimeRef/timeTelling/clockRules/freqRef/timeRef/emoRef/PERSONS feed Respond, Nuances, Numbers, and Dictionary. Independent of vocab.verbs (that spine covers the Palace/Cog/Speech Lab tabs) since the two schemas serve different pedagogy (principal-parts reference vs. mnemonic-peg drilling). Extended for exam prep: doubtRef (modal/doubt particles), directionsRef+cardinalDirections+directionPhrases (location & directions), phrasesRef (the 48 curriculum expressions from vocab.expressions, cross-linked not re-invented), curriculumNouns (the 68 curriculum nouns from vocab.nouns, cross-linked).",
       "hearth": "rings[{tt,en,note}] — the nested frame Учак → Бижбүләк → Уфа → Башкортостан → Казан; wings are computed in the app (class rooms by zone, use-case rooms = zone 'Use cases', knowledge wing = knowledge.decks); cities{title,intro,list[{tt,en,region,icon,known,peg,line{tt,en},grammar,[bk]}]} — the Road of Cities cards",
-      "knowledge": "decks[{id,title,icon,facts[{q,a,[tt],[bk],[note]}]}] — general-knowledge decks with quiz generated in-app"
+      "knowledge": "decks[{id,title,icon,facts[{q,a,[tt],[bk],[note]}]}] — general-knowledge decks with quiz generated in-app",
+      "collocations": "verb-government pairs: {v: verb inf, n: noun surface, case: nom|acc|dat|loc|abl|belan, en} — drives the Cog's suggestion chips and the conversation drill"
     },
     "harmony_note": "back=true takes -са/-га/-ка/-да/-ны (back vowels а о у ы); back=false takes -сә/-гә/-кә/-дә/-не (front ә ө ү е и). Loanwords carry an EXPLICIT flag because the last written vowel can lie (табип -> back)."
   },
@@ -1543,6 +1544,42 @@
         "cond": "ашарга утырсам",
         "fut": "ашарга утырачакмын",
         "note": "COMPOUND — only the last verb conjugates, the first word is frozen. ③ infinitive + утыру: sit to-eat."
+      },
+      {
+        "inf": "җырлау",
+        "stem": "җырла",
+        "vstem": "җырла",
+        "pres": "җырлый",
+        "cls": "V",
+        "back": true,
+        "en": "sing",
+        "cond": "җырласам",
+        "fut": "җырлаячакмын",
+        "note": "җыр (song) + -ла = 'to song'. Син җырлыйсыңмы? = do you sing?"
+      },
+      {
+        "inf": "бию",
+        "stem": "би",
+        "vstem": "би",
+        "pres": "бии",
+        "cls": "V",
+        "back": false,
+        "en": "dance",
+        "cond": "бисәм",
+        "fut": "биячәкмен",
+        "note": "Two-letter stem би-. Сез биисезме? = do you (formal) dance?"
+      },
+      {
+        "inf": "кайту",
+        "stem": "кайт",
+        "vstem": "кайт",
+        "pres": "кайта",
+        "cls": "C",
+        "back": true,
+        "en": "return, come back",
+        "cond": "кайтсам",
+        "fut": "кайтачакмын",
+        "note": "Voiceless т: кайтты = he returned. Өйгә кайтам = I head home; эштән кайтам = I come back from work."
       }
     ],
     "nouns": [
@@ -3001,6 +3038,99 @@
         "en": "light; easy",
         "back": false,
         "cat": "Qualities"
+      },
+      {
+        "s": "дәрес",
+        "en": "lesson, class",
+        "back": false,
+        "cat": "Daily life",
+        "note": "дәрестә = in class; дәрескә = to class; дәрестән соң = after class."
+      },
+      {
+        "s": "хат",
+        "en": "letter",
+        "back": true,
+        "cat": "Daily life",
+        "note": "хат язу = write a letter."
+      },
+      {
+        "s": "ачкыч",
+        "en": "key",
+        "back": true,
+        "cat": "Daily life",
+        "note": "ач (open!) + -кыч = the opener. Ачкычны эзлим = I'm looking for the key."
+      },
+      {
+        "s": "эт",
+        "en": "dog",
+        "back": false,
+        "cat": "Nature",
+        "note": "Эттән куркам = I'm afraid of the dog — fear takes the ABLATIVE."
+      },
+      {
+        "s": "песи",
+        "en": "cat",
+        "back": false,
+        "cat": "Nature",
+        "note": "Also мәче."
+      },
+      {
+        "s": "музыка",
+        "en": "music",
+        "back": true,
+        "cat": "Culture",
+        "loan": true,
+        "note": "Музыка тыңлыйм = I listen to music."
+      },
+      {
+        "s": "җыр",
+        "en": "song",
+        "back": true,
+        "cat": "Culture",
+        "note": "җыр җырлау = sing a song — same root twice, like 'dance a dance'."
+      },
+      {
+        "s": "теннис",
+        "en": "tennis",
+        "back": true,
+        "cat": "Daily life",
+        "loan": true,
+        "note": "Теннис уйныйм = I play tennis."
+      },
+      {
+        "s": "футбол",
+        "en": "soccer, football",
+        "back": true,
+        "cat": "Daily life",
+        "loan": true
+      },
+      {
+        "s": "шахмат",
+        "en": "chess",
+        "back": true,
+        "cat": "Daily life",
+        "loan": true
+      },
+      {
+        "s": "парк",
+        "en": "park",
+        "back": true,
+        "cat": "Cities",
+        "loan": true
+      },
+      {
+        "s": "бакча",
+        "en": "garden",
+        "back": true,
+        "cat": "Cities",
+        "note": "бала бакчасы = kindergarten (child-garden)."
+      },
+      {
+        "s": "тарих",
+        "en": "history",
+        "back": true,
+        "cat": "Culture",
+        "note": "Тарихны яратам = I love history."
       }
     ],
     "expressions": [
@@ -3929,6 +4059,51 @@
         "somatic": "none",
         "valence": "neutral",
         "note": "иң зур = the biggest, иң матур шәһәр = the most beautiful city."
+      },
+      {
+        "tt": "Әйе",
+        "translit": "Äye",
+        "en": "yes",
+        "kind": "line",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "The plain yes. Әйе, уйныйм = yes, I play."
+      },
+      {
+        "tt": "Ярый",
+        "translit": "Yaryy",
+        "en": "okay, all right",
+        "kind": "line",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Agreement: Ярый, әйдә! = OK, let's go!"
+      },
+      {
+        "tt": "Әйдә / Әйдәгез",
+        "translit": "Äydä / Äydägez",
+        "en": "come on! / let's (informal / formal)",
+        "kind": "line",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "The invitation word — informal әйдә to a friend, әйдәгез politely. Әйдә, чәй эчик!"
+      },
+      {
+        "tt": "Гафу итегез",
+        "translit": "Gafu itegez",
+        "en": "excuse me; I'm sorry (formal)",
+        "kind": "greeting",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "The polite opener: Гафу итегез, сез татарча сөйләшәсезме? Informal: гафу ит."
+      },
+      {
+        "tt": "бераз",
+        "translit": "beraz",
+        "en": "a little, a bit",
+        "kind": "modifier",
+        "somatic": "none",
+        "valence": "neutral",
+        "note": "Мин бераз татарча сөйләшәм = I speak a little Tatar — the most useful hedge in the language."
       }
     ]
   },
@@ -5046,6 +5221,38 @@
           "en": "In my room there is a big window."
         },
         "note": "The postposition drill-room: everything is somewhere relative to the furniture. Sentence recipe: [place phrase] + [thing] + бар/юк — Өстәл астында сумка юк."
+      },
+      {
+        "id": "st_conversation",
+        "locus": "Сөйләшү капкасы",
+        "locus_en": "The Conversation Gate",
+        "zone": "Use cases",
+        "vocab": [
+          "теннис",
+          "музыка",
+          "җыр",
+          "дәрес",
+          "җырлау",
+          "бию"
+        ],
+        "expressions": [
+          "Гафу итегез",
+          "Әйе",
+          "Ярый",
+          "Әйдә / Әйдәгез",
+          "бераз",
+          "-мы / -ме"
+        ],
+        "media": [],
+        "listen": {
+          "tt": "Гафу итегез, сез татарча сөйләшәсезме? — Әйе, бераз сөйләшәм.",
+          "en": "Excuse me, do you speak Tatar? — Yes, I speak a little."
+        },
+        "speak": {
+          "tt": "Син теннис уйныйсыңмы? — Әйе, уйныйм!",
+          "en": "Do you play tennis? — Yes, I do!"
+        },
+        "note": "The politeness switch is just the ending: син + -сыңмы (friend) vs Сез + -сызмы (polite/plural). Opener recipe: Гафу итегез + question; soften answers with бераз; accept with Ярый, invite with Әйдә(гез). Drill live pairs in the Sentence Cog's conversation panel."
       }
     ]
   },
@@ -9977,6 +10184,81 @@
         "tat": "җиңел",
         "en": "light; easy",
         "cat": "qualities"
+      },
+      {
+        "tat": "дәрес",
+        "en": "lesson, class",
+        "cat": "daily life",
+        "note": "дәрестә = in class; дәрескә = to class; дәрестән соң = after class."
+      },
+      {
+        "tat": "хат",
+        "en": "letter",
+        "cat": "daily life",
+        "note": "хат язу = write a letter."
+      },
+      {
+        "tat": "ачкыч",
+        "en": "key",
+        "cat": "daily life",
+        "note": "ач (open!) + -кыч = the opener. Ачкычны эзлим = I'm looking for the key."
+      },
+      {
+        "tat": "эт",
+        "en": "dog",
+        "cat": "nature",
+        "note": "Эттән куркам = I'm afraid of the dog — fear takes the ABLATIVE."
+      },
+      {
+        "tat": "песи",
+        "en": "cat",
+        "cat": "nature",
+        "note": "Also мәче."
+      },
+      {
+        "tat": "музыка",
+        "en": "music",
+        "cat": "culture",
+        "note": "Музыка тыңлыйм = I listen to music."
+      },
+      {
+        "tat": "җыр",
+        "en": "song",
+        "cat": "culture",
+        "note": "җыр җырлау = sing a song — same root twice, like 'dance a dance'."
+      },
+      {
+        "tat": "теннис",
+        "en": "tennis",
+        "cat": "daily life",
+        "note": "Теннис уйныйм = I play tennis."
+      },
+      {
+        "tat": "футбол",
+        "en": "soccer, football",
+        "cat": "daily life"
+      },
+      {
+        "tat": "шахмат",
+        "en": "chess",
+        "cat": "daily life"
+      },
+      {
+        "tat": "парк",
+        "en": "park",
+        "cat": "cities"
+      },
+      {
+        "tat": "бакча",
+        "en": "garden",
+        "cat": "cities",
+        "note": "бала бакчасы = kindergarten (child-garden)."
+      },
+      {
+        "tat": "тарих",
+        "en": "history",
+        "cat": "culture",
+        "note": "Тарихны яратам = I love history."
       }
     ]
   },
@@ -10415,5 +10697,421 @@
         ]
       }
     ]
-  }
+  },
+  "collocations": [
+    {
+      "v": "уйнау",
+      "n": "теннис",
+      "case": "nom",
+      "en": "play tennis"
+    },
+    {
+      "v": "уйнау",
+      "n": "футбол",
+      "case": "nom",
+      "en": "play soccer"
+    },
+    {
+      "v": "уйнау",
+      "n": "шахмат",
+      "case": "nom",
+      "en": "play chess"
+    },
+    {
+      "v": "уйнау",
+      "n": "курай",
+      "case": "loc",
+      "en": "play the quray (instrument = locative!)"
+    },
+    {
+      "v": "эшләү",
+      "n": "мәктәп",
+      "case": "loc",
+      "en": "work at a school"
+    },
+    {
+      "v": "эшләү",
+      "n": "университет",
+      "case": "loc",
+      "en": "work at a university"
+    },
+    {
+      "v": "эшләү",
+      "n": "кибет",
+      "case": "loc",
+      "en": "work at a store"
+    },
+    {
+      "v": "уку",
+      "n": "китап",
+      "case": "nom",
+      "en": "read a book"
+    },
+    {
+      "v": "уку",
+      "n": "университет",
+      "case": "loc",
+      "en": "study at a university"
+    },
+    {
+      "v": "өйрәнү",
+      "n": "тел",
+      "case": "acc",
+      "en": "learn the language"
+    },
+    {
+      "v": "ашау",
+      "n": "аш",
+      "case": "nom",
+      "en": "eat soup"
+    },
+    {
+      "v": "ашау",
+      "n": "алма",
+      "case": "nom",
+      "en": "eat an apple"
+    },
+    {
+      "v": "ашау",
+      "n": "чәк-чәк",
+      "case": "nom",
+      "en": "eat çäk-çäk"
+    },
+    {
+      "v": "эчү",
+      "n": "чәй",
+      "case": "nom",
+      "en": "drink tea"
+    },
+    {
+      "v": "эчү",
+      "n": "су",
+      "case": "nom",
+      "en": "drink water"
+    },
+    {
+      "v": "эчү",
+      "n": "сөт",
+      "case": "nom",
+      "en": "drink milk"
+    },
+    {
+      "v": "пешерү",
+      "n": "аш",
+      "case": "nom",
+      "en": "cook a meal"
+    },
+    {
+      "v": "пешерү",
+      "n": "бәрәңге",
+      "case": "nom",
+      "en": "cook potatoes"
+    },
+    {
+      "v": "бару",
+      "n": "мәктәп",
+      "case": "dat",
+      "en": "go to school"
+    },
+    {
+      "v": "бару",
+      "n": "базар",
+      "case": "dat",
+      "en": "go to the market"
+    },
+    {
+      "v": "бару",
+      "n": "Казан",
+      "case": "dat",
+      "en": "go to Kazan"
+    },
+    {
+      "v": "бару",
+      "n": "эш",
+      "case": "dat",
+      "en": "go to work"
+    },
+    {
+      "v": "килү",
+      "n": "өй",
+      "case": "dat",
+      "en": "come home"
+    },
+    {
+      "v": "килү",
+      "n": "дәрес",
+      "case": "dat",
+      "en": "come to class"
+    },
+    {
+      "v": "кайту",
+      "n": "өй",
+      "case": "dat",
+      "en": "return home"
+    },
+    {
+      "v": "кайту",
+      "n": "эш",
+      "case": "abl",
+      "en": "come back from work"
+    },
+    {
+      "v": "керү",
+      "n": "бүлмә",
+      "case": "dat",
+      "en": "enter the room"
+    },
+    {
+      "v": "керү",
+      "n": "мәчет",
+      "case": "dat",
+      "en": "enter the mosque"
+    },
+    {
+      "v": "чыгу",
+      "n": "өй",
+      "case": "abl",
+      "en": "go out of the house"
+    },
+    {
+      "v": "менү",
+      "n": "автобус",
+      "case": "dat",
+      "en": "board the bus (dative!)"
+    },
+    {
+      "v": "менү",
+      "n": "тау",
+      "case": "dat",
+      "en": "climb the mountain"
+    },
+    {
+      "v": "төшү",
+      "n": "автобус",
+      "case": "abl",
+      "en": "get off the bus (ablative!)"
+    },
+    {
+      "v": "утыру",
+      "n": "урындык",
+      "case": "dat",
+      "en": "sit down onto the chair (dative!)"
+    },
+    {
+      "v": "очу",
+      "n": "Казан",
+      "case": "dat",
+      "en": "fly to Kazan"
+    },
+    {
+      "v": "карау",
+      "n": "телевизор",
+      "case": "nom",
+      "en": "watch TV"
+    },
+    {
+      "v": "карау",
+      "n": "тәрәзә",
+      "case": "dat",
+      "en": "look at the window"
+    },
+    {
+      "v": "тыңлау",
+      "n": "музыка",
+      "case": "nom",
+      "en": "listen to music"
+    },
+    {
+      "v": "тыңлау",
+      "n": "укытучы",
+      "case": "acc",
+      "en": "listen to the teacher"
+    },
+    {
+      "v": "язу",
+      "n": "хат",
+      "case": "nom",
+      "en": "write a letter"
+    },
+    {
+      "v": "язу",
+      "n": "дәфтәр",
+      "case": "dat",
+      "en": "write in the notebook"
+    },
+    {
+      "v": "сорау",
+      "n": "укытучы",
+      "case": "abl",
+      "en": "ask the teacher (ablative!)"
+    },
+    {
+      "v": "белү",
+      "n": "җавап",
+      "case": "acc",
+      "en": "know the answer"
+    },
+    {
+      "v": "хәтерләү",
+      "n": "исем",
+      "case": "acc",
+      "en": "remember the name"
+    },
+    {
+      "v": "оныту",
+      "n": "исем",
+      "case": "acc",
+      "en": "forget the name"
+    },
+    {
+      "v": "сөйләшү",
+      "n": "дус",
+      "case": "belan",
+      "en": "talk with a friend"
+    },
+    {
+      "v": "сөйләшү",
+      "n": "укытучы",
+      "case": "belan",
+      "en": "talk with the teacher"
+    },
+    {
+      "v": "танышу",
+      "n": "күрше",
+      "case": "belan",
+      "en": "get acquainted with the neighbor"
+    },
+    {
+      "v": "бирү",
+      "n": "җавап",
+      "case": "nom",
+      "en": "give an answer"
+    },
+    {
+      "v": "бирү",
+      "n": "бүләк",
+      "case": "nom",
+      "en": "give a gift"
+    },
+    {
+      "v": "алу",
+      "n": "билет",
+      "case": "nom",
+      "en": "get a ticket"
+    },
+    {
+      "v": "алу",
+      "n": "кибет",
+      "case": "abl",
+      "en": "get it from the store"
+    },
+    {
+      "v": "сатып алу",
+      "n": "икмәк",
+      "case": "nom",
+      "en": "buy bread"
+    },
+    {
+      "v": "түләү",
+      "n": "акча",
+      "case": "nom",
+      "en": "pay money"
+    },
+    {
+      "v": "ярату",
+      "n": "музыка",
+      "case": "nom",
+      "en": "like music"
+    },
+    {
+      "v": "ярату",
+      "n": "спорт",
+      "case": "nom",
+      "en": "like sports"
+    },
+    {
+      "v": "ярату",
+      "n": "тарих",
+      "case": "acc",
+      "en": "love history"
+    },
+    {
+      "v": "курку",
+      "n": "эт",
+      "case": "abl",
+      "en": "be afraid of the dog (ablative!)"
+    },
+    {
+      "v": "көтү",
+      "n": "автобус",
+      "case": "acc",
+      "en": "wait for the bus"
+    },
+    {
+      "v": "көтү",
+      "n": "дус",
+      "case": "acc",
+      "en": "wait for a friend"
+    },
+    {
+      "v": "эзләү",
+      "n": "ачкыч",
+      "case": "acc",
+      "en": "look for the key"
+    },
+    {
+      "v": "табу",
+      "n": "ачкыч",
+      "case": "acc",
+      "en": "find the key"
+    },
+    {
+      "v": "йөзү",
+      "n": "күл",
+      "case": "loc",
+      "en": "swim in the lake"
+    },
+    {
+      "v": "йөзү",
+      "n": "диңгез",
+      "case": "loc",
+      "en": "swim in the sea"
+    },
+    {
+      "v": "йөгерү",
+      "n": "парк",
+      "case": "loc",
+      "en": "run in the park"
+    },
+    {
+      "v": "яшәү",
+      "n": "авыл",
+      "case": "loc",
+      "en": "live in a village"
+    },
+    {
+      "v": "яшәү",
+      "n": "шәһәр",
+      "case": "loc",
+      "en": "live in a city"
+    },
+    {
+      "v": "кию",
+      "n": "күлмәк",
+      "case": "nom",
+      "en": "put on the shirt"
+    },
+    {
+      "v": "җырлау",
+      "n": "җыр",
+      "case": "nom",
+      "en": "sing a song"
+    },
+    {
+      "v": "ярдәм итү",
+      "n": "әни",
+      "case": "dat",
+      "en": "help mother (dative!)"
+    }
+  ]
 }
